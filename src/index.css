@@ -1,0 +1,30 @@
+
+@import "tailwindcss";
+
+@theme{
+   
+  /* color */
+  --color-primary: #12297A;
+  --color-secondary:#CEA839;
+  --color-accent: #FF0000; 
+
+  /* text-size; */
+  --text-btn-txt: 14px;
+  --text-heading:40px;
+  --text-subheading:36px;
+  --text-txt20:20px;
+  --text-txt18:18px;
+  --text-txt16:16px;
+  --text-txt14:14px;
+  --text-txt12:12px;
+  --font-family: "Roboto", serif;
+  --font-weight: 900;
+  --font-style: normal;
+  --custom-dashed-line {
+    border: 2px dashed transparent;
+    border-image: linear-gradient(to right, #4A5568 20%, transparent 20%, transparent 40%, #4A5568 40%, #4A5568 60%, transparent 60%, transparent 80%, #4A5568 80%) 1;
+    margin-top: 10px; /* or your preferred margin */
+  }
+}
+
+
