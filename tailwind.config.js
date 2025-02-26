@@ -3,10 +3,19 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      gradientColorStops:{
+        'primary-gradient': 'rgba(255,255,255,0.1)',
+        'secondary-gradient': 'rgba(255,255,255,0)',
+      },
+      backdropBlur:{
+        'custom-blur': "10px",
+        "border-dradient": "rgba(255,255,255,0.18)"
+      },
       colors: {
-        primary: "#12297A",
-        secondary: "#CEA839",
-        accent: "#FF0000",
+        primary: "#12297A", //blue
+        secondary: "#CEA839", //yellow
+        accent: "#FF0000", //red
+        subaccent: "#465FFF", //light blue
         foreground: "hsl(0 0% 8%)", // This can be used in place of --theme-color-foreground
         background: "hsl(0 0% 98%)", // This can be used in place of --theme-color-background
       },

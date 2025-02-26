@@ -9,8 +9,7 @@ import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import qimage from "../assets/question.jpg";
 import seconstimage from "../assets/todo.png";
-import HeroSection from "../Components/HeroSection";
-import Foote1 from "../Components/Footer1";
+import Homepage from "../assets/HomePage.gif"
 import CardDiscription2 from "../Components/CardDiscription2";
 export default function HomePage() {
   const card = [
@@ -132,10 +131,10 @@ export default function HomePage() {
         {/* Go to known tasks */}
         <hr className="bg-transparent w-2/3 mt-10 border-[2px] border-dashed border-gray-700 relative ml-[calc(1/3*100%)]" />
         <section className="flex flex-col font-family ">
-          <section className="flex w-4/5 m-auto justify-between items-center h-[70vh] sm:flex-col flex-col md:flex-col lg:flex-row">
+          <section className="flex w-4/5 gap-10 m-auto justify-between items-center h-[70vh] sm:flex-col flex-col md:flex-col lg:flex-row">
             <div className="flex flex-col w-full sm:w-full md:w-full lg:w-1/2 ">
               <div className="lg:w-[40vw] w-full h-[162px] lg: sm:w-full text-heading text-primary ">
-                <h1 ref={el} className="sm:text-subheading text-[25px]"></h1>
+                <h1 ref={el} className="sm:text-subheading text-[25px] dark:text-white"></h1>
               </div>
               <p className="mb-10 text-txt18 font-family dark:text-white">
                 Now explore your life, your career, and your potential with us.
@@ -144,24 +143,20 @@ export default function HomePage() {
                 <input
                   type="text"
                   placeholder="Email"
-                  className="text-gray-500 p-2  border border-primary rounded  h-full lg:w-[372px] w-32"
+                  className="text-primary p-2 rounded-lg shadow dark:text-white bg-white/10 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl  border-primary  h-full lg:w-[372px] w-32 transition-all ease-in-out duration-500 hover:dark:bg-white/30"
                 />
-                <button className="w-32 h-full p-2 mx-5 text-white rounded bg-primary">
+                <button className="w-32 h-full p-2 mx-5 text-white transition-all duration-500 ease-out rounded shadow dark:rounded-lg bg-primary dark:text-white dark:bg-white/10 hover:dark:bg-white/30 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl hover:bg-subaccent">
                   Let's sigh up!
                 </button>
               </div>
             </div>
-            <div className="w-1/2 min-w-80">
-              <DotLottieReact
-                src="https://lottie.host/e82c7d02-c12c-4783-a2f2-d56f18531a45/tFcYLif3Lc.lottie"
-                loop
-                autoplay
-              />
+            <div className="flex justify-end w-1/2 min-w-80">
+             <img src={Homepage} alt="" className="rounded-md" />
             </div>
           </section>
         </section>
 
-        <hr className="bg-transparent w-2/3 mt-10 border-[2px] border-dashed border-gray-700 relative ml-[0px]" />
+        <hr className="bg-transparent w-2/3 border-[2px] border-dashed border-gray-700 relative ml-[0px] mt-36 xl:mt-0 " />
 
         {/* GET start */}
         <section className="flex flex-col pt-10 pb-20 m-auto gap-3.5 bg-primary">
@@ -169,7 +164,7 @@ export default function HomePage() {
             <p className="font-bold text-white text-subheading font-family">
               Get to know us!
             </p>
-            <p className="font-bold text-white text-subheading font-family">
+            <p className="font-bold text-white text-subheading font-family dark:text-white">
               Taskify is an easy, modern UI, and powerful Dashboard Management{" "}
             </p>
           </div>
@@ -188,7 +183,7 @@ export default function HomePage() {
 
         {/* flow */}
         <section className="flex flex-col w-4/5 gap-10 m-auto">
-          <h1 className="font-family text-subheading">
+          <h1 className="font-family text-subheading dark:text-white">
             Workflows for any projects, don’t care how big it is. Tackify can
             help you with that
           </h1>
@@ -204,7 +199,7 @@ export default function HomePage() {
           </section>
 
           <div className="flex flex-col justify-between md:items-center md:flex-row">
-            <p className="w-full md:w-2/3 font-family text-txt20">
+            <p className="w-full md:w-2/3 font-family text-txt20 dark:text-white">
               No need to start from scratch. Jump-start your workflow with a
               proven playbook designed for different teams. Customize it to make
               it yours.
@@ -218,15 +213,15 @@ export default function HomePage() {
         {/* choose Taskfy */}
 
         <section className="flex flex-col items-center justify-between w-4/5 gap-10 m-auto md:flex-row">
-          <div className="relative bg-white rounded-lg w-fit bg-opacity-20 backdrop-blur-lg ">
+          <div className="relative p-10 bg-white rounded-lg w-fit bg-opacity-20 backdrop-blur-lg">
             <img src={qimage} className="w-[600px] rounded-lg" />
           </div>
 
-          <div className="flex flex-col gap-10">
-            <h2 className="font-family text-subheading">
+          <div className="flex flex-col gap-10 ">
+            <h2 className="font-family text-subheading dark:text-white">
               Why should you choose Trackify?
             </h2>
-            <ul className="flex flex-col space-y-4 list-none">
+            <ul className="flex flex-col space-y-4 list-none dark:text-white">
               {[
                 "We are free to use",
                 "Many useful features for users",
@@ -251,7 +246,7 @@ export default function HomePage() {
 
         {/* todo */}
 
-        <section className="flex flex-col items-center justify-between w-4/5 gap-10 m-auto lg:flex-row">
+        <section className="flex flex-col items-center justify-between w-4/5 gap-10 pb-10 m-auto lg:flex-row">
           {/* Left Side: Cards */}
           <div className="flex flex-col w-full lg:w-3/5 gap-3.5">
             {card3.map((card, index) => (
