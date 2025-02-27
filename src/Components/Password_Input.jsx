@@ -1,14 +1,42 @@
-import {FaEye, FaEyeSlash} from "react-icons/fa";
-import React from "react";
+import { useState } from "react"
+import { Field } from "formik"
+import { Eye, EyeOff } from "lucide-react"
 
-export default function PasswordInput(props) {
-    const [showPassword, setShowPassword] = React.useState(false)
+export default function PasswordInput() {
+    const [showPassword, setShowPassword] = useState(false)
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword)
+    }
+
     return (
-        <div className={"border-primary border-2 mb-4 w-60 md:w-80 h-10  rounded-md  align-middle flex items-center"}>
-            <input type={showPassword ? 'text' : 'password'} name="password" placeholder=" Password" className=" text-txt12 md:text-txt14 lg:text-txt16 rounded-md bg-backgroundtext-foreground border-none outline-none ring-0 shadow-none focus:border-0 focus:outline-none focus:ring-0 focus:shadow-none w-full"/>
-            <button type="button" variant="ghost" size="icon" className=" px-4 hover:bg-transparent" onClick={() => setShowPassword(!showPassword)} aria-label={showPassword ? "Hide password" : "Show password"}>
-                {showPassword ? <FaEye className="h-4 w-4 text-gray-500" /> : <FaEyeSlash className="h-4 w-4 text-gray-500" />}
-            </button>
+        <div className="w-full space-y-2">
+            <Field name="password">
+                {({ field, meta: { touched, error } }) => (
+                    <div className="space-y-1">
+                        <div className="relative">
+                            <input
+                                {...field}
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary  text-txt12 md:text-txt14 lg:text-txt16 ${
+                                    touched && error ? "border-accent" : "border-gray-300"
+                                }`}
+                            />
+                            <button
+                                type="button"
+                                onClick={togglePasswordVisibility}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                            >
+                                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                                <span className="sr-only">{showPassword ? "Hide password" : "Show password"}</span>
+                            </button>
+                        </div>
+                        {touched && error && <p className="text-sm text-accent">{error}</p>}
+                    </div>
+                )}
+            </Field>
         </div>
     )
 }
+
