@@ -9,7 +9,7 @@ import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import qimage from "../assets/question.jpg";
 import seconstimage from "../assets/todo.png";
-import Homepage from "../assets/HomePage.gif"
+import Homepage from "../assets/Homepage.gif"
 import CardDiscription2 from "../Components/CardDiscription2";
 export default function HomePage() {
   const card = [
