@@ -43,7 +43,7 @@ export default function LoginPage() {
                         Google
                     </button>
                     <div className="text-center text-sm">
-                        <Link href="#" className="text-primary hover:underline">
+                        <Link to={"/"} className="text-primary hover:underline">
                             Cannot Log in? Create an account
                         </Link>
                     </div>
