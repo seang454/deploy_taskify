@@ -145,7 +145,7 @@ export default function HomePage() {
                   placeholder="Email"
                   className="text-primary p-2 rounded-lg shadow dark:text-white bg-white/10 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl  border-primary  h-full lg:w-[372px] w-32 transition-all ease-in-out duration-500 hover:dark:bg-white/30"
                 />
-                <button className="w-32 h-full p-2 mx-5 text-white transition-all duration-500 ease-out rounded shadow dark:rounded-lg bg-primary dark:text-white dark:bg-white/10 hover:dark:bg-white/30 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl hover:bg-subaccent">
+                <button className="w-32 h-full p-2 mx-5 text-white transition-all duration-500 ease-out rounded-full shadow dark:rounded-lg bg-primary dark:text-white dark:bg-white/10 hover:dark:bg-white/30 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl hover:bg-subaccent">
                   Let's sigh up!
                 </button>
               </div>
