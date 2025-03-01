@@ -8,7 +8,7 @@ import {Link} from "react-router";
 import PasswordInput from "../Components/Password_Input.jsx";
 
 const LoginSchema = Yup.object().shape({
-    name: Yup.string().required("Username or email is required").email("Invalid email address or Username"),
+    name: Yup.string().required("Username or email is required").typeError("Invalid email address or Username"),
     password: Yup.string().required("Password is required"),
 })
 
