@@ -129,7 +129,7 @@ export default function HomePage() {
       {" "}
       <section className="flex flex-col gap-20 min-w-80">
         {/* Go to known tasks */}
-        <hr className="bg-transparent w-2/3 mt-10 border-[2px] border-dashed border-gray-700 relative ml-[calc(1/3*100%)]" />
+        <hr className="bg-transparent w-2/3 mt-10 border-[2px] border-dashed  relative ml-[calc(1/3*100%)] border-primary" />
         <section className="flex flex-col font-family ">
           <section className="flex w-4/5 gap-10 m-auto justify-between items-center h-[70vh] sm:flex-col flex-col md:flex-col lg:flex-row">
             <div className="flex flex-col w-full sm:w-full md:w-full lg:w-1/2 ">
@@ -156,7 +156,7 @@ export default function HomePage() {
           </section>
         </section>
 
-        <hr className="bg-transparent w-2/3 border-[2px] border-dashed border-gray-700 relative ml-[0px] mt-36 xl:mt-0 " />
+        <hr className="bg-transparent w-2/3 border-[2px] border-dashed  relative ml-[0px] mt-36 xl:mt-0 border-secondary" />
 
         {/* GET start */}
         <section className="flex flex-col pt-10 pb-20 m-auto gap-3.5 bg-primary">
