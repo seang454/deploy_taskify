@@ -8,6 +8,7 @@ import RootLayout from './Components/Layouts/RootLayout';
 import HomePage from './pages/HomePage';
 import Register from './pages/auth/Register';
 import DashboardPage from './pages/DashboardPage';
+import LoginPage from './pages/LoginPage';
 
 const root = document.getElementById("root");
 
@@ -20,6 +21,7 @@ ReactDOM.createRoot(root).render(
         <Route path="/" element={<App/>} />
         <Route path="/homepage" element={<HomePage/>}/>
       </Route>
+      <Route path="/login" element={<LoginPage/>}/>
       <Route path="/register" element={<Register/>}/>
     </Routes>
   </BrowserRouter>

@@ -41,7 +41,7 @@ export default function Register() {
       
         return (
           <div className="relative">
-            <label htmlFor={props.id || props.name} className="block mb-2 text-txt14 font-medium text-primary">
+            <label htmlFor={props.id || props.name} className="block mb-2 font-medium text-txt14 text-primary">
               {label}
             </label>
             <div className="relative">
@@ -56,7 +56,7 @@ export default function Register() {
               {/* Eye Icon for Password Toggle */}
               {type === 'password' && (
                 <span
-                  className="absolute inset-y-0 right-3 flex items-center cursor-pointer text-txt14 text-primary"
+                  className="absolute inset-y-0 flex items-center cursor-pointer right-3 text-txt14 text-primary"
                   onClick={togglePasswordVisibility}
                 >
                   <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
@@ -99,9 +99,9 @@ export default function Register() {
      >
       <section className="grid gap-0.5 md:grid-cols-2 px-8 md:px-16 lg:px-24 xl:px-36 py-8 md:py-12 lg:py-16 xl:py-20 border">
       {/* Form Section */}
-      <section className="px-8 md:px-12 lg:px-14 xl:px-16 py-8 xl:py-10 bg-white">
+      <section className="px-8 py-8 bg-white md:px-12 lg:px-14 xl:px-16 xl:py-10">
         <Link to='/'><FontAwesomeIcon icon={faArrowLeft} className="text-primary" /></Link>
-        <h2 className="text-center text-primary text-txt16 md:text-txt18  lg:text-txt20 font-medium px-5 pb-5">Create an account to continue</h2>
+        <h2 className="px-5 pb-5 font-medium text-center text-primary text-txt16 md:text-txt18 lg:text-txt20">Create an account to continue</h2>
 
         <Formik initialValues={initialValues} validationSchema={validationSchema} 
         onSubmit={(values) =>  console.log(values)
@@ -115,7 +115,7 @@ export default function Register() {
             </div>
 
             {/* First Name & Last Name */}
-            <div className="grid lg:grid-cols-2 pb-4 gap-4">
+            <div className="grid gap-4 pb-4 lg:grid-cols-2">
               <CustomInput name="family_name" label="First Name" placeholder="First Name" />
               <CustomInput name="given_name" label="Last Name" placeholder="Last Name" />
             </div>
@@ -126,7 +126,7 @@ export default function Register() {
             </div>
 
             {/* Password & Confirm Password */}
-            <div className="grid lg:grid-cols-2 pb-4 gap-4">
+            <div className="grid gap-4 pb-4 lg:grid-cols-2">
               <CustomInput name="password" label="Password" type="password" placeholder="Password" />
               <CustomInput name="comfirmed_password" label="comfirm Password" type="password" placeholder="comfirm Password" />
             </div>
@@ -142,17 +142,17 @@ export default function Register() {
             
 
             {/* Student Radio Buttons */}
-            <div className="pb-4 flex items-center gap-x-4">
-              <span className="text-txt14 font-medium text-primary mb-2">Are you a student?</span>
+            <div className="flex items-center pb-4 gap-x-4">
+              <span className="mb-2 font-medium text-txt14 text-primary">Are you a student?</span>
               <label className="flex items-center mb-2">
-                <Field type="radio" name="is_student" value="yes" className="w-4 h-4 text-subaccent bg-gray-100 border-primary focus:ring-blue-500" />
+                <Field type="radio" name="is_student" value="yes" className="w-4 h-4 bg-gray-100 text-subaccent border-primary focus:ring-blue-500" />
                 <span className="ms-2 text-txt14 text-primary">Yes</span>
               </label>
               <label className="flex items-center mb-2">
-                <Field type="radio" name="is_student" value="no" className="w-4 h-4 text-subaccent bg-gray-100 border-primary focus:ring-blue-500" />
+                <Field type="radio" name="is_student" value="no" className="w-4 h-4 bg-gray-100 text-subaccent border-primary focus:ring-blue-500" />
                 <span className="ms-2 text-txt14 text-primary">No</span>
               </label>
-              <ErrorMessage name="student" component="div" className="text-accent text-txt12 mt-1" />
+              <ErrorMessage name="student" component="div" className="mt-1 text-accent text-txt12" />
             </div>
         
 
@@ -160,22 +160,20 @@ export default function Register() {
             {/* Submit Button */}
             <button 
                   type="submit" 
-                  className="pb-4  w-full px-4 py-3 text-btn-txt bg-primary text-white rounded-md transition-all 
-                            hover:bg-subaccent hover:shadow-lg 
-                            active:bg-subaccent active:scale-95"
+                  className="w-full px-4 py-3 pb-4 text-white transition-all rounded-md text-btn-txt bg-primary hover:bg-subaccent hover:shadow-lg active:bg-subaccent active:scale-95"
                 >
                   Create a Trackify account
                 </button>
 
             {/* Google Sign In */}
-            <p className="text-gray-400 text-center mt-4">Or continue with:</p>
+            <p className="mt-4 text-center text-gray-400">Or continue with:</p>
             <button type="button" className="text-primary border-primary py-2.5 px-5 flex items-center justify-center w-full border rounded-lg mt-2">
               <img src='./src/assets/google.png' className="w-4 h-4 mr-2" alt="Google" />
               <span>Google</span>
             </button>
 
             {/* Login Link */}
-            <p className="text-center mt-4">
+            <p className="mt-4 text-center">
               <Link to="/login" className="text-txt14 text-primary">
                 Already have a Trackify account? Log in
               </Link>
