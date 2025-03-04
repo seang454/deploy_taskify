@@ -1,32 +1,34 @@
 import React, { useState } from 'react'
 import { Formik, Form,Field,ErrorMessage,useField } from 'formik'
 import * as Yup from 'yup'; 
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useRegisterMutation } from '../../features/auth/authSlice';
 
 
 export default function Register() {
+    // const [register] = useRegisterMutation();
     const regex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     const initialValues ={
         username:"",
-        firstname:"",
-        lastname:"",
+        family_name:"",
+        given_name:"",
         email:"",
-        password:"",
-        comfirmPassword:"",
-        student: "",
+        password:"Qwer1234!",
+        confirmed_password:"Qwer1234!",
+        is_student: "",
         gender: "",
     }
     const validationSchema = Yup.object({
         username: Yup.string().required("username is required"),
-        firstname: Yup.string().required('firstname is required'),
-        lastname: Yup.string().required('lastname is required'),
+        family_name: Yup.string().required('firstname is required'),
+        given_name: Yup.string().required('lastname is required'),
         email: Yup.string().email('email is invalid').required('email is required'),
         password: Yup.string().matches(regex,'Password must constain at least 8 characters, one uppercase, one lowercase, one number and one special case character').required("passwork is required"),
-        comfirmPassword: Yup.string().oneOf([Yup.ref("password"),null],"Password must match").required('comfirm passwork is required'),
-        student: Yup.string().required("Please select an option."),
+        confirmed_password: Yup.string().oneOf([Yup.ref("password"),null],"Password must match").required('comfirm passwork is required'),
+        is_student: Yup.string().required("Please select an option."),
         gender: Yup.string().required("Please select an option."),
       });
       const CustomInput = ({ label, type, ...props }) => {
@@ -101,7 +103,11 @@ export default function Register() {
         <Link to='/'><FontAwesomeIcon icon={faArrowLeft} className="text-primary" /></Link>
         <h2 className="text-center text-primary text-txt16 md:text-txt18  lg:text-txt20 font-medium px-5 pb-5">Create an account to continue</h2>
 
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={(values) => console.log(values)}>
+        <Formik initialValues={initialValues} validationSchema={validationSchema} 
+        onSubmit={(values) =>  console.log(values)
+        //  {
+        //   register(values).unwrap(); }
+         }>
           <Form>
             {/* Username */}
             <div className="pb-4">
@@ -110,8 +116,8 @@ export default function Register() {
 
             {/* First Name & Last Name */}
             <div className="grid lg:grid-cols-2 pb-4 gap-4">
-              <CustomInput name="firstname" label="First Name" placeholder="First Name" />
-              <CustomInput name="lastname" label="Last Name" placeholder="Last Name" />
+              <CustomInput name="family_name" label="First Name" placeholder="First Name" />
+              <CustomInput name="given_name" label="Last Name" placeholder="Last Name" />
             </div>
 
             {/* Email */}
@@ -122,7 +128,7 @@ export default function Register() {
             {/* Password & Confirm Password */}
             <div className="grid lg:grid-cols-2 pb-4 gap-4">
               <CustomInput name="password" label="Password" type="password" placeholder="Password" />
-              <CustomInput name="comfirmPassword" label="comfirm Password" type="password" placeholder="comfirm Password" />
+              <CustomInput name="comfirmed_password" label="comfirm Password" type="password" placeholder="comfirm Password" />
             </div>
 
             {/* gender */}
@@ -139,11 +145,11 @@ export default function Register() {
             <div className="pb-4 flex items-center gap-x-4">
               <span className="text-txt14 font-medium text-primary mb-2">Are you a student?</span>
               <label className="flex items-center mb-2">
-                <Field type="radio" name="student" value="yes" className="w-4 h-4 text-subaccent bg-gray-100 border-primary focus:ring-blue-500" />
+                <Field type="radio" name="is_student" value="yes" className="w-4 h-4 text-subaccent bg-gray-100 border-primary focus:ring-blue-500" />
                 <span className="ms-2 text-txt14 text-primary">Yes</span>
               </label>
               <label className="flex items-center mb-2">
-                <Field type="radio" name="student" value="no" className="w-4 h-4 text-subaccent bg-gray-100 border-primary focus:ring-blue-500" />
+                <Field type="radio" name="is_student" value="no" className="w-4 h-4 text-subaccent bg-gray-100 border-primary focus:ring-blue-500" />
                 <span className="ms-2 text-txt14 text-primary">No</span>
               </label>
               <ErrorMessage name="student" component="div" className="text-accent text-txt12 mt-1" />
