@@ -4,7 +4,7 @@ export default function  ProgessCardDetail() {
     let email = "Houy@gmail.com";
     return (
 
-        <div className={"mx-15 mr-2 px-2 h-screen overflow-y-scroll scroll-smooth space-y-4 mb-10 "}>
+        <div className={"mx-15 mr-2 px-2 h-screen overflow-y-scroll scroll-smooth space-y-4 mb-10 w-[800px]"}>
             <div className={" flex bg-gray-200 rounded-2xl w-auto items-center my-8 mx-auto h-10  align-middle justify-center"}>
                 Homepage UX/UI
             </div>

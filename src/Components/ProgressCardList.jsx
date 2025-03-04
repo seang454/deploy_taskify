@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight, ClipboardList, Clock } from "lucide-react"
 import { useState } from "react"
+import {NavLink} from "react-router";
 
 // Sample database array
 const DB = [
@@ -50,10 +51,11 @@ function ProgressCard({ item }) {
         >
             <div className="flex items-center justify-between text-txt20 font-bold text-gray-600">
                 <div>{item.title}</div>
+
                 {isHovered ? (
-                    <ChevronLeft strokeWidth={1} className="mr-8" />
-                ) : (
                     <ChevronRight strokeWidth={1} className="mr-8" />
+                ) : (
+                    <ChevronLeft strokeWidth={1} className="mr-8" />
                 )}
             </div>
             <div className="text-gray-500 line-clamp-2 w-56">{item.description}</div>
@@ -87,7 +89,7 @@ function ProgressCard({ item }) {
 // Main component that maps over the DB array
 export default function ProgressCardList() {
     return (
-        <section className=" my-10 p-4 scroll-smooth space-y-custom-dashed-line h-screen overflow-y-scroll">
+        <section className=" my-10 p-4 scroll-smooth space-y-custom-dashed-line h-screen overflow-y-scroll w-full">
             {DB.map((item) => (
                 <ProgressCard key={item.id} item={item} />
             ))}
