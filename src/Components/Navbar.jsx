@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { faSun, faMoon, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router";
 import TaskifyLogo from "../assets/TaskifyLogo1.png"
 
 export default function Navbar() {
@@ -52,9 +53,11 @@ export default function Navbar() {
               {darkMode ?  <FontAwesomeIcon icon={faMoon} /> :  <FontAwesomeIcon icon={faSun}/>}
             </motion.div>
           </button> 
-          <button className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16">
+         <Link to='/register'>
+         <button className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16">
             Create Account
           </button>
+         </Link>
           <button className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16 ">
             Go to Dashboard
           </button>
@@ -91,9 +94,11 @@ export default function Navbar() {
       {/* Mobile Menu (Dropdown) */}
       {isOpen && (
         <div className="absolute top-[86px] left-0 w-full bg-primary flex flex-col items-center py-4 sm:hidden">
+          <Link to='/register'>
           <button className="px-4 py-2 my-1 transition-all duration-500 ease-in-out bg-white border rounded text-primary hover:bg-secondary">
             Create Account
           </button>
+          </Link>
           <button className="px-4 my-1 transition-all duration-500 ease-in-out bg-white border rounded h-[38px] text-primary hover:bg-secondary">
             Login your account
           </button>
