@@ -1,5 +1,4 @@
 import React from "react";
-import TaskifyLogo from "../assets/TaskifyLogo.png"
 
 export default function Footer() {
   const Website = [
@@ -58,7 +57,7 @@ export default function Footer() {
         {/* Logo & Description */}
         <div className="text-center md:text-left md:w-1/3">
           <img
-            src={TaskifyLogo}
+            src=""
             alt="Logo"
             className="w-24 h-24 mx-auto md:mx-0"
           />

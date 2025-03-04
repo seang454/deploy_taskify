@@ -12,12 +12,16 @@ export default {
         "border-dradient": "rgba(255,255,255,0.18)"
       },
       colors: {
-        primary: "#12297A", //blue
-        secondary: "#CEA839", //yellow
+        primary: "#1E429F", //blue
+        secondary: "#E7B626", //yellow
         accent: "#FF0000", //red
-        subaccent: "#465FFF", //light blue
+        subaccent: "#1A56DB", //light blue
         foreground: "hsl(0 0% 8%)", // This can be used in place of --theme-color-foreground
         background: "hsl(0 0% 98%)", // This can be used in place of --theme-color-background
+      },
+      textColor:{
+        txtPrimary:"#49454E"
+
       },
       fontSize: {
         "btn-txt": "14px",
@@ -48,3 +52,5 @@ export default {
 
   plugins: [],
 };
+//note // Redius : using rounded-light
+//note //  

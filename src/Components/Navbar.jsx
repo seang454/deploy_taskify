@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import TaskifyLogo from "../assets/TaskifyLogo.png";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun, faMoon, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router";
+import TaskifyLogo from "../assets/TaskifyLogo1.png"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +34,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between w-full max-w-[1200px] mx-auto">
         {/* Logo */}
         <div>
-          <img src={TaskifyLogo} className="w-[50px] sm:w-[60px]" alt="Logo" />
+          <img src={TaskifyLogo} className="w-[175px]" alt="Logo" />
         </div>
 
         {/* Desktop Buttons */}

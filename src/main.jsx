@@ -17,6 +17,8 @@ ReactDOM.createRoot(root).render(
       <Route path="/" element={<RootLayout/>}>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/dashboard" element={<DashboardPage/>} />
+        <Route path="/" element={<App/>} />
+        <Route path="/homepage" element={<HomePage/>}/>
       </Route>
       <Route path="/register" element={<Register/>}/>
     </Routes>

@@ -9,7 +9,7 @@ import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import qimage from "../assets/question.jpg";
 import seconstimage from "../assets/todo.png";
-import Homepage from "../assets/HomePage.gif"
+import Homepage from "../assets/Homepage.gif"
 import CardDiscription2 from "../Components/CardDiscription2";
 export default function HomePage() {
   const card = [
@@ -129,7 +129,7 @@ export default function HomePage() {
       {" "}
       <section className="flex flex-col gap-20 min-w-80">
         {/* Go to known tasks */}
-        <hr className="bg-transparent w-2/3 mt-10 border-[2px] border-dashed border-gray-700 relative ml-[calc(1/3*100%)]" />
+        <hr className="bg-transparent w-2/3 mt-10 border-[2px] border-dashed  relative ml-[calc(1/3*100%)] border-primary" />
         <section className="flex flex-col font-family ">
           <section className="flex w-4/5 gap-10 m-auto justify-between items-center h-[70vh] sm:flex-col flex-col md:flex-col lg:flex-row">
             <div className="flex flex-col w-full sm:w-full md:w-full lg:w-1/2 ">
@@ -145,7 +145,7 @@ export default function HomePage() {
                   placeholder="Email"
                   className="text-primary p-2 rounded-lg shadow dark:text-white bg-white/10 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl  border-primary  h-full lg:w-[372px] w-32 transition-all ease-in-out duration-500 hover:dark:bg-white/30"
                 />
-                <button className="w-32 h-full p-2 mx-5 text-white transition-all duration-500 ease-out rounded shadow dark:rounded-lg bg-primary dark:text-white dark:bg-white/10 hover:dark:bg-white/30 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl hover:bg-subaccent">
+                <button className="w-32 h-full p-2 mx-5 text-white transition-all duration-500 ease-out rounded-full shadow dark:rounded-lg bg-primary dark:text-white dark:bg-white/10 hover:dark:bg-white/30 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl hover:bg-subaccent">
                   Let's sigh up!
                 </button>
               </div>
@@ -156,7 +156,7 @@ export default function HomePage() {
           </section>
         </section>
 
-        <hr className="bg-transparent w-2/3 border-[2px] border-dashed border-gray-700 relative ml-[0px] mt-36 xl:mt-0 " />
+        <hr className="bg-transparent w-2/3 border-[2px] border-dashed  relative ml-[0px] mt-36 xl:mt-0 border-secondary" />
 
         {/* GET start */}
         <section className="flex flex-col pt-10 pb-20 m-auto gap-3.5 bg-primary">
