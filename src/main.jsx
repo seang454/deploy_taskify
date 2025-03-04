@@ -8,6 +8,7 @@ import RootLayout from './Components/Layouts/RootLayout';
 import HomePage from './pages/HomePage';
 import OnProgessPage from './pages/OnProgessPage.jsx';
 import LoginPage from "./pages/LoginPage.jsx";
+import AboutUs from './pages/AboutUs.jsx';
 
 const root = document.getElementById("root");
 
@@ -17,6 +18,7 @@ ReactDOM.createRoot(root).render(
             <Route path="/" element={<RootLayout/>}>
                 <Route index element={<HomePage/>}/>
                 <Route path={"/progess"} element={<OnProgessPage/>}/>
+                <Route path={"/about"} element={<AboutUs/>}/>
             </Route>
             <Route path="login" element={<LoginPage/>}/>
         </Routes>
