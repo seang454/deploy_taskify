@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useRegisterMutation } from "../../features/auth/authSlice";
+import { useRegisterMutation } from "../../features/auth/authApiSlice";
+
 
 
 export default function Register() {
