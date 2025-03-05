@@ -8,7 +8,7 @@ import {Link} from "react-router";
 import PasswordInput from "../Components/Password_Input.jsx";
 
 const LoginSchema = Yup.object().shape({
-    name: Yup.string().required("Username or email is required").email("Invalid email address or Username"),
+    email: Yup.string().required("Username or email is required").typeError("Invalid email address or Username"),
     password: Yup.string().required("Password is required"),
 })
 
@@ -38,13 +38,13 @@ export default function LoginPage() {
 
                     <img src={TaskifyLogoV2 || "/placeholder.svg"} alt="Taskify Logo" width={75} height={75} />
 
-                    <p className="text-txt14 md:text-txt16 lg:text-txt20 text-primary">
+                    <p className="text-txt16 md:text-txt18 lg:text-txt20 text-primary">
                         <b>Log in to your account</b>
                     </p>
 
                     <Formik
                         initialValues={{
-                            name: "",
+                            email: "",
                             password: "",
                         }}
                         validationSchema={LoginSchema}
