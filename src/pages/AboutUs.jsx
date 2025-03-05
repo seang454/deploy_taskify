@@ -88,7 +88,7 @@ export function AboutUs() {
   >
     <div className="lg:w-[40vw] w-full h-[162px] lg: sm:w-full">
       <motion.p 
-        className="text-xl text-primary"
+        className="text-xl text-black"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}  // Animation triggers when in view
         transition={{ delay: 0.3, duration: 0.6 }}
@@ -106,7 +106,7 @@ export function AboutUs() {
         Get a Chance to know About Us and Relive Our Journey
       </motion.h1>
       <motion.p 
-        className="mb-10 text-2xl text-secondary  "
+        className="mb-10 text-2xl text-secondary"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}  // Animation triggers when in view
         transition={{ delay: 0.7, duration: 1 }}
