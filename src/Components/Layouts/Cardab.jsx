@@ -2,6 +2,7 @@ import React from "react";
 import Profilepic from "../../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp"
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { FaFacebook , FaTelegram ,FaGithub} from "react-icons/fa";
 
 const ProfileCard = ({ firstName, lastName, job, position,img}) => {
   const [isInView, setIsInView] = useState(false);
@@ -180,7 +181,7 @@ const ProfileCard = ({ firstName, lastName, job, position,img}) => {
         transition={{ type: "spring", stiffness: 200 }}  // Smooth spring animation
       >
        <a href="javascript:void(0)">
-  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" class="w-14">
+  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" class="w-15">
     <path fill="#f1bc19" d="M77 12A1 1 0 1 0 77 14A1 1 0 1 0 77 12Z"></path>
     <path fill="#e4e4f9" d="M50 13A37 37 0 1 0 50 87A37 37 0 1 0 50 13Z"></path>
     <path fill="#f1bc19" d="M83 11A4 4 0 1 0 83 19A4 4 0 1 0 83 11Z"></path>
@@ -221,10 +222,8 @@ const ProfileCard = ({ firstName, lastName, job, position,img}) => {
             </ul>
           </div>
         </div>
-    
-      </motion.div>   
-      <div className="w-80 mt-2 h-8 border-8 border-t-0  border-amber-400 rounded-b-xl"></div>
-
+      
+      </motion.div>  <div  className="w-80 mt-2 h-8 rounded-b-xl border-r-amber-500 border-r-6 border-l-6 border-b-10 border-l-amber-500 border-b-amber-500"></div>
      
      </div>
   );

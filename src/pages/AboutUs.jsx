@@ -266,7 +266,6 @@ export function AboutUs() {
       <div className="text-center mb-10 flex items-center justify-center">
          <hr className=" bg-transparent w-3/3 mt-5 border-[2px] border-dashed border-secondary relative" />
          <h1 className="absolute text-white text-4xl w-[380px] h-[80px] bg-primary py-5 px-6 rounded-tl-[30px] rounded-br-[30px]">OUR MEMBER</h1>
-       
      </div>
     </section>
  <div className="grid grid-cols-1  lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-20 w-[90%] sm:4/5 md:w-4/5 lg:w-4/5 m-auto my-10">
