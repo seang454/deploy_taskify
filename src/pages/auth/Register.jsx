@@ -13,12 +13,12 @@ export default function Register() {
 
   const handlePostUserRegister = async (value) => {
     console.log("Submitting Data to API:", value); // Debugging
-    // try {
-    //   const response = await postUserRegisters(value).unwrap();
-    //   console.log("API Response:", response);
-    // } catch (err) {
-    //   console.error("API Error:", err);
-    // }
+    try {
+      const response = await postUserRegisters(value).unwrap();
+      console.log("API Response:", response);
+    } catch (err) {
+      console.error("API Error:", err);
+    }
   };
 
   // const [register] = useRegisterMutation();
