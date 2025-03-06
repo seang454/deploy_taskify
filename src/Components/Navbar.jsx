@@ -102,6 +102,7 @@ export default function Navbar() {
           <button className="px-4 my-1 transition-all duration-500 ease-in-out bg-white border rounded h-[38px] text-primary hover:bg-secondary">
             Login your account
           </button>
+
         </div>
       )}
     </div>

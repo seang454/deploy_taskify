@@ -7,11 +7,13 @@ import RootLayout from "./Components/Layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import Register from "./pages/auth/Register";
 import DashboardPage from "./pages/DashboardPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/auth/LoginPage.jsx";
 import { Provider } from "react-redux";
 import { store } from "./apps/store.js";
 import Profile from "./pages/Profile";
 import Userpf from "./pages/Userpf";
+import OnProgessPage from "./pages/OnProgessPage.jsx";
+import RootLayoutv2 from "./Components/Layouts/RootLayoutv2.jsx";
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
@@ -24,7 +26,11 @@ ReactDOM.createRoot(root).render(
           <Route path="/" element={<App />} />
           <Route path="/homepage" element={<HomePage />} />
           <Route path = "/profile" element={<Profile/>}/>
-          <Route path={"/userpf"} element={<Userpf/>}></Route>
+          <Route path={"/userpf"} element={<Userpf/>}/>
+
+        </Route>
+        <Route path="/" element={<RootLayoutv2/>}>
+          <Route path="/progess" element={<OnProgessPage />}/>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />} />

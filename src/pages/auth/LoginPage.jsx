@@ -1,11 +1,11 @@
 import { ArrowLeft } from "lucide-react"
 import { Formik, Form, Field } from "formik"
 import * as Yup from "yup"
-import TaskifyLogoV2 from "../assets/TaskifyLogoV2.png"
-import BackgroundForLogin from "../Components/BackgroundForLogin.jsx"
-import UserNameInput from "../Components/UserNameInput.jsx"
+import TaskifyLogoV2 from "../../assets/TaskifyLogoV2.png"
+import BackgroundForLogin from "../../Components/BackgroundForLogin.jsx"
+import UserNameInput from "../../Components/UserNameInput.jsx"
 import {Link} from "react-router";
-import PasswordInput from "../Components/Password_Input.jsx";
+import PasswordInput from "../../Components/Password_Input.jsx";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string().required("Username or email is required").typeError("Invalid email address or Username"),
@@ -32,7 +32,7 @@ export default function LoginPage() {
             <BackgroundForLogin />
             <div className="absolute flex items-center justify-center w-full mx-auto my-4 align-middle sm:my-10 md:my-20">
                 <div className="flex flex-col items-center p-16 pt-8 space-y-4 bg-white rounded-lg shadow">
-                    <Link href="/" className="relative items-start w-full right-8">
+                    <Link href="/taskify-admin/public" className="relative items-start w-full right-8">
                         <ArrowLeft />
                     </Link>
 
@@ -77,7 +77,7 @@ export default function LoginPage() {
                     </button>
 
                     <div className="text-sm text-center">
-                        <Link href="/" className="text-primary hover:underline">
+                        <Link href="/taskify-admin/public" className="text-primary hover:underline">
                             Cannot Log in? Create an account
                         </Link>
                     </div>
