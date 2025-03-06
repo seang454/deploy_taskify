@@ -101,7 +101,12 @@ export default function Navbar() {
           </Link>
           <Link to='login' className="px-4 my-1 transition-all duration-500 ease-in-out bg-white border rounded h-[38px] text-primary hover:bg-secondary">
             Login your account
+<<<<<<< HEAD
           </Link>
+=======
+          </button>
+
+>>>>>>> 3dd2397475203f6e4c52b672c465083ab851a1b6
         </div>
       )}
     </div>
