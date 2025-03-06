@@ -58,9 +58,9 @@ export default function Navbar() {
             Create Account
           </button>
          </Link>
-          <button className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16 ">
-            Go to Dashboard
-          </button>
+          <Link to= '/login' className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16 ">
+            Login account
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -99,9 +99,9 @@ export default function Navbar() {
             Create Account
           </button>
           </Link>
-          <button className="px-4 my-1 transition-all duration-500 ease-in-out bg-white border rounded h-[38px] text-primary hover:bg-secondary">
+          <Link to='login' className="px-4 my-1 transition-all duration-500 ease-in-out bg-white border rounded h-[38px] text-primary hover:bg-secondary">
             Login your account
-          </button>
+          </Link>
         </div>
       )}
     </div>

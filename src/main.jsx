@@ -7,7 +7,7 @@ import RootLayout from "./Components/Layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import Register from "./pages/auth/Register";
 import DashboardPage from "./pages/DashboardPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/auth/LoginPage.jsx";
 import { Provider } from "react-redux";
 import { store } from "./apps/store.js";
 import Profile from "./pages/Profile";
@@ -23,8 +23,8 @@ ReactDOM.createRoot(root).render(
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/" element={<App />} />
           <Route path="/homepage" element={<HomePage />} />
-          <Route path = "/profile" element={<Profile/>}/>
-          <Route path={"/userpf"} element={<Userpf/>}></Route>
+          <Route path="/profile" element={<Profile />} />
+          <Route path={"/userpf"} element={<Userpf />}></Route>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />} />

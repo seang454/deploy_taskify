@@ -8,8 +8,15 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 method: "POST",
                 body
             })
+        }),
+        login: builder.mutation({
+            query: (body) => ({
+                url: "/rpc/login",
+                method: "POST",
+                body
+            })
         })
     })
 })
 
-export const { useRegisterMutation } = authApiSlice;
+export const { useRegisterMutation,useLoginMutation } = authApiSlice;
