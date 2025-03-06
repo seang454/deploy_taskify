@@ -5,7 +5,7 @@ export default function  ProgessCardDetail() {
     return (
 
         <div className={"mx-15 mr-2 px-2 h-screen space-y-4 mb-10 lg:w-[800px] hidden md:block md:w-96"}>
-            <div className={" flex bg-gray-200 rounded-full w-auto items-center my-8 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
+            <div className={" flex bg-gray-200 rounded-full w-auto items-center lg:my-2 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
                 Homepage UX/UI
             </div>
             <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 space-y-8"}>
