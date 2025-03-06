@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import WorkspaceCard from '../Components/WorkspaceCard';
 import ModalWorkspace from '../Components/ModalWorkspace';
+import Sidebar from '../Components/Sidebar';
 
 
 export default function DashboardPage() {
     const [activeTab, setActiveTab] = useState("your-workspace");
     const [isModelOpen, setIsModelOpen] = useState(false);
     const yourWorkspaces = [
-        { id: 1, title: "Final Project of Foundation G3-Taskify", description: "Taskify is a productivity platform that allows users to organize tasks...", color: "bg-red-500" , date:"12 Feb, 2025, at 3:05 PM"},
-        { id: 2, title: "E-commerce Project for Client A", description: "Taskify is a productivity platform that allows users to organize tasks...", color: "bg-green-500", date:"12 Feb, 2025, at 3:05 PM" },
+        { id: 1, title: "Final Project of Foundation G3-Taskify", description: "Taskify is a productivity platform that allows users to organize tasks..." , date:"12 Feb, 2025, at 3:05 PM"},
+        { id: 2, title: "E-commerce Project for Client A", description: "Taskify is a productivity platform that allows users to organize tasks...", color: "bg-primary", date:"12 Feb, 2025, at 3:05 PM" },
         { id: 3, title: "Assignment about History Subject (Group 5)", description: "Taskify is a productivity platform that allows users to organize tasks...", color: "bg-pink-500", date:"12 Feb, 2025, at 3:05 PM" },
         { id: 4, title: "Final Project of Foundation G3-Taskify", description: "Taskify is a productivity platform that allows users to organize tasks...", color: "bg-red-500" , date:"12 Feb, 2025, at 3:05 PM"},
-        { id: 5, title: "E-commerce Project for Client A", description: "Taskify is a productivity platform that allows users to organize tasks...", color: "bg-green-500", date:"12 Feb, 2025, at 3:05 PM" },
+        { id: 5, title: "E-commerce Project for Client A", description: "Taskify is a productivity platform that allows users to organize tasks...", color: "bg-primary", date:"12 Feb, 2025, at 3:05 PM" },
         
     ];
 
@@ -24,10 +25,12 @@ export default function DashboardPage() {
     return (
        <>
        <div className="flex  bg-gray-100 px-8 md:px-20 lg:px-24 xl:px-36 py-5  border">
-            
+            <div>
+                <Sidebar/>
+            </div>
             <section className=" bg-white p-6 flex-1">
                 {/* Tabs */}
-                <div className="flex md:justify-around space-x-10 bg-gray-100 border-b-2 py-3 px-3 rounded-xl ">
+                <div className="flex flex-col md:flex-row md:justify-around gap-2 md:gap-10 bg-gray-100 border-b-2 py-3 px-3 rounded-xl">
                     <button 
                         className={`py-2 bg-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
                             activeTab === "your-workspace" ? "border-b-2 border-gray-700" : "text-primary"
@@ -48,7 +51,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Workspace Content */}
-                <div className="mt-5  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-fr">
+                <div className="mt-5  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 auto-rows-fr">
 
                     {/* If "Your Workspace" is active */}
                     {activeTab === "your-workspace" && (
