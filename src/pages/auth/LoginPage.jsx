@@ -37,10 +37,11 @@ export default function LoginPage() {
       setSubmit(token);
 
       setTimeout(() => {
+        console.log("responToken :",response.token)
         if (token) {
           toast.success("Login successful!");
           setTimeout(() => {
-            navigate("/dashboard", { state: token });
+            navigate("/dashboard", { state: { token: response.token } });
           }, 800);
         } else {
         }

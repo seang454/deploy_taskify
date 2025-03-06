@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import WorkspaceCard from '../Components/WorkspaceCard';
 import ModalWorkspace from '../Components/ModalWorkspace';
+import { useLocation } from 'react-router';
 
 
 export default function DashboardPage() {
     const [activeTab, setActiveTab] = useState("your-workspace");
     const [isModelOpen, setIsModelOpen] = useState(false);
+    const location = useLocation()
+    console.log("location :",location);
     const yourWorkspaces = [
         { id: 1, title: "Final Project of Foundation G3-Taskify", description: "Taskify is a productivity platform that allows users to organize tasks...", color: "bg-red-500" , date:"12 Feb, 2025, at 3:05 PM"},
         { id: 2, title: "E-commerce Project for Client A", description: "Taskify is a productivity platform that allows users to organize tasks...", color: "bg-green-500", date:"12 Feb, 2025, at 3:05 PM" },
@@ -23,11 +26,11 @@ export default function DashboardPage() {
 
     return (
        <>
-       <div className="flex  bg-gray-100 px-8 md:px-20 lg:px-24 xl:px-36 py-5  border">
+       <div className="flex px-8 py-5 bg-gray-100 border md:px-20 lg:px-24 xl:px-36">
             
-            <section className=" bg-white p-6 flex-1">
+            <section className="flex-1 p-6 bg-white ">
                 {/* Tabs */}
-                <div className="flex md:justify-around space-x-10 bg-gray-100 border-b-2 py-3 px-3 rounded-xl ">
+                <div className="flex px-3 py-3 space-x-10 bg-gray-100 border-b-2 md:justify-around rounded-xl ">
                     <button 
                         className={`py-2 bg-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
                             activeTab === "your-workspace" ? "border-b-2 border-gray-700" : "text-primary"
@@ -48,13 +51,13 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Workspace Content */}
-                <div className="mt-5  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-fr">
+                <div className="grid grid-cols-1 gap-4 mt-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr">
 
                     {/* If "Your Workspace" is active */}
                     {activeTab === "your-workspace" && (
                         <>
                            
-                           <div className="p-6 border border-gray-300 rounded-lg flex justify-center text-gray-500 cursor-pointer"
+                           <div className="flex justify-center p-6 text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
                                 onClick={()=> setIsModelOpen(true)}
                            >
                             <h3 className='flex items-center'>+ Create New Workspace</h3>
@@ -69,7 +72,7 @@ export default function DashboardPage() {
                     {/* If "Shared Workspace" is active */}
                     {activeTab === "shared-workspace" &&(
                         <>
-                        <div className="p-6 border border-gray-300 rounded-lg flex justify-center text-gray-500 cursor-pointer"
+                        <div className="flex justify-center p-6 text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
                             onClick={()=> setIsModelOpen(true)}
                         >
                             <h3 className='flex items-center'>+ Create New Workspace</h3>
@@ -84,7 +87,7 @@ export default function DashboardPage() {
         </div>
         {/* use Model component*/}
         {/* <ModalWorkspace isOpen = {isModelOpen} onclose={()=> setIsModelOpen(false)}/> */}
-        <ModalWorkspace isOpen = {isModelOpen} onClose ={()=> setIsModelOpen(false)} />
+        <ModalWorkspace token={location.state.token} isOpen = {isModelOpen} onClose ={()=> setIsModelOpen(false)} />
        </>
     
     );
