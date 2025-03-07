@@ -8,11 +8,76 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useRegisterMutation } from "../../features/auth/authApiSlice";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useGoogleLogin } from "@react-oauth/google";
 
 export default function Register() {
   const [postUserRegisters, { data, isLoading, error }] = useRegisterMutation();
   const [submit, setSubmit] = useState(false);
   const navigate = useNavigate();
+  // handleLoginWithGoogle
+
+  const handleLoginWithGoogle = useGoogleLogin({
+    // clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+    // scope: ["profile", "email"],
+    onSuccess: async (result) => {
+      // console.log("Login Success with Google:", result.access_token);
+      if (result) {
+        const access_token = result.access_token;
+        // console.log(access_token);
+        try {
+          const userData = await fetch(
+            "https://www.googleapis.com/oauth2/v1/userinfo",
+            {
+              headers: {
+                Authorization: `Bearer ${access_token}`,
+                Accept: "application/json",
+              },
+            }
+          ).then((data) => data.json());
+
+          console.log("userData :", userData);
+          if (userData) {
+            try {
+              const registerValue = {
+                username: userData.family_name,
+                family_name: userData.family_name,
+                given_name: userData.given_name,
+                email: userData.email,
+                password: `${userData.email}${import.meta.env.VITE_SECRET_KEY}`,
+                confirmed_password: `${userData.email}${
+                  import.meta.env.VITE_SECRET_KEY
+                }`,
+                is_student: true,
+                gender: "",
+              };
+              const response = await postUserRegisters(registerValue).unwrap();
+              console.log("Register with goole response succesfully :", response);
+              if(response){
+                toast.success("Successfully registered with Google");
+                setTimeout(() => {
+                  navigate("/dashboard", { state: response.token });
+                }, 800);
+              }
+            } catch (error) {
+              console.log("error message :", error);
+              toast.error("Failed to register with Google");
+            }
+          }
+        } catch (err) {
+          console.log("APi google error :", err);
+        }
+      }
+      // handleLoginWithGoogleSuccess(result);
+    },
+    onError: (error) => {
+      console.log("error :", error);
+    },
+    // onFailure: (error) => {
+    //   console.error("Login Failed with Google:", error);
+    //   toast.error("Failed to login with Google");
+    // },
+    isSignedIn: true, // We will auto-sign in the user after they approve the login request
+  });
 
   const handlePostUserRegister = async (value) => {
     console.log("Submitting Data to API:", value); // Debugging
@@ -24,7 +89,7 @@ export default function Register() {
       token
         ? (toast.success("Successfully registered"),
           setTimeout(() => {
-            navigate("/dashboard", { state:token });
+            navigate("/dashboard", { state: token });
           }, 800))
         : "";
     } catch (err) {
@@ -281,6 +346,7 @@ export default function Register() {
                   Or continue with:
                 </p>
                 <button
+                  onClick={handleLoginWithGoogle}
                   type="button"
                   className="text-primary border-primary py-2.5 px-5 flex items-center justify-center w-full border rounded-lg mt-2"
                 >
