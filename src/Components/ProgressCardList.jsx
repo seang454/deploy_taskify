@@ -36,6 +36,7 @@ function ProgressCard({ item }) {
     const [isHovered, setIsHovered] = useState(false)
 
 
+
     const formatDate = (dateString) => {
         const date = new Date(dateString)
         return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
@@ -46,6 +47,7 @@ function ProgressCard({ item }) {
             className="rounded-xl bg-white  p-4 border-2 dark:text-white w-72 space-y-4"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+
         >
             <div className="flex items-center justify-between text-txt20 font-bold text-gray-600">
                 <div>{item.title}</div>
@@ -86,9 +88,9 @@ function ProgressCard({ item }) {
 
 export default function ProgressCardList() {
     return (
-        <section className=" my-16 lg:my-0 p-4 mx-8 md:mx-5 w-80  space-y-custom-dashed-line h-screen">
+        <section className=" my-16 lg:my-0 p-4 mx-5 w-75  space-y-custom-dashed-line h-screen overflow-y-scroll">
             {DB.map((item) => (
-                <ProgressCard key={item.id} item={item} />
+                <ProgressCard key={item.id} item={item}/>
             ))}
         </section>
     )
