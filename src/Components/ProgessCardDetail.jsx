@@ -4,13 +4,9 @@ export default function  ProgessCardDetail() {
     let email = "Houy@gmail.com";
     return (
 
-        <div className={"mx-15 mr-2 px-2 h-screen overflow-y-scroll scroll-smooth space-y-4 mb-10 w-[800px]"}>
-            <div className={" flex bg-gray-200 rounded-2xl w-auto items-center my-8 mx-auto h-10  align-middle justify-center"}>
+        <div className={"mx-15 mr-2 px-2 h-screen space-y-4 mb-10 lg:w-[800px] hidden md:block md:w-96"}>
+            <div className={" flex bg-gray-200 rounded-full w-auto items-center lg:my-2 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
                 Homepage UX/UI
-            </div>
-            <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 space-y-8"}>
-                <div>Description:</div>
-                <p >Create with place holder and responsive with all devices. Use the Flowbite component  and make every components are consistency.</p>
             </div>
             <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 space-y-8"}>
                 <div>Description:</div>

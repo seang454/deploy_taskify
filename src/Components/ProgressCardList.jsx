@@ -1,8 +1,7 @@
 import { ChevronLeft, ChevronRight, ClipboardList, Clock } from "lucide-react"
 import { useState } from "react"
-import {NavLink} from "react-router";
 
-// Sample database array
+
 const DB = [
     {
         id: 1,
@@ -33,11 +32,10 @@ const DB = [
     },
 ]
 
-// Individual card component
 function ProgressCard({ item }) {
     const [isHovered, setIsHovered] = useState(false)
 
-    // Format date for display
+
     const formatDate = (dateString) => {
         const date = new Date(dateString)
         return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
@@ -45,7 +43,7 @@ function ProgressCard({ item }) {
 
     return (
         <div
-            className="rounded-xl bg-white/10 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl p-4 border-2 dark:text-white w-72 space-y-4"
+            className="rounded-xl bg-white  p-4 border-2 dark:text-white w-72 space-y-4"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -86,10 +84,9 @@ function ProgressCard({ item }) {
     )
 }
 
-// Main component that maps over the DB array
 export default function ProgressCardList() {
     return (
-        <section className=" my-10 p-4 scroll-smooth space-y-custom-dashed-line h-screen overflow-y-scroll w-full">
+        <section className=" my-16 lg:my-0 p-4 mx-8 md:mx-5 w-80  space-y-custom-dashed-line h-screen">
             {DB.map((item) => (
                 <ProgressCard key={item.id} item={item} />
             ))}
