@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "taskify",
+  "name": "y",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -18,6 +18,7 @@
     "@reduxjs/toolkit": "^2.6.0",
     "formik": "^2.4.6",
     "framer-motion": "^12.4.7",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.476.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -25,8 +26,10 @@
     "react-redux": "^9.2.0",
     "react-router": "^7.2.0",
     "react-router-dom": "^7.2.0",
+    "react-secure-storage": "^1.3.2",
     "react-toastify": "^11.0.5",
     "typed.js": "^2.1.0",
+    "uuid": "^11.1.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {

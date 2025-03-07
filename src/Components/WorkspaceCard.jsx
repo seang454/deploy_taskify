@@ -7,19 +7,18 @@ export default function WorkspaceCard({ workspace }) {
     return (
         <div className={` border border-gray-300 rounded-lg text-white h-full`}>
             <div className={`rounded-t-lg flex flex-row items-center justify-center bg-primary`}>
-                <h2 className='font-semibold p-7 text-center line-clamp-1'>{workspace.title}</h2>
+                <h2 className='font-semibold text-center p-7 line-clamp-1'>{workspace.title}</h2>
+            
                 </div>
 
-                <div className="bg-white flex flex-col rounded-b-lg justify-between gap-4 p-5">
-                    <p className="text-txt12 line-clamp-2 font-normal text-primary">{workspace.description}</p>
+                <div className="flex flex-col justify-between gap-4 p-5 bg-white rounded-b-lg">
+                    <p className="font-normal text-txt12 line-clamp-2 text-primary">{workspace.description}</p>
                     
                     <div className="flex justify-end">
-                        <p className="text-txt12 text-gray-500 opacity-80 px-2"><FontAwesomeIcon icon={faCalendar} /> {workspace.date}</p>
+                        <p className="px-2 text-gray-500 text-txt12 opacity-80"><FontAwesomeIcon icon={faCalendar} /> {workspace.created_at}</p>
                     </div>
             </div>
-
-            
-            
         </div>
+        
     );
 }
