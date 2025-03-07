@@ -159,7 +159,7 @@ export default function HomePage() {
         <hr className="bg-transparent w-2/3 border-[2px] border-dashed  relative ml-[0px] mt-36 xl:mt-0 border-secondary" />
 
         {/* GET start */}
-        <section className="flex flex-col pt-10 pb-20 m-auto gap-3.5 bg-primary">
+        <section className=" pt-10 pb-20 m-auto gap-3.5 bg-primary">
           <div className="w-4/5 m-auto text-center">
             <p className="font-bold text-white text-subheading font-family">
               Get to know us!
@@ -168,7 +168,7 @@ export default function HomePage() {
               Taskify is an easy, modern UI, and powerful Dashboard Management{" "}
             </p>
           </div>
-          <div className="grid grid-cols-1 w-4/5 m-auto gap-[60px] md:grid-cols-2">
+          <div className="grid grid-cols-2 w-4/5 m-auto gap-[60px] md:grid-cols-2">
             {card1.map((card, index) => (
               <CardDesc1
                 key={index}
