@@ -14,10 +14,12 @@ import Profile from "./pages/Profile";
 import Userpf from "./pages/Userpf";
 import OnProgessPage from "./pages/OnProgessPage.jsx";
 import RootLayoutv2 from "./Components/Layouts/RootLayoutv2.jsx";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
-  <Provider store={store}>
+  <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<RootLayout />}>
@@ -37,4 +39,6 @@ ReactDOM.createRoot(root).render(
       </Routes>
     </BrowserRouter>
   </Provider>
+  </GoogleOAuthProvider>
+  
 );
