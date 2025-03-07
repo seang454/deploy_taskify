@@ -7,7 +7,7 @@ import {IoIosHelpCircleOutline, IoMdNotificationsOutline} from "react-icons/io";
 export default function SidebarSM() {
 
     return (
-        <div className={"bg-background lg:hidden w-40 h-[500px] absolute top-[90px] z-20"}>
+        <div className={"bg-background lg:hidden w-40 h-[580px] md:h-[350px] absolute top-[90px] z-20"}>
             <div>
             <nav className={"flex flex-col"}>
                 <div className={"space-y-8 py-4"}>
@@ -32,7 +32,7 @@ export default function SidebarSM() {
                     <div>About Taskify</div>
                 </NavLink>
                 </div>
-                <NavLink className={"flex justify-center items-center ml-8 space-x-4 align-middle py-4 text-primary hover:bg-gray-200 hover:font-bold rounded-xl w-28 h-10 mt-32  "} to="/">
+                <NavLink className={"flex justify-center items-center ml-8 space-x-4 align-middle py-4 text-primary hover:bg-gray-200 hover:font-bold rounded-xl w-28 h-10 md:mt-32 mt-56  "} to="/">
                     <div className={"flex justify-center  items-center "}>
                         <TiArrowLeftOutline />
                         <div className={"font-bold"}>|</div>
