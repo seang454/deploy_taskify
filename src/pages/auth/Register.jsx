@@ -1,24 +1,37 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, useField } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useRegisterMutation } from "../../features/auth/authApiSlice";
-
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const [postUserRegisters, { data, isLoading, error }] = useRegisterMutation();
+  const [submit, setSubmit] = useState(false);
+  const navigate = useNavigate();
 
   const handlePostUserRegister = async (value) => {
     console.log("Submitting Data to API:", value); // Debugging
     try {
       const response = await postUserRegisters(value).unwrap();
       console.log("API Response:", response);
+      console.log(response.token);
+      let token = response?.token ? true : false;
+      token
+        ? (toast.success("Successfully registered"),
+          setTimeout(() => {
+            navigate("/dashboard", { state:token });
+          }, 800))
+        : "";
     } catch (err) {
       console.error("API Error:", err);
+      err?.status == 409
+        ? toast.error("Your information has already registered")
+        : "";
     }
   };
 
@@ -136,6 +149,7 @@ export default function Register() {
   };
   return (
     <>
+      <ToastContainer />
       <section
         style={{
           backgroundImage: `url('./src/assets/bg_register.png')`,
@@ -158,7 +172,7 @@ export default function Register() {
               validationSchema={validationSchema}
               onSubmit={
                 (values) => {
-                  console.log("Response :",values)
+                  console.log("Response :", values);
                   handlePostUserRegister(values);
                 }
                 //  {
