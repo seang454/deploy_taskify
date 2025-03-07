@@ -4,7 +4,7 @@ export default function  ProgessCardDetail() {
     let email = "Houy@gmail.com";
     return (
 
-        <div className={"mx-15 mr-2 px-2 h-screen space-y-4 mb-10 lg:w-[800px] hidden md:block md:w-96"}>
+        <div className={"mx-15 mr-2 px-2 h-auto space-y-4 mb-10 p-3 lg:w-full hidden md:block md:w-96"}>
             <div className={" flex bg-gray-200 rounded-full w-auto items-center lg:my-2 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
                 Homepage UX/UI
             </div>
@@ -30,11 +30,11 @@ export default function  ProgessCardDetail() {
                 <div>Creating Component</div>
                 <CheckBoxinProgess/>
             </div>
-            <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 flex items-center justify-between align-middle justify-center"}>
+            <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 flex items-center justify-between align-middle"}>
                 <div>Assigned to: </div>
                 <div>{email}</div>
             </div>
-            <div className={"flex align-items-center justify-end space-x-1"}>
+            <div className={"flex align-items-center justify-end space-x-4 pb-3 mr-8"}>
                 <button className={"rounded-md border border-gray-400 p-2 font-bold text-gray-700"}>Delete Task</button>
                 <button className={"rounded-md border bg-primary text-background p-2 font-bold"}>Edit Task</button>
             </div>

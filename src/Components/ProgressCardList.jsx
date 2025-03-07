@@ -88,7 +88,7 @@ function ProgressCard({ item }) {
 
 export default function ProgressCardList() {
     return (
-        <section className=" my-16 lg:my-0 p-4 mx-5 w-75  space-y-custom-dashed-line h-screen overflow-y-scroll">
+        <section className=" md:my-16 lg:my-0 p-4 mx-5  lg:mx-0 w-75  space-y-custom-dashed-line lg:h-[350px] overflow-y-scroll overflow-hidden">
             {DB.map((item) => (
                 <ProgressCard key={item.id} item={item}/>
             ))}
