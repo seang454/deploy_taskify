@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { setAccessToken } from "../../lib/secureLocalStorage.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useGoogleLogin } from "@react-oauth/google";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -23,6 +24,52 @@ export default function LoginPage() {
   const [submit, setSubmit] = useState(false);
   const navigate = useNavigate();
   console.log("submite :", submit);
+
+  const LoginWithGoogle = useGoogleLogin({
+    onSuccess: async (result) => {
+          // console.log("Login Success with Google:", result.access_token);
+          if (result) {
+            const access_token = result.access_token;
+            // console.log(access_token);
+            try {
+              const userData = await fetch(
+                "https://www.googleapis.com/oauth2/v1/userinfo",
+                {
+                  headers: {
+                    Authorization: `Bearer ${access_token}`,
+                    Accept: "application/json",
+                  },
+                }
+              ).then((data) => data.json());
+    
+              console.log("userData :", userData);
+              if (userData) {
+                try {
+                  const registerValue = {
+                    email: userData.email,
+                    password: `${userData.email}${import.meta.env.VITE_SECRET_KEY}`,
+                  };
+                  const response = await postLogin(registerValue).unwrap();
+                  console.log("Register with goole response succesfully :", response);
+                  if(response){
+                    toast.success("Successfully registered with Google");
+                    setTimeout(() => {
+                      navigate("/dashboard", { state: response.token });
+                    }, 800);
+                  }
+                } catch (error) {
+                  console.log("error message :", error);
+                  toast.error("Failed to register with Google");
+                }
+              }
+            } catch (err) {
+              console.log("APi google error :", err);
+            }
+          }
+          // handleLoginWithGoogleSuccess(result);
+        },
+    
+  })
 
   const handleSubmit = async (value) => {
     console.log("Submitting value:", value);
@@ -111,6 +158,7 @@ export default function LoginPage() {
             <p className="text-gray-600 text-txt14">Or continue with: </p>
 
             <button
+            onClick={LoginWithGoogle}
               type="button"
               className="flex items-center justify-center w-full h-10 font-bold text-gray-500 border-2 rounded-md border-primary"
             >
