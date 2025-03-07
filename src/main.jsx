@@ -25,11 +25,11 @@ ReactDOM.createRoot(root).render(
                 <Route path={"/homepage"} element={<HomePage/>}/>
                 <Route path={"/progess"} element={<OnProgessPage/>}/>
                 <Route path={"/about"} element={<AboutUs/>}/>
-                 
-               
+                    
+              
             </Route>
             <Route path={"/"} element={<RootLayoutv2/>}>
-             <Route path = "/profile" element={<Profile/>}/>
+           <Route path = "/profile" element={<Profile/>}/>
             <Route path={"/userpf"} element={<Userpf/>}></Route>
                 <Route path={"/progess"} element={<OnProgessPage/>}/>
             </Route>

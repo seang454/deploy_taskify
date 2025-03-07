@@ -20,62 +20,58 @@ export default function Userpf() {
     password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
   });
   return (
-  <div className="max-w-4xl mx-auto bg-white mb-20 shadow-md rounded-lg p-20 min-w-80">
-    <div className="flex flex-col justify-between md:grid grid-cols-2 gap-5 mb-10">
-    <div className="flex mb-5 ">
-      <img className="w-16 h-16 rounded-full " src={Profilepic} alt="" />
-      <div className="font-family ml-5 ">
-      <h1 className="font-semibold text-2xl">Narak Leng</h1>
-      <p className="">narakleng12345@gmail.com</p>
+<div className="w-screen mx-auto bg-white  shadow-md rounded-lg p-5 md:p-20 min-w-80 h-screen ">
+  <div className="flex flex-col justify-between md:grid md:grid-cols-2 gap-5 mb-10">
+    <div className="flex mb-5">
+      <img className="w-16 h-16 rounded-full" src={Profilepic} alt="" />
+      <div className="font-family ml-5">
+        <h1 className="font-semibold text-2xl">Narak Leng</h1>
+        <p className="text-sm">narakleng12345@gmail.com</p>
       </div>
     </div>
-    <div className="flex flex-col gap-y-5 md:grid grid-cols-2  ">
-      <div className="flex items-center mr-10">
-    <FaRegWindowRestore className="text-primary" />
-    <button className=" text-primary font-semibold ml-5">View Archive</button>
-    
-</div>
-    <div className="flex items-center ">
-      <LuUserRoundCog className="text-primary" />
-    <button className=" text-primary font-semibold ml-5 ">Edit Profile </button>
-    
-</div>
-    </div>
-    </div>
-
-
-    
-      <h2 className="text-2xl font-semibold mb-4">Personal Information</h2>
-    <div className="space-y-5 "> {/* Added vertical spacing (20px) */}
-        {/* First Name & Last Name */}
-        <div className="flex flex-col  gap-y-5 md:grid grid-cols-2 ">
-          <div className="text-gray-600 font-medium">First Name</div>
-          <div className="border p-2 rounded-md text-primary font-semibold -ml-50">John</div>
-
-          <div className="text-gray-600 font-medium">Last Name</div>
-          <div className="border p-2 rounded-md text-primary font-semibold -ml-50">Doe</div>
-        </div>
-
-        {/* Username, Email & Password */}
-        <div className="flex flex-col  gap-y-5 md:grid grid-cols-2  ">
-          <div className="text-gray-600 font-medium">Username</div>
-          <div className="border p-2 rounded-md text-primary font-semibold -ml-50">john_doe</div>
-
-          <div className="text-gray-600 font-medium">Email</div>
-          <div className="border p-2 rounded-md text-primary font-semibold -ml-50">john@example.com</div>
-
-          <div className="text-gray-600 font-medium">Password</div>
-          <div className="border p-2 rounded-md text-primary font-semibold -ml-50">••••••••</div>
-        </div>
-
-        {/* Gender */}
-        <div className="flex flex-col  gap-y-5 md:grid grid-cols-2  ">
-          <div className="text-gray-600 font-medium">Gender</div>
-          <div className="border p-2 rounded-md text-primary font-semibold -ml-50">Male</div>
-        </div>
+    <div className="flex flex-col gap-5 md:grid md:grid-cols-2">
+      <div className="flex items-center">
+        <FaRegWindowRestore className="text-primary" />
+        <button className="text-primary font-semibold ml-5">View Archive</button>
       </div>
-    
+      <div className="flex items-center">
+        <LuUserRoundCog className="text-primary" />
+        <button className="text-primary font-semibold ml-5">Edit Profile</button>
+      </div>
     </div>
+  </div>
+
+  <h2 className="text-2xl font-semibold mb-4">Personal Information</h2>
+  <div className="space-y-5">
+    {/* First Name & Last Name */}
+    <div className="flex flex-col gap-5 md:grid md:grid-cols-2">
+      <div className="text-gray-600 font-medium">First Name</div>
+      <div className="border p-2 rounded-md text-primary font-semibold">John</div>
+
+      <div className="text-gray-600 font-medium">Last Name</div>
+      <div className="border p-2 rounded-md text-primary font-semibold">Doe</div>
+    </div>
+
+    {/* Username, Email & Password */}
+    <div className="flex flex-col gap-5 md:grid md:grid-cols-2">
+      <div className="text-gray-600 font-medium">Username</div>
+      <div className="border p-2 rounded-md text-primary font-semibold">john_doe</div>
+
+      <div className="text-gray-600 font-medium">Email</div>
+      <div className="border p-2 rounded-md text-primary font-semibold">john@example.com</div>
+
+      <div className="text-gray-600 font-medium">Password</div>
+      <div className="border p-2 rounded-md text-primary font-semibold">••••••••</div>
+    </div>
+
+    {/* Gender */}
+    <div className="flex flex-col gap-5 md:grid md:grid-cols-2">
+      <div className="text-gray-600 font-medium">Gender</div>
+      <div className="border p-2 rounded-md text-primary font-semibold">Male</div>
+    </div>
+  </div>
+</div>
+
  
   );
 }
