@@ -15,6 +15,8 @@ import Userpf from "./pages/Userpf";
 import OnProgessPage from "./pages/OnProgessPage.jsx";
 import RootLayoutv2 from "./Components/Layouts/RootLayoutv2.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import ToDoPage from "./pages/ToDoPage.jsx";
+import CompletedPage from "./pages/CompletedPage.jsx";
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
@@ -33,6 +35,8 @@ ReactDOM.createRoot(root).render(
         </Route>
         <Route path="/" element={<RootLayoutv2/>}>
           <Route path="/progess" element={<OnProgessPage />}/>
+          <Route path="/todo" element={<ToDoPage/>}/>
+          <Route path="/completed" element={<CompletedPage/>}/>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />} />
