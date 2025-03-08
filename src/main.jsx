@@ -15,6 +15,7 @@ import Userpf from "./pages/Userpf";
 import OnProgessPage from "./pages/OnProgessPage.jsx";
 import RootLayoutv2 from "./Components/Layouts/RootLayoutv2.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import ModalWorkspace from "./Components/ModalWorkspace.jsx";
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
@@ -36,6 +37,7 @@ ReactDOM.createRoot(root).render(
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/workspace" element={<ModalWorkspace/>}/>
       </Routes>
     </BrowserRouter>
   </Provider>

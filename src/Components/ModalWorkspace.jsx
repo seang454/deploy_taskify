@@ -8,6 +8,7 @@ import { useState,useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
+  console.log("isopen",isOpen,"onclose",onClose,"token",token,"onRe",onResponse)
   if (!isOpen) return null;
 
   const [userId, setUserId] = useState(null);
