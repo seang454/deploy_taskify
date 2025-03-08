@@ -19,6 +19,7 @@ import ModalWorkspace from "./Components/ModalWorkspace.jsx";
 import ProgessCardDetail from "./Components/ProgessCardDetail.jsx";
 import ToDoPage from "./pages/ToDoPage.jsx";
 import CompletedPage from "./pages/CompletedPage.jsx";
+import Sidebar from "./Components/Sidebar.jsx";
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
@@ -43,6 +44,8 @@ ReactDOM.createRoot(root).render(
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/workspace" element={<ModalWorkspace/>}/>
+        <Route path="sidebar" element={<Sidebar/>}/>
+        <Route path="/topage" element={<ToDoPage/>}/>
       </Routes>
     </BrowserRouter>
   </Provider>
