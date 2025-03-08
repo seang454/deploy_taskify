@@ -334,12 +334,14 @@ export default function Register() {
                 </div>
 
                 {/* Submit Button */}
+                <Link to="/dashboard">
                 <button
                   type="submit"
                   className="w-full px-4 py-3 pb-4 text-white transition-all rounded-md text-btn-txt bg-primary hover:bg-subaccent hover:shadow-lg active:bg-subaccent active:scale-95"
                 >
                   Create a Trackify account
                 </button>
+                </Link>
 
                 {/* Google Sign In */}
                 <p className="mt-4 text-center text-gray-400">
@@ -373,7 +375,7 @@ export default function Register() {
             <div>
               <img
                 src="./src/assets/register_img.png"
-                className="w-full"
+                className="w-full hidden md:block"
                 alt="Register Illustration"
               />
             </div>
