@@ -1,16 +1,29 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
 
+import './App.css'
+import { useState,createContext } from 'react'
+import LoginPage from './pages/auth/LoginPage'
+import { OTP } from './pages/auth/OTP'
+import Reset from './pages/auth/Reset'
+export const RecoveryContext = createContext();
 function App() {
+  
+  function NavigationComponent(){
+    if(page=="login"){return<LoginPage/>}
+    if(page=="otp"){return <OTP/>}
+    if(page=="reset"){return <Reset/>}
+  }  
+
+  const [page, setPage] = useState('login')
+  const [email,setEmail] = useState()
+  const [otp,setOtp] = useState()
 
   return (
    <>
-    <h1 className="text-primary font-bold underline text-koko">
-    Hello world!
-  </h1>
+     <RecoveryContext.Provider value={{page,setPage,email,setEmail,otp,setOtp}}>
+       <NavigationComponent/>
+     </RecoveryContext.Provider>
    </>
   )
+
 }
 export default App
