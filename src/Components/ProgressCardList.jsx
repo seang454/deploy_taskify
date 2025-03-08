@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight, ClipboardList, Clock } from "lucide-react"
 import { useState } from "react"
+import {NavLink} from "react-router";
 
 
 const DB = [
@@ -36,6 +37,7 @@ function ProgressCard({ item }) {
     const [isHovered, setIsHovered] = useState(false)
 
 
+
     const formatDate = (dateString) => {
         const date = new Date(dateString)
         return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
@@ -46,15 +48,26 @@ function ProgressCard({ item }) {
             className="rounded-xl bg-white  p-4 border-2 dark:text-white w-72 space-y-4"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+
         >
             <div className="flex items-center justify-between text-txt20 font-bold text-gray-600">
                 <div>{item.title}</div>
-
+                <div className={"md:hidden"}>
+                <NavLink to="/detail">
                 {isHovered ? (
                     <ChevronRight strokeWidth={1} className="mr-8" />
                 ) : (
                     <ChevronLeft strokeWidth={1} className="mr-8" />
                 )}
+                </NavLink>
+                </div>
+                <div className={"md:block hidden"}>
+                {isHovered ? (
+                    <ChevronRight strokeWidth={1} className="mr-8" />
+                ) : (
+                    <ChevronLeft strokeWidth={1} className="mr-8" />
+                )}
+                </div>
             </div>
             <div className="text-gray-500 line-clamp-2 w-56">{item.description}</div>
             <div className="text-gray-500 my-4">Created at: {formatDate(item.createdDate)}</div>
@@ -86,9 +99,9 @@ function ProgressCard({ item }) {
 
 export default function ProgressCardList() {
     return (
-        <section className=" my-16 lg:my-0 p-4 mx-8 md:mx-5 w-80  space-y-custom-dashed-line h-screen">
+        <section className=" md:my-16 lg:my-0 p-4 mx-5  lg:mx-0 w-75  space-y-custom-dashed-line h-[500px] overflow-y-scroll overflow-hidden">
             {DB.map((item) => (
-                <ProgressCard key={item.id} item={item} />
+                <ProgressCard key={item.id} item={item}/>
             ))}
         </section>
     )
