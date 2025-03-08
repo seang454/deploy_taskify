@@ -21,11 +21,11 @@ export default function DashboardPage() {
     useEffect(() =>{
         const fetchWorkspaces = async ()=>{
             try {
-                const respone = await fetch(`${import.meta.env.VITE_BASE_URL}/workspaces`,{
-                    headers: {Authorization: `Bearer ${location.state?.token}`},
+                const respone = await fetch(`${import.meta.env.VITE_BASE_URL}/workspaces?limit=20&offset=0`,{
+                    headers: {Authorization: `Bearer ${location?.state}`},
                 });
                 const data = await respone.json();
-                setWorkspaceList(data);
+                setWorkspaceList([...data].reverse());
             }catch(error){
                 console.log("Error feching workspace:", error)
             }
@@ -102,7 +102,7 @@ export default function DashboardPage() {
         </div>
         {/* use Model component*/}
         {/* <ModalWorkspace isOpen = {isModelOpen} onclose={()=> setIsModelOpen(false)}/> */}
-        <ModalWorkspace token={location.state.token} onResponse={handleWorkspaceResponse} isOpen = {isModelOpen} onClose ={()=> setIsModelOpen(false)} />
+        <ModalWorkspace token={location.state} onResponse={handleWorkspaceResponse} isOpen = {isModelOpen} onClose ={()=> setIsModelOpen(false)} />
        </>
     
     );

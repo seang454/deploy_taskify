@@ -8,7 +8,8 @@ import { useState,useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
-  console.log("isopen",isOpen,"onclose",onClose,"token",token,"onRe",onResponse)
+  console.log("isopen",isOpen);
+  console.log("token",token)
   if (!isOpen) return null;
 
   const [userId, setUserId] = useState(null);
@@ -108,7 +109,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[75%] lg:w-[65%] relative ">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[75%] lg:w-[65%] sticky top-0 bottom-0">
         
         {/* Close Button */}
         <button 
