@@ -134,7 +134,7 @@ const WorkspacePage = () => {
     ];
 
     return (
-        <div className="min-h-screen p-8 bg-white">
+        <div className="min-h-screen p-8 bg-white dark:bg-[#121321]">
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
                 {/* Title */}
@@ -165,7 +165,7 @@ const WorkspacePage = () => {
             </div>
 
             {/* Board Columns */}
-            <div className="flex justify-center">
+            <div className="flex ">
                 {columns.map((column) => (
                     <Column key={column.id} column={column} />
                 ))}
@@ -176,7 +176,7 @@ const WorkspacePage = () => {
 
 const Column = ({ column }) => {
     return (
-        <div className="flex flex-col p-4 bg-gray-100 rounded-lg shadow-md w-72">
+        <div className="flex flex-col w-full p-4 bg-gray-100 rounded-lg shadow-md">
             {/* Column Header with the "+" button */}
             <div className="flex items-center justify-between pb-2 text-lg font-bold border-gray-300">
                 <span>
