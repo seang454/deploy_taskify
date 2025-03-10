@@ -9,6 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import { HiArrowLongLeft } from "react-icons/hi2";
+import { setAccessToken } from "../../lib/secureLocalStorage";
 
 export default function Register() {
   const [postUserRegisters, { data, isLoading, error }] = useRegisterMutation();
@@ -59,6 +60,7 @@ export default function Register() {
                 toast.success("Successfully registered with Google");
                 setTimeout(() => {
                   navigate("/dashboard", { state: response.token });
+                  setAccessToken(response.token);
                 }, 800);
               }
             } catch (error) {
@@ -219,9 +221,9 @@ export default function Register() {
     <>
       <ToastContainer />
       <section className="bg-[#F9FAFB]">
-        <section className="grid sm:px-4 md:grid-cols-2 md:px-8 lg:px-16 py-8 ">
+        <section className="grid py-8 sm:px-4 md:grid-cols-2 md:px-8 lg:px-16 ">
           {/* Form Section */}
-          <section className="bg-white px-4 py-8 md:px-12 lg:px-14 xl:px-16 xl:py-10 rounded-l-lg">
+          <section className="px-4 py-8 bg-white rounded-l-lg md:px-12 lg:px-14 xl:px-16 xl:py-10">
             <Link to="/">
               <HiArrowLongLeft size={30} color="#1E429F" />
             </Link>
@@ -334,7 +336,7 @@ export default function Register() {
                 <Link to="/dashboard">
                 <button
                   type="submit"
-                  className="w-full px-4 py-3 pb-4 text-white transition-all rounded-md font-bold bg-primary hover:bg-subaccent active:bg-subaccent active:scale-95"
+                  className="w-full px-4 py-3 pb-4 font-bold text-white transition-all rounded-md bg-primary hover:bg-subaccent active:bg-subaccent active:scale-95"
                 >
                   Create Taskify Account
                 </button>
@@ -375,7 +377,7 @@ export default function Register() {
             <div>
               <img
                 src="./src/assets/register_img.png"
-                className="w-full hidden md:block"
+                className="hidden w-full md:block"
                 alt="Register Illustration"
               />
             </div>
