@@ -5,6 +5,7 @@ import LoginPage from './pages/auth/LoginPage'
 import { OTP } from './pages/auth/OTP'
 import Reset from './pages/auth/Reset'
 export const RecoveryContext = createContext();
+
 function App() {
   
   function NavigationComponent(){

@@ -2,7 +2,7 @@ export default function BackgroundForLogin() {
   return (
     <div
       id={"BackgroundForLogin"}
-      className="absolute inset-0 overflow-hidden blur-sm"
+      className="absolute inset-0 overflow-hidden blur-sm dark:bg-[#121321]"
     >
       <div className="absolute top-[30%] left-[80%] w-[20px] h-[20px] rounded-full bg-primary opacity-90" />
       <div className="absolute top-[7%] left-[64%] w-[60px] h-[60px] rounded-full bg-primary opacity-90" />

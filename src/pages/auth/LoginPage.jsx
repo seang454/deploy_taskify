@@ -112,10 +112,10 @@ export default function LoginPage() {
   return (
     <>
       <ToastContainer />
-      <div className="relative w-full min-h-screen overflow-hidden bg-background">
+      <div className="relative w-full min-h-screen overflow-hidden dark:bg-[#121321]">
         <BackgroundForLogin />
-        <div className="absolute flex items-center justify-center w-full mx-auto my-4 align-middle sm:my-10 md:my-20">
-          <div className="flex flex-col items-center p-16 pt-8 space-y-4 bg-white rounded-lg shadow">
+        <div className="absolute flex items-center justify-center w-full mx-auto my-4 align-middle sm:my-10 md:my-20 ">
+          <div className="flex flex-col items-center p-16 pt-8 space-y-4 transition-all duration-500 ease-out bg-white rounded-lg shadow dark:rounded-lg dark:text-white dark:bg-white/10 hover:dark:bg-white/30 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl ">
             <Link to="/"  href="/" className="relative items-start w-full right-8">
               <ArrowLeft />
             </Link>
