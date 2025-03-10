@@ -1,6 +1,6 @@
 import {Clock, Filter, UserPlus} from "lucide-react";
 
-const TaskifyBoard = () => {
+const WorkspacePage = () => {
     const columns = [
         {
             id: 1,
@@ -134,7 +134,7 @@ const TaskifyBoard = () => {
     ];
 
     return (
-        <div className="p-8 bg-white min-h-screen">
+        <div className="min-h-screen p-8 bg-white">
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
                 {/* Title */}
@@ -147,7 +147,7 @@ const TaskifyBoard = () => {
                     {/* Filter & Search Button */}
                     <button
                         onClick={() => console.log("Filter & Search triggered")}
-                        className="flex items-center text-gray-700 bg-gray-200 px-3 py-2 rounded-md hover:bg-gray-300 transition"
+                        className="flex items-center px-3 py-2 text-gray-700 transition bg-gray-200 rounded-md hover:bg-gray-300"
                     >
                         <Filter className="mr-2" size={16} />
                         Filter & Search
@@ -156,7 +156,7 @@ const TaskifyBoard = () => {
                     {/* Add Member Button */}
                     <button
                         onClick={() => console.log("Add Member triggered")}
-                        className="flex items-center text-gray-700 bg-gray-200 px-3 py-2 rounded-md hover:bg-gray-300 transition"
+                        className="flex items-center px-3 py-2 text-gray-700 transition bg-gray-200 rounded-md hover:bg-gray-300"
                     >
                         <UserPlus className="mr-2" size={16} />
                         Add Member
@@ -176,19 +176,19 @@ const TaskifyBoard = () => {
 
 const Column = ({ column }) => {
     return (
-        <div className="w-72 bg-gray-100 rounded-lg shadow-md p-4 flex flex-col">
+        <div className="flex flex-col p-4 bg-gray-100 rounded-lg shadow-md w-72">
             {/* Column Header with the "+" button */}
-            <div className="flex items-center justify-between text-lg font-bold pb-2 border-gray-300">
+            <div className="flex items-center justify-between pb-2 text-lg font-bold border-gray-300">
                 <span>
                     {column.title}{" "}
-                    <span className="bg-gray-300 px-2 py-1 rounded-full text-sm font-medium">
+                    <span className="px-2 py-1 text-sm font-medium bg-gray-300 rounded-full">
                         {column.tasks.length}
                     </span>
                 </span>
                 {/* "+" Button */}
                 <button
                     onClick={() => console.log(`Add task to column: ${column.title}`)}
-                    className="text-gray-500 px-2 py-1 rounded-lg hover:text-gray-600"
+                    className="px-2 py-1 text-gray-500 rounded-lg hover:text-gray-600"
                 >
                     +
                 </button>
@@ -203,7 +203,7 @@ const Column = ({ column }) => {
                         </div>
                     ))
                 ) : (
-                    <div className="text-gray-400 text-sm italic flex items-center justify-center h-32">
+                    <div className="flex items-center justify-center h-32 text-sm italic text-gray-400">
                         {column.title === "Completed" ? "No archived tasks" : "No tasks available"}
                     </div>
                 )}
@@ -221,21 +221,21 @@ const TaskCard = ({ task }) => {
     };
 
     return (
-        <div className="bg-white rounded-lg shadow-sm px-4 py-6">
+        <div className="px-4 py-6 bg-white rounded-lg shadow-sm">
             {/* Task Title */}
             <div className="font-bold text-gray-700">{task.title}</div>
 
             {/* Task Description */}
             {task.description && (
-                <div className="text-sm text-gray-500 mt-2 line-clamp-2">{task.description}</div>
+                <div className="mt-2 text-sm text-gray-500 line-clamp-2">{task.description}</div>
             )}
 
             {/* Task Created Date */}
-            <div className="text-xs text-gray-400 mt-2">Created: {formatDate(task.createdDate)}</div>
+            <div className="mt-2 text-xs text-gray-400">Created: {formatDate(task.createdDate)}</div>
 
             {/* Task Category */}
             {task.category && (
-                <div className="flex items-center text-sm text-gray-600 mt-2">
+                <div className="flex items-center mt-2 text-sm text-gray-600">
                     <span className="pr-2">Category:</span>
                     <span
                         className={`border-2 py-1 px-2 rounded-lg ${
@@ -253,7 +253,7 @@ const TaskCard = ({ task }) => {
 
             {/* Task Due Date */}
             {task.dueDate && (
-                <div className="flex items-center bg-red-200 rounded-md text-accent justify-center w-36 p-1 text-sm mt-2">
+                <div className="flex items-center justify-center p-1 mt-2 text-sm bg-red-200 rounded-md text-accent w-36">
                     <Clock strokeWidth={1} className="mr-1" width={18} height={18} />
                     {formatDate(task.dueDate)}
                 </div>
@@ -261,7 +261,7 @@ const TaskCard = ({ task }) => {
 
             {/* Task Checklist */}
             {task.checklist && (
-                <div className="text-sm text-gray-700 mt-4">
+                <div className="mt-4 text-sm text-gray-700">
                     <span className="font-medium">Checklist:</span>{" "}
                     <span className="text-gray-600">{task.checklist}</span>
                 </div>
@@ -269,7 +269,7 @@ const TaskCard = ({ task }) => {
 
             {/* Task Links */}
             {task.links && (
-                <div className="mt-2 text-blue-500 text-xs underline space-y-1">
+                <div className="mt-2 space-y-1 text-xs text-blue-500 underline">
                     {task.links.map((link, index) => (
                         <a
                             key={index}
@@ -287,4 +287,4 @@ const TaskCard = ({ task }) => {
     );
 };
 
-export default TaskifyBoard;
+export default WorkspacePage;

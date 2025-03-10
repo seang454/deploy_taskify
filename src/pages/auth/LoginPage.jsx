@@ -121,14 +121,14 @@ export default function LoginPage() {
             </Link>
 
             <img
-              src={TaskifyLogoV2 || "/placeholder.svg"}
+              src={TaskifyLogoV2  || "/placeholder.svg"}
               alt="Taskify Logo"
-              width={75}
-              height={75}
+              width={150}
+              height={100}
             />
 
-            <p className="text-txt16 md:text-txt18 lg:text-txt20 text-primary">
-              <b>Log in to your account</b>
+            <p className="font-medium text-txt16 md:text-txt18 lg:text-[24px] text-primary">
+            Log in to your account
             </p>
 
             <Formik
