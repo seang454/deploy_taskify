@@ -30,6 +30,8 @@ export default function LoginPage() {
       console.log("Login Success with Google:", result.access_token);
       if (result?.access_token) {
         const access_token = result.access_token;
+        console.log(access_token)
+        
         // console.log(access_token);
         try {
           const userData = await fetch(
@@ -58,6 +60,7 @@ export default function LoginPage() {
                 toast.success("Successfully registered with Google");
                 setTimeout(() => {
                   navigate("/dashboard", { state: response.token });
+                  setAccessToken(response.token);
                 }, 800);
               }
             } catch (error) {
@@ -72,6 +75,8 @@ export default function LoginPage() {
       // handleLoginWithGoogleSuccess(result);
     },
   });
+
+  
 
   const handleSubmit = async (value) => {
     console.log("Submitting value:", value);
