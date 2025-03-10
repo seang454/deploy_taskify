@@ -1,0 +1,290 @@
+import {Clock, Filter, UserPlus} from "lucide-react";
+
+const TaskifyBoard = () => {
+    const columns = [
+        {
+            id: 1,
+            title: "To Do",
+            tasks: [
+                {
+                    id: 1,
+                    title: "Design Poster + Banner",
+                    description:
+                        "Create wireframes and high-fidelity designs for the app's main screens.",
+                    createdDate: "2025-02-28",
+                    category: "Design",
+                    dueDate: "2025-03-10",
+                    checklist: "2/5",
+                    links: ["https://docs.google.com", "https://poster.png"],
+                },
+                {
+                    id: 2,
+                    title: "Implement Backend",
+                    description: "Start implementing the backend with API in ISTAD's API Group.",
+                    createdDate: "2025-02-12",
+                    category: "Coding",
+                    dueDate: "2025-03-10",
+                },
+                {
+                    id: 3,
+                    title: "Redesign User Interface",
+                    createdDate: "2025-02-17",
+                    dueDate: "2025-03-10",
+                },
+                {
+                    id: 4,
+                    title: "Fetch API for BA Project",
+                    description: "API has been provided as the base URL.",
+                    createdDate: "2025-02-10",
+                    category: "Coding",
+                    dueDate: "2025-03-10",
+                    checklist: "10/10",
+                    links: ["https://docs.google.com", "https://poster.png"],
+                },
+                {
+                    id: 5,
+                    title: "Homework about Math",
+                    description: "Limit Exercise from p-10 to 38",
+                    createdDate: "2025-02-10",
+                    category: "Education",
+                    dueDate: "2025-03-10",
+                    checklist: "30/30",
+                    links: ["https://docs.google.com", "https://poster.png"],
+                },
+            ],
+        },
+        {
+            id: 2,
+            title: "On Progress",
+            tasks: [
+                {
+                    id: 1,
+                    title: "Homepage UX/UI",
+                    description: "Create placeholder and ensure responsiveness for all devices.",
+                    createdDate: "2025-01-28",
+                    category: "Design",
+                    dueDate: "2025-01-30",
+                },
+                {
+                    id: 2,
+                    title: "Create a 3D Mockup",
+                    description: "Create a 3D mockup with the client's product color palette.",
+                    createdDate: "2025-01-28",
+                    category: "Design",
+                    dueDate: "2025-03-10",
+                    links: ["poster.png"],
+                },
+                {
+                    id: 3,
+                    title: "Create About Us Page",
+                    createdDate: "2025-02-20",
+                    dueDate: "2025-03-10",
+                },
+                {
+                    id: 4,
+                    title: "Design User Interface",
+                    createdDate: "2025-02-25",
+                    dueDate: "2025-03-10",
+                },
+            ],
+        },
+        {
+            id: 3,
+            title: "Completed",
+            tasks: [
+                {
+                    id: 1,
+                    title: "Create New Logo",
+                    description: "Design a logo using primary and accent colors.",
+                    createdDate: "2025-01-01",
+                    checklist: "5/5",
+                    category: "Design",
+                },
+                {
+                    id: 2,
+                    title: "Make Components",
+                    createdDate: "2025-01-05",
+                    checklist: "5/5",
+                    category: "Design",
+                    links: ["poster.png", "https://docs.google.com"],
+                },
+                {
+
+                    id: 3,
+                    title: "Draft Ideas for Project",
+                    description: "Outline a progress tracking project for multiple types of work.",
+                    createdDate: "2024-11-12",
+                },
+                {
+                    id: 4,
+                    title: "Find Static Data",
+                    createdDate: "2025-02-01",
+                },
+                {
+                    id: 5,
+                    title: "Sketch Placeholders",
+                    description: "Create placeholders and find icons. Use Tailwind CSS v3.0.",
+                    createdDate: "2024-12-28",
+                    checklist: "8/8",
+                    category: "Design",
+                    links: ["poster.png"],
+                },
+            ],
+        },
+    ];
+
+    return (
+        <div className="p-8 bg-white min-h-screen">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+                {/* Title */}
+                <div className="text-lg font-bold text-gray-800">
+                    Final Project of Foundation G3-Taskify
+                </div>
+
+                {/* Buttons */}
+                <div className="flex space-x-4">
+                    {/* Filter & Search Button */}
+                    <button
+                        onClick={() => console.log("Filter & Search triggered")}
+                        className="flex items-center text-gray-700 bg-gray-200 px-3 py-2 rounded-md hover:bg-gray-300 transition"
+                    >
+                        <Filter className="mr-2" size={16} />
+                        Filter & Search
+                    </button>
+
+                    {/* Add Member Button */}
+                    <button
+                        onClick={() => console.log("Add Member triggered")}
+                        className="flex items-center text-gray-700 bg-gray-200 px-3 py-2 rounded-md hover:bg-gray-300 transition"
+                    >
+                        <UserPlus className="mr-2" size={16} />
+                        Add Member
+                    </button>
+                </div>
+            </div>
+
+            {/* Board Columns */}
+            <div className="flex justify-center">
+                {columns.map((column) => (
+                    <Column key={column.id} column={column} />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+const Column = ({ column }) => {
+    return (
+        <div className="w-72 bg-gray-100 rounded-lg shadow-md p-4 flex flex-col">
+            {/* Column Header with the "+" button */}
+            <div className="flex items-center justify-between text-lg font-bold pb-2 border-gray-300">
+                <span>
+                    {column.title}{" "}
+                    <span className="bg-gray-300 px-2 py-1 rounded-full text-sm font-medium">
+                        {column.tasks.length}
+                    </span>
+                </span>
+                {/* "+" Button */}
+                <button
+                    onClick={() => console.log(`Add task to column: ${column.title}`)}
+                    className="text-gray-500 px-2 py-1 rounded-lg hover:text-gray-600"
+                >
+                    +
+                </button>
+            </div>
+
+            {/* Task List */}
+            <div className="mt-4">
+                {column.tasks.length > 0 ? (
+                    column.tasks.map((task) => (
+                        <div key={task.id} className="mb-4">
+                            <TaskCard task={task} />
+                        </div>
+                    ))
+                ) : (
+                    <div className="text-gray-400 text-sm italic flex items-center justify-center h-32">
+                        {column.title === "Completed" ? "No archived tasks" : "No tasks available"}
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+
+
+const TaskCard = ({ task }) => {
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const options = { month: "short", day: "numeric", year: "numeric" };
+        return date.toLocaleDateString("en-US", options);
+    };
+
+    return (
+        <div className="bg-white rounded-lg shadow-sm px-4 py-6">
+            {/* Task Title */}
+            <div className="font-bold text-gray-700">{task.title}</div>
+
+            {/* Task Description */}
+            {task.description && (
+                <div className="text-sm text-gray-500 mt-2 line-clamp-2">{task.description}</div>
+            )}
+
+            {/* Task Created Date */}
+            <div className="text-xs text-gray-400 mt-2">Created: {formatDate(task.createdDate)}</div>
+
+            {/* Task Category */}
+            {task.category && (
+                <div className="flex items-center text-sm text-gray-600 mt-2">
+                    <span className="pr-2">Category:</span>
+                    <span
+                        className={`border-2 py-1 px-2 rounded-lg ${
+                            task.category === "Design"
+                                ? "border-amber-300 text-amber-300"
+                                : task.category === "Coding"
+                                    ? "border-blue-300 text-blue-300"
+                                    : "border-green-300 text-green-300"
+                        }`}
+                    >
+                        {task.category}
+                    </span>
+                </div>
+            )}
+
+            {/* Task Due Date */}
+            {task.dueDate && (
+                <div className="flex items-center bg-red-200 rounded-md text-accent justify-center w-36 p-1 text-sm mt-2">
+                    <Clock strokeWidth={1} className="mr-1" width={18} height={18} />
+                    {formatDate(task.dueDate)}
+                </div>
+            )}
+
+            {/* Task Checklist */}
+            {task.checklist && (
+                <div className="text-sm text-gray-700 mt-4">
+                    <span className="font-medium">Checklist:</span>{" "}
+                    <span className="text-gray-600">{task.checklist}</span>
+                </div>
+            )}
+
+            {/* Task Links */}
+            {task.links && (
+                <div className="mt-2 text-blue-500 text-xs underline space-y-1">
+                    {task.links.map((link, index) => (
+                        <a
+                            key={index}
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block hover:text-blue-700"
+                        >
+                            {link}
+                        </a>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default TaskifyBoard;
