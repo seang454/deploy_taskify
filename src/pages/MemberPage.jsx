@@ -10,7 +10,7 @@ export default function MemberPage (){
     const closeMenu = () => {setIsOpen(false);}
     return (
         <>
-            <div className={"w-[1000px] p-8"}>
+            <div className={"w-full p-8"}>
                 <button onClick={toggleMenu} className={"sticky z-10 bg-background text-gray-500 w-16 h-16 rounded-xl lg:hidden top-24 left-3 "}  >
                     {isOpen ? "✖":"☰"}
                 </button>
@@ -21,8 +21,8 @@ export default function MemberPage (){
                     <p className={"text-txt18"}>Workspace members can view and join all Workspace visible boards and create new boards in the Workspace.</p>
                     </div>
                     <Searchmember/>
-                    <hr className={"border-dashed border-amber-400 mt-2 w-[800px]"} />
-                    <div className={"overflow-hidden h-72 overflow-y-auto"}>
+                    <hr className={"border-dashed border-amber-400 mt-2 w-full"} />
+                    <div className={"overflow-hidden h-72 xl:h-[650px] overflow-y-auto"}>
                     <Listmember/>
                     </div>
                 </div>
