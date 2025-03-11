@@ -15,6 +15,8 @@ import Userpf from "./pages/Userpf";
 import OnProgessPage from "./pages/OnProgessPage.jsx";
 import RootLayoutv2 from "./Components/Layouts/RootLayoutv2.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import AddNewTaskPopUp from "./Components/AddNewTaskPopUp.jsx";
+import EditTaskPupUp from "./Components/EditTaskPupUp.jsx";
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(

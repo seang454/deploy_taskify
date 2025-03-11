@@ -11,7 +11,7 @@ export default function WorkspaceCard({ workspace }) {
             
                 </div>
 
-                <div className="flex flex-col justify-between gap-4 p-5 bg-white rounded-b-lg">
+                <div className="flex flex-col justify-between gap-6 pt-5 px-5 bg-white rounded-b-lg">
                     <p className="font-normal text-txt12 line-clamp-2 text-primary">{workspace.description}</p>
                     
                     <div className="flex justify-end">
