@@ -1,7 +1,7 @@
 import React from 'react'
 export default function Cardvs({icon,title,description}) {
     return (
-           <section className={`rounded-lg shadow-lg hover:shadow-2xl p-5 text-center`}>
+           <section className={` shadow-lg hover:shadow-2xl text-center rounded-lg  bg-white/10 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl p-5 border-l-10 dark:text-white`}>
             <div className="flex items-center justify-center text-2xl">
               <img className="w-8" src={icon} alt="" />
             </div>

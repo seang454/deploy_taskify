@@ -4,13 +4,13 @@ import { FaFacebook, FaTelegram, FaGithub } from "react-icons/fa";
 
 const ProfileCard = ({ firstName, lastName, job, position, img }) => {
   return (
-    <div className="mb-20 flex flex-col items-center justify-center">
-      <div className="w-80 shadow-lg hover:shadow-2xl -mb-8 rounded-lg p-4 flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mb-20">
+      <div className="flex flex-col items-center justify-center p-5 -mb-8 rounded-lg shadow-lg w-80 hover:shadow-2xl bg-white/10 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl border-l-10 dark:text-white">
         <div className="w-[150px] h-[150px] rounded-[50%] border-[5px] border-primary p-1">
           <img className="h-full w-full rounded-[50%]" src={img} alt={`Profile`} />
         </div>
         <div className="flex flex-col items-center justify-center gap-[15px] w-full">
-          <div className="text-center mt-2">
+          <div className="mt-2 text-center">
             <h2 className="text-[25px] font-family text-secondary font-bold">{firstName}</h2>
             <h2 className="text-[25px] font-family text-secondary font-bold">{lastName}</h2>
           </div>
@@ -61,10 +61,10 @@ export default ProfileCard;
 
 // const ProfileCard = ({ firstName, lastName, job, position,img}) => {
 //   return (
-//     <div className="mb-20 flex flex-col items-center justify-center ">
+//     <div className="flex flex-col items-center justify-center mb-20 ">
 //       <motion.div
 //         ref={cardRef}
-//         className="w-80 shadow-lg hover:shadow-2xl -mb-8 rounded-lg p-4 flex flex-col items-center justify-center"
+//         className="flex flex-col items-center justify-center p-4 -mb-8 rounded-lg shadow-lg w-80 hover:shadow-2xl"
 //         initial={{ opacity: 0 }}
 //         animate={{ opacity: isInView ? 1 : 0 }} // Trigger animation based on visibility
 //         transition={{ duration: 1 }}
@@ -88,7 +88,7 @@ export default ProfileCard;
 
 //         <div className="flex flex-col items-center justify-center gap-[15px] w-full">
 //           <motion.div
-//             className="text-center mt-2"
+//             className="mt-2 text-center"
 //             initial={{ opacity: 0 }}
 //             animate={{ opacity: isInView ? 1 : 0 }} // Trigger opacity animation based on visibility
 //             transition={{ delay: 0.5, duration: 1 }}
@@ -250,7 +250,7 @@ export default ProfileCard;
 //           </div>
 //         </div>
       
-//       </motion.div>  <div  className="w-80 mt-2 h-8 rounded-b-xl border-r-amber-500 border-r-6 border-l-6 border-b-10 border-l-amber-500 border-b-amber-500"></div>
+//       </motion.div>  <div  className="h-8 mt-2 w-80 rounded-b-xl border-r-amber-500 border-r-6 border-l-6 border-b-10 border-l-amber-500 border-b-amber-500"></div>
      
 //      </div>
 //   );
