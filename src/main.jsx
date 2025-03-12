@@ -33,7 +33,7 @@ ReactDOM.createRoot(root).render(
           <Route path="/" element={<RootLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/" element={<App />} />
-            <Route path="/aboutuse" element={<AboutUs />} />
+            <Route path="/aboutus" element={<AboutUs />} />
           </Route>
           <Route path="/" element={<RootLayoutv2 />}>
             <Route path="/profile" element={<Profile />} />
