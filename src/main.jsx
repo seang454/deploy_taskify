@@ -22,6 +22,7 @@ import CompletedPage from "./pages/CompletedPage.jsx";
 import Sidebar from "./Components/Sidebar.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import WorkspacePage from "./pages/WorkspacePage.jsx";
+import Kanban from "./pages/Kanban.jsx";
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
@@ -46,6 +47,7 @@ ReactDOM.createRoot(root).render(
             <Route path="/workspace" element={<ModalWorkspace />} />
             <Route path="sidebar" element={<Sidebar />} />
             <Route path="/topage" element={<ToDoPage />} />
+            <Route path="/kanban" element={<Kanban/>} />
             <Route path="/workspacepage" element={<WorkspacePage/>}/>
             <Route path="/workspace" element={<WorkspacePage/>}/>
           </Route>
