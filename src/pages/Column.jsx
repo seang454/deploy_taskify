@@ -294,7 +294,7 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
   const filteredCards = cards.filter((c) => c.column === column);
 
   return (
-    <div className="w-full bg-gray-100 rounded-md shadow-md p-6 flex flex-col">
+    <div className="w-full min-w-80 bg-gray-100 rounded-md shadow-md p-6 flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between text-lg font-bold">
         <span>
