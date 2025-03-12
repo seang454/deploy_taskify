@@ -3,12 +3,13 @@ import { Formik, Form, Field, ErrorMessage, useField } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useRegisterMutation } from "../../features/auth/authApiSlice";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGoogleLogin } from "@react-oauth/google";
+import { HiArrowLongLeft } from "react-icons/hi2";
+import { setAccessToken } from "../../lib/secureLocalStorage";
 
 export default function Register() {
   const [postUserRegisters, { data, isLoading, error }] = useRegisterMutation();
@@ -51,11 +52,15 @@ export default function Register() {
                 gender: "",
               };
               const response = await postUserRegisters(registerValue).unwrap();
-              console.log("Register with goole response succesfully :", response);
-              if(response){
+              console.log(
+                "Register with goole response succesfully :",
+                response
+              );
+              if (response) {
                 toast.success("Successfully registered with Google");
                 setTimeout(() => {
                   navigate("/dashboard", { state: response.token });
+                  setAccessToken(response.token);
                 }, 800);
               }
             } catch (error) {
@@ -114,19 +119,19 @@ export default function Register() {
     gender: "",
   };
   const validationSchema = Yup.object({
-    username: Yup.string().required("username is required"),
-    family_name: Yup.string().required("firstname is required"),
-    given_name: Yup.string().required("lastname is required"),
-    email: Yup.string().email("email is invalid").required("email is required"),
+    username: Yup.string().required("Username is required"),
+    family_name: Yup.string().required("First Name is required"),
+    given_name: Yup.string().required("Last Name is required"),
+    email: Yup.string().email("Email is invalid").required("Email is required"),
     password: Yup.string()
       .matches(
         regex,
-        "Password must constain at least 8 characters, one uppercase, one lowercase, one number and one special case character"
+        "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character."
       )
-      .required("passwork is required"),
+      .required("Passwork is required"),
     confirmed_password: Yup.string()
       .oneOf([Yup.ref("password"), null], "Password must match")
-      .required("comfirm passwork is required"),
+      .required("Confirm password is required"),
     is_student: Yup.string().required("Please select an option."),
     gender: Yup.string().required("Please select an option."),
   });
@@ -143,7 +148,7 @@ export default function Register() {
       <div className="relative">
         <label
           htmlFor={props.id || props.name}
-          className="block mb-2 font-medium text-txt14 text-primary"
+          className="block mb-[5px] font-medium  text-primary"
         >
           {label}
         </label>
@@ -154,7 +159,7 @@ export default function Register() {
             type={
               type === "password" ? (showPassword ? "text" : "password") : type
             }
-            className={`bg-gray-50 border-2 text-gray-900 text-txt14 rounded-lg block w-full p-2 pr-10 transition-all
+            className={`border text-[#ABABAB] rounded-md block w-full p-3 pr-10 transition-all
                   ${
                     meta.touched && meta.error
                       ? "border-accent focus:ring-accent focus:border-accent"
@@ -165,7 +170,7 @@ export default function Register() {
           {/* Eye Icon for Password Toggle */}
           {type === "password" && (
             <span
-              className="absolute inset-y-0 flex items-center cursor-pointer right-3 text-txt14 text-primary"
+              className="absolute inset-y-0 flex items-center cursor-pointer right-3 text-primary"
               onClick={togglePasswordVisibility}
             >
               <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
@@ -186,7 +191,7 @@ export default function Register() {
       <div>
         <label
           htmlFor={props.id || props.name}
-          className="block mb-2 text-sm font-medium text-primary"
+          className="block mb-[5px] font-medium text-primary"
         >
           {label}
         </label>
@@ -194,7 +199,7 @@ export default function Register() {
           {...field}
           value={field.value}
           {...props}
-          className={`bg-gray-50 border-2 text-gray-900 text-sm rounded-lg block w-full p-2 transition-all
+          className={`border text-[#ababab] rounded-md block w-full p-3 transition-all
                 ${
                   meta.touched && meta.error
                     ? "border-accent focus:ring-accent focus:border-accent"
@@ -215,34 +220,24 @@ export default function Register() {
   return (
     <>
       <ToastContainer />
-      <section
-        style={{
-          backgroundImage: `url('./src/assets/bg_register.png')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <section className="grid gap-0.5 md:grid-cols-2 px-8 md:px-16 lg:px-24 xl:px-36 py-8 md:py-12 lg:py-16 xl:py-20 border">
+      <section className="bg-[#F9FAFB]">
+        <section className="grid py-8 sm:px-4 md:grid-cols-2 md:px-8 lg:px-16 ">
           {/* Form Section */}
-          <section className="px-8 py-8 bg-white md:px-12 lg:px-14 xl:px-16 xl:py-10">
+          <section className="px-4 py-8 bg-white rounded-l-lg md:px-12 lg:px-14 xl:px-16 xl:py-10">
             <Link to="/">
-              <FontAwesomeIcon icon={faArrowLeft} className="text-primary" />
+              <HiArrowLongLeft size={30} color="#1E429F" />
             </Link>
-            <h2 className="px-5 pb-5 font-medium text-center text-primary text-txt16 md:text-txt18 lg:text-txt20">
+            <h2 className="px-5 pb-5 font-medium text-[20px] sm:text-[18px] md:text-[22px] text-center text-primary">
               Create an account to continue
             </h2>
 
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
-              onSubmit={
-                (values) => {
-                  console.log("Response :", values);
-                  handlePostUserRegister(values);
-                }
-                //  {
-                //   register(values).unwrap(); }
-              }
+              onSubmit={(values) => {
+                console.log("Response :", values);
+                handlePostUserRegister(values);
+              }}
             >
               <Form>
                 {/* Username */}
@@ -288,15 +283,19 @@ export default function Register() {
                   />
                   <CustomInput
                     name="confirmed_password"
-                    label="confirm Password"
+                    label="Confirm Password"
                     type="password"
-                    placeholder="comfirm Password"
+                    placeholder="Confirm Password"
                   />
                 </div>
 
-                {/* gender */}
+                {/* Gender */}
                 <div className="pb-4">
-                  <CustomSelect name="gender" label="Gender" className="w-full">
+                  <CustomSelect
+                    name="gender"
+                    label="Gender"
+                    className="w-full font-normal"
+                  >
                     <option value="">Choose your gender</option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
@@ -305,7 +304,7 @@ export default function Register() {
 
                 {/* Student Radio Buttons */}
                 <div className="flex items-center pb-4 gap-x-4">
-                  <span className="mb-2 font-medium text-txt14 text-primary">
+                  <span className="mb-2 font-medium text-primary">
                     Are you a student?
                   </span>
                   <label className="flex items-center mb-2">
@@ -315,7 +314,7 @@ export default function Register() {
                       value="yes"
                       className="w-4 h-4 bg-gray-100 text-subaccent border-primary focus:ring-blue-500"
                     />
-                    <span className="ms-2 text-txt14 text-primary">Yes</span>
+                    <span className="ms-2 text-primary">Yes</span>
                   </label>
                   <label className="flex items-center mb-2">
                     <Field
@@ -324,7 +323,7 @@ export default function Register() {
                       value="no"
                       className="w-4 h-4 bg-gray-100 text-subaccent border-primary focus:ring-blue-500"
                     />
-                    <span className="ms-2 text-txt14 text-primary">No</span>
+                    <span className="ms-2 text-primary">No</span>
                   </label>
                   <ErrorMessage
                     name="is_student"
@@ -337,33 +336,36 @@ export default function Register() {
                 <Link to="/dashboard">
                 <button
                   type="submit"
-                  className="w-full px-4 py-3 pb-4 text-white transition-all rounded-md text-btn-txt bg-primary hover:bg-subaccent hover:shadow-lg active:bg-subaccent active:scale-95"
+                  className="w-full px-4 py-3 pb-4 font-bold text-white transition-all rounded-md bg-primary hover:bg-subaccent active:bg-subaccent active:scale-95"
                 >
-                  Create a Trackify account
+                  Create Taskify Account
                 </button>
                 </Link>
 
                 {/* Google Sign In */}
-                <p className="mt-4 text-center text-gray-400">
+                <p className="mt-4 text-center text-[#ababab]">
                   Or continue with:
                 </p>
                 <button
                   onClick={handleLoginWithGoogle}
                   type="button"
-                  className="text-primary border-primary py-2.5 px-5 flex items-center justify-center w-full border rounded-lg mt-2"
+                  className="text-primary border-primary py-2.5 px-5 flex items-center justify-center w-full border rounded-md mt-2"
                 >
                   <img
                     src="./src/assets/google.png"
-                    className="w-4 h-4 mr-2"
+                    className="w-6 h-6 mr-[5px]"
                     alt="Google"
                   />
-                  <span>Google</span>
+                  <span className="text-[18px] font-medium">Google</span>
                 </button>
 
                 {/* Login Link */}
                 <p className="mt-4 text-center">
-                  <Link to="/login" className="text-txt14 text-primary">
-                    Already have a Trackify account? Log in
+                  <Link
+                    to="/login"
+                    className="text-txt14 text-primary hover:underline hover:decoration-1"
+                  >
+                    Already have the Taskify account? Login
                   </Link>
                 </p>
               </Form>
@@ -371,11 +373,11 @@ export default function Register() {
           </section>
 
           {/* Right Section */}
-          <section className="bg-[#CFEAFD] flex items-center">
+          <section className="bg-[#CFEAFD] flex items-center rounded-r-lg">
             <div>
               <img
                 src="./src/assets/register_img.png"
-                className="w-full hidden md:block"
+                className="hidden w-full md:block"
                 alt="Register Illustration"
               />
             </div>

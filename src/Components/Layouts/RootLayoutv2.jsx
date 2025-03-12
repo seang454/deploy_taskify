@@ -7,9 +7,12 @@ export default function RootLayoutv2(){
     return (
        <div >
            <Navbar/>
-           <div className="flex h-[580px] overflow-y-visible flex-row ">
+           <div className="flex-row overflow-y-visible md:flex">
                <Sidebar/>
-               <Outlet/>
+               <div className="w-full md:w-4/5">
+                 <Outlet />
+               </div>
+              
            </div>
 
 </div>

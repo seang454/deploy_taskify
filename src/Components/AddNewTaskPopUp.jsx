@@ -6,8 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export default function AddNewTaskPopUp() {
-  // if (!isOpen) return null;
+export default function AddNewTaskPopUp({isOpen, onClose}) {
+  // console.log("token",token)
+  if (!isOpen) return null;
 
   const initialValues = {
     id: uuidv4(),
@@ -25,11 +26,35 @@ export default function AddNewTaskPopUp() {
     file:"",
   });
   
+  const handleSubmit = async (values, { resetForm }) => {
+    console.log("Submitting Task:", values);
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/tasks`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Use token for authentication
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        console.log("Task added successfully");
+        resetForm(); // Reset form after submission
+        onClose(); // Close modal
+      } else {
+        console.error("Error adding task");
+      }
+    } catch (error) {
+      console.error("Request failed:", error);
+    }
+  };
 
   return (
     <>
-      <div className=" font-roboto flex justify-center rounded-lg  ">
-        <div className="px-10  ">
+      <div className=" font-roboto inset-0 fixed z-50 flex items-center justify-center bg-black bg-opacity-50 ">
+        <div className="px-10 bg-white rounded-md ">
           <div className="">
             <div className="pb-5 flex justify-between">
               <div className="grid pr-10"> 
@@ -41,7 +66,7 @@ export default function AddNewTaskPopUp() {
             </p>
               </div>
               <button
-                // onClick={onClose}
+                onClick={onClose}
                 className=" text-2xl dark:text-gray-300 text-primary top-0 pl-10 right-3 "
               >
                 <FontAwesomeIcon icon={faXmark} />
@@ -52,10 +77,11 @@ export default function AddNewTaskPopUp() {
            <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={
-              (values) => {
-                console.log("Response :", values);
-              }}
+            onSubmit={handleSubmit
+              // (values) => {
+              //   console.log("Response :", values);
+              // }
+            }
           >
             <Form>
               {/* title */}
