@@ -4,23 +4,112 @@ import * as Yup from "yup";
 import modelImage from "../assets/modelWorkspace.png"; // Ensure correct path
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
+import { useState,useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-export default function ModalWorkspace({ isOpen, onClose,token }) {
+export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
+  console.log("isopen",isOpen);
+  console.log("token",token)
   if (!isOpen) return null;
-  const initialValues = {
-      title:"",
-      discription:""
-  }
-  const validationSchema =Yup.object({
-       title: Yup.string().required("Required") ,
-       discription: Yup.string()
-      })
- console.log(token)
+
+  const [userId, setUserId] = useState(null);
+
+  
+  const fetchUserId = async (token) => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/rpc/me`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to fetch user data");
+
+      const user = await response.json();
+      console.log("Fetched User Data:", user);
+      return user.id; 
+    } catch (error) {
+      console.error("Error fetching user ID:", error);
+      return null;
+    }
+  };
+
  
+  useEffect(() => {
+    if (token) {
+      fetchUserId(token).then((id) => setUserId(id));
+    }
+  }, [token]);
+
+  
+  const handlePostCreateWorkspace = async (values) => {
+    try {
+        if (!userId) {
+            console.error("User ID is not available");
+            return;
+        }
+
+        const workspaceData = {
+            id: uuidv4(), 
+            title: values.title,
+            description: values.description,
+            user_id: userId,
+            created_at: new Date().toISOString(),
+        };
+
+        console.log("Sending Data:", workspaceData); 
+
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/workspaces`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(workspaceData),
+        });
+
+        console.log("Raw Response:", response);
+
+        if (!response.ok) {
+            const text = await response.text(); 
+            console.error("Failed Response:", text);
+            throw new Error(`Failed to create workspace: ${text || response.statusText}`);
+        }
+
+        console.log("Workspace Created Successfully");
+
+        onResponse(workspaceData);
+        onClose();
+    } catch (error) {
+        console.error("Error creating workspace:", error.message);
+    }
+};
+
+
+
+
+  const initialValues = {
+    title: "",
+    description: "",
+    user_id: userId || "", 
+    id : uuidv4(),
+  };
+
+  const validationSchema = Yup.object({
+    title: Yup.string().required("Workspace name is required"),
+    description: Yup.string(),
+  });
+
+  if (!userId) {
+    return <div>Loading user data...</div>;
+  }
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[75%] lg:w-[65%] relative ">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[75%] lg:w-[65%] sticky top-0 bottom-0">
         
         {/* Close Button */}
         <button 
@@ -43,8 +132,8 @@ export default function ModalWorkspace({ isOpen, onClose,token }) {
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={(values) => {
-                console.log(values);
-                onClose();
+                console.log("Response :",values)
+                handlePostCreateWorkspace(values);
               }}
             >
               {({ handleSubmit }) => (
@@ -63,7 +152,7 @@ export default function ModalWorkspace({ isOpen, onClose,token }) {
                   <div>
                     <label htmlFor="discription" className="font-medium text-primary md:text-txt16 lg:text-txt18 xl:text-txt20">Workspace description (Optional)</label>
                   <Field 
-                    name="discription"
+                    name="description"
                     as="textarea"
                     placeholder="Put your workspace name..."
                     className="w-full p-1 border rounded-md h-28 lg:h-32 xl:h-40 xl:p-2 text-txt14 xl:text-txt16 "
@@ -81,7 +170,7 @@ export default function ModalWorkspace({ isOpen, onClose,token }) {
           </div>
 
           {/* Right: Image */}
-          <div>
+          <div className="hidden md:block">
             <img src={modelImage} alt="Workspace" className="w-full h-auto" />
           </div>
         </div>

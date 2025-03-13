@@ -168,7 +168,7 @@ export default function HomePage() {
               Taskify is an easy, modern UI, and powerful Dashboard Management{" "}
             </p>
           </div>
-          <div className="grid grid-cols-2 w-4/5 m-auto gap-[60px] md:grid-cols-2">
+          <div className="grid grid-cols-1 w-4/5 m-auto gap-[60px] md:grid-cols-2">
             {card1.map((card, index) => (
               <CardDesc1
                 key={index}
@@ -204,8 +204,8 @@ export default function HomePage() {
               proven playbook designed for different teams. Customize it to make
               it yours.
             </p>
-            <Link className="p-3 md:m-5 m-0 mt-5  text-white no-underline rounded bg-primary decoration-0 min-w-[177px] max-w-[177px] ">
-              Explore Our Solutions
+            <Link to="/aboutus" className="p-3 md:m-5 m-0 mt-5  text-white no-underline rounded bg-primary decoration-0 min-w-[177px] max-w-[177px] ">
+              click explore us
             </Link>
           </div>
         </section>
