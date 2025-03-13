@@ -1,62 +1,90 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { getAceAccessToken } from "../lib/secureLocalStorage";
+import { useCreateTaskMutation } from "../features/addTaskApi";
+import { useGetWorkspacesQuery } from "../features/workspaceApi";
+
 
 export default function AddNewTaskPopUp({isOpen, onClose}) {
-  // console.log("token",token)
+  
   if (!isOpen) return null;
+  const [createTask] = useCreateTaskMutation();
+  const token = getAceAccessToken();
+  const [categories, setCategories] = useState([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
 
+  // Fetch categories from API
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/categories`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = await response.json();
+        setCategories(data);
+        console.log('data:', data) // Store categories in state
+      } catch (error) {
+        console.error("Failed to fetch categories:", error);
+      }
+      setLoadingCategories(false);
+    }
+    fetchCategories();
+  }, [token]);
+  const [data]=useGetWorkspacesQuery();
+
+
+  
+  let positionCounter = 1
   const initialValues = {
     id: uuidv4(),
     title: "",
-    due_date: "",
-    user_id: "",
     note: "",
-    file: "",
+    start_date: "",
+    due_date: "",
+    reminder_date: "",
+    created_at: new Date().toISOString(),
+    is_important:true,
+    category_id: "", // User selects from dropdown
+    user_id: uuidv4(),
+    workspace_id: uuidv4(),
+    position: positionCounter++ ,
   };
+
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required("title is required"),
-    due_date: Yup.string().required("due date is required"),
-    user_id: Yup.string().required("assign to is required"),
+    title: Yup.string().required("Title is required"),
+    due_date: Yup.string().required("Due date is required"),
+    start_date: Yup.string().required("Start date is required"),
+    reminder_date: Yup.string(),
     note: Yup.string(),
-    file:"",
+    category_id: Yup.string().required("Category is required"),
   });
-  
-  const handleSubmit = async (values, { resetForm }) => {
-    console.log("Submitting Task:", values);
 
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/tasks`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Use token for authentication
-        },
-        body: JSON.stringify(values),
-      });
-
-      if (response.ok) {
-        console.log("Task added successfully");
-        resetForm(); // Reset form after submission
-        onClose(); // Close modal
-      } else {
-        console.error("Error adding task");
-      }
-    } catch (error) {
-      console.error("Request failed:", error);
+      console.log("Submitting Task:", values);
+      const response = await createTask(values).unwrap();
+      console.log("Task Created Successfully:", response);
+      resetForm();
+      onClose();
+    } catch (err) {
+      console.error("Failed to create task:", err?.data || err);
     }
+    setSubmitting(false);
   };
+ 
+  
 
   return (
     <>
       <div className=" font-roboto inset-0 fixed z-50 flex items-center justify-center bg-black bg-opacity-50 ">
         <div className="px-10 bg-white rounded-md ">
           <div className="">
-            <div className="pb-5 flex justify-between">
+            <div className="pb-4 flex justify-between">
               <div className="grid pr-10"> 
               <h3 className="pt-3 font-bold text-primary text-[24px]">
                 Add a new task
@@ -74,7 +102,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
             </div>
             
           </div>
-           <Formik
+          <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleSubmit
@@ -85,7 +113,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
           >
             <Form>
               {/* title */}
-              <div className="pb-5 xl:pb-7">
+              <div className="pb-4 xl:pb-7">
                 <label
                   htmlFor="title"
                   className="font-medium  text-primary md:text-txt14  "
@@ -106,7 +134,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                 
               </div>
               {/* Due Date */}
-              <div className="pb-5 xl:pb-7">
+              <div className="pb-4 xl:pb-7">
                 <label
                   htmlFor="due_date"
                   className="font-medium text-primary md:text-txt16 lg:text-txt18"
@@ -117,61 +145,98 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                   name="due_date"
                   type="date"
                   placeholder="dd/mm/yyyy"
-                  className="w-full p-1.5 border  dark:text-gray-400 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 
-             focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+                  className="w-full p-1.5 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
                 />
                 <ErrorMessage
                   name="due_date"
                   component="div"
-                  className="text-sm text-red-500"
+                  className="text-sm text-red-500 text-txt14"
                 />
-                
-              </div>
-              {/* Assigns to*/}
-              <div className="pb-5 xl:pb-7">
+               </div>
+                {/* start_date*/}
+              <div className="pb-4 xl:pb-7">
                 <label
-                  htmlFor="user_id"
-                  className="font-medium  text-primary focus:border-primary md:text-txt16 lg:text-txt18 "
+                  htmlFor="start_date"
+                  className="font-medium text-primary md:text-txt16 lg:text-txt18"
                 >
-                  Assigns to
+                 Start Date
                 </label>
                 <Field
-                  name="user_id"
-                  type="text"
-                  placeholder="Say Seyha"
-                  className="w-full p-1.5 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 
-             focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-300"
+                  name="start_date"
+                  type="date"
+                  placeholder="dd/mm/yyyy"
+                  className="w-full p-1.5 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
                 />
                 <ErrorMessage
-                  name="user_id"
+                  name="start_date"
                   component="div"
-                  className="text-sm text-red-500"
+                  className="text-sm text-red-500 text-txt14"
                 />
                 
               </div>
+              {/*reminder_date*/}
+              <div className="pb-4 xl:pb-7">
+                <label
+                  htmlFor="reminder_date"
+                  className="font-medium text-primary md:text-txt16 lg:text-txt18"
+                >
+                 Reminder Date
+                </label>
+                <Field
+                  name="reminder_date"
+                  type="date"
+                  placeholder="dd/mm/yyyy"
+                  className="w-full p-1.5 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+                />
+                <ErrorMessage
+                  name="reminder_date"
+                  component="div"
+                  className="text-sm text-red-500 text-txt14"
+                />
+                
+              </div>
+              
+                
+              
               {/* Description */}
-              <div className="pb-5 xl:pb-7">
+              <div className="pb-4 xl:pb-7">
                 <label
                   htmlFor="note"
                   className="font-medium text-primary md:text-txt16 lg:text-txt18 "
                 >
-                  Description
+                  Assigns to
                 </label>
                 <Field
                   name="note"
-                  as="textarea"
+                  as="text"
                   className="w-full p-1.5 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 
              focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
                 />
                 <ErrorMessage
                   name="note"
                   component="div"
-                  className="text-sm text-red-500"
+                  className="text-sm text-red-500 text-txt14"
                 />
                 
               </div>
+
+              {/* Category Dropdown */}
+              {loadingCategories ? (
+                <p>Loading categories...</p>
+              ) : (
+                <Field as="select" name="category_id" className="w-full p-1.5 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 
+             focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300">
+                  <option value="">Select Category</option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.title}
+                    </option>
+                  ))}
+                </Field>
+              )}
+              <ErrorMessage name="category_id" component="div" className="text-red-500" />
               {/* upload file */}
-              <div className="flex items-center  justify-center w-full">
+              {/* <div className="flex items-center  justify-center w-full">
                 <label
                   htmlFor="dropzone-file"
                   className="flex items-center  dark:bg-gray-800 justify-center w-full h-12 border border-primary rounded-lg cursor-pointer bg-white text-gray-500 hover:bg-gray-100"
@@ -183,7 +248,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                   </span>
                   <input id="dropzone-file" type="file" className="hidden" />
                 </label>
-              </div>
+              </div> */}
               <div className="flex justify-end mb-5">
               <button
                   
@@ -201,6 +266,20 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
             </Form>
           </Formik>
         </div>
+        {/* upload file */}
+              {/* <div className="flex items-center  justify-center w-full">
+                <label
+                  htmlFor="dropzone-file"
+                  className="flex items-center  dark:bg-gray-800 justify-center w-full h-12 border border-primary rounded-lg cursor-pointer bg-white text-gray-500 hover:bg-gray-100"
+                >
+                  <FaCloudUploadAlt className="dark:text-gray-300 mr-2" size={20} />
+                  <span className="text-sm">Click to upload your file</span>
+                  <span className="ml-2 text-xs text-gray-400">
+                    Max. File Size: 30MB
+                  </span>
+                  <input id="dropzone-file" type="file" className="hidden" />
+                </label>
+              </div> */}
       </div>
     </>
   );

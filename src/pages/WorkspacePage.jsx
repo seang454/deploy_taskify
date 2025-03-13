@@ -179,10 +179,11 @@ const WorkspacePage = () => {
     );
 };
 // const token = localStorage.getItem("%$$");
-// console.log('token', token)
+
+// console.log('token', token) p
 const Column = ({ column }) => {
     
-    const [isModelOpen,setIsModelOpen] = useState([]);
+    const [isModelOpen,setIsModelOpen] = useState(false);
     return (
         <>
         <div className="flex flex-col w-full p-4 bg-gray-100 rounded-lg shadow-md">
