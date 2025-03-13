@@ -1,7 +1,7 @@
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";  // ✅ Fix here
 import App from "./App";
 import RootLayout from "./Components/Layouts/RootLayout";
 import HomePage from "./pages/HomePage";
@@ -24,7 +24,6 @@ import AboutUs from "./pages/AboutUs.jsx";
 import WorkspacePage from "./pages/WorkspacePage.jsx";
 import Kanban from "./pages/Kanban.jsx";
 const root = document.getElementById("root");
-
 ReactDOM.createRoot(root).render(
   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
     <Provider store={store}>
@@ -43,7 +42,6 @@ ReactDOM.createRoot(root).render(
             <Route path="/detail" element={<ProgessCardDetail />} />
             <Route path="/todo" element={<ToDoPage />} />
             <Route path="/completed" element={<CompletedPage />} />
-
             <Route path="/workspace" element={<ModalWorkspace />} />
             <Route path="sidebar" element={<Sidebar />} />
             <Route path="/topage" element={<ToDoPage />} />
