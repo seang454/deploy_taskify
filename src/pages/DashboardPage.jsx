@@ -3,6 +3,7 @@ import WorkspaceCard from "../Components/WorkspaceCard";
 import ModalWorkspace from "../Components/ModalWorkspace";
 import { useLocation } from "react-router";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
+import { useGetMeQuery } from "../features/auth/authApiSlice";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("your-workspace");
@@ -14,7 +15,11 @@ export default function DashboardPage() {
   console.log("location :", location.state);
 
   const [workspaceList, setWorkspaceList] = useState([]);
-
+  
+  const {data,isSuccess} = useGetMeQuery();
+  console.log('data get', data?.id)
+  const user_id = data?.id;
+  console.log('user_id', user_id,isSuccess)
   const sharedWorkspaces = [
     {
       id: 4,
@@ -48,7 +53,7 @@ export default function DashboardPage() {
         console.log(token);
         try {
           const respone = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/workspaces?limit=20&offset=0`,
+            `${import.meta.env.VITE_BASE_URL}/workspaces?limit=20&offset=0&user_id=eq.${user_id}`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -61,7 +66,7 @@ export default function DashboardPage() {
       }
     };
     fetchWorkspaces();
-  }, [location.state?.token]);
+  }, [data?.id]);
 
   const handleWorkspaceResponse = (newWorkspace) => {
     if (newWorkspace) {
