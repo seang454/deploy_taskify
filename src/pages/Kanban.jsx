@@ -4,10 +4,10 @@ import Column from "./Column";
 import AddMemberForm from "../Components/MemberCard"; // ✅ Fixed import
 
 const DEFAULT_CARDS = [
-  { title: "Look into render bug in dashboard",description:"Start implementing the backend with API in ISTAD's API Group", id: "1", column: "todo", createdDate: "2025-02-28",checklist: "2/5",category: "Design", dueDate: "2021-03-10", link: ["https://docs.google.com"], },
-  { title: "SOX compliance checklist", id: "2",description:"Start implementing the backend with API in ISTAD's API Group", column: "todo", createdDate: "2025-02-12",category: "Design",checklist: "9/10", dueDate: "2022-03-10" },
-  { title: "[SPIKE] Migrate to Azure", id: "3",description:"Start implementing the backend with API in ISTAD's API Group", column: "doing", createdDate: "2025-02-17",category: "Design", dueDate: "2023-03-10" },
-  { title: "Document Notifications service", id: "4",description:"Start implementing the backend with API in ISTAD's API Group", column: "done", createdDate: "2025-02-10",category: "Design", dueDate: "2024-03-10" },
+  { title: "Look into render bug in dashboard",description:"Start implementing the backend with API in ISTAD's API Group", id: "1", column: "todo", createdDate: "2025-Feb-28",checklist: "2/5",category: "Design", dueDate: "2021-Mar-10", link: ["https://docs.google.com"], },
+  { title: "SOX compliance checklist", id: "2",description:"Start implementing the backend with API in ISTAD's API Group", column: "todo", createdDate: "2025-Feb-12",category: "Design",checklist: "9/10", dueDate: "2022-Mar-10" },
+  { title: "[SPIKE] Migrate to Azure", id: "3",description:"Start implementing the backend with API in ISTAD's API Group", column: "doing", createdDate: "2025-Feb-17",category: "Design", dueDate: "2023-Jan-10" },
+  { title: "Document Notifications service", id: "4",description:"Start implementing the backend with API in ISTAD's API Group", column: "done", createdDate: "2025-02-10",category: "Design", dueDate: "2024-Dec-10" },
 ];
 
 function Kanban() {
