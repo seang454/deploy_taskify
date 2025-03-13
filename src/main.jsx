@@ -52,6 +52,7 @@ ReactDOM.createRoot(root).render(
             <Route path="/topage" element={<ToDoPage />} />
             <Route path="/workspace/:id" element={<WorkspacePage/>}/>
             <Route path="/workspace" element={<WorkspacePage/>}/>
+            <Route path="/kanban" element={<Kanban/>}/>
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
