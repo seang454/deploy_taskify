@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Clock,CheckSquare } from "lucide-react"; // Import icons for date & checklist
+import { FiLink } from "react-icons/fi";
 
 const DropIndicator = ({ beforeId, column }) => {
   return (
@@ -10,7 +12,7 @@ const DropIndicator = ({ beforeId, column }) => {
   );
 };
 
-const TaskCard = ({ title, id, column, handleDragStart }) => {
+const TaskCard = ({ title, id,description,link,createdDate,checklist,category,dueDate, column, handleDragStart }) => {
   return (
     <>
       <DropIndicator beforeId={id} column={column} />
@@ -21,18 +23,67 @@ const TaskCard = ({ title, id, column, handleDragStart }) => {
         onDragStart={(e) => handleDragStart(e, { title, id, column })}
         className="cursor-grab rounded   p-3 active:cursor-grabbing"
       >
-        <div className="bg-white rounded-lg shadow-sm px-4 py-6">
-          <p className="font-bold text-gray-700">{title}</p>
+        <div className="bg-white dark:bg-gray-400 rounded-lg shadow-md  hover:shadow-xl px-4 py-6">
+          <p className="font-bold text-gray-700 text-[18px] dark:text-white">{title}</p>
           <div className="text-sm text-gray-500 mt-2 line-clamp-2">
-            Create wireframes and high-fidelity designs for the app's
+            {description}
           </div>
-          <div className="text-xs text-gray-400 mt-4">Created at: 12:00 PM</div>
-          <div className="flex items-center text-sm text-gray-600 mt-2">
-            <span className="pr-2">Category:</span>
-            <span className={`border-2 py-1 px-2 bg-red-300 rounded-lg`}>
-              Mar 10,2025
-            </span>
-          </div>
+           {/* Task Created Date */}
+            <div className="text-xs text-gray-500 mt-4"> {/* Added spacing */}
+               Created at : {createdDate}
+            </div>
+
+              {checklist && (
+                <div className="flex items-center text-blue-500 text-sm mt-2">
+                    {/* Positioned immediately below "Created At" */}
+                    <CheckSquare className="mr-2" size={16} /> {/* Icon */}
+                    Checklist: {checklist}
+                </div>
+            )}
+
+
+          <div className="flex items-center text-sm text-gray-600 mt-2 mb-2">
+            
+             {category && (
+                <div className="flex items-center text-sm text-gray-600 mt-2">
+                    <span className="pr-2">Category:</span>
+                    <span
+                        className={`border-2 py-1 px-2 rounded-lg ${
+                            category === "Design"
+                                ? "border-amber-300 text-amber-300"
+                                : category === "Coding"
+                                    ? "border-blue-300 text-blue-300"
+                                    : "border-green-300 text-green-300"
+                        }`}
+                    >
+                        {category}
+                    </span>
+                </div>
+            )}
+         
+          </div>  
+           {dueDate && (
+                <div className="flex items-center justify-center bg-red-200 rounded-md text-red-500   w-36 p-1 text-sm mt-4">
+                    <Clock strokeWidth={1} className="mr-1" width={18} height={18} />
+                    {dueDate}
+                </div>
+            )}
+
+             {link && (
+                <div className=" flex  mt-4 space-y-1"><FiLink className="text-gray-600  mr-2  "/>
+                    {link.map((link, index) => (
+                        <a
+                            key={index}
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center text-blue-500 text-xs underline hover:text-blue-700"
+                        >
+                            {link}
+                        </a>
+                    ))}
+                </div>
+            )}
         </div>
       </motion.div>
     </>
@@ -40,3 +91,6 @@ const TaskCard = ({ title, id, column, handleDragStart }) => {
 };
 
 export default TaskCard;
+
+
+

@@ -54,7 +54,7 @@ const DB_member = [
 
  function Cardmember({item}) {
     return (
-        <div className={"w-[800px] my-8"}>
+        <div className={"w-full my-8"}>
             <div className={"flex justify-between"}>
             <div className={"flex space-x-2 align-middle items-center"}>
                 <div className="bg-primary w-10 h-10 rounded-full" />
