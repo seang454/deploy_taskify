@@ -39,9 +39,13 @@ export default function  ProgessCardDetail() {
                 <div>Assigned to: </div>
                 <div>{email}</div>
             </div>
-            <div className={"flex align-items-center justify-end space-x-4 pb-3 mr-8"}>
-                <button className={"rounded-md border border-gray-400 p-2 font-bold text-gray-700"}>Delete Task</button>
-                <button className={"rounded-md border bg-primary text-background p-2 font-bold"}>Edit Task</button>
+            <div className={"flex align-items-center justify-end space-x-4 pb-3 mr-8 items-center "}>
+                <button className={"px-3 rounded-md border h-[43px] w-[132px] border-gray-400 font-bold text-gray-700"}>
+                    Delete Task
+                </button>
+                <button className={"px-3 rounded-md border h-[43px] w-[132px] bg-primary text-background  font-bold"}>
+                     Edit Task
+                </button>
             </div>
         </div>
         </div>

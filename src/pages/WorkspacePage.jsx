@@ -1,11 +1,7 @@
 import {Clock, Filter, UserPlus} from "lucide-react";
-import { useState,  } from "react";
-import AddNewTaskPopUp from "../Components/AddNewTaskPopUp";
-import { useParams } from "react-router-dom";
 
-const WorkspacePage = () => {
-    const { id } = useParams();
-    console.log('id', id)
+export const WorkspacePage = () => {
+
     const columns = [
         {
             id: 1,
@@ -137,7 +133,6 @@ const WorkspacePage = () => {
             ],
         },
     ];
-   
 
     return (
         <div className="min-h-screen p-8 bg-white dark:bg-[#121321]">
@@ -176,16 +171,11 @@ const WorkspacePage = () => {
                     <Column key={column.id} column={column} />
                 ))}
             </div>
-            
-        </div>  
+        </div>
     );
 };
-// const token = localStorage.getItem("%$$");
 
-// console.log('token', token) p
 const Column = ({ column }) => {
-    
-    const [isModelOpen,setIsModelOpen] = useState(false);
     return (
         <>
         <div className="flex flex-col w-full p-4 bg-gray-100 rounded-lg shadow-md">
@@ -199,7 +189,7 @@ const Column = ({ column }) => {
                 </span>
                 {/* "+" Button */}
                 <button
-                    onClick={() =>setIsModelOpen(true)}
+                    onClick={() => console.log(`Add task to column: ${column.title}`)}
                     className="px-2 py-1 text-gray-500 rounded-lg hover:text-gray-600"
                 >
                     +
@@ -220,13 +210,12 @@ const Column = ({ column }) => {
                     </div>
                 )}
             </div>
-            
         </div>
-        <AddNewTaskPopUp 
+        {/* <AddNewTaskPopUp 
             isOpen={isModelOpen}
             onClose={() => setIsModelOpen(false)}
             
-            />
+            /> */}
         </>
     );
 };
@@ -307,3 +296,188 @@ const TaskCard = ({ task }) => {
 };
 
 export default WorkspacePage;
+
+// import React, { useState } from "react";
+// import { DndContext, closestCorners, useDroppable } from "@dnd-kit/core";
+// import { arrayMove, SortableContext, verticalListSortingStrategy, useSortable } from "@dnd-kit/sortable";
+// import { Clock, Filter, UserPlus } from "lucide-react";
+// import { CSS } from "@dnd-kit/utilities";
+
+// const WorkspacePage = () => {
+//     const [columns, setColumns] = useState([
+//         {
+//             id: 1,
+//             title: "To Do",
+//             tasks: [
+//                 { id: 1, title: "Design Poster + Banner", description: "Create wireframes", createdDate: "2025-02-28", category: "Design", dueDate: "2025-03-10" },
+//                 { id: 2, title: "Implement Backend", description: "Start coding backend", createdDate: "2025-02-12", category: "Coding", dueDate: "2025-03-10" },
+//             ],
+//         },
+//         {
+//             id: 2,
+//             title: "On Progress",
+//             tasks: [
+//                 { id: 3, title: "Homepage UX/UI", description: "Create responsive design", createdDate: "2025-01-28", category: "Design", dueDate: "2025-01-30" },
+//                 { id: 4, title: "Create a 3D Mockup", createdDate: "2025-01-28", dueDate: "2025-03-10" },
+           
+//             ],
+//         },
+//         {
+//             id: 3,
+//             title: "Done",
+//             tasks: [], // ✅ Empty column to test drag-and-drop
+//         },
+//     ]);
+
+//     // ✅ Handle Drag End
+//     const handleDragEnd = (event) => {
+//         const { active, over } = event;
+
+//         if (!over) return;
+
+//         setColumns((prev) => {
+//             const sourceColumn = prev.find((col) =>
+//                 col.tasks.some((task) => task.id === active.id)
+//             );
+//             const targetColumn = prev.find((col) =>
+//                 col.id === Number(over.id)
+//             );
+
+//             if (sourceColumn && targetColumn) {
+//                 const oldIndex = sourceColumn.tasks.findIndex((task) => task.id === active.id);
+
+//                 // ✅ Remove the task from source column
+//                 const [movedTask] = sourceColumn.tasks.splice(oldIndex, 1);
+
+//                 // ✅ If target column has tasks, place it at the right position
+//                 if (targetColumn.tasks.length > 0) {
+//                     const newIndex = targetColumn.tasks.findIndex((task) => task.id === over.id);
+//                     targetColumn.tasks.splice(newIndex !== -1 ? newIndex : targetColumn.tasks.length, 0, movedTask);
+//                 } else {
+//                     // ✅ If target column is empty, push task directly
+//                     targetColumn.tasks.push(movedTask);
+//                 }
+//             }
+
+//             return [...prev];
+//         });
+//     };
+
+//     return (
+//         <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
+//             <div className="min-h-screen p-8 bg-white dark:bg-[#121321]">
+//                 {/* Header */}
+//                 <div className="flex items-center justify-between mb-6">
+//                     <div className="text-lg font-bold text-gray-800">
+//                         Final Project of Foundation G3-Taskify
+//                     </div>
+//                     <div className="flex space-x-4">
+//                         <button className="flex items-center px-3 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300">
+//                             <Filter className="mr-2" size={16} />
+//                             Filter & Search
+//                         </button>
+//                         <button className="flex items-center px-3 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300">
+//                             <UserPlus className="mr-2" size={16} />
+//                             Add Member
+//                         </button>
+//                     </div>
+//                 </div>
+
+//                 {/* ✅ Board Columns */}
+//                 <div className="flex gap-4">
+//                     {columns.map((column) => (
+//                         <Column key={column.id} column={column} />
+//                     ))}
+//                 </div>
+//             </div>
+//         </DndContext>
+//     );
+// };
+
+// // ✅ Column Component with Droppable Support
+// const Column = ({ column }) => {
+//     const { setNodeRef, isOver } = useDroppable({
+//         id: column.id,
+//     });
+
+//     return (
+//         <div
+//             ref={setNodeRef}
+//             className={`flex flex-col w-1/3 p-4 rounded-lg shadow-md transition ${
+//                 isOver ? "bg-blue-100" : "bg-gray-100"
+//             }`}
+//         >
+//             <div className="flex items-center justify-between pb-2 text-lg font-bold border-b border-gray-300">
+//                 <span>
+//                     {column.title}
+//                     <span className="px-2 py-1 text-sm font-medium bg-gray-300 rounded-full">
+//                         {column.tasks.length}
+//                     </span>
+//                 </span>
+//                 <button className="px-2 py-1 text-gray-500 rounded-lg hover:text-gray-600">+</button>
+//             </div>
+
+//             {/* ✅ Wrap tasks in SortableContext */}
+//             <SortableContext
+//                 items={column.tasks.map((task) => task.id)}
+//                 strategy={verticalListSortingStrategy}
+//             >
+//                 <div className="mt-4 space-y-4 min-h-[100px]">
+//                     {column.tasks.length === 0 ? (
+//                         <div className="py-6 text-center text-gray-400">Drop tasks here</div>
+//                     ) : (
+//                         column.tasks.map((task) => (
+//                             <TaskCard key={task.id} task={task} />
+//                         ))
+//                     )}
+//                 </div>
+//             </SortableContext>
+//         </div>
+//     );
+// };
+
+// // ✅ TaskCard Component with Drag-and-Drop Support
+// const TaskCard = ({ task }) => {
+//     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+//         id: task.id,
+//     });
+
+//     const style = {
+//         transform: CSS.Transform.toString(transform),
+//         transition,
+//     };
+
+//     const formatDate = (dateString) => {
+//         const date = new Date(dateString);
+//         if (isNaN(date)) return "Invalid Date";
+//         return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+//     };
+
+//     return (
+//         <div
+//             ref={setNodeRef}
+//             {...attributes}
+//             {...listeners}
+//             style={style}
+//             className="px-4 py-6 bg-white rounded-lg shadow-sm cursor-grab active:cursor-grabbing"
+//         >
+//             <div className="font-bold text-gray-700">{task.title}</div>
+//             {task.description && (
+//                 <div className="mt-2 text-sm text-gray-500 line-clamp-2">
+//                     {task.description}
+//                 </div>
+//             )}
+//             <div className="mt-4 text-xs text-gray-400">
+//                 Created at: {formatDate(task.createdDate)}
+//             </div>
+//             {task.dueDate && (
+//                 <div className="flex items-center justify-center p-1 mt-4 text-sm bg-red-200 rounded-md text-accent w-36">
+//                     <Clock strokeWidth={1} className="mr-1" width={18} height={18} />
+//                     {formatDate(task.dueDate)}
+//                 </div>
+//             )}
+//         </div>
+//     );
+// };
+
+// export default WorkspacePage;

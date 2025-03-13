@@ -11,13 +11,24 @@ export const addTaskApi = apiSlice.injectEndpoints({
                     method: "POST",
                     body,
                     headers: {
-                        Authorization: `Bearer ${token}`,  // Include the correct token
-                        "Content-Type": "application/json", // Ensure content type is set
+                        Authorization: `Bearer ${token}`,  
+                        "Content-Type": "application/json", 
                     }
                 };
             }
+        }),
+        getTasks: builder.query({
+            query:()=>({
+                    url: `/tasks?limit=20&offset=0`,
+                    method: "GET",
+                    body,
+                    headers: {
+                        Authorization: `Bearer ${getAceAccessToken()}`,
+                        "Content-Type": "application/json"
+                    }
+            })
         })
     })
 });
 
-export const { useCreateTaskMutation } = addTaskApi;
+export const { useCreateTaskMutation ,useGetTasksQuery } = addTaskApi;

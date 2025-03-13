@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 export default function WorkspaceCard({ workspace }) {
     return (
-        <Link to={`/workspace/${workspace.id}`} className={` border border-gray-300 rounded-lg text-white h-full`}>
+        <Link to={`/kanban/${workspace.id}`} className={` border border-gray-300 rounded-lg text-white h-full`}>
             <div className={`rounded-t-lg flex flex-row items-center justify-center bg-primary`}>
                 <h2 className='font-semibold text-center text-white p-7 text-txt20'>{workspace.title}</h2>
             
@@ -20,6 +20,5 @@ export default function WorkspaceCard({ workspace }) {
                     </div>
             </div>
         </Link>
-        
     );
 }

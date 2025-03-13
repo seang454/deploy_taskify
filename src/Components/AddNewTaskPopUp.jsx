@@ -49,7 +49,6 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
 
 
   
-  let positionCounter = 1
   const initialValues = {
     id: uuidv4(),
     title: "",
@@ -62,7 +61,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
     category_id: "", // User selects from dropdown
     user_id: userId,
     workspace_id: workspaceId,
-    position: 2 ,
+    position: Math.floor(Math.random() * 100) + 1,
   };
 
   const validationSchema = Yup.object().shape({

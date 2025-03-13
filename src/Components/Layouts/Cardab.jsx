@@ -15,7 +15,7 @@ const ProfileCard = ({ firstName, lastName, job, position, img }) => {
             <h2 className="text-[25px] font-family text-secondary font-bold">{lastName}</h2>
           </div>
 
-          <p className="text-[20px] font-family text-black font-medium">{job}</p>
+          <p className="text-[20px] font-family text-black font-medium dark:text-white">{job}</p>
           <h2 className="text-[20px] font-family text-white font-medium bg-primary rounded-tl-[30px] rounded-br-[30px] py-[8px] px-[15px]">
             {position}
           </h2>

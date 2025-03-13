@@ -20,7 +20,7 @@ export default function DashboardPage() {
   const {data,isSuccess} = useGetMeQuery();
   console.log('data get', data?.id)
   const user_id = data?.id;
-  console.log('user_id', user_id,isSuccess)
+  console.log('user_id in dashboard', user_id,isSuccess)
   const sharedWorkspaces = [
     {
       id: 4,
