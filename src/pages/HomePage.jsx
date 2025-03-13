@@ -204,7 +204,7 @@ export default function HomePage() {
               proven playbook designed for different teams. Customize it to make
               it yours.
             </p>
-            <Link to="/aboutus" className="p-3 md:m-5 m-0 mt-5  text-white no-underline rounded bg-primary decoration-0 min-w-[177px] max-w-[177px] ">
+            <Link to="/aboutus" className="p-3 m-0 mt-5 text-white no-underline rounded md:m-5 bg-primary decoration-0 hover:underline">
               click explore us
             </Link>
           </div>
