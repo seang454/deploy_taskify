@@ -112,7 +112,7 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-end -top-[200px] z-10"
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-end -top-[400px] z-10"
       onClick={closeModal} // Close modal when clicking outside
     >
       <div

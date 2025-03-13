@@ -18,22 +18,25 @@ function Kanban() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="p-5 bg-gray-100 dark:bg-[#121321]">
+    <div className="p-8 bg-gray-100 dark:bg-[#121321]">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="text-[20px] bg-gray-200 p-2 rounded-[100px] font-bold text-gray-800 dark:text-white hover:shadow-sm">Final Project of Foundation G3</div>
+     <div className="flex flex-col md:flex-row  justify-between mb-6 gap-4">
+  <div className="text-[16px] md:text-[20px] bg-gray-200 p-2 rounded-full font-bold text-gray-800 dark:text-white hover:shadow-sm text-center">
+    Final Project of Foundation G3
+  </div>
 
-        {/* Add Member Button */}
-        <div className="flex space-x-4">
-          <button
-            onClick={openModal} // ✅ Open modal on click
-            className="flex items-center px-3 py-2 text-gray-700 transition bg-gray-200 rounded-md hover:bg-gray-300"
-          >
-            <span className="mr-2">+</span>
-            Add Member
-          </button>
-        </div>
-      </div>
+  {/* Add Member Button */}
+  <div className="flex space-x-2 md:space-x-4">
+    <button
+      onClick={openModal}
+      className="flex items-center px-3 py-2 text-gray-700 transition bg-gray-200 rounded-md hover:bg-gray-300"
+    >
+      <span className="mr-2">+</span>
+      Add Member
+    </button>
+  </div>
+</div>
+
 
       {/* Board Columns */}
       <div className="flex gap-3 overflow-x-auto max-w-full">
