@@ -6,13 +6,13 @@ import { Link } from 'react-router';
 
 export default function WorkspaceCard({ workspace }) {
     return (
-        <Link to="/kanban" className={` border border-gray-300 rounded-lg text-white h-full`}>
+        <Link to={`/workspace/${workspace.id}`} className={` border border-gray-300 rounded-lg text-white h-full`}>
             <div className={`rounded-t-lg flex flex-row items-center justify-center bg-primary`}>
                 <h2 className='font-semibold text-center text-white p-7 text-txt20'>{workspace.title}</h2>
             
                 </div>
 
-                <div className="flex flex-col justify-between gap-6 pt-5 px-5 bg-white rounded-b-lg">
+                <div className="flex flex-col justify-between gap-6 px-5 pt-5 bg-white rounded-b-lg">
                     <p className="font-normal text-txt12 line-clamp-2 text-primary">{workspace.description}</p>
                     
                     <div className="flex justify-end">

@@ -8,17 +8,27 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
 import { useCreateTaskMutation } from "../features/addTaskApi";
 import { useGetWorkspacesQuery } from "../features/workspaceApi";
+import { useParams } from "react-router";
+import { useGetMeQuery } from "../features/auth/authApiSlice";
 
 
 export default function AddNewTaskPopUp({isOpen, onClose}) {
-  
+ const {id} = useParams();
+ const workspaceId = id;
+ console.log('workspaceId', workspaceId)
   if (!isOpen) return null;
+  
+
   const [createTask] = useCreateTaskMutation();
+
   const token = getAceAccessToken();
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
 
-  // Fetch categories from API
+  const {data} = useGetMeQuery();
+  const userId = data?.id;
+  console.log('userId', userId)
+  // Fetch categories
   useEffect(() => {
     async function fetchCategories() {
       try {
@@ -35,7 +45,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
     }
     fetchCategories();
   }, [token]);
-  const [data]=useGetWorkspacesQuery();
+  // const [data]=useGetWorkspacesQuery();
 
 
   
@@ -50,9 +60,9 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
     created_at: new Date().toISOString(),
     is_important:true,
     category_id: "", // User selects from dropdown
-    user_id: uuidv4(),
-    workspace_id: uuidv4(),
-    position: positionCounter++ ,
+    user_id: userId,
+    workspace_id: workspaceId,
+    position: 2 ,
   };
 
   const validationSchema = Yup.object().shape({
@@ -116,7 +126,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-4 xl:pb-7">
                 <label
                   htmlFor="title"
-                  className="font-medium  text-primary md:text-txt14  "
+                  className="font-medium  text-primarytext-txt16 lg:text-txt18  "
                 >
                   Task Title
                 </label>
@@ -137,7 +147,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-4 xl:pb-7">
                 <label
                   htmlFor="due_date"
-                  className="font-medium text-primary md:text-txt16 lg:text-txt18"
+                  className="font-medium text-primary text-txt16 lg:text-txt18"
                 >
                  Due Date
                 </label>
@@ -157,7 +167,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-4 xl:pb-7">
                 <label
                   htmlFor="start_date"
-                  className="font-medium text-primary md:text-txt16 lg:text-txt18"
+                  className="font-medium text-primary text-txt16 md:text-txt-18"
                 >
                  Start Date
                 </label>
@@ -178,7 +188,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-4 xl:pb-7">
                 <label
                   htmlFor="reminder_date"
-                  className="font-medium text-primary md:text-txt16 lg:text-txt18"
+                  className="font-medium text-primary text-txt16 lg:text-txt18"
                 >
                  Reminder Date
                 </label>
@@ -186,7 +196,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                   name="reminder_date"
                   type="date"
                   placeholder="dd/mm/yyyy"
-                  className="w-full p-1.5 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+                  className="w-full p-1.5 border dark:text-gray-300  dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
                 />
                 <ErrorMessage
                   name="reminder_date"
@@ -198,32 +208,37 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               
                 
               
-              {/* Description */}
+              {/* Assign to */}
               <div className="pb-4 xl:pb-7">
                 <label
                   htmlFor="note"
-                  className="font-medium text-primary md:text-txt16 lg:text-txt18 "
+                  className="font-medium  text-primary text-txt16 lg:text-txt18 "
                 >
-                  Assigns to
+                  Assign to
                 </label>
                 <Field
                   name="note"
-                  as="text"
-                  className="w-full p-1.5 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 
-             focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+                  type="text"
+                  placeholder="your member"
+                  className="w-full p-1.5  border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
                 />
                 <ErrorMessage
                   name="note"
                   component="div"
-                  className="text-sm text-red-500 text-txt14"
+                  className="text-sm text-red-500 "
                 />
                 
               </div>
 
               {/* Category Dropdown */}
+              <div>
+                <label htmlFor="category_id" className="font-medium  text-primary text-txt16 lg:text-txt18 " >
+                Category
+                </label>
               {loadingCategories ? (
                 <p>Loading categories...</p>
               ) : (
+                
                 <Field as="select" name="category_id" className="w-full p-1.5 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 
              focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300">
                   <option value="">Select Category</option>
@@ -235,6 +250,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                 </Field>
               )}
               <ErrorMessage name="category_id" component="div" className="text-red-500" />
+              </div>
               {/* upload file */}
               {/* <div className="flex items-center  justify-center w-full">
                 <label
@@ -251,9 +267,9 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               </div> */}
               <div className="flex justify-end mb-5">
               <button
-                  
                   className="m-2 px-6 py-2 dark:text-white text-center text-txtPrimary transition-all rounded-md text-btn-txt  border active:scale-95"
-                >
+                  onClick={onClose}
+              >
                   cancle
                 </button>
                 <button

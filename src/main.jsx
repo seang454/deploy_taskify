@@ -50,8 +50,8 @@ ReactDOM.createRoot(root).render(
             <Route path="/workspace" element={<ModalWorkspace />} />
             <Route path="sidebar" element={<Sidebar />} />
             <Route path="/topage" element={<ToDoPage />} />
-            <Route path="/kanban" element={<Kanban/>} />
-            <Route path="/workspacepage" element={<WorkspacePage/>}/>
+            <Route path="/workspace/:id" element={<WorkspacePage/>}/>
+            <Route path="/workspace" element={<WorkspacePage/>}/>
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />

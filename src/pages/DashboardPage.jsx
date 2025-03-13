@@ -4,6 +4,7 @@ import ModalWorkspace from "../Components/ModalWorkspace";
 import { useLocation } from "react-router";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("your-workspace");
@@ -46,7 +47,9 @@ export default function DashboardPage() {
       date: "12 Feb, 2025, at 3:05 PM",
     },
   ];
-
+  
+  
+  
   useEffect(() => {
     const fetchWorkspaces = async () => {
       if (token) {
@@ -115,7 +118,7 @@ export default function DashboardPage() {
                   <h3 className="flex items-center text-txt20 text-primary">+ Create New Workspace</h3>
                 </div>
                 {workspaceList.map((workspace) => (
-                  <WorkspaceCard key={workspace.id} workspace={workspace} />
+                  <WorkspaceCard key={workspace.id}  workspace={workspace} />
                 ))}
               </>
             )}
