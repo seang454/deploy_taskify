@@ -1,9 +1,11 @@
 import {Clock, Filter, UserPlus} from "lucide-react";
 import { useState,  } from "react";
 import AddNewTaskPopUp from "../Components/AddNewTaskPopUp";
-
+import { useParams } from "react-router-dom";
 
 const WorkspacePage = () => {
+    const { id } = useParams();
+    console.log('id', id)
     const columns = [
         {
             id: 1,
@@ -223,7 +225,7 @@ const Column = ({ column }) => {
         <AddNewTaskPopUp 
             isOpen={isModelOpen}
             onClose={() => setIsModelOpen(false)}
-            // token={token}
+            
             />
         </>
     );
