@@ -23,7 +23,7 @@ const TaskCard = ({ title, id,description,link,createdDate,checklist,category,du
         onDragStart={(e) => handleDragStart(e, { title, id, column })}
         className="cursor-grab rounded   p-3 active:cursor-grabbing"
       >
-        <div className="bg-white dark:bg-gray-400 rounded-lg shadow-md  hover:shadow-xl px-4 py-6">
+        <div className="bg-white dark:bg-gray-400 rounded-lg shadow-md  hover:shadow-xl px-3 py-6">
           <p className="font-bold text-gray-700 text-[18px] dark:text-white">{title}</p>
           <div className="text-sm text-gray-500 mt-2 line-clamp-2">
             {description}

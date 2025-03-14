@@ -90,8 +90,8 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
 
   return (
     <>
-      <div className=" font-roboto inset-0 fixed z-50 flex items-center justify-center bg-black bg-opacity-50 ">
-        <div className="px-10 bg-white rounded-md ">
+      <div className=" font-roboto inset-0 fixed z-50 flex items-center justify-center bg-black  bg-opacity-50 ">
+        <div className="px-10 bg-white rounded-md dark:bg-gray-700 ">
           <div className="">
             <div className="pb-4 flex justify-between">
               <div className="grid pr-10"> 
@@ -125,7 +125,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-4 xl:pb-7">
                 <label
                   htmlFor="title"
-                  className="font-medium  text-primarytext-txt16 lg:text-txt18  "
+                  className="font-medium text-primary dark:text-gray-50 text-primarytext-txt16 lg:text-txt18  "
                 >
                   Task Title
                 </label>

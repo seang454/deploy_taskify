@@ -46,7 +46,7 @@ export default function DashboardPage() {
       color: "bg-gray-600",
       date: "12 Feb, 2025, at 3:05 PM",
     },
-  ];
+  ]; 
   
   
   
@@ -79,8 +79,8 @@ export default function DashboardPage() {
 
   return (
     <>
-      <div className="flex bg-gray-100 border">
-        <section className="flex-1 p-6 bg-white ">
+      <div className="flex bg-gray-100  border">
+        <section className="flex-1 p-6 bg-white dark:bg-[#121321] ">
           {/* Tabs */}
           <div className="flex px-3 py-3 space-x-10 bg-gray-100 border-b-2 md:justify-around rounded-xl ">
             <button
@@ -107,15 +107,15 @@ export default function DashboardPage() {
           </div>
 
           {/* Workspace Content */}
-          <div className="grid grid-cols-1 gap-5 mt-5 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+          <div className="grid grid-cols-1 gap-5 mt-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr">
             {/* If "Your Workspace" is active */}
             {activeTab === "your-workspace" && (
               <>
                 <div
-                  className="flex justify-center p-6 text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
+                  className="flex justify-center p-6 dark:bg-gray-800  text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
                   onClick={() => setIsModelOpen(true)}
                 >
-                  <h3 className="flex items-center text-txt20 text-primary">+ Create New Workspace</h3>
+                  <h3 className="flex items-center dark:text-white  text-txt20 text-primary">+ Create New Workspace</h3>
                 </div>
                 {workspaceList.map((workspace) => (
                   <WorkspaceCard key={workspace.id}  workspace={workspace} />

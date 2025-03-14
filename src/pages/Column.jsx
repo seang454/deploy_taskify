@@ -23,9 +23,12 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
 //    const user_id= data?.id;
 //    console.log('user_id', user_id)
  
-  const { data: tasks, error, isLoading } = useGetTasksQuery();
-console.log("API Response:", { tasks, error, isLoading });
-  
+//   const { data: tasks, error, isLoading } = useGetTasksQuery();
+// console.log("API Response:", { tasks, error, isLoading });
+// console.log('tasks', tasks)
+console.log('Fetching tasks...');
+const { data, error, isLoading } = useGetTasksQuery({ limit: 10, offset: 0 });
+console.log('API Response:', { data, error, isLoading });
   
   const [active, setActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -129,12 +132,10 @@ console.log("API Response:", { tasks, error, isLoading });
   };
 
 
-  const filteredTasks = tasks ? tasks.filter((task) => task.column === column) : [];
+  // const filteredTasks = tasks ? tasks.filter((task) => task.column === column) : [];
+  const filterCards = cards.filter((c) => c.column === column)
 
-  // console.log("Fetched Tasks:", tasks);
-  // console.log("Filtered Tasks:", filteredTasks);
-  // console.log("Column:", column);
-
+ 
   return (
     <>
     <div className="w-full min-w-[310px] bg-white dark:bg-gray-500 rounded-md hover:shadow- p-6 flex flex-col">
@@ -143,7 +144,7 @@ console.log("API Response:", { tasks, error, isLoading });
         <span>
           {title}{" "}
           <span className="bg-gray-200 px-2 py-1 text-primary rounded-full text-sm font-medium">
-            {filteredTasks.length}
+            {filterCards.length}
           </span>
         </span>
         <button
@@ -166,8 +167,8 @@ console.log("API Response:", { tasks, error, isLoading });
           flexGrow: 1, // Allow the task list to grow based on available space
         }}
       >
-        {filteredTasks.length > 0 ? (
-          filteredTasks.map((task) => (
+        {filterCards.length > 0 ? (
+          filterCards.map((task) => (
             <div key={task.id}>
               <TaskCard {...task} handleDragStart={handleDragStart} />
             </div>

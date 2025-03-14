@@ -5,7 +5,7 @@ export const addTaskApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         createTask: builder.mutation({
             query: (body) => {
-                const token = getAceAccessToken(); // Call the function to get token
+                const token = getAceAccessToken(); 
                 return {
                     url: "/tasks",
                     method: "POST",
@@ -17,16 +17,31 @@ export const addTaskApi = apiSlice.injectEndpoints({
                 };
             }
         }),
+        // getTasks: builder.query({
+        //     query:()=>{
+        //         const token1 = getAceAccessToken();
+        //         return {
+        //             url: `/tasks?limit=20&offset=0`,
+        //             method: "GET",
+        //             headers: {
+        //                 Authorization: `Bearer ${token1}`,
+        //                 "Content-Type": "application/json"
+        //             }
+        //         }
+        //     }
+        // })
         getTasks: builder.query({
-            query:()=>({
-                    url: `/tasks?limit=20&offset=0`,
+            query: ({ limit = 20, offset = 0 }) => {
+                const token = getAceAccessToken();
+                return {
+                    url: `/tasks?limit=${limit}&offset=${offset}`,
                     method: "GET",
-                    body,
                     headers: {
-                        Authorization: `Bearer ${getAceAccessToken()}`,
+                        Authorization: `Bearer ${token}`,
                         "Content-Type": "application/json"
                     }
-            })
+                };
+            }
         })
     })
 });
