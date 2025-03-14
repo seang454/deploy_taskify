@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between w-full max-w-[1200px] mx-auto">
         {/* Logo */}
         <div>
-          <img src={TaskifyLogo} className="w-[175px]" alt="Logo" />
+          <img src={TaskifyLogo} className="w-[175px] z-9" alt="Logo" />
         </div>
 
         {/* Desktop Buttons */}

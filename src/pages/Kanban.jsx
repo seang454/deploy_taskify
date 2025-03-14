@@ -20,7 +20,7 @@ function Kanban() {
   return (
     <div className="p-5 bg-gray-100 dark:bg-[#121321]">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 ml-10">
         <div className="text-[20px] bg-gray-200 p-2 rounded-[100px] font-bold text-gray-800 dark:text-white hover:shadow-sm">Final Project of Foundation G3</div>
 
         {/* Add Member Button */}
