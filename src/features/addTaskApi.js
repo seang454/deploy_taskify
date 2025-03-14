@@ -17,19 +17,6 @@ export const addTaskApi = apiSlice.injectEndpoints({
                 };
             }
         }),
-        // getTasks: builder.query({
-        //     query:()=>{
-        //         const token1 = getAceAccessToken();
-        //         return {
-        //             url: `/tasks?limit=20&offset=0`,
-        //             method: "GET",
-        //             headers: {
-        //                 Authorization: `Bearer ${token1}`,
-        //                 "Content-Type": "application/json"
-        //             }
-        //         }
-        //     }
-        // })
         getTasks: builder.query({
             query: ({ limit, offset }) => {
                 const token = getAceAccessToken();
