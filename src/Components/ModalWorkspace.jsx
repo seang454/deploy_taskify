@@ -108,7 +108,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
 
 
   return (
-    <div className="sticky top-0 bottom-0 inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
+    <div className="sticky top-0 h-[100vh] bottom-0 inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
       <div className="bg-white  p-6 rounded-lg shadow-lg w-[90%] md:w-[75%] lg:w-[65%] sticky top-0 bottom-0">
         
         {/* Close Button */}

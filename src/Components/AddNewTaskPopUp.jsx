@@ -90,7 +90,8 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
 
   return (
     <>
-      <div className=" font-roboto inset-0 fixed z-50 flex items-center justify-center bg-black  bg-opacity-50 ">
+      <div className=" font-roboto inset-0 fixed
+       top-0 bottom-0 z-50 flex items-center justify-center bg-black  bg-opacity-50 ">
         <div className="px-10 bg-white rounded-md dark:bg-gray-700 ">
           <div className="">
             <div className="pb-4 flex justify-between">
@@ -122,7 +123,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
           >
             <Form>
               {/* title */}
-              <div className="pb-4 xl:pb-7">
+              <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="title"
                   className="font-medium text-primary dark:text-gray-50 text-primarytext-txt16 lg:text-txt18  "
@@ -143,7 +144,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                 
               </div>
               {/* Due Date */}
-              <div className="pb-4 xl:pb-7">
+              <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="due_date"
                   className="font-medium text-primary text-txt16 lg:text-txt18"
@@ -163,7 +164,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                 />
                </div>
                 {/* start_date*/}
-              <div className="pb-4 xl:pb-7">
+              <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="start_date"
                   className="font-medium text-primary text-txt16 md:text-txt-18"
@@ -184,7 +185,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                 
               </div>
               {/*reminder_date*/}
-              <div className="pb-4 xl:pb-7">
+              <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="reminder_date"
                   className="font-medium text-primary text-txt16 lg:text-txt18"
@@ -208,7 +209,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                 
               
               {/* Assign to */}
-              <div className="pb-4 xl:pb-7">
+              <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="note"
                   className="font-medium  text-primary text-txt16 lg:text-txt18 "
