@@ -21,7 +21,7 @@ function Kanban() {
   return (
     <div className="p-8 bg-[#F9FAFB] dark:bg-[#121321]">
       {/* Header */}
-     <div className="flex flex-col md:flex-row  justify-between mb-6 gap-4">
+     <div className="flex flex-col md:flex-row  justify-between mb-6 gap-4 ml-10">
   <div className="text-[16px] md:text-[20px] hover:bg-gray-300 bg-white dark:bg-gray-300 dark:hover:bg-white p-2 rounded-full font-bold text-primary dark:text-primary hover:shadow-sm text-center">
     Final Project of Foundation G3
   </div>
