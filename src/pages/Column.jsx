@@ -8,7 +8,7 @@ const DropIndicator = ({ beforeId, column }) => {
     <div
       data-before={beforeId || "-1"}
       data-column={column}
-      className="my-0.5 h-0.5 w-full bg-violet-400 opacity-0"
+      className="my-0.5 h-0.5 w-full bg-primary opacity-0"
     />
   );
 };
@@ -121,7 +121,7 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
       <div className="flex items-center justify-between text-lg font-bold dark:text-white">
         <span>
           {title}{" "}
-          <span className="bg-gray-200 px-2 py-1 text-primary rounded-full text-sm font-medium">
+          <span className="bg-gray-200 px-2 py-1 text-primary rounded-2xl text-sm font-medium">
             {filteredCards.length}
           </span>
         </span>

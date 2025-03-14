@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import Column from "./Column";
+import {Clock, Filter, UserPlus} from "lucide-react";
 import AddMemberForm from "../Components/MemberCard"; // ✅ Fixed import
 
 const DEFAULT_CARDS = [
@@ -18,10 +19,10 @@ function Kanban() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="p-8 bg-gray-100 dark:bg-[#121321]">
+    <div className="p-8 bg-[#F9FAFB] dark:bg-[#121321]">
       {/* Header */}
      <div className="flex flex-col md:flex-row  justify-between mb-6 gap-4">
-  <div className="text-[16px] md:text-[20px] bg-gray-200 p-2 rounded-full font-bold text-gray-800 dark:text-white hover:shadow-sm text-center">
+  <div className="text-[16px] md:text-[20px] hover:bg-gray-300 bg-white dark:bg-gray-300 dark:hover:bg-white p-2 rounded-full font-bold text-primary dark:text-primary hover:shadow-sm text-center">
     Final Project of Foundation G3
   </div>
 
@@ -29,9 +30,9 @@ function Kanban() {
   <div className="flex space-x-2 md:space-x-4">
     <button
       onClick={openModal}
-      className="flex items-center px-3 py-2 text-gray-700 transition bg-gray-200 rounded-md hover:bg-gray-300"
-    >
-      <span className="mr-2">+</span>
+                        className="flex items-center px-3 py-2 font-medium text-primary transition bg-white dark:bg-gray-300 dark:hover:bg-white rounded-full  border border-[#12297A] hover:bg-gray-300"
+                    >
+                        <UserPlus className="mr-2" size={16} />
       Add Member
     </button>
   </div>
