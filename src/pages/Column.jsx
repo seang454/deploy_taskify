@@ -1,32 +1,20 @@
-
 import { useState } from "react";
 import TaskCard from "./TaskCard";
 import { FiPlus } from "react-icons/fi";
+
 // DropIndicator component
 const DropIndicator = ({ beforeId, column }) => {
   return (
     <div
       data-before={beforeId || "-1"}
       data-column={column}
-      className="my-0.5 h-0.5 w-full bg-violet-400 opacity-0"
+      className="my-0.5 h-0.5 w-full bg-primary opacity-0"
     />
   );
 };
 
 const Column = ({ title, headingColor, cards, column, setCards }) => {
   const [active, setActive] = useState(false);
-
-  // Add a new task (placeholder for now)
-  const handleAddTask = () => {
-    const newTask = {
-      id: Math.random().toString(36).substr(2, 9), // Random ID
-      title: "New Task", // Placeholder title
-      column, // Add the task to the correct column
-      createdDate: new Date().toLocaleDateString(),
-      dueDate: new Date().toLocaleDateString(),
-    };
-    setCards([...cards, newTask]);
-  };
 
   const handleDragStart = (e, card) => {
     e.dataTransfer.setData("cardId", card.id);
@@ -128,19 +116,16 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
   const filteredCards = cards.filter((c) => c.column === column);
 
   return (
-    <div className="w-full min-w-[310px] bg-white  dark:bg-gray-500 rounded-md  hover:shadow- p-6 flex flex-col">
+    <div className="w-full min-w-[310px] bg-white dark:bg-gray-500 rounded-md hover:shadow- p-6 flex flex-col">
       {/* Header */}
-      <div className="flex  items-center justify-between text-lg font-bold dark:text-white">
+      <div className="flex items-center justify-between text-lg font-bold dark:text-white">
         <span>
           {title}{" "}
-          <span className="bg-gray-200 px-2 py-1 text-primary rounded-full text-sm font-medium">
+          <span className="bg-gray-200 px-2 py-1 text-primary rounded-2xl text-sm font-medium">
             {filteredCards.length}
           </span>
         </span>
-        <button
-          onClick={handleAddTask} // Add new task on click
-          className="text-white  hover:text-gray-200 rounded-full bg-primary px-1 py-1"
-        >
+        <button className="text-white hover:text-gray-200 rounded-full bg-primary px-1 py-1">
           <FiPlus />
         </button>
       </div>
@@ -161,10 +146,7 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
         {filteredCards.length > 0 ? (
           filteredCards.map((c) => (
             <div key={c.id}>
-              <TaskCard
-                {...c}
-                handleDragStart={handleDragStart}
-              />
+              <TaskCard {...c} handleDragStart={handleDragStart} />
             </div>
           ))
         ) : (
@@ -180,4 +162,5 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
 };
 
 export default Column;
+
 
