@@ -13,7 +13,7 @@ const DropIndicator = ({ beforeId, column }) => {
     <div
       data-before={beforeId || "-1"}
       data-column={column}
-      className="my-0.5 h-0.5 w-full bg-violet-400 opacity-0"
+      className="my-0.5 h-0.5 w-full bg-primary opacity-0"
     />
   );
 };
@@ -134,13 +134,13 @@ console.log('card in column', cards);
       <div className="flex items-center justify-between text-lg font-bold dark:text-white">
         <span>
           {title}{" "}
-          <span className="bg-gray-200 px-2 py-1 text-primary rounded-full text-sm font-medium">
-            {filterCards.length}
+          <span className="px-2 py-1 text-sm font-medium bg-gray-200 text-primary rounded-2xl">
+            {filteredCards.length}
           </span>
         </span>
         <button
         onClick={() => setIsModalOpen(true)}
-        className="text-white hover:text-gray-200 rounded-full bg-primary px-1 py-1">
+        className="px-1 py-1 text-white rounded-full hover:text-gray-200 bg-primary">
           <FiPlus />
         </button>
       </div>
@@ -165,7 +165,7 @@ console.log('card in column', cards);
             </div>
           ))
         ) : (
-          <div className="text-gray-500 text-sm italic flex items-center justify-center h-24">
+          <div className="flex items-center justify-center h-24 text-sm italic text-gray-500">
             No tasks available
           </div>
         )}
