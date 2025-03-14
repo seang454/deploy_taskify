@@ -5,6 +5,7 @@ import AddNewTaskPopUp from "../Components/AddNewTaskPopUp";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
 import { useGetTasksQuery } from "../features/addTaskApi";
 import { useParams } from "react-router";
+import Kanban from "./Kanban";
 
 // DropIndicator component
 const DropIndicator = ({ beforeId, column }) => {
@@ -18,17 +19,7 @@ const DropIndicator = ({ beforeId, column }) => {
 };
 
 const Column = ({ title, headingColor, cards, column, setCards }) => {
-//  const {id} = useParams();
-//  const {data} = useGetMeQuery();
-//    const user_id= data?.id;
-//    console.log('user_id', user_id)
- 
-//   const { data: tasks, error, isLoading } = useGetTasksQuery();
-// console.log("API Response:", { tasks, error, isLoading });
-// console.log('tasks', tasks)
-console.log('Fetching tasks...');
-const { data, error, isLoading } = useGetTasksQuery({ limit: 10, offset: 0 });
-console.log('API Response:', { data, error, isLoading });
+console.log('card in column', cards);
   
   const [active, setActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -168,9 +159,9 @@ console.log('API Response:', { data, error, isLoading });
         }}
       >
         {filterCards.length > 0 ? (
-          filterCards.map((task) => (
-            <div key={task.id}>
-              <TaskCard {...task} handleDragStart={handleDragStart} />
+          filterCards.map((card) => (
+            <div key={card.id}>
+              <TaskCard {...card} handleDragStart={handleDragStart} />
             </div>
           ))
         ) : (
