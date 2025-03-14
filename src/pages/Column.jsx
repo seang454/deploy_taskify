@@ -18,9 +18,10 @@ const DropIndicator = ({ beforeId, column }) => {
   );
 };
 
-const Column = ({ title, headingColor, cards, column, setCards }) => {
+const Column = ({ title, headingColor, cards=[], column, setCards ,workspace_id }) => {
+ 
 console.log('card in column', cards);
-  
+  // console.log('workspace_id', workspace_id)
   const [active, setActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
@@ -124,8 +125,9 @@ console.log('card in column', cards);
 
 
   // const filteredTasks = tasks ? tasks.filter((task) => task.column === column) : [];
-  const filterCards = cards.filter((c) => c.column === column)
+  const filterCards = (cards || []).filter((c) => c.workspace_id === workspace_id);
 
+console.log('filterCards', filterCards)
  
   return (
     <>

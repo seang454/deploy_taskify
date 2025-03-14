@@ -83,6 +83,7 @@ function Kanban() {
       {/* Board Columns */}
       <div className="flex gap-3 overflow-x-auto max-w-full">
         <Column
+        workspace_id={id}
           title="To Do"
           column="todo"
           headingColor="text-yellow-200"
