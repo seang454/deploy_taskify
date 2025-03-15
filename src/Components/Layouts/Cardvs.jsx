@@ -6,7 +6,7 @@ export default function Cardvs({icon,title,description}) {
               <img className="w-8" src={icon} alt="" />
             </div>
       <div className=" p-2.5 rounded-t-lg font-family text-txt20 font-medium">{title}</div>
-      <div className="bg-transparent p-2.5 font-family text-gray-500 leading-7">{description}</div>
+      <div className="bg-transparent p-2.5 font-family text-gray-500 leading-7 dark:text-gray-300">{description}</div>
     </section>
     //   <div  className="w-[400px] shadow-lg hover:shadow-2xl  -mb-8 rounded-lg p-4 flex flex-col items-center justify-center">
     //     <div className="flex items-center justify-center w-20 h-20 rounded-full bg-primary"></div>

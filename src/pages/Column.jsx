@@ -1,6 +1,10 @@
 import { useState } from "react";
 import TaskCard from "./TaskCard";
 import { FiPlus } from "react-icons/fi";
+import AddNewTaskPopUp from "../Components/AddNewTaskPopUp";
+import { useGetMeQuery } from "../features/auth/authApiSlice";
+import { useGetTasksQuery } from "../features/addTaskApi";
+import { useParams } from "react-router";
 
 // DropIndicator component
 const DropIndicator = ({ beforeId, column }) => {
@@ -14,8 +18,22 @@ const DropIndicator = ({ beforeId, column }) => {
 };
 
 const Column = ({ title, headingColor, cards, column, setCards }) => {
+//  const {id} = useParams();
+//  const {data} = useGetMeQuery();
+//    const user_id= data?.id;
+//    console.log('user_id', user_id)
+ 
+//   const { data: tasks, error, isLoading } = useGetTasksQuery();
+// console.log("API Response:", { tasks, error, isLoading });
+// console.log('tasks', tasks)
+console.log('Fetching tasks...');
+const { data, error, isLoading } = useGetTasksQuery({ limit: 10, offset: 0 });
+console.log('API Response:', { data, error, isLoading });
+  
   const [active, setActive] = useState(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  
   const handleDragStart = (e, card) => {
     e.dataTransfer.setData("cardId", card.id);
   };
@@ -113,19 +131,25 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
     setActive(false);
   };
 
-  const filteredCards = cards.filter((c) => c.column === column);
 
+  // const filteredTasks = tasks ? tasks.filter((task) => task.column === column) : [];
+  const filterCards = cards.filter((c) => c.column === column)
+
+ 
   return (
+    <>
     <div className="w-full min-w-[310px] bg-white dark:bg-gray-500 rounded-md hover:shadow- p-6 flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between text-lg font-bold dark:text-white">
         <span>
           {title}{" "}
-          <span className="bg-gray-200 px-2 py-1 text-primary rounded-2xl text-sm font-medium">
-            {filteredCards.length}
+          <span className="bg-gray-200 px-2 py-1 text-primary rounded-full text-sm font-medium">
+            {filterCards.length}
           </span>
         </span>
-        <button className="text-white hover:text-gray-200 rounded-full bg-primary px-1 py-1">
+        <button
+        onClick={() => setIsModalOpen(true)}
+        className="text-white hover:text-gray-200 rounded-full bg-primary px-1 py-1">
           <FiPlus />
         </button>
       </div>
@@ -143,10 +167,10 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
           flexGrow: 1, // Allow the task list to grow based on available space
         }}
       >
-        {filteredCards.length > 0 ? (
-          filteredCards.map((c) => (
-            <div key={c.id}>
-              <TaskCard {...c} handleDragStart={handleDragStart} />
+        {filterCards.length > 0 ? (
+          filterCards.map((task) => (
+            <div key={task.id}>
+              <TaskCard {...task} handleDragStart={handleDragStart} />
             </div>
           ))
         ) : (
@@ -158,6 +182,12 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
         <DropIndicator beforeId={null} column={column} />
       </div>
     </div>
+    <AddNewTaskPopUp 
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            
+            />
+    </>
   );
 };
 

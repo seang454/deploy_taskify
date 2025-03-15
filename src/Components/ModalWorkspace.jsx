@@ -108,8 +108,8 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
 
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[75%] lg:w-[65%] sticky top-0 bottom-0">
+    <div className="sticky top-0 h-[100vh] bottom-0 inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
+      <div className="bg-white  p-6 rounded-lg shadow-lg w-[90%] md:w-[75%] lg:w-[65%] sticky top-0 bottom-0">
         
         {/* Close Button */}
         <button 
@@ -155,7 +155,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
                     name="description"
                     as="textarea"
                     placeholder="Put your workspace name..."
-                    className="w-full p-1 border rounded-md h-28 lg:h-32 xl:h-40 xl:p-2 text-txt14 xl:text-txt16 "
+                    className="w-full p-1 border rounded-md h-28 lg:h-32 xl:h-36 xl:p-2 text-txt14 xl:text-txt16 "
                   />
                   </div>
                   <button 

@@ -12,7 +12,7 @@ const DropIndicator = ({ beforeId, column }) => {
   );
 };
 
-const TaskCard = ({ title, id,description,link,createdDate,checklist,category,dueDate, column, handleDragStart }) => {
+const TaskCard = ({ title,id,description,link,createdDate,checklist,category,dueDate, column, handleDragStart }) => {
   return (
     <>
       <DropIndicator beforeId={id} column={column} />
@@ -23,13 +23,13 @@ const TaskCard = ({ title, id,description,link,createdDate,checklist,category,du
         onDragStart={(e) => handleDragStart(e, { title, id, column })}
         className="cursor-grab rounded   p-3 active:cursor-grabbing"
       >
-        <div className="bg-white dark:bg-gray-400 rounded-lg shadow-md  hover:shadow-xl px-4 py-6">
+        <div className="bg-white dark:bg-gray-400 rounded-lg shadow-md  hover:shadow-xl px-3 py-6">
           <p className="font-bold text-gray-700 text-[18px] dark:text-white">{title}</p>
-          <div className="text-sm text-gray-500 mt-2 line-clamp-2">
+          <div className="text-sm text-gray-500 mt-2 line-clamp-2 dark:text-gray-200">
             {description}
           </div>
            {/* Task Created Date */}
-            <div className="text-xs text-gray-500 mt-4"> {/* Added spacing */}
+            <div className="text-xs text-gray-500 mt-4 dark:text-gray-200"> {/* Added spacing */}
                Created at : {createdDate}
             </div>
 
@@ -46,7 +46,7 @@ const TaskCard = ({ title, id,description,link,createdDate,checklist,category,du
             
              {category && (
                 <div className="flex items-center text-sm text-gray-600 mt-2">
-                    <span className="pr-2">Category:</span>
+                    <span className="pr-2 dark:text-gray-200">Category:</span>
                     <span
                         className={`border-2 py-1 px-2 rounded-lg ${
                             category === "Design"
@@ -70,7 +70,7 @@ const TaskCard = ({ title, id,description,link,createdDate,checklist,category,du
             )}
 
              {link && (
-                <div className=" flex  mt-4 space-y-1"><FiLink className="text-gray-600  mr-2  "/>
+                <div className=" flex  mt-4 space-y-1"><FiLink className="text-gray-600 dark:text-gray-200  mr-2  "/>
                     {link.map((link, index) => (
                         <a
                             key={index}

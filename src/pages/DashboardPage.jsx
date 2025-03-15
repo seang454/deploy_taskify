@@ -3,6 +3,8 @@ import WorkspaceCard from "../Components/WorkspaceCard";
 import ModalWorkspace from "../Components/ModalWorkspace";
 import { useLocation } from "react-router";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
+import { useGetMeQuery } from "../features/auth/authApiSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("your-workspace");
@@ -14,7 +16,11 @@ export default function DashboardPage() {
   console.log("location :", location.state);
 
   const [workspaceList, setWorkspaceList] = useState([]);
-
+  
+  const {data,isSuccess} = useGetMeQuery();
+  console.log('data get', data?.id)
+  const user_id = data?.id;
+  console.log('user_id in dashboard', user_id,isSuccess)
   const sharedWorkspaces = [
     {
       id: 4,
@@ -40,15 +46,17 @@ export default function DashboardPage() {
       color: "bg-gray-600",
       date: "12 Feb, 2025, at 3:05 PM",
     },
-  ];
-
+  ]; 
+  
+  
+  
   useEffect(() => {
     const fetchWorkspaces = async () => {
       if (token) {
         console.log(token);
         try {
           const respone = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/workspaces?limit=20&offset=0`,
+            `${import.meta.env.VITE_BASE_URL}/workspaces?limit=20&offset=0&user_id=eq.${user_id}`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -61,7 +69,7 @@ export default function DashboardPage() {
       }
     };
     fetchWorkspaces();
-  }, [location.state?.token]);
+  }, [data?.id]);
 
   const handleWorkspaceResponse = (newWorkspace) => {
     if (newWorkspace) {
@@ -71,8 +79,8 @@ export default function DashboardPage() {
 
   return (
     <>
-      <div className="flex bg-gray-100 border">
-        <section className="flex-1 p-6 bg-white ">
+      <div className="flex bg-gray-100  border">
+        <section className="flex-1 p-6 bg-white dark:bg-[#121321] ">
           {/* Tabs */}
           <div className="flex px-3 py-3 space-x-10 bg-gray-100 border-b-2 md:justify-around rounded-xl ">
             <button
@@ -99,18 +107,18 @@ export default function DashboardPage() {
           </div>
 
           {/* Workspace Content */}
-          <div className="grid grid-cols-1 gap-5 mt-5 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+          <div className="grid grid-cols-1 gap-5 mt-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr">
             {/* If "Your Workspace" is active */}
             {activeTab === "your-workspace" && (
               <>
                 <div
-                  className="flex justify-center p-6 text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
+                  className="flex justify-center p-6 dark:bg-gray-800  text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
                   onClick={() => setIsModelOpen(true)}
                 >
-                  <h3 className="flex items-center text-txt20 text-primary">+ Create New Workspace</h3>
+                  <h3 className="flex items-center dark:text-white  text-txt20 text-primary">+ Create New Workspace</h3>
                 </div>
                 {workspaceList.map((workspace) => (
-                  <WorkspaceCard key={workspace.id} workspace={workspace} />
+                  <WorkspaceCard key={workspace.id}  workspace={workspace} />
                 ))}
               </>
             )}
