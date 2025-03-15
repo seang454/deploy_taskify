@@ -66,7 +66,7 @@ const formatDate = (isoString) => {
             
              {/* {category && (
                 <div className="flex items-center text-sm text-gray-600 mt-2">
-                    <span className="pr-2">Category:</span>
+                    <span className="pr-2 dark:text-gray-200">Category:</span>
                     <span
                         className={`border-2 py-1 px-2 rounded-lg ${
                             category === "Design"
@@ -98,7 +98,7 @@ const formatDate = (isoString) => {
             )}
 
              {link && (
-                <div className=" flex  mt-4 space-y-1"><FiLink className="text-gray-600  mr-2  "/>
+                <div className=" flex  mt-4 space-y-1"><FiLink className="text-gray-600 dark:text-gray-200  mr-2  "/>
                     {link.map((link, index) => (
                         <a
                             key={index}

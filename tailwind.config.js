@@ -3,6 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      
       gradientColorStops:{
         'primary-gradient': 'rgba(255,255,255,0.1)',
         'secondary-gradient': 'rgba(255,255,255,0)',

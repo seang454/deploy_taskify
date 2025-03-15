@@ -63,8 +63,8 @@ function Kanban() {
   return (
     <div className="font-roboto p-8 bg-gray-100 dark:bg-[#121321]">
       {/* Header */}
-      <div className="flex flex-col md:flex-row  justify-between mb-6 gap-4">
-        <div className="text-txt16 md:text-txt20 bg-gray-200 dark:bg-gray-800 p-2 rounded-lg font-bold text-primary dark:text-white hover:shadow-sm text-center">
+      <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
+        <div className="p-2 font-bold text-center bg-gray-200 rounded-lg text-txt16 md:text-txt20 dark:bg-gray-800 text-primary dark:text-white hover:shadow-sm">
           {workspace?.title || "Loading..."}
         </div>
 
@@ -81,7 +81,7 @@ function Kanban() {
       </div>
 
       {/* Board Columns */}
-      <div className="flex gap-3 overflow-x-auto max-w-full">
+      <div className="flex max-w-full gap-3 overflow-x-auto">
         <Column
         workspace_id={id}
           title="To Do"
