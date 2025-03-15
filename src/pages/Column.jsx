@@ -27,6 +27,7 @@ console.log('card in column', cards);
   
   
   const handleDragStart = (e, card) => {
+    
     e.dataTransfer.setData("cardId", card.id);
   };
 
@@ -137,7 +138,7 @@ console.log('filterCards', filterCards)
         <span>
           {title}{" "}
           <span className="px-2 py-1 text-sm font-medium bg-gray-200 text-primary rounded-2xl">
-            {filteredCards.length}
+            {filterCards.length}
           </span>
         </span>
         <button
