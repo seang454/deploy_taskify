@@ -61,7 +61,7 @@ function Kanban() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="p-8 bg-gray-100 dark:bg-[#121321]">
+    <div className="font-roboto p-8 bg-gray-100 dark:bg-[#121321]">
       {/* Header */}
       <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
         <div className="p-2 font-bold text-center bg-gray-200 rounded-lg text-txt16 md:text-txt20 dark:bg-gray-800 text-primary dark:text-white hover:shadow-sm">
@@ -83,6 +83,7 @@ function Kanban() {
       {/* Board Columns */}
       <div className="flex max-w-full gap-3 overflow-x-auto">
         <Column
+        workspace_id={id}
           title="To Do"
           column="todo"
           headingColor="text-yellow-200"

@@ -10,6 +10,19 @@ export default function WorkspaceCard({ workspace, userId }) {
     const handleNavigate = ()=> {
         navigate(`/kanban/${workspace.id}`,{state: userId})
     }
+
+    const formatDate = (dateString) => {
+        const cleanedDate = dateString.replace(/(st|nd|rd|th)/g, ""); 
+        const date = new Date(cleanedDate);
+
+        if (isNaN(date)) {
+            return "Invalid Date";
+        }
+
+        const options = { month: "short", day: "numeric", year: "numeric" };
+        return date.toLocaleDateString("en-US", options);
+    };
+
     return (
         <section onClick={handleNavigate} className={` border border-gray-300 dark:bg-gray-800 rounded-lg text-white h-full`}>
             <div className={`rounded-t-lg flex flex-row items-center justify-center bg-primary`}>
@@ -17,11 +30,11 @@ export default function WorkspaceCard({ workspace, userId }) {
             
                 </div>
 
-                <div className="flex flex-col justify-between gap-6 px-5 pt-5 dark:bg-gray-800  bg-white  rounded-b-lg">
-                    <p className="font-normal text-txt12 line-clamp-2 dark:text-white  text-primary">{workspace.description}</p>
+                <div className="flex flex-col justify-between gap-6  px-2 pt-5 dark:bg-gray-800  bg-white  rounded-b-lg">
+                    <p className="font-normal px-3 text-txt14 line-clamp-2 dark:text-white  text-primary">{workspace.description}</p>
                     
-                    <div className="flex justify-end">
-                        <p className="px-2 text-gray-500 text-txt12 opacity-80"><FontAwesomeIcon icon={faCalendar} /> {workspace.created_at}</p>
+                    <div className="flex justify-end mb-1  ">
+                        <p className="px-2 py-1 rounded-md text-gray-700 text-txt12 opacity-70"><FontAwesomeIcon icon={faCalendar} /> { formatDate(workspace.created_at)}</p>
                     </div>
             </div>
         </section>
