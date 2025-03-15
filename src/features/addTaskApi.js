@@ -31,7 +31,7 @@ export const addTaskApi = apiSlice.injectEndpoints({
         //     }
         // })
         getTasks: builder.query({
-            query: ({ limit = 20, offset = 0 }) => {
+            query: ({ limit, offset }) => {
                 const token = getAceAccessToken();
                 return {
                     url: `/tasks?limit=${limit}&offset=${offset}`,
