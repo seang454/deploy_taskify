@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Clock,CheckSquare } from "lucide-react"; // Import icons for date & checklist
 import { FiLink } from "react-icons/fi";
+import { useGetCategoriesQuery } from "../features/categoriesApi";
+import { useEffect, useState } from "react";
+import { format } from 'date-fns';
 
 const DropIndicator = ({ beforeId, column }) => {
   return (
@@ -12,8 +15,25 @@ const DropIndicator = ({ beforeId, column }) => {
   );
 };
 
-const TaskCard = ({ title,id,description,link,createdDate,checklist,category,dueDate, column, handleDragStart }) => {
-  return (
+const TaskCard = ({ title, id,note,link,created_at,checklist,category_id,due_date, column, handleDragStart }) => {
+  const [categoryTitle, setCategoryTitle] = useState("");
+  
+  const { data: categoriesdata, error, isLoading } = useGetCategoriesQuery({ limit: 20, offset: 0 });
+
+  useEffect(() => {
+    if (categoriesdata) {
+      const foundCategory = categoriesdata.find((cat) => cat.id === category_id);
+      setCategoryTitle(foundCategory ? foundCategory.title : "Unknown");
+    }
+  }, [categoriesdata, category_id]);
+
+  
+const formatDate = (isoString) => {
+  return format(new Date(isoString), "MMM do, yyyy");
+};
+
+// console.log(formatDate(created_at));
+   return (
     <>
       <DropIndicator beforeId={id} column={column} />
       <motion.div
@@ -23,14 +43,14 @@ const TaskCard = ({ title,id,description,link,createdDate,checklist,category,due
         onDragStart={(e) => handleDragStart(e, { title, id, column })}
         className="cursor-grab rounded   p-3 active:cursor-grabbing"
       >
-        <div className="bg-white dark:bg-gray-400 rounded-lg shadow-md  hover:shadow-xl px-3 py-6">
+        <div className="font-roboto bg-white dark:bg-gray-400 rounded-lg shadow-md  hover:shadow-xl px-3 py-6">
           <p className="font-bold text-gray-700 text-[18px] dark:text-white">{title}</p>
-          <div className="text-sm text-gray-500 mt-2 line-clamp-2 dark:text-gray-200">
-            {description}
+          <div className="text-sm text-gray-500 mt-2 line-clamp-2">
+            {note}
           </div>
            {/* Task Created Date */}
-            <div className="text-xs text-gray-500 mt-4 dark:text-gray-200"> {/* Added spacing */}
-               Created at : {createdDate}
+            <div className="text-sm text-gray-600 mt-4"> {/* Added spacing */}
+               Created at : <span className="text-xs text-gray-500">{formatDate(created_at)}</span>
             </div>
 
               {checklist && (
@@ -44,7 +64,7 @@ const TaskCard = ({ title,id,description,link,createdDate,checklist,category,due
 
           <div className="flex items-center text-sm text-gray-600 mt-2 mb-2">
             
-             {category && (
+             {/* {category && (
                 <div className="flex items-center text-sm text-gray-600 mt-2">
                     <span className="pr-2 dark:text-gray-200">Category:</span>
                     <span
@@ -59,13 +79,21 @@ const TaskCard = ({ title,id,description,link,createdDate,checklist,category,due
                         {category}
                     </span>
                 </div>
-            )}
+            )} */}
+           {category_id && (
+            <div className="flex items-center text-sm text-gray-600 mt-2">
+              <span className="pr-2">Category:</span>
+              <span className="border-2 py-1 px-2 rounded-lg border-secondary text-secondary">
+                {categoryTitle}
+              </span>
+            </div>
+          )}
          
           </div>  
-           {dueDate && (
+           {due_date && (
                 <div className="flex items-center justify-center bg-red-200 rounded-md text-red-500   w-36 p-1 text-sm mt-4">
                     <Clock strokeWidth={1} className="mr-1" width={18} height={18} />
-                    {dueDate}
+                    {formatDate(due_date)}
                 </div>
             )}
 

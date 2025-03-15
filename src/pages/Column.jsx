@@ -7,6 +7,7 @@ import { useGetTasksQuery } from "../features/addTaskApi";
 import { useParams } from "react-router";
 import Kanban from "./Kanban";
 
+
 // DropIndicator component
 const DropIndicator = ({ beforeId, column }) => {
   return (
@@ -18,14 +19,16 @@ const DropIndicator = ({ beforeId, column }) => {
   );
 };
 
-const Column = ({ title, headingColor, cards, column, setCards }) => {
+const Column = ({ title, headingColor, cards=[], column, setCards ,workspace_id }) => {
+ 
 console.log('card in column', cards);
-  
+  // console.log('workspace_id', workspace_id)
   const [active, setActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   
   const handleDragStart = (e, card) => {
+    
     e.dataTransfer.setData("cardId", card.id);
   };
 
@@ -124,8 +127,9 @@ console.log('card in column', cards);
 
 
   // const filteredTasks = tasks ? tasks.filter((task) => task.column === column) : [];
-  const filterCards = cards.filter((c) => c.column === column)
+  const filterCards = (cards || []).filter((c) => c.workspace_id === workspace_id);
 
+console.log('filterCards', filterCards)
  
   return (
     <>
@@ -134,13 +138,13 @@ console.log('card in column', cards);
       <div className="flex items-center justify-between text-lg font-bold dark:text-white">
         <span>
           {title}{" "}
-          <span className="bg-gray-200 px-2 py-1 text-primary rounded-full text-sm font-medium">
+          <span className="px-2 py-1 text-sm font-medium bg-gray-200 text-primary rounded-2xl">
             {filterCards.length}
           </span>
         </span>
         <button
         onClick={() => setIsModalOpen(true)}
-        className="text-white hover:text-gray-200 rounded-full bg-primary px-1 py-1">
+        className="px-1 py-1 text-white rounded-full hover:text-gray-200 bg-primary">
           <FiPlus />
         </button>
       </div>
@@ -165,7 +169,7 @@ console.log('card in column', cards);
             </div>
           ))
         ) : (
-          <div className="text-gray-500 text-sm italic flex items-center justify-center h-24">
+          <div className="flex items-center justify-center h-24 text-sm italic text-gray-500">
             No tasks available
           </div>
         )}

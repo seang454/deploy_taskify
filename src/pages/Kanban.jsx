@@ -7,14 +7,6 @@ import { useGetWorkspacesQuery } from "../features/workspaceApi";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
 import { useGetTasksQuery } from "../features/addTaskApi";
-import { UserPlus } from "lucide-react";
-const DEFAULT_CARDS = [
-  { title: "Look into render bug in dashboard",description:"Start implementing the backend with API in ISTAD's API Group", id: "1", column: "todo", createdDate: "2025-Feb-28",checklist: "2/5",category: "Design", dueDate: "2021-Mar-10", link: ["https://docs.google.com"], },
-  { title: "SOX compliance checklist", id: "2",description:"Start implementing the backend with API in ISTAD's API Group", column: "todo", createdDate: "2025-Feb-12",category: "Design",checklist: "9/10", dueDate: "2022-Mar-10" },
-  { title: "[SPIKE] Migrate to Azure", id: "3",description:"Start implementing the backend with API in ISTAD's API Group", column: "doing", createdDate: "2025-Feb-17",category: "Design", dueDate: "2023-Jan-10" },
-  { title: "Document Notifications service", id: "4",description:"Start implementing the backend with API in ISTAD's API Group", column: "done", createdDate: "2025-02-10",category: "Design", dueDate: "2024-Dec-10" },
-];
-
 
 function Kanban() {
   const location = useLocation();
@@ -69,26 +61,10 @@ function Kanban() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="p-8 bg-[#F9FAFB] dark:bg-[#121321]">
+    <div className="font-roboto p-8 bg-gray-100 dark:bg-[#121321]">
       {/* Header */}
-     <div className="flex flex-col md:flex-row  justify-between mb-6 gap-4">
-  <div className="text-txt16 md:text-txt20 bg-gray-200 dark:bg-gray-800 p-2 rounded-lg font-bold text-primary dark:text-white hover:shadow-sm text-center">
-  {workspace?.title || "Loading..."}
-  </div>
-
-  {/* Add Member Button */}
-  <div className="flex space-x-2 md:space-x-4">
-    <button
-      onClick={openModal}
-                        className="flex items-center px-3 py-2 font-medium text-primary transition bg-white dark:bg-gray-300 dark:hover:bg-white rounded-full  border border-[#12297A] dark:border-primary hover:bg-gray-300"
-                    >
-                        <UserPlus className="mr-2" size={16} />
-      Add Member
-    </button>
-  </div>
-</div>
-      <div className="flex flex-col md:flex-row  justify-between mb-6 gap-4">
-        <div className="text-txt16 md:text-txt20 bg-gray-200 dark:bg-gray-800 p-2 rounded-lg font-bold text-primary dark:text-white hover:shadow-sm text-center">
+      <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
+        <div className="p-2 font-bold text-center bg-gray-200 rounded-lg text-txt16 md:text-txt20 dark:bg-gray-800 text-primary dark:text-white hover:shadow-sm">
           {workspace?.title || "Loading..."}
         </div>
 
@@ -105,8 +81,9 @@ function Kanban() {
       </div>
 
       {/* Board Columns */}
-      <div className="flex gap-3 overflow-x-auto max-w-full">
+      <div className="flex max-w-full gap-3 overflow-x-auto">
         <Column
+        workspace_id={id}
           title="To Do"
           column="todo"
           headingColor="text-yellow-200"

@@ -22,7 +22,7 @@ export default function Sidebar() {
     <>
       <nav
         className={
-          " bg-slate-400 md:flex flex-col h-[100%] text-txt16  place-content-between w-1/5 sticky top-20 bottom-0 gap-y-[330px] py-2 hidden"
+          " bg-background md:flex flex-col h-[100%] text-txt16  place-content-between w-1/5 sticky top-20 bottom-0 gap-y-[330px] py-2 hidden"
         }
       >
         <div className="flex flex-row mt-6 md:flex-col">
@@ -99,16 +99,16 @@ export default function Sidebar() {
           </div>
         </NavLink>
       </nav>
-
+      <div className={"absolute top-4 z-10"}>
       <button
-        className="flex gap-10 p-5 text-2xl rounded-full text-primary sm:hidden"
+        className="flex gap-10 p-5 text-2xl rounded-full text-primary md:hidden mt-20 "
         onClick={toggleMenu}
       >
         {isOpen ? "" : <TiThMenu/> } {/* Changes icon when open/closed */}
-      </button>
+      </button></div>
       {isOpen && (
-        <div className="relative">
-          <nav className="fixed bottom-0 flex flex-col w-1/3 h-full py-2 transition-transform bg-purple-300 text-txt16 place-content-between top-20 gap-y-10 md:hidden min-w-56">
+        <div className="absolute ">
+          <nav className="fixed bottom-0 flex flex-col w-1/3 h-full py-2 transition-transform bg-background text-txt16 place-content-between top-20 gap-y-10 md:hidden min-w-56 z-10 mt-2">
             {/* Close Button */}
             <button
               className="absolute top-0 right-0 flex gap-10 p-5 text-2xl rounded-full text-primary"
