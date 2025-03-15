@@ -96,10 +96,10 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
           <div className="">
             <div className="pb-4 flex justify-between">
               <div className="grid pr-10"> 
-              <h3 className="pt-3 font-bold text-primary text-[24px]">
+              <h3 className="pt-3 font-bold text-primary text-[24px] dark:text-white">
                 Add a new task
               </h3>
-              <p className="text-primary text-txt14 ">
+              <p className="text-primary text-txt14 dark:text-white ">
               Effortlessly manage your to-do list: add a new task
             </p>
               </div>
@@ -126,7 +126,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="title"
-                  className="font-medium text-primary dark:text-gray-50 text-primarytext-txt16 lg:text-txt18  "
+                  className="font-medium text-primary  dark:text-gray-50 text-primarytext-txt16 lg:text-txt18  "
                 >
                   Task Title
                 </label>
@@ -147,7 +147,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="due_date"
-                  className="font-medium text-primary text-txt16 lg:text-txt18"
+                  className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18"
                 >
                  Due Date
                 </label>
@@ -167,7 +167,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="start_date"
-                  className="font-medium text-primary text-txt16 md:text-txt-18"
+                  className="font-medium text-primary dark:text-white text-txt16 md:text-txt-18"
                 >
                  Start Date
                 </label>
@@ -188,7 +188,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="reminder_date"
-                  className="font-medium text-primary text-txt16 lg:text-txt18"
+                  className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18"
                 >
                  Reminder Date
                 </label>
@@ -196,7 +196,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                   name="reminder_date"
                   type="date"
                   placeholder="dd/mm/yyyy"
-                  className="w-full p-1.5 border dark:text-gray-300  dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+                  className="w-full p-1.5 border dark:text-gray-300   dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
                 />
                 <ErrorMessage
                   name="reminder_date"
@@ -212,7 +212,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="note"
-                  className="font-medium  text-primary text-txt16 lg:text-txt18 "
+                  className="font-medium  text-primary dark:text-white text-txt16 lg:text-txt18 "
                 >
                   Assign to
                 </label>
@@ -232,7 +232,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
 
               {/* Category Dropdown */}
               <div>
-                <label htmlFor="category_id" className="font-medium  text-primary text-txt16 lg:text-txt18 " >
+                <label htmlFor="category_id" className="font-medium  text-primary dark:text-white text-txt16 lg:text-txt18 " >
                 Category
                 </label>
               {loadingCategories ? (
