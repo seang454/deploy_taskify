@@ -49,7 +49,7 @@ function Kanban() {
     data: taskdata,
     error,
     isLoading,
-  } = useGetTasksQuery({ limit: 20, offset: 0 });
+  } = useGetTasksQuery({ limit: 30, offset: 0 });
 
   useEffect(() => {
     console.log("API Response:", { taskdata, error, isLoading });

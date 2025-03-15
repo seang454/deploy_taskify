@@ -160,7 +160,7 @@ export default function HomePage() {
 
         {/* GET start */}
         <section className=" pt-10 pb-20 m-auto gap-3.5 bg-primary">
-          <div className="w-4/5 m-auto text-center">
+          <div className="w-4/5 m-auto text-center pb-10">
             <p className="font-bold text-white text-subheading font-family">
               Get to know us!
             </p>
