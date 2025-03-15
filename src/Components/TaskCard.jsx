@@ -2,12 +2,11 @@ import React from "react";
 import { Clock, CheckSquare } from "lucide-react"; // Import icons for date & checklist
 
 const TaskCard = ({ task }) => {
-    // Helper function to format dates
+    
     const formatDate = (dateString) => {
-        const cleanedDate = dateString.replace(/(st|nd|rd|th)/g, ""); // Removes ordinal suffixes
+        const cleanedDate = dateString.replace(/(st|nd|rd|th)/g, ""); 
         const date = new Date(cleanedDate);
 
-        // Check for valid date
         if (isNaN(date)) {
             return "Invalid Date";
         }

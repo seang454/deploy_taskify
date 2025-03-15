@@ -29,8 +29,22 @@ export const addTaskApi = apiSlice.injectEndpoints({
                     }
                 };
             }
+        }),
+        deleteTask: builder.query({
+            query:(task_id) =>{
+                const token = getAceAccessToken();
+                return{
+                    url: `/tasks?id=eq.${task_id}`,
+                    method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    }
+                }
+            }
         })
+
     })
 });
 
-export const { useCreateTaskMutation ,useGetTasksQuery } = addTaskApi;
+export const { useCreateTaskMutation ,useGetTasksQuery, useDeleteTaskQuery } = addTaskApi;
