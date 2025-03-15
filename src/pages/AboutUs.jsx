@@ -1,4 +1,4 @@
-import React from "react";
+
 import Cardab from "../Components/Layouts/Cardab";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import profilepic from "../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp";
@@ -18,17 +18,30 @@ import lyzhia from "../assets/lyzhia.JPG";
 import pich from "../assets/pich.jpg";
 import seangly from "../assets/seangly.jpg";
 import huy from "../assets/huy.jpg";
+import ly from "../assets/ly.png";
+import huy1 from "../assets/huy1.png";
+import pich1 from "../assets/pich1.png";
+import lyzhia1 from "../assets/lyzhia1.png";
+import roith from "../assets/roith.png";
+import pengseang from "../assets/pengseang.png";
+import teachers from "../assets/teachers.png"
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import AOS styles
+import React, { useEffect } from 'react'; 
+import Typed from "typed.js";
+
 export function AboutUs() {
+
   const cardab = [
     {
-      img: profilepic,
+      img: teachers ,
       firstName: "CHAN ",
       lastName: "CHAYA",
       job: "Mentor",
       position: "FULL STACK",
     },
     {
-      img: lyzhia,
+      img: lyzhia1,
       firstName: "EUNG ",
       lastName: "LYZHIA",
       job: "Mentor",
@@ -37,21 +50,21 @@ export function AboutUs() {
   ];
   const cardac = [
     {
-      img: profilepic,
+      img:pengseang,
       firstName: "SIM ",
       lastName: "PENG SEANG",
       job: "Student",
       position: "FULL STACK",
     },
     {
-      img: profilepic,
+      img: ly,
       firstName: "LENG",
       lastName: "NARAK",
       job: "Student",
       position: "FULL STACK",
     },
     {
-      img: pich,
+      img: pich1,
       firstName: "SAM",
       lastName: "SOKUNSREYPICH",
       job: "Student",
@@ -59,14 +72,14 @@ export function AboutUs() {
     },
 
     {
-      img: seangly,
+      img: ly,
       firstName: "SIM",
       lastName: "SEANGLY",
       job: "Student",
       position: "FULL STACK",
     },
     {
-      img: profilepic,
+      img:roith,
       firstName: "SRUN",
       lastName: "OUDOMSAMBATH",
       name: "SIM SEANGLY",
@@ -74,7 +87,7 @@ export function AboutUs() {
       position: "FULL STACK",
     },
     {
-      img:huy,
+      img:huy1,
       firstName: "TANG",
       lastName: "MENG HUY",
       job: "Student",
@@ -107,11 +120,30 @@ export function AboutUs() {
         "Monitor task completion, track milestones, and visualize progress with detailed insights.",
     },
   ];
+  const bl = React.useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(bl.current, {
+      strings: [
+        " Get a Chance to know About Us and Relive Our Journey.",
+      ],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true,
+      backDelay: 1000,
+      showCursor: false,
+      cursorChar: "🔥",
+    });
+
+    return () => {
+      typed.destroy(); // Cleanup to avoid memory leaks
+    };
+  }, []);
   return (
     <>
       <section className="flex flex-col gap-20 font-family min-w-80 w-full">
         <section className="min-w-80">
-          <div className="relative w-full min-h-[400px] sm:min-h-[500px] md:min-h-[700px] flex items-center justify-center ">
+          {/* <div className="relative w-full min-h-[400px] sm:min-h-[500px] md:min-h-[700px] flex items-center justify-center ">
             <img
               className="absolute inset-0 object-cover w-full h-full opacity-60"
               src={groupwork}
@@ -132,7 +164,58 @@ export function AboutUs() {
             </div>
 
             <div className="absolute inset-0 "></div>
-          </div>
+          </div> */}
+           <motion.div
+      className="relative w-full min-h-[400px] sm:min-h-[500px] md:min-h-[700px] flex items-center justify-center"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.2 }}
+      viewport={{ once: false }} // Trigger every time it comes into view
+    >
+      {/* Background Image */}
+      <img
+        className="absolute inset-0 object-cover w-full h-full opacity-60"
+        src={groupwork}
+        alt="Background Image"
+      />
+
+      <div className="relative z-0 px-6 text-center text-white sm:px-12">
+        {/* First Paragraph */}
+        <motion.p
+          className="text-lg sm:text-xl text-primary"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: false }}
+        >
+          WANNA LEARN WHO WE ARE?
+        </motion.p>
+
+        {/* Heading */}
+        <motion.h1 ref={bl}
+          className="text-primary text-2xl sm:text-3xl md:text-4xl font-bold max-w-[90%] sm:max-w-[500px] mx-auto"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          viewport={{ once: false }}
+        >
+        </motion.h1>
+
+        {/* Second Paragraph */}
+        <motion.p
+          className="mt-4 text-lg sm:text-2xl text-secondary font-semibold max-w-[90%] sm:max-w-[500px] mx-auto"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.8 }}
+          viewport={{ once: false }}
+        >
+          Meet our dynamic team and discover the roadmap to success as we
+          will let you know how it works.
+        </motion.p>
+      </div>
+    </motion.div>
+  );
+  
           <div className="custom-shape-divider-bottom-1741223493 fill-white rotate-180 h-20 -mt-[70px] ">
             <svg
               data-name="Layer 1"
@@ -158,39 +241,92 @@ export function AboutUs() {
           </div>
         </section>
 
-        <hr className="bg-transparent w-3/3 border-[2px] border-dashed border-primary relative ml-[0px]" />
-        <section className="items-center justify-center w-4/5 h-auto m-auto ">
-          <div className="bg-primary p-10 rounded-tl-[100px] rounded-br-[100px] text-center">
-            <h1 className="mb-5 text-4xl text-secondary">About Taskify</h1>
-            <p className="mb-10 text-2xl text-white">
-              Taskify is a productivity platform that allows users to organize
-              tasks, collaborate with teams, track progress, set deadlines, and
-              streamline workflow efficiently, enhancing project management and
-              overall productivity.
-            </p>
-          </div>
-        </section>
-        
-        <div className="relative flex items-center justify-center mb-10 text-center">
-         <hr className="absolute w-full border-[2px] border-dashed border-primary z-0 mt-5" />
-          <h1 className="absolute text-white text-4xl bg-secondary py-5 px-6 rounded-tl-[30px] rounded-br-[30px] w-[380px] h-[80px] z-0">
-            OUR VISION
-          </h1>
-             
-        </div>
+       <motion.hr
+  className="bg-transparent w-full border-[2px] border-dashed border-primary relative ml-0"
+  initial={{ width: 0 }} // Initial state (width is 0)
+  whileInView={{ width: "100%" }} // When in view, width becomes 100%
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  viewport={{ once: false }} // Keeps triggering when scrolled back into view
+/> 
+ <motion.section
+      className="items-center justify-center w-4/5 h-auto m-auto"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: false }}
+    >
+      <motion.div
+        className="bg-primary p-10 rounded-tl-[100px] rounded-br-[100px] text-center"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        viewport={{ once: false }}
+      >
+        {/* Heading */}
+        <motion.h1
+          className="mb-5 text-4xl text-secondary"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          viewport={{ once: false }}
+        >
+          About Taskify
+        </motion.h1>
 
-        <section>
-          <div className="grid grid-cols-1  md:grid-cols-2 gap-20 w-[80%] sm:w-3/5 md:w-4/5 lg:w-4/5 m-auto my-5">
-            {cardvs.map((cardvs, index) => (
-              <Cardvs
-                key={index}
-                icon={cardvs.icon}
-                title={cardvs.title}
-                description={cardvs.description}
-              />
-            ))}
-          </div>
-        </section>
+        {/* Description */}
+        <motion.p
+          className="mb-10 text-2xl text-white"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          viewport={{ once: false }}
+        >
+          Taskify is a productivity platform that allows users to organize
+          tasks, collaborate with teams, track progress, set deadlines, and
+          streamline workflow efficiently, enhancing project management and
+          overall productivity.
+        </motion.p>
+      </motion.div>
+    </motion.section>
+        
+      <div className="relative flex items-center justify-center mb-10 text-center">
+  <motion.hr
+    className="absolute w-full border-[2px] border-dashed border-primary z-0 mt-5"
+    initial={{ width: 0 }}  // Initial state
+    whileInView={{ width: "100%", opacity: 1 }}  // Animation when in view
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: false }}  // Keeps triggering when scrolled back into view
+  />
+  <motion.h1
+    className="absolute text-white text-4xl bg-secondary py-5 px-6 rounded-tl-[30px] rounded-br-[30px] w-[380px] h-[80px] z-0"
+    initial={{ y: -100, opacity: 0 }} // Initial state
+    whileInView={{ y: 0, opacity: 1 }} // Animation when in view
+    transition={{ duration: 1, type: "spring", stiffness: 100 }}
+    viewport={{ once: false }} // Keeps triggering when scrolled back into view
+  >
+    OUR VISION
+  </motion.h1>
+</div>
+
+<section>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-20 w-[80%] sm:w-3/5 md:w-4/5 lg:w-4/5 m-auto my-5">
+    {cardvs.map((cardvs, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}  // Cards from left if index is even, right if odd
+        whileInView={{ opacity: 1, x: 0 }}  // Move to original position
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.2 }}  // Trigger animation when card enters the viewport
+      >
+        <Cardvs
+          icon={cardvs.icon}
+          title={cardvs.title}
+          description={cardvs.description}
+        />
+      </motion.div>
+    ))}
+  </div>
+</section>
 
         <div className="relative w-full h-auto">
           {/* SVG Shape Divider - Stays on Top */}
@@ -207,57 +343,75 @@ export function AboutUs() {
           </div>
 
           {/* Content Section */}
-          <div className="relative w-full py-20 bg-blue-300">
-            <section className="flex flex-col items-center justify-between w-4/5 gap-10 m-auto md:flex-row">
-              <div className="flex flex-col gap-6 text-center md:text-left">
-                <h2 className="font-bold text-subheading text-primary">
-                  Let’s try a new Experience with us
-                </h2>
-                <p className="text-[18px] text-gray-700">
-                  Taskify streamlines task management, collaboration, progress
-                  tracking, and workflows, keeping teams productive and aligned
-                  with an intuitive interface.
-                </p>
-              </div>
+           <div className="relative w-full py-20 bg-blue-300">
+      <section className="flex flex-col items-center justify-between w-4/5 gap-10 m-auto md:flex-row">
+        {/* Text Section */}
+        <motion.div
+          className="flex flex-col gap-6 text-center md:text-left"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: false }}
+        >
+          <motion.h2
+            className="font-bold text-subheading text-primary"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: false }}
+          >
+            Let’s try a new Experience with us
+          </motion.h2>
 
-              {/* Image Section */}
-              <div className="relative p-5 rounded-lg w-full max-w-[400px] md:max-w-[500px]">
-                <img
-                  src="https://cdn.prod.website-files.com/619cef5c40cb8925cd33ece3/621e3d842f5305af9170e4eb_619cef5c40cb8963c133f5fc_6076f40a7bc433d96f4663f4_template-vignette-TO-DO-LIST-1200x900.png"
-                  className="w-full rounded-lg"
-                  alt="Taskify App"
-                />
-              </div>
-            </section>
-          </div>
+          <motion.p
+            className="text-[18px] text-gray-700"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            viewport={{ once: false }}
+          >
+            Taskify streamlines task management, collaboration, progress
+            tracking, and workflows, keeping teams productive and aligned with
+            an intuitive interface.
+          </motion.p>
+        </motion.div>
+
+        {/* Image Section */}
+        <motion.div
+          className="relative p-5 rounded-lg w-full max-w-[400px] md:max-w-[500px]"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: false }}
+        >
+          <img
+            src="https://cdn.prod.website-files.com/619cef5c40cb8925cd33ece3/621e3d842f5305af9170e4eb_619cef5c40cb8963c133f5fc_6076f40a7bc433d96f4663f4_template-vignette-TO-DO-LIST-1200x900.png"
+            className="w-full rounded-lg"
+            alt="Taskify App"
+          />
+        </motion.div>
+      </section>
+    </div>
         </div>
 
-        {/* <div class="custom-shape-divider-top-1741177377">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"
-        class="w-full h-auto fill-blue-300">
-        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"></path>
-    </svg>
-</div>
-<div className="bg-blue-300 h-full w-full -mt-[80px] ">
-  <section className="flex flex-col items-center justify-between w-4/5 gap-10 m-auto md:flex-row">
-          <div className="flex flex-col gap-10 ">
-            <h2 className="font-bold font-family text-subheading text-primary">
-             Let’s try new Experience with us
-            </h2>
-            <p className="text-[20px] text-gray-700 mb-10">Taskify streamlines task management, collaboration, progress tracking, and workflows, keeping teams productive and aligned with an intuitive interface.</p>
-           </div>
-              <div className="relative p-10 rounded-lg w-fit ">
-            <img src="https://cdn.prod.website-files.com/619cef5c40cb8925cd33ece3/621e3d842f5305af9170e4eb_619cef5c40cb8963c133f5fc_6076f40a7bc433d96f4663f4_template-vignette-TO-DO-LIST-1200x900.png" className="w-full rounded-lg" />
-          </div>
-        </section>
-</div> */}
-        <div className="relative flex items-center justify-center mb-10 text-center">
-          {/* hr stays behind the text */}
-          {/* <hr className="absolute left-1/2 transform -translate-x-1/2 w-[calc(100%+32px)] border-[2px] border-dashed border-secondary z-0 mt-5" /> */}
-           <hr className="absolute w-full border-[2px] border-dashed border-secondary z-0 mt-5" />
-          <h1 className="absolute text-white text-4xl bg-primary py-5 px-6 rounded-tl-[30px] rounded-br-[30px] w-[380px] h-[80px] z-0">
-            OUR MENTOR
-          </h1>
+     <div className="relative flex items-center justify-center mb-10 text-center">
+          <motion.hr
+  className="absolute w-full border-[2px] border-dashed border-secondary z-0 mt-5"
+  initial={{ width: 0 }}  // Initial state
+  whileInView={{ width: "100%", opacity: 1 }}  // Animation when the element is in view
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  viewport={{ once: false }}  // Keep triggering when it comes back into view
+/>
+
+       <motion.h1
+  className="absolute text-white text-4xl bg-primary py-5 px-6 rounded-tl-[30px] rounded-br-[30px] w-[380px] h-[80px] z-0"
+  initial={{ y: -100, opacity: 0 }} // Initial state
+  whileInView={{ y: 0, opacity: 1 }} // Animation when in view
+  transition={{ duration: 1, type: "spring", stiffness: 100 }}
+  viewport={{ once: false }} // Keeps triggering when scrolled back into view
+>
+  OUR TEAM
+</motion.h1>
 
         </div>
 
@@ -274,13 +428,25 @@ export function AboutUs() {
           ))}
         </div>
         <section className="">
-          <div className="relative flex items-center justify-center mb-10 text-center">
-            {/* <hr className="absolute left-1/2 transform -translate-x-1/2 w-[calc(100%+32px)] border-[2px] border-dashed border-primary z-0 mt-5" /> */}
-             <hr className="absolute w-full border-[2px] border-dashed border-primary z-0 mt-5" />
-            <h1 className="absolute text-white text-4xl bg-secondary py-5 px-6 rounded-tl-[30px] rounded-br-[30px] w-[380px] h-[80px] z-0">
-              OUR MEMBER
-            </h1>
-          </div>
+         <div className="relative flex items-center justify-center mb-10 text-center">
+  <motion.hr
+    className="absolute w-full border-[2px] border-dashed border-primary z-0 mt-5"
+    initial={{ width: 0 }}  // Initial state
+    whileInView={{ width: "100%", opacity: 1 }}  // Animation when in view
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: false }}  // Keep triggering when scrolled back into view
+  />
+  <motion.h1
+    className="absolute text-white text-4xl bg-secondary py-5 px-6 rounded-tl-[30px] rounded-br-[30px] w-[380px] h-[80px] z-0"
+    initial={{ y: -100, opacity: 0 }} // Initial state
+    whileInView={{ y: 0, opacity: 1 }} // Animation when in view
+    transition={{ duration: 1, type: "spring", stiffness: 100 }}
+    viewport={{ once: false }} // Keeps triggering when scrolled back into view
+  >
+    OUR MEMBER
+  </motion.h1>
+</div>
+
         </section>
         <div className="grid grid-cols-1  lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2  gap-20 w-[90%] sm:4/5 md:w-4/5 lg:w-4/5 m-auto my-10">
           {cardac.map((Card1, index) => (
@@ -293,17 +459,62 @@ export function AboutUs() {
             />
           ))}
         </div>
-        <div className="bg-primary	 h-full w-full -mt-[80px] px-10 py-10 border-t-[10px] border-b-[10px] border-secondary">
-          <h1 className="text-center font-bold text-white text-[32px] mb-20 w-fit mx-auto relative after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:w-full after:h-[8px] after:bg-[linear-gradient(to_right,_theme('colors.blue.600')_33%,_theme('colors.secondary')_33%_66%,_theme('colors.red.500')_66%)]">
-            Sponsored and organized by
-          </h1>
+        <div>
+      {/* Sponsored Section */}
+      <motion.div
+        className="bg-primary h-full w-full -mt-[80px] px-10 py-10 border-t-[10px] border-b-[10px] border-secondary"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.h1
+          className="text-center font-bold text-white text-[32px] mb-[100px] w-fit mx-auto relative after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:w-full after:h-[8px] after:bg-[linear-gradient(to_right,_theme('colors.blue.600')_33%,_theme('colors.secondary')_33%_66%,_theme('colors.red.500')_66%)]"
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            duration: 1.2,
+            ease: 'easeOut',
+            delay: 0.2,
+          }}
+        >
+          Sponsored and organized by
+        </motion.h1>
 
-          <div className="flex items-center justify-center -mt-20 ">
-            <img src={logo} alt="" />
-          </div>
-        </div>
+        {/* Logo Section */}
+        <motion.div
+          className="flex items-center justify-center -mt-20"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 1.2,
+            ease: 'easeOut',
+            delay: 0.5,
+          }}
+        >
+          <motion.img
+            src={logo}
+            alt="Logo"
+            initial={{ opacity: 0, rotate: -10 }}
+            whileInView={{ opacity: 1, rotate: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: 'easeOut',
+            }}
+          />
+        </motion.div>
+      </motion.div>
+    </div>
+   
         <div className="relative w-full h-auto mb-20 -mt-20">
-          <img className="w-full mb-" src={student} alt="Teacher" />
+          <motion.img
+          className="w-full"
+          src={student}
+          alt="Teacher"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: false }}
+        />
           <div className="absolute left-0 w-full -bottom-1 ">
             <svg
   data-name="Layer 1"
@@ -317,19 +528,6 @@ export function AboutUs() {
     className="shape-fill"
   ></path>
 </svg>
-
-            {/* <svg
-              data-name="Layer 1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1200 120"
-              preserveAspectRatio="none"
-              className="w-full h-auto rotate-180 fill-white"
-            >
-              <path
-                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                className="shape-fill"
-              ></path>
-            </svg> */}
           </div>
         </div>
       </section>
