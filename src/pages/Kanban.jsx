@@ -61,7 +61,7 @@ function Kanban() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="p-8 bg-gray-100 dark:bg-[#121321]">
+    <div className="font-roboto p-8 bg-gray-100 dark:bg-[#121321]">
       {/* Header */}
       <div className="flex flex-col md:flex-row  justify-between mb-6 gap-4">
         <div className="text-txt16 md:text-txt20 bg-gray-200 dark:bg-gray-800 p-2 rounded-lg font-bold text-primary dark:text-white hover:shadow-sm text-center">
