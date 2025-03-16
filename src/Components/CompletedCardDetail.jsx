@@ -33,7 +33,7 @@ export default function  CompletedCardDetail() {
                         <div className={"text-accent"}>Design</div>
                     </div>
                 </div>
-                <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 space-y-8"}>
+                <div className={"rounded-xl dark:text-white w-auto border-2 border-gray-100 p-4 space-y-8"}>
                     <div>Creating Component</div>
                     <CheckBoxinProgess/>
                 </div>
@@ -42,7 +42,7 @@ export default function  CompletedCardDetail() {
                     <div>{email}</div>
                 </div>
                 <div className={"flex align-items-center justify-end space-x-4 pb-3 mr-8 items-center "}>
-                    <button className={"px-3 rounded-md border h-[43px] w-[132px] border-gray-400 font-bold text-gray-700"}>
+                    <button className={"px-3 rounded-md border dark:text-white h-[43px] w-[132px] border-gray-400 font-bold text-gray-700"}>
                         Delete Task
                     </button>
                     <button className={"px-3 rounded-md border h-[43px] w-[132px] bg-primary text-background  font-bold"}>

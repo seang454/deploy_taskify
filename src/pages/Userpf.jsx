@@ -90,18 +90,11 @@ export default function Userpf() {
           <div className="ml-5">
             <h1 className="font-semibold text-2xl dark:text-white">Narak Leng</h1>
             <p className="text-sm text-gray-500 dark:gray-100">narakleng12345@gmail.com</p>
+          
           </div>
         </div>
-        <div className="flex flex-wrap gap-5">
-          <button className="flex items-center text-white bg-primary rounded-3xl px-3 py-2 hover:text-white hover:bg-subaccent font-semibold">
-            <FaRegWindowRestore className="mr-2" />
-            View Archive
-          </button>
-          <button className="flex items-center text-white bg-primary rounded-3xl px-3 py-2 hover:text-white hover:bg-subaccent font-semibold">
-            <LuUserRoundCog className="mr-2" />
-            Edit Profile
-          </button>
-        </div>
+            
+
       </div>
 
       {/* Personal Information */}
@@ -154,8 +147,20 @@ export default function Userpf() {
               ••••••••
             </div>
           </div>
+            
         </div>
-       
+       <div className="flex items-end space-x-2 md:space-x-4">
+            <button className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-md hover:bg-blue-600 ">
+          <span className="mr-2"><FaRegWindowRestore /> </span>View Archive
+        </button>
+          <button className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-md hover:bg-blue-600 "
+          >
+            <span className="mr-2"><LuUserRoundCog/>
+
+</span>
+          Edit Profile
+          </button>
+        </div>
       </div>
     </div>
   );
