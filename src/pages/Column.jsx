@@ -133,7 +133,7 @@ console.log('filterCards', filterCards)
  
   return (
     <>
-    <div className="w-full min-w-[310px] bg-white dark:bg-gray-500 rounded-md hover:shadow- p-6 flex flex-col">
+    <div className="flex flex-col w-full p-6 bg-white rounded-md min-w-80 dark:bg-gray-800 hover:shadow-">
       {/* Header */}
       <div className="flex items-center justify-between text-lg font-bold dark:text-white">
         <span>
@@ -169,7 +169,7 @@ console.log('filterCards', filterCards)
             </div>
           ))
         ) : (
-          <div className="flex items-center justify-center h-24 text-sm italic text-gray-500">
+          <div className="flex items-center justify-center h-24 text-sm italic text-gray-500 dark:text-white">
             No tasks available
           </div>
         )}

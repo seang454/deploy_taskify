@@ -118,11 +118,11 @@ export default function DashboardPage() {
       <div className="flex bg-gray-100  border">
         <section className="flex-1 p-6 bg-white dark:bg-[#121321] ">
           {/* Tabs */}
-          <div className="flex px-3 py-3 space-x-10 bg-gray-100 border-b-2 md:justify-around rounded-xl ">
+          <div className="flex px-3 py-3 space-x-10 bg-gray-100 dark:bg-gray-500 border-b-2 md:justify-around rounded-xl ">
             <button
-              className={`py-2 bg-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
+              className={`py-2 bg-white dark:bg-primary dark:hover:bg-white dark:hover:text-primary dark:text-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
                 activeTab === "your-workspace"
-                  ? "border-b-2 border-gray-700"
+                  ? "border-b-2 border-gray-700 dark:border-white"
                   : "text-primary"
               }`}
               onClick={() => setActiveTab("your-workspace")}
@@ -131,9 +131,9 @@ export default function DashboardPage() {
             </button>
 
             <button
-              className={`py-2 pb-1 bg-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
+              className={`py-2 pb-1 bg-white hover:bg-primary dark:bg-primary dark:text-white dark:hover:bg-white dark:hover:text-primary hover:text-white w-full rounded-md font-semibold ${
                 activeTab === "shared-workspace"
-                  ? "border-b-2 border-gray-700"
+                  ? "border-b-2 border-gray-700 dark:border-white"
                   : "text-primary"
               }`}
               onClick={() => setActiveTab("shared-workspace")}

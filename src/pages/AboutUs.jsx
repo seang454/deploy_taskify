@@ -45,7 +45,7 @@ export function AboutUs() {
       firstName: "EUNG ",
       lastName: "LYZHIA",
       job: "Mentor",
-      position: "FULL STACK",
+      position: "FRONT-END",
     },
   ];
   const cardac = [
@@ -54,21 +54,21 @@ export function AboutUs() {
       firstName: "SIM ",
       lastName: "PENG SEANG",
       job: "Student",
-      position: "FULL STACK",
+      position: "FRONT-END",
     },
     {
       img: ly,
       firstName: "LENG",
       lastName: "NARAK",
       job: "Student",
-      position: "FULL STACK",
+      position: "FRONT-END",
     },
     {
       img: pich1,
       firstName: "SAM",
       lastName: "SOKUNSREYPICH",
       job: "Student",
-      position: "FULL STACK",
+      position: "FRONT-END",
     },
 
     {
@@ -76,7 +76,7 @@ export function AboutUs() {
       firstName: "SIM",
       lastName: "SEANGLY",
       job: "Student",
-      position: "FULL STACK",
+      position: "FRONT-END",
     },
     {
       img:roith,
@@ -84,14 +84,14 @@ export function AboutUs() {
       lastName: "OUDOMSAMBATH",
       name: "SIM SEANGLY",
       job: "Student",
-      position: "FULL STACK",
+      position: "FRONT-END",
     },
     {
       img:huy1,
       firstName: "TANG",
       lastName: "MENG HUY",
       job: "Student",
-      position: "FULL STACK",
+      position: "FRONT-END",
     },
   ];
   const cardvs = [
@@ -173,11 +173,22 @@ export function AboutUs() {
       viewport={{ once: false }} // Trigger every time it comes into view
     >
       {/* Background Image */}
-      <img
+      <motion.img
         className="absolute inset-0 object-cover w-full h-full opacity-60"
         src={groupwork}
         alt="Background Image"
-      />
+
+      width={150}
+      height={100}
+      initial={{ scale: 1 }}
+      animate={{ scale: [1, 1.05, 1] }} // Zoom in and out
+      transition={{
+        duration: 10, // Duration of one cycle (1 second)
+        repeat: Infinity, // Repeat the animation forever
+        ease: "easeInOut"
+      }}
+    />
+    
 
       <div className="relative z-0 px-6 text-center text-white sm:px-12">
         {/* First Paragraph */}
@@ -214,9 +225,9 @@ export function AboutUs() {
         </motion.p>
       </div>
     </motion.div>
-  );
+;
   
-          <div className="custom-shape-divider-bottom-1741223493 fill-white rotate-180 h-20 -mt-[70px] ">
+          <div className="custom-shape-divider-bottom-1741223493 fill-white rotate-180 h-[80px] -mt-[90px]  md:-mt-[80px] lg:-mt-[140px] xl:-mt-[68px]">
             <svg
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
@@ -313,11 +324,10 @@ export function AboutUs() {
     {cardvs.map((cardvs, index) => (
       <motion.div
         key={index}
-        initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}  // Cards from left if index is even, right if odd
-        whileInView={{ opacity: 1, x: 0 }}  // Move to original position
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        viewport={{ once: false, amount: 0.2 }}  // Trigger animation when card enters the viewport
-      >
+        initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: false }} >
         <Cardvs
           icon={cardvs.icon}
           title={cardvs.title}
@@ -364,7 +374,7 @@ export function AboutUs() {
           </motion.h2>
 
           <motion.p
-            className="text-[18px] text-gray-700"
+            className="text-[20px] text-gray-700"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
@@ -379,8 +389,8 @@ export function AboutUs() {
         {/* Image Section */}
         <motion.div
           className="relative p-5 rounded-lg w-full max-w-[400px] md:max-w-[500px]"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: false }}
         >
@@ -410,7 +420,7 @@ export function AboutUs() {
   transition={{ duration: 1, type: "spring", stiffness: 100 }}
   viewport={{ once: false }} // Keeps triggering when scrolled back into view
 >
-  OUR TEAM
+  OUR MENTOR
 </motion.h1>
 
         </div>
@@ -483,13 +493,13 @@ export function AboutUs() {
         {/* Logo Section */}
         <motion.div
           className="flex items-center justify-center -mt-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 1.2,
-            ease: 'easeOut',
-            delay: 0.5,
-          }}
+          initial={{ scale: 1 }}
+      animate={{ scale: [1, 1.1, 1] }} // Zoom in and out
+      transition={{
+        duration: 4, // Duration of one cycle (1 second)
+        repeat: Infinity, // Repeat the animation forever
+        ease: "easeInOut"
+      }}
         >
           <motion.img
             src={logo}

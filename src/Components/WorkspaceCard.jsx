@@ -31,10 +31,10 @@ export default function WorkspaceCard({ workspace, userId }) {
                 </div>
 
                 <div className="flex flex-col justify-between gap-6  px-2 pt-5 dark:bg-gray-800  bg-white  rounded-b-lg">
-                    <p className="font-normal px-3 text-txt14 line-clamp-2 dark:text-white  text-primary">{workspace.description}</p>
+                    <p className="font-normal px-3 text-txt18 line-clamp-2 dark:text-white  text-primary">{workspace.description}</p>
                     
                     <div className="flex justify-end mb-1  ">
-                        <p className="px-2 py-1 rounded-md text-gray-700 text-txt12 opacity-70"><FontAwesomeIcon icon={faCalendar} /> { formatDate(workspace.created_at)}</p>
+                        <p className="px-2 py-1 rounded-md text-gray-700 dark:text-white text-txt12 opacity-70"><FontAwesomeIcon icon={faCalendar} /> { formatDate(workspace.created_at)}</p>
                     </div>
             </div>
         </section>
