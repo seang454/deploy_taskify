@@ -25,7 +25,6 @@ import AboutUs from "./pages/AboutUs.jsx";
 import Kanban from "./pages/Kanban.jsx";
 import MemberPage from "./pages/MemberPage.jsx";
 import MemberCard from "./Components/MemberCard.jsx";
-import WorkspacePage from "./pages/WorkspacePage.jsx";
 import { Archive } from   "./pages/Archive.jsx";
 const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
@@ -51,11 +50,9 @@ ReactDOM.createRoot(root).render(
             <Route path="/workspace" element={<ModalWorkspace />} />
             <Route path="sidebar" element={<Sidebar />} />
             <Route path="/kanban/:id" element={<Kanban/>} />
-            <Route path="/workspacepage" element={<WorkspacePage/>}/>
             <Route path="/kanban" element={<Kanban/>} />
             <Route path="/workspacepage" element={<Kanban/>}/>
             <Route path="/archive" element={<Archive/>}/>
-            <Route path="/workspace" element={<WorkspacePage/>}/>
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
