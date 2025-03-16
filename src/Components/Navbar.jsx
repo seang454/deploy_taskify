@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router";
 import TaskifyLogo from "../assets/TaskifyLogo1.png"
+import pengseang from "../assets/pengseang.png"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,6 +63,11 @@ export default function Navbar() {
          </Link>
           <Link to= '/login' className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16 ">
             Login account
+          </Link>
+
+          <Link to="/userpf" className="relative flex items-center justify-center px-1.5 overflow-hidden bg-white border border-white rounded-full"
+          >
+          <img className="w-[25px]" src={pengseang} alt="" />
           </Link>
         </div>
 
