@@ -176,7 +176,7 @@ return (
               />
 
               <motion.button
-                className="w-32 h-full p-2 mx-5 text-white transition-all duration-500 ease-out rounded-full shadow dark:rounded-lg bg-primary dark:text-white dark:bg-white/10 hover:dark:bg-white/30 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl hover:bg-subaccent"
+                className="w-32 h-full p-2 mx-5 text-white transition-all duration-500 ease-out rounded-full shadow dark:rounded-lg bg-primary dark:text-white  hover:dark:accent backdrop-opacity-5 backdrop-invert backdrop-blur-3xl hover:bg-subaccent"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -295,7 +295,7 @@ return (
             </motion.p>
             <Link to="/aboutus" className="flex items-center justify-center p-3 m-0 mt-5 text-white no-underline text-txt20 rounded-lg md:m-5 bg-primary decoration-0 hover:underline"
             >
-              click explore us <FaArrowAltCircleRight  className="ml-2 " />
+            Explore Us
 
             </Link>
           </div>

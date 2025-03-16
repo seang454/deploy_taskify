@@ -227,7 +227,7 @@ export function AboutUs() {
     </motion.div>
 ;
   
-          <div className="custom-shape-divider-bottom-1741223493 fill-white rotate-180 h-20 -mt-[68px] ">
+          <div className="custom-shape-divider-bottom-1741223493 fill-white rotate-180 h-[80px] -mt-[90px]  md:-mt-[80px] lg:-mt-[140px] xl:-mt-[68px]">
             <svg
               data-name="Layer 1"
               xmlns="http://www.w3.org/2000/svg"
