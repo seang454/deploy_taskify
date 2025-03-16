@@ -3,20 +3,13 @@ import Cardab from "../Components/Layouts/Cardab";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { motion } from "framer-motion";
 import Cardvs from "../Components/Layouts/Cardvs";
-import { RiSpaceShipFill } from "react-icons/ri";
 import groupwork from "../assets/teamwork.jpg";
 import rocket from "../assets/rocket_icon.png";
 import box from "../assets/box_icon.png";
 import card from "../assets/card_icon.png";
 import message from "../assets/message_icon.png";
-import teacher from "../assets/teacher.webp";
 import logo from "../assets/ISTAD_Logo.png";
-import mentor from "../assets/mentor.JPG";
-import student from "../assets/student.JPG";
-import lyzhia from "../assets/lyzhia.JPG";
-import pich from "../assets/pich.jpg";
-import seangly from "../assets/seangly.jpg";
-import huy from "../assets/huy.jpg";
+import student from "../assets/student.png";
 import ly from "../assets/ly.png";
 import huy1 from "../assets/huy1.png";
 import pich1 from "../assets/pich1.png";
@@ -141,7 +134,7 @@ export function AboutUs() {
   }, []);
   return (
     <>
-      <section className="flex flex-col gap-20 font-family min-w-80 w-full">
+      <section className="flex flex-col w-full gap-20 font-family min-w-80">
         <section className="min-w-80">
           {/* <div className="relative w-full min-h-[400px] sm:min-h-[500px] md:min-h-[700px] flex items-center justify-center ">
             <img

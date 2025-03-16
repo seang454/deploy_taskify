@@ -1,51 +1,62 @@
 import React from "react";
+import teacher from "../assets/Chaya.webp"
 
 const DB_member = [
     {
         id:1,
+        img:teacher,
         name:"Houy",
         email:"Houy@gmail.com"
     },
     {
         id:2,
+        img:teacher,
         name:"Houy",
         email:"Houy@gmail.com"
     },
     {
         id:3,
         name:"Houy",
+        img:teacher,
         email:"Houy@gmail.com"
     },
     {
         id:4,
         name:"Houy",
+        img:teacher,
         email:"Houy@gmail.com"
     },
     {
         id:5,
         name:"Houy",
+        img:teacher,
         email:"Houy@gmail.com"
     },
     {
         id:6,
         name:"Houy",
+        img:teacher,
         email:"Houy@gmail.com"
     },
     {
         id:7,
+        img:teacher,
         name:"Houy",
         email:"Houy@gmail.com"
     },
     {
         id:8,
         name:"Houy",
+        img:teacher,
         email:"Houy@gmail.com"
     },
     {
         id:9,
         name:"Houy",
+        img:teacher,
         email:"Houy@gmail.com"
-    }
+    },
+   
 ]
 
 
@@ -57,7 +68,9 @@ const DB_member = [
         <div className={"w-full my-8"}>
             <div className={"flex justify-between"}>
             <div className={"flex space-x-2 align-middle items-center"}>
-                <div className="bg-primary w-10 h-10 rounded-full" />
+                <div className=""  >
+                    <img className="w-12 h-12 border-2 rounded-full border-primary" src={item.img} alt="" />
+                </div>
                 <div>
                 <h1 className={"font-bold text-txt18 dark:text-white"}>{item.name}</h1>
                 <p className={"text-txt14 dark:text-gray-300"}>{item.email}</p>

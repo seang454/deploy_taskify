@@ -8,7 +8,7 @@ import { Link } from "react-router";
 
 export default function Userpf() {
   return (
-    <div className="w-full mx-auto shadow-md p-8 min-h-screen bg-gray-100  dark:bg-[#121321]">
+    <div className="w-full mx-auto shadow-md p-8 min-h-screen bg-background  dark:bg-[#121321]">
       {/* Profile Info */}
       <div className="flex flex-col justify-between gap-5 mb-10 md:flex-row">
         <div className="flex items-center">
@@ -76,11 +76,11 @@ export default function Userpf() {
             
         </div>
        <div className="flex items-end space-x-2 md:space-x-4">
-            <button className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-md hover:bg-blue-600 ">
+            <button className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-md bg-primary hover:bg-blue-600 ">
           <span className="mr-2"><FaRegWindowRestore /> </span>View Archive
         </button>
         <Link to ="/editprofilepage">
-          <button className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-md hover:bg-blue-600 "
+          <button className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-md bg-primary hover:bg-blue-600 "
           >
             <span className="mr-2"><LuUserRoundCog/>
 

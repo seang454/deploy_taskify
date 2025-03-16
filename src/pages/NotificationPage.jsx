@@ -2,42 +2,43 @@ import React from 'react'
 import roith from "../assets/roith.png"
 import teacher from "../assets/Chaya.webp"
 import { Notification } from '../Components/Notification'
+import huy from "../assets/huy.jpg"
 export const NotificationPage = () => {
     const notification =[
         {
         profile : roith,
-        name:"Justin Bieber",
-        description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
+        name:"Rathana Chit",
+        description: "Moved the task to 'In Progress' – let's pretend we're working hard, shall we?",
         },
         {
-        profile : teacher,
-        name:"Tony Stark ",
-        description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
-        },
-        {
-        profile : roith,
-        name:"Tom Cruise",
-        description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
-        },
-        {
-        profile : teacher,
-        name:"Meng Huy",
-        description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
+        profile : huy,
+        name:"Kanha Jolly ",
+        description: "Updated the task deadline to tomorrow – let's make sure everything is ready before the meeting!",
         },
         {
         profile : roith,
-        name:"Meng Huy",
-        description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
+        name:"Sreymom Zippy",
+        description: "Updated the task status – now we wait, like watching paint dry… but with more stress!",
+        },
+        {
+        profile : teacher,
+        name:"Vannara Noodle",
+        description: "Reassigned the task to someone else for further updates – make sure it’s done!",
+        },
+        {
+        profile : roith,
+        name:"Dara Zing",
+        description: "Changed the task label to 'Urgent' – needs immediate attention before the deadline.",
         },
          {
         profile : teacher,
-        name:"Meng Huy",
-        description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
+        name:"Kosal Pudding",
+        description: " Changed the task status to 'In Progress' – making good progress, let’s keep the momentum going!",
         },
          {
         profile : teacher,
-        name:"Meng Huy",
-        description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
+        name:"Vannak hanuman",
+        description: "Commented: 'This task is like a plot twist – unexpected, but we’re almost there!",
         },
     ]
   return (
