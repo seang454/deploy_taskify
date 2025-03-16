@@ -83,22 +83,11 @@ export default function Navbar() {
                 <IoIosSunny size={30} color="gold" />
               )}
             </motion.div>
-<<<<<<< HEAD
           </button>
           <Link to="/register">
             <button className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16">
               Create Account
             </button>
-=======
-          </button> 
-         <Link to='/register'>
-         <button className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16">
-            Register
-          </button>
-         </Link>
-          <Link to= '/login' className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16 ">
-            Login
->>>>>>> 67bf3e3cb415bd282c22eca8ff7d91d4da7e6425
           </Link>
           <div className="flex items-center justify-center">
             {getAceAccessToken() && name && (
