@@ -50,7 +50,7 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
 
   
   const initialValues = {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     title: "",
     note: "",
     start_date: "",
@@ -76,15 +76,46 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       console.log("Submitting Task:", values);
-      const response = await createTask(values).unwrap();
-      console.log("Task Created Successfully:", response);
-      resetForm();
-      onClose();
+      
+      let taskValues = { ...values };
+  
+      while (true) {
+        try {
+          const response = await createTask(taskValues).unwrap();
+          console.log("Task Created Successfully:", response);
+          resetForm();
+          onCl();
+          break; // Exit loop if successful
+        } catch (err) {
+          if (err?.status === 409) {
+            console.warn("UUID Conflict Detected. Generating New UUID...");
+            taskValues.id = crypto.randomUUID(); // Generate a new UUID
+            resetForm();
+            onCl();
+          } else {
+            throw err; // Throw error if it's not a conflict
+          }
+        }
+      }
     } catch (err) {
       console.error("Failed to create task:", err?.data || err);
     }
     setSubmitting(false);
   };
+  
+  // const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  //   try {
+  //     console.log("Submitting Task:", values);
+  //     //const 
+  //     const response = await createTask(values).unwrap();
+  //     console.log("Task Created Successfully:", response);
+  //     resetForm();
+  //     onClose();
+  //   } catch (err) {
+  //     console.error("Failed to create task:", err?.data || err);
+  //   }
+  //   setSubmitting(false);
+  // };
  
   
 

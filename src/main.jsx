@@ -47,7 +47,7 @@ ReactDOM.createRoot(root).render(
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/progress" element={<OnProgessPage />} />
             <Route path="/detail" element={<ProgessCardDetail />} />
-            <Route path="/todo" element={<ToDoPage />} />
+            <Route path="/todo/:id" element={<ToDoPage />} />
             <Route path="/completed" element={<CompletedPage />} />
             <Route path="/member" element={<MemberPage/>} />
             <Route path="/membercard" element={<MemberCard />} />
@@ -64,6 +64,7 @@ ReactDOM.createRoot(root).render(
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
+          {/* <Route path="/editTask" element={< EditTaskPupUp/>}></Route> */}
         </Routes>
       </BrowserRouter>
     </Provider>
