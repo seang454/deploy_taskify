@@ -7,7 +7,7 @@ import {IoIosHelpCircleOutline, IoMdNotificationsOutline} from "react-icons/io";
 export default function SidebarSM() {
 
     return (
-        <div className={"bg-background lg:hidden w-40 h-[580px] md:h-[350px] absolute top-[90px] z-20"}>
+        <div className={"bg-background lg:hidden w-40 h-[580px] md:h-[350px]  top-[90px] z-20"}>
             <div>
             <nav className={"flex flex-col"}>
                 <div className={"space-y-8 py-4"}>
