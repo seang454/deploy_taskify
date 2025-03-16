@@ -270,7 +270,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                   className="m-2 px-6 py-2 dark:text-white text-center text-txtPrimary transition-all rounded-md text-btn-txt  border active:scale-95"
                   onClick={onClose}
               >
-                  cancle
+                  cancel
                 </button>
                 <button
                   type="submit"

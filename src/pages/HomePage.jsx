@@ -12,18 +12,21 @@ import qimage from "../assets/question.jpg";
 import seconstimage from "../assets/todo.png";
 import Homepage from "../assets/Homepage.gif"
 import CardDiscription2 from "../Components/CardDiscription2";
+import { FaArrowAltCircleRight } from "react-icons/fa";
+
+
 export default function HomePage() {
   const card = [
     {
       title: "Project Management",
       description:
-        "Keep tasks in order, deadlines on track, and team members aligned with Trackify.",
+        "Keep tasks in order, deadlines on track, and team members aligned with Trackify’s powerful tools and seamless collaboration features.",
       color: "",
     },
     {
       title: "Assign Meeting",
       description:
-        "Empower your team meeting to be more productive, empowering and dare we day-fun. ",
+        "Empower your team meetings to be more productive, empowering, and dare we say—fun—with Trackify's intuitive and user-friendly interface. ",
       color: "",
     },
     {
@@ -35,13 +38,13 @@ export default function HomePage() {
     {
       title: "Task Management Card",
       description:
-        "Use Trackify to track, manage, complete, and bring tasks together like pieces of a puzzle, and make your team’s project a cohesive success every time.",
+        "Use Trackify to track, manage, complete, and bring tasks together like pieces of a puzzle, ensuring team success.",
       color: "",
     },
     {
       title: "Brainstorming",
       description:
-        "Unleash your team’s creativity and keep ideas visible, collaborative, and actionable.",
+        "Unleash your team’s creativity and keep ideas visible, collaborative, actionable, and effective.",
       color: "",
     },
     {
@@ -152,7 +155,7 @@ return (
             </motion.div>
 
             <motion.p
-              className="mb-10 text-txt18 font-family dark:text-white"
+              className="mb-10 text-txt20 font-family dark:text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -189,10 +192,9 @@ return (
               src={Homepage}
               alt=""
               className="rounded-md"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: false }}
+                     initial={{ opacity: 0, scale: 0.8 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
             />
           </div>
         </section>
@@ -262,54 +264,41 @@ return (
           Workflows for any projects, don’t care how big it is. Tackify can help you with that
         </motion.h1>
 
-        <motion.section
+
+
+<motion.section
           className="grid grid-cols-1 gap-7 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false }}
+                initial={{ opacity: 0, scale: 0.8 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
         >
           {card.map((card, index) => (
             <Cardesc
               key={index}
+ 
               title={card.title}
               description={card.description}
               color={card.color}
             />
           ))}
         </motion.section>
-
-        <motion.div
-          className="flex flex-col justify-between md:items-center md:flex-row"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false }}
-        >
-          <motion.p
-            className="w-full md:w-2/3 font-semibold text-primary text-[22px] dark:text-white"
-            initial={{ opacity: 0, y: 30 }}
+        <div className="flex flex-col justify-between md:items-center md:flex-row">
+            <motion.p className="w-full md:w-2/3 font-bold text-primary text-[24px] dark:text-white"
+             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            viewport={{ once: false }}
           >
-            No need to start from scratch. Jump-start your workflow with a
-            proven playbook designed for different teams. Customize it to make
-            it yours.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <Link
-              to="/aboutus"
-              className="p-3 m-0 mt-5 text-white no-underline text-[22px] rounded-lg md:m-5 bg-primary decoration-0 hover:underline"
+              No need to start from scratch. Jump-start your workflow with a
+              proven playbook designed for different teams. Customize it to make
+              it yours.
+            </motion.p>
+            <Link to="/aboutus" className="flex items-center justify-center p-3 m-0 mt-5 text-white no-underline text-txt20 rounded-lg md:m-5 bg-primary decoration-0 hover:underline"
             >
-              click explore us
+              click explore us <FaArrowAltCircleRight  className="ml-2 " />
+
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
       </section>
 
       {/* choose Taskfy */}
@@ -322,9 +311,9 @@ return (
       >
         <motion.div
           className="relative p-10 bg-white rounded-lg w-fit bg-opacity-20"
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
         >
           <img src={qimage} className="w-[600px] rounded-lg" />
         </motion.div>
@@ -371,22 +360,31 @@ return (
       </motion.section>
 
       {/* todo */}
-      <motion.section
-        className="flex flex-col items-center justify-between w-4/5 gap-10 pb-10 m-auto lg:flex-row"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: false }}
-      >
-        {/* Left Side: Cards */}
-        <motion.div
-          className="flex flex-col w-full lg:w-1/2 gap-10"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false }}
-        >
-             {card3.map((card, index) => (
+     <motion.section
+  className="flex flex-col items-center justify-between w-4/5 gap-10 pb-10 m-auto lg:flex-row"
+  initial={{ opacity: 0, scale: 0.9 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8, ease: 'easeOut' }}
+  viewport={{ once: false }}
+>
+  {/* Left Side: Cards */}
+ <motion.div
+  className="flex flex-col w-full lg:w-3/5 gap-3.5"
+  initial={{ opacity: 0, scale: 0.8 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+>
+  {card3.map((card, index) => (
+    <motion.div
+      
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.6,
+        ease: 'easeOut',
+        delay: index * 0.2, // Stagger effect based on index
+      }}
+    >
       <CardDiscription2
         key={index}
         title={card.title}
@@ -394,19 +392,26 @@ return (
         color={card.color}
         colorline={card.colorline}
       />
-    ))}
-        </motion.div>
-        
-        {/* Right Side: Image */}
-        <motion.div
-          className="relative p-10 bg-white rounded-lg w-fit bg-opacity-20 backdrop-blur-lg"
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <img src={seconstimage} className="w-[600px] rounded-lg" />
-        </motion.div>
-      </motion.section>
+    </motion.div>
+  ))}
+</motion.div>
+
+
+  {/* Right Side: Image */}
+  <motion.div
+    className="flex justify-center w-full lg:w-2/5"
+    initial={{ opacity: 0, scale: 0.8 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
+  >
+    <img
+      src={seconstimage}
+      alt="Image"
+      className="w-full max-w-[500px] object-cover rounded-lg"
+    />
+  </motion.div>
+</motion.section>
+
     </section>
   </>
 );

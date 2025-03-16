@@ -107,8 +107,8 @@ const ProfileCard = ({ firstName, lastName, job, position, img }) => {
           </h2>
 
           <div className="mt-6 sm:mt-0">
-            <ul className="flex items-center space-x-4">
-              <li className="flex items-center justify-center w-10 h-10 border border-primary dark:border-white rounded-full">
+            <ul className="flex items-center space-x-4 ">
+              <li className="flex items-center justify-center w-10 h-10 border  border-primary dark:border-white rounded-full">
                 <a href="javascript:void()">
                   <FaFacebook className="dark:text-white text-primary" />
                 </a>

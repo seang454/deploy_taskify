@@ -18,7 +18,7 @@ export default function MemberPage (){
                 <div onClick={closeMenu}>
                     <div className={"space-y-2 my-4"}>
                     <p className={"text-primary text-[24px] font-bold"}>All Members</p>
-                    <p className={"text-txt18"}>Workspace members can view and join all Workspace visible boards and create new boards in the Workspace.</p>
+                    <p className={"text-txt18 dark:text-white"}>Workspace members can view and join all Workspace visible boards and create new boards in the Workspace.</p>
                     </div>
                     <Searchmember/>
                     <hr className={"border-dashed border-amber-400 mt-2 w-full"} />

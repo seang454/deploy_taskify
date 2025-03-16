@@ -82,22 +82,22 @@ import { FaRegWindowRestore } from "react-icons/fa";
 
 export default function Userpf() {
   return (
-    <div className="w-full mx-auto shadow-md p-8 min-h-screen">
+    <div className="w-full mx-auto shadow-md p-8 min-h-screen bg-gray-100  dark:bg-[#121321]">
       {/* Profile Info */}
       <div className="flex flex-col md:flex-row justify-between gap-5 mb-10">
         <div className="flex items-center">
           <img className="w-16 h-16 rounded-full border-2 border-primary" src={Profilepic} alt="Profile" />
           <div className="ml-5">
-            <h1 className="font-semibold text-2xl">Narak Leng</h1>
-            <p className="text-sm text-gray-500">narakleng12345@gmail.com</p>
+            <h1 className="font-semibold text-2xl dark:text-white">Narak Leng</h1>
+            <p className="text-sm text-gray-500 dark:gray-100">narakleng12345@gmail.com</p>
           </div>
         </div>
         <div className="flex flex-wrap gap-5">
-          <button className="flex items-center text-primary font-semibold">
+          <button className="flex items-center text-white bg-primary rounded-3xl px-3 py-2 hover:text-white hover:bg-subaccent font-semibold">
             <FaRegWindowRestore className="mr-2" />
             View Archive
           </button>
-          <button className="flex items-center text-primary font-semibold">
+          <button className="flex items-center text-white bg-primary rounded-3xl px-3 py-2 hover:text-white hover:bg-subaccent font-semibold">
             <LuUserRoundCog className="mr-2" />
             Edit Profile
           </button>
@@ -105,18 +105,18 @@ export default function Userpf() {
       </div>
 
       {/* Personal Information */}
-      <h2 className="text-2xl font-semibold mb-4">Personal Information</h2>
+      <h2 className="text-2xl font-semibold mb-4 dark:text-white">Personal Information</h2>
       <div className="space-y-5">
         {/* First Name & Last Name */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <div className="text-gray-600 font-medium">First Name</div>
+            <div className="text-gray-600 font-medium dark:text-gray-100">First Name</div>
             <div className="border p-3 rounded-md text-primary font-semibold bg-gray-50">
               John
             </div>
           </div>
           <div>
-            <div className="text-gray-600 font-medium">Last Name</div>
+            <div className="text-gray-600 font-medium dark:text-gray-100">Last Name</div>
             <div className="border p-3 rounded-md text-primary font-semibold bg-gray-50">
               Doe
             </div>
@@ -126,13 +126,13 @@ export default function Userpf() {
         {/* Username, Email & Password */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <div className="text-gray-600 font-medium">Username</div>
+            <div className="text-gray-600 font-medium dark:text-gray-100">Username</div>
             <div className="border p-3 rounded-md text-primary font-semibold bg-gray-50">
               john_doe
             </div>
           </div>
           <div>
-            <div className="text-gray-600 font-medium">Email</div>
+            <div className="text-gray-600 font-medium dark:text-gray-100">Email</div>
             <div className="border p-3 rounded-md text-primary font-semibold bg-gray-50">
               john@example.com
             </div>
@@ -143,13 +143,13 @@ export default function Userpf() {
         {/* Gender */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <div className="text-gray-600 font-medium">Gender</div>
+            <div className="text-gray-600 font-medium dark:text-gray-100">Gender</div>
             <div className="border p-3 rounded-md text-primary font-semibold bg-gray-50">
               Male
             </div>
           </div>
             <div>
-            <div className="text-gray-600 font-medium">Password</div>
+            <div className="text-gray-600 font-medium dark:text-gray-100">Password</div>
             <div className="border p-3 rounded-md text-primary font-semibold bg-gray-50">
               ••••••••
             </div>
