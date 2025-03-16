@@ -45,7 +45,7 @@ function ProgressCard({ item }) {
 
     return (
         <div
-            className="rounded-xl bg-white dark:bg-gray-400  p-4 border-2 dark:text-white w-72 space-y-4"
+            className="rounded-xl bg-white dark:bg-gray-700  p-4 border-2 dark:border-none dark:text-white w-72 space-y-4"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
 
