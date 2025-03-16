@@ -12,11 +12,11 @@ import { useParams } from "react-router";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
 
 
-export default function AddNewTaskPopUp({isOpen, onClose}) {
+export default function AddNewTaskPopUp({isOp, onCl}) {
  const {id} = useParams();
  const workspaceId = id;
  console.log('workspaceId', workspaceId)
-  if (!isOpen) return null;
+  if (!isOp) return null;
   
 
   const [createTask] = useCreateTaskMutation();
@@ -91,7 +91,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
   return (
     <>
       <div className=" font-roboto inset-0 fixed
-       top-0 bottom-0 z-50 flex items-center justify-center bg-black  bg-opacity-50 ">
+       top-0 bottom-0 z-9 flex items-center justify-center bg-black  bg-opacity-50 ">
         <div className="px-10 bg-white rounded-md dark:bg-gray-700 ">
           <div className="">
             <div className="pb-4 flex justify-between">
@@ -104,7 +104,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
             </p>
               </div>
               <button
-                onClick={onClose}
+                onClick={onCl}
                 className=" text-2xl dark:text-gray-300 text-primary top-0 pl-10 right-3 "
               >
                 <FontAwesomeIcon icon={faXmark} />
@@ -268,7 +268,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="flex justify-end mb-5">
               <button
                   className="m-2 px-6 py-2 dark:text-white text-center text-txtPrimary transition-all rounded-md text-btn-txt  border active:scale-95"
-                  onClick={onClose}
+                  onClick={onCl}
               >
                   cancel
                 </button>
