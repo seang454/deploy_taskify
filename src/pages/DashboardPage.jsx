@@ -18,7 +18,7 @@ export default function DashboardPage() {
   console.log("location :", location.state);
 console.log('status', status)
   const [workspaceList, setWorkspaceList] = useState([]);
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState("");
 
   const { data, isSuccess } = useGetMeQuery();
   const sharedWorkspaces = [
@@ -91,6 +91,7 @@ console.log('status', status)
   };
   const { data: workspaces, isLoading, error } = useGetWorkspacesQuery();
   console.log('workspaces',workspaceList)
+  console.log('userId in ', userId)
   return (
     <>
       <div className="flex bg-gray-100  border">
