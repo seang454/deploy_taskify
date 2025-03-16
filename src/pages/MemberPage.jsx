@@ -22,7 +22,7 @@ export default function MemberPage (){
                     </div>
                 </div>
 
-            </div>
+
         </>
     )
 }
