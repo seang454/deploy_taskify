@@ -40,10 +40,10 @@
 
 //   return (
 //     <>
-//       <div className="fixed bg-opacity-50 dark:bg-gray-900 flex justify-center items-center">
+//       <div className="fixed flex items-center justify-center bg-opacity-50 dark:bg-gray-900">
 //         <div className="bg-white dark:bg-gray-900 dark:text-gray-200 p-6 rounded-lg shadow-lg w-[95%] max-w-5xl relative flex flex-col ">
 //           {/* Header */}
-//           <div className="text-xl font-semibold flex justify-between items-center">
+//           <div className="flex items-center justify-between text-xl font-semibold">
 //             <h3>
 //               <span>Final Project of Foundation G3-Taskify</span>
 //               <span className="px-1">
@@ -65,58 +65,58 @@
 //             validationSchema={validationSchema}
 //             onSubmit={(values) => console.log("values :", values)}
 //           >
-//             <Form className="flex-grow p-6  rounded-lg space-y-4 flex flex-col">
-//               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//             <Form className="flex flex-col flex-grow p-6 space-y-4 rounded-lg">
+//               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
 //                 {/* Left Section */}
 //                 <div>
 //                   {/* Task Title */}
 //                   <div className="pb-5 xl:pb-7">
-//                     <label className="text-primary  font-medium">Change Task Title</label>
+//                     <label className="font-medium text-primary">Change Task Title</label>
 //                     <Field
 //                       type="text"
 //                       placeholder="Your new task title"
 //                       name="title"
-//                       className="w-full border dark:bg-gray-800 border-primary rounded-md p-2"
+//                       className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary"
 //                     />
-//                     <ErrorMessage name="title" component="div" className="text-red-500 text-sm" />
+//                     <ErrorMessage name="title" component="div" className="text-sm text-red-500" />
 //                   </div>
 
 //                   {/* Description */}
 //                   <div className="pb-5 xl:pb-7">
-//                     <label className="text-primary  font-medium">Change Description</label>
+//                     <label className="font-medium text-primary">Change Description</label>
 //                     <Field
 //                       as="textarea"
 //                       name="description"
 //                       placeholder="Change description"
-//                       className="w-full border border-primary dark:bg-gray-800 rounded-md p-2 h-24"
+//                       className="w-full h-24 p-2 border rounded-md border-primary dark:bg-gray-800"
 //                     />
 //                   </div>
 
 //                   {/* File Upload */}
-//                   <div className="border pb-5 xl:pb-7 dark:bg-gray-800 border-primary dark:text-secondary p-6 rounded-lg flex flex-col items-center justify-center">
+//                   <div className="flex flex-col items-center justify-center p-6 pb-5 border rounded-lg xl:pb-7 dark:bg-gray-800 border-primary dark:text-secondary">
 //                     <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full cursor-pointer">
-//                       <FaCloudUploadAlt className="text-gray-400 mb-2" size={30} />
-//                       <span className="text-gray-400 text-sm">Click to upload your file</span>
+//                       <FaCloudUploadAlt className="mb-2 text-gray-400" size={30} />
+//                       <span className="text-sm text-gray-400">Click to upload your file</span>
 //                       <span className="text-xs text-gray-500">Max. File Size: 30MB</span>
 //                       <input id="dropzone-file" type="file" className="hidden" />
 //                     </label>
-//                     <button type="button" className="bg-primary text-white px-4 py-2 mt-4 rounded-md hover:bg-blue-600">
+//                     <button type="button" className="px-4 py-2 mt-4 text-white rounded-md bg-primary hover:bg-blue-600">
 //                       Browse File
 //                     </button>
 //                   </div>
 
 //                   {/* Checklist */}
-//                   <div className="border pb-5 xl:pb-7 rounded-lg p-4 mt-3  border-primary bg-white dark:bg-gray-800">
+//                   <div className="p-4 pb-5 mt-3 bg-white border rounded-lg xl:pb-7 border-primary dark:bg-gray-800">
 //                     <h2 className="text-lg font-semibold text-primary">Creating Components</h2>
 //                     <ul className="mt-4">
 //                       {tasks.map((task) => (
 //                         <li key={task.id} className="flex items-center justify-between py-2">
-//                           <label className="flex dark:bg-gray-800 items-center space-x-2">
+//                           <label className="flex items-center space-x-2 dark:bg-gray-800">
 //                             <input
 //                               type="checkbox"
 //                               checked={task.completed}
 //                               onChange={() => toggleCompletion(task.id)}
-//                               className="form-checkbox h-5 w-5 dark:bg-gray-800 text-primary"
+//                               className="w-5 h-5 form-checkbox dark:bg-gray-800 text-primary"
 //                             />
 //                             <span>{task.text}</span>
 //                           </label>
@@ -127,7 +127,7 @@
 //                       ))}
 //                     </ul>
 //                     <div className="flex justify-end">
-//                       <button className="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg mt-4">
+//                       <button className="px-4 py-2 mt-4 text-white rounded-lg bg-primary hover:bg-blue-600">
 //                         Add Checklist
 //                       </button>
 //                     </div>
@@ -137,36 +137,36 @@
 //                 {/* Right Section */}
 //                 <div className="flex flex-col ">
 //                   {/* Due Date & Reminder */}
-//                   <div className=" pb-5 xl:pb-7">
-//                     <label className="text-primary font-medium">Due Date</label>
-//                     <Field type="date" name="due_date" className="w-full border dark:bg-gray-800 border-primary rounded-md p-2" />
+//                   <div className="pb-5 xl:pb-7">
+//                     <label className="font-medium text-primary">Due Date</label>
+//                     <Field type="date" name="due_date" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary" />
 //                   </div>
-//                   <div className=" pb-5 xl:pb-7">
-//                     <label className="text-primary font-medium">Set Reminder</label>
-//                     <Field type="date" name="reminder_date" className="w-full dark:bg-gray-800 border border-primary rounded-md p-2" />
+//                   <div className="pb-5 xl:pb-7">
+//                     <label className="font-medium text-primary">Set Reminder</label>
+//                     <Field type="date" name="reminder_date" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary" />
 //                   </div>
 
 //                   {/* Assignee & Category */}
-//                   <div className=" pb-5 xl:pb-7">
-//                     <label className="text-primary font-medium">Assigns to</label>
-//                     <Field as="select" name="assignee" className="w-full dark:bg-gray-800 border border-primary rounded-md p-2">
+//                   <div className="pb-5 xl:pb-7">
+//                     <label className="font-medium text-primary">Assigns to</label>
+//                     <Field as="select" name="assignee" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary">
 //                       <option value="">Select</option>
 //                       <option value="Mr. Say Seyha">Mr. Say Seyha</option>
 //                     </Field>
 //                   </div>
-//                   <div className=" pb-5 xl:pb-7">
-//                     <label className="text-primary font-medium">Category</label>
-//                     <Field as="select" name="category_id" className="w-full dark:bg-gray-800 border border-primary rounded-md p-2">
+//                   <div className="pb-5 xl:pb-7">
+//                     <label className="font-medium text-primary">Category</label>
+//                     <Field as="select" name="category_id" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary">
 //                       <option value="Design">Design</option>
 //                       <option value="Development">Development</option>
 //                     </Field>
 //                   </div>
-//                   <div className="flex flex-col md:flex-row px-5 pt-5 justify-end items-end md:space-x-4 mt-auto">
-//                       <button className="flex items-center justify-center border w-full md:w-auto border-primary px-4 mb-2 md:mb-0 py-2 rounded-lg text-gray-700 dark:text-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+//                   <div className="flex flex-col items-end justify-end px-5 pt-5 mt-auto md:flex-row md:space-x-4">
+//                       <button className="flex items-center justify-center w-full px-4 py-2 mb-2 text-gray-700 transition border rounded-lg md:w-auto border-primary md:mb-0 dark:text-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
 //                         <FontAwesomeIcon icon={faTrash} className="mr-2" />
 //                         Delete Task
 //                       </button>
-//                       <button type="submit" className="bg-primary w-full md:w-auto text-white px-4 py-2 rounded-lg hover:bg-blue-900 dark:hover:bg-blue-700 transition">
+//                       <button type="submit" className="w-full px-4 py-2 text-white transition rounded-lg bg-primary md:w-auto hover:bg-blue-900 dark:hover:bg-blue-700">
 //                         Save Task
 //                       </button>
 //                     </div>
@@ -189,14 +189,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaCloudUploadAlt } from "react-icons/fa";
 
-<<<<<<< HEAD
-export default function EditTaskPopup({ isOpen, onClose }) {
-=======
 
 export default function EditTaskPupUp({ isOpen, onClose, token }) {
   console.log("isopen",isOpen);
   console.log("token",token)
->>>>>>> 5f7bc8aa11a08303116bb267a92bf1bbb77683c3
   if (!isOpen) return null;
 
   const initialValues = {
@@ -233,20 +229,10 @@ export default function EditTaskPupUp({ isOpen, onClose, token }) {
 
   return (
     <>
-<<<<<<< HEAD
-      {/* Backdrop */}
-      <div className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 " onClick={onClose}></div>
-
-      {/* Modal Container */}
-      <div className="fixed inset-0 flex justify-center items-center z-9">
-        <div className="bg-white dark:bg-gray-900 dark:text-gray-200 p-6 rounded-lg shadow-lg w-[95%] max-w-5xl relative">
-=======
-      <div className="font-roboto inset-0 fixed
-       top-0 bottom-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
+      <div className="fixed inset-0 top-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-50 font-roboto">
         <div className="bg-white dark:bg-gray-900 dark:text-gray-200 p-6 rounded-lg shadow-lg w-[95%] max-w-5xl relative flex flex-col ">
->>>>>>> 5f7bc8aa11a08303116bb267a92bf1bbb77683c3
           {/* Header */}
-          <div className="text-xl font-semibold flex justify-between items-center">
+          <div className="flex items-center justify-between text-xl font-semibold">
             <h3>
               <span>Final Project of Foundation G3-Taskify</span>
               <span className="px-1">
@@ -255,14 +241,8 @@ export default function EditTaskPupUp({ isOpen, onClose, token }) {
               <span className="pr-1">Design User Interface</span>
             </h3>
             <button
-<<<<<<< HEAD
-              className="text-xl text-gray-500 hover:text-primary dark:text-gray-400"
-              onClick={onClose}
-            >
-=======
             onClick={onClose}
             className="text-xl text-gray-500 hover:text-primary dark:text-gray-400 ">
->>>>>>> 5f7bc8aa11a08303116bb267a92bf1bbb77683c3
               <FontAwesomeIcon icon={faXmark} />
             </button>
           </div>
@@ -277,47 +257,47 @@ export default function EditTaskPupUp({ isOpen, onClose, token }) {
             onSubmit={(values) => console.log("Form values:", values)}
           >
             <Form className="p-6 space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {/* Left Section */}
                 <div>
                   {/* Task Title */}
                   <div className="pb-5 xl:pb-7">
-                    <label className="text-primary font-medium dark:text-white">Change Task Title</label>
+                    <label className="font-medium text-primary dark:text-white">Change Task Title</label>
                     <Field
                       type="text"
                       placeholder="Your new task title"
                       name="title"
-                      className="w-full border dark:bg-gray-800 border-primary rounded-md p-2"
+                      className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary"
                     />
-                    <ErrorMessage name="title" component="div" className="text-red-500 text-sm" />
+                    <ErrorMessage name="title" component="div" className="text-sm text-red-500" />
                   </div>
 
                   {/* Description */}
                   <div className="pb-5 xl:pb-7">
-                    <label className="text-primary dark:text-white font-medium">Change Description</label>
+                    <label className="font-medium text-primary dark:text-white">Change Description</label>
                     <Field
                       as="textarea"
                       name="description"
                       placeholder="Change description"
-                      className="w-full border border-primary dark:bg-gray-800 rounded-md p-2 h-24"
+                      className="w-full h-24 p-2 border rounded-md border-primary dark:bg-gray-800"
                     />
                   </div>
 
                   {/* File Upload */}
-                  <div className="border pb-5 xl:pb-7 dark:bg-gray-800 border-primary dark:text-secondary p-6 rounded-lg flex flex-col items-center">
+                  <div className="flex flex-col items-center p-6 pb-5 border rounded-lg xl:pb-7 dark:bg-gray-800 border-primary dark:text-secondary">
                     <label htmlFor="dropzone-file" className="flex flex-col items-center cursor-pointer">
-                      <FaCloudUploadAlt className="text-gray-400 mb-2" size={30} />
-                      <span className="text-gray-400 text-sm">Click to upload your file</span>
+                      <FaCloudUploadAlt className="mb-2 text-gray-400" size={30} />
+                      <span className="text-sm text-gray-400">Click to upload your file</span>
                       <span className="text-xs text-gray-500">Max. File Size: 30MB</span>
                       <input id="dropzone-file" type="file" className="hidden" />
                     </label>
-                    <button type="button" className="bg-primary text-white px-4 py-2 mt-4 rounded-md hover:bg-blue-600">
+                    <button type="button" className="px-4 py-2 mt-4 text-white rounded-md bg-primary hover:bg-blue-600">
                       Browse File
                     </button>
                   </div>
 
                   {/* Checklist */}
-                  <div className="border pb-5 xl:pb-7 rounded-lg p-4 mt-3 border-primary dark:bg-gray-800">
+                  <div className="p-4 pb-5 mt-3 border rounded-lg xl:pb-7 border-primary dark:bg-gray-800">
                     <h2 className="text-lg font-semibold dark:text-white text-primary">Checklist</h2>
                     <ul className="mt-4">
                       {tasks.map((task) => (
@@ -327,7 +307,7 @@ export default function EditTaskPupUp({ isOpen, onClose, token }) {
                               type="checkbox"
                               checked={task.completed}
                               onChange={() => toggleCompletion(task.id)}
-                              className="form-checkbox h-5 w-5 text-primary"
+                              className="w-5 h-5 form-checkbox text-primary"
                             />
                             <span>{task.text}</span>
                           </label>
@@ -344,43 +324,33 @@ export default function EditTaskPupUp({ isOpen, onClose, token }) {
                 <div>
                   {/* Due Date */}
                   <div className="pb-5 xl:pb-7">
-                    <label className="text-primary dark:text-white font-medium">Due Date</label>
-                    <Field type="date" name="due_date" className="w-full border dark:bg-gray-800 border-primary rounded-md p-2" />
+                    <label className="font-medium text-primary dark:text-white">Due Date</label>
+                    <Field type="date" name="due_date" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary" />
                   </div>
 
                   {/* Reminder Date */}
                   <div className="pb-5 xl:pb-7">
-                    <label className="text-primary dark:text-white font-medium">Set Reminder</label>
-                    <Field type="date" name="reminder_date" className="w-full border dark:bg-gray-800 border-primary rounded-md p-2" />
+                    <label className="font-medium text-primary dark:text-white">Set Reminder</label>
+                    <Field type="date" name="reminder_date" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary" />
                   </div>
 
                   {/* Assignee */}
                   <div className="pb-5 xl:pb-7">
-                    <label className="text-primary font-medium">Assign to</label>
-                    <Field as="select" name="assignee" className="w-full border dark:bg-gray-800 border-primary rounded-md p-2">
+                    <label className="font-medium text-primary">Assign to</label>
+                    <Field as="select" name="assignee" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary">
                       <option value="">Select</option>
                       <option value="Mr. Say Seyha">Mr. Say Seyha</option>
                     </Field>
                   </div>
-<<<<<<< HEAD
-
-                  {/* Category */}
                   <div className="pb-5 xl:pb-7">
-                    <label className="text-primary dark:text-white font-medium">Category</label>
-                    <Field as="select" name="category_id" className="w-full border dark:bg-gray-800 border-primary rounded-md p-2">
-                      <option value="Design">Design</option>
-                      <option value="Development">Development</option>
-=======
-                  <div className=" pb-5 xl:pb-7">
-                    <label className="text-primary font-medium">Category</label>
-                    <Field as="select" name="category_id" className="w-full dark:bg-gray-800 border border-primary rounded-md p-2">
+                    <label className="font-medium text-primary">Category</label>
+                    <Field as="select" name="category_id" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary">
                     <option value="">Select Category</option>
                   {/* {categories.map((cat) => (
                     <option key={cat.id} value={cat.id}>
                       {cat.title}
                     </option>
                   ))} */}
->>>>>>> 5f7bc8aa11a08303116bb267a92bf1bbb77683c3
                     </Field>
                   </div>
                 </div>
@@ -388,10 +358,10 @@ export default function EditTaskPupUp({ isOpen, onClose, token }) {
 
               {/* Buttons */}
               <div className="flex justify-end space-x-4">
-                <button className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white px-4 py-2 rounded-lg">
+                <button className="px-4 py-2 text-gray-700 bg-gray-300 rounded-lg dark:bg-gray-700 dark:text-white">
                   Cancel
                 </button>
-                <button type="submit" className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                <button type="submit" className="px-4 py-2 text-white rounded-lg bg-primary hover:bg-blue-700">
                   Save Task
                 </button>
               </div>
