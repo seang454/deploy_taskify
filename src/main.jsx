@@ -27,6 +27,7 @@ import MemberPage from "./pages/MemberPage.jsx";
 import MemberCard from "./Components/MemberCard.jsx";
 import WorkspacePage from "./pages/WorkspacePage.jsx";
 import { Archive } from   "./pages/Archive.jsx";
+import EditProfilePage from "./pages/EditProfilePage.jsx";
 const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
@@ -56,6 +57,7 @@ ReactDOM.createRoot(root).render(
             <Route path="/workspacepage" element={<Kanban/>}/>
             <Route path="/archive" element={<Archive/>}/>
             <Route path="/workspace" element={<WorkspacePage/>}/>
+            <Route path="/editprofilepage" element={<EditProfilePage/>}/>
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />

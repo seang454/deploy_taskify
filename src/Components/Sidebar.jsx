@@ -27,10 +27,10 @@ export default function Sidebar() {
       >
         <div className="flex flex-row mt-6 md:flex-col dark:text-white ">
           <NavLink
+          to="/dashboard"
             className={
               "flex justify-start space-x-4 pl-4 align-middle py-4 hover:bg-primary hover:text-background "
             }
-            to="/"
           >
             <MdOutlineLeaderboard
               className={"w-5 h-5"}
@@ -43,7 +43,7 @@ export default function Sidebar() {
             className={
               "flex justify-start space-x-4 pl-4 align-middle py-4 hover:bg-primary hover:text-background"
             }
-            to="/"
+            to="/member"
           >
             <IoPersonOutline className={"w-5 h-5"} width={"10"} height={"10"} />
             <div>Members</div>
@@ -78,7 +78,7 @@ export default function Sidebar() {
             className={
               "flex justify-start space-x-4 pl-4 align-middle py-4 hover:bg-primary hover:text-background"
             }
-            to="/"
+            to="/aboutus"
           >
             <IoIosHelpCircleOutline
               className={"w-5 h-5"}
@@ -101,7 +101,7 @@ export default function Sidebar() {
       </nav>
       <div className={"absolute -top-3 z-10"}>
         <button
-          className="flex gap-10 p-5 mt-28 text-2xl rounded-full text-primary md:hidden "
+          className="flex gap-10 p-5 text-2xl rounded-full mt-28 text-primary md:hidden "
           onClick={toggleMenu}
         >
           {isOpen ? "" : <TiThMenu />} {/* Changes icon when open/closed */}
@@ -123,7 +123,7 @@ export default function Sidebar() {
             <div className="absolute flex flex-col mt-6">
               <NavLink
                 className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background"
-                to="/"
+                to="/member"
               >
                 <MdOutlineLeaderboard className="w-5 h-5" />
                 <div>Workspace</div>
