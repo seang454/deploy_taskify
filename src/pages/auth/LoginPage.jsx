@@ -181,7 +181,7 @@ export default function LoginPage() {
                 alt="Google"
                 width={20}
                 height={20}
-                className="mr-2  "
+                className="mr-2 "
               />
              <h1> Google</h1>
             </button>

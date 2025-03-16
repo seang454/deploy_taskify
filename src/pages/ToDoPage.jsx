@@ -7,7 +7,7 @@ import TodoCardDetail from "../Components/TodoCardDetail.jsx";
 export default function ToDoPage() {
     const [progress, setProgress] = useState(false)
     return (
-            <div className={"w-auto "}>
+            <div className={"w-auto bg-background"}>
                 <NavbarForworkShop title={"To Do List"} link={"/todo"}/>
                 <div className={"flex justify-center mt-20"}>
                     <div onClick={() => {setProgress(!progress)}}>
