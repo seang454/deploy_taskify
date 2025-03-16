@@ -101,7 +101,7 @@ export default function Sidebar() {
       </nav>
       <div className={"absolute -top-3 z-10"}>
         <button
-          className="flex gap-10 p-5 mt-20 text-2xl rounded-full text-primary md:hidden "
+          className="flex gap-10 p-5 mt-28 text-2xl rounded-full text-primary md:hidden "
           onClick={toggleMenu}
         >
           {isOpen ? "" : <TiThMenu />} {/* Changes icon when open/closed */}

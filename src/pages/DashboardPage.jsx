@@ -148,10 +148,10 @@ export default function DashboardPage() {
             {activeTab === "your-workspace" && (
               <>
                 <div
-                  className="flex justify-center p-6 dark:bg-gray-800  text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
+                  className="flex justify-center items-center p-6 dark:bg-gray-800  text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
                   onClick={() => setIsModelOpen(true)}
                 >
-                  <h3 className="flex items-center dark:text-white  text-txt20 text-primary">
+                  <h3 className="flex items-center justify-center dark:text-white  text-txt20 text-primary">
                     + Create New Workspace
                   </h3>
                 </div>
