@@ -7,16 +7,9 @@ import React, {useState} from "react";
 export default function OnProgessPage() {
     const [progress, setProgress] = useState(false)
     const [isOpen, setIsOpen] = useState(false);
-    const toggleMenu = () => {setIsOpen(!isOpen);}
-    const closeMenu = () => {setIsOpen(false);}
-
     return (
-        <div>
-            <button onClick={toggleMenu} className={"sticky z-10 bg-background text-gray-500 w-16 h-16 rounded-xl lg:hidden top-24 left-3 "}  >
-                {isOpen ? "✖":"☰"}
-            </button>
-            {isOpen && (<SidebarSM />)}
-            <div onClick={closeMenu}>
+
+            <div>
             <NavbarForworkShop title={"On Progress List"}link={"/progress"}/>
         <div className={"flex"}>
             <div onClick={() => {setProgress(!progress)}}>
@@ -31,7 +24,6 @@ export default function OnProgessPage() {
         </div>
             </div>
 
-        </div>
     )
 }
 
