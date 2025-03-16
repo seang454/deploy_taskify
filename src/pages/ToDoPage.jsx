@@ -3,6 +3,7 @@ import ProgessCardDetail from "../Components/ProgessCardDetail.jsx";
 import SidebarSM from "../Components/SidebarSM.jsx";
 import NavbarForworkShop from "../Components/NavbarForworkShop.jsx";
 import React, {useState} from "react";
+import { useLocation } from "react-router";
 
 export default function ToDoPage() {
     const [progress, setProgress] = useState(false)
@@ -10,6 +11,8 @@ export default function ToDoPage() {
     const toggleMenu = () => {setIsOpen(!isOpen);}
     const closeMenu = () => {setIsOpen(false);}
 
+    const location = useLocation();
+  console.log('location', location)
     return (
         <div>
             <button onClick={toggleMenu} className={"sticky z-10 bg-background text-gray-500 w-16 h-16 rounded-xl lg:hidden top-24 left-3 "}  >

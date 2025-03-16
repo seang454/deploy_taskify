@@ -5,7 +5,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaCloudUploadAlt } from "react-icons/fa";
 
-export default function EditTaskPupUp() {
+
+export default function EditTaskPupUp({ isOpen, onClose, token }) {
+  console.log("isopen",isOpen);
+  console.log("token",token)
+  if (!isOpen) return null;
+
   const initialValues = {
     title: "",
     note: "",
@@ -40,7 +45,8 @@ export default function EditTaskPupUp() {
 
   return (
     <>
-      <div className="fixed bg-opacity-50 dark:bg-gray-900 flex justify-center items-center">
+      <div className="font-roboto inset-0 fixed
+       top-0 bottom-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
         <div className="bg-white dark:bg-gray-900 dark:text-gray-200 p-6 rounded-lg shadow-lg w-[95%] max-w-5xl relative flex flex-col ">
           {/* Header */}
           <div className="text-xl font-semibold flex justify-between items-center">
@@ -51,7 +57,9 @@ export default function EditTaskPupUp() {
               </span>
               <span className="pr-1">Design User Interface</span>
             </h3>
-            <button className="text-xl text-gray-500 hover:text-primary dark:text-gray-400 ">
+            <button
+            onClick={onClose}
+            className="text-xl text-gray-500 hover:text-primary dark:text-gray-400 ">
               <FontAwesomeIcon icon={faXmark} />
             </button>
           </div>
@@ -157,8 +165,12 @@ export default function EditTaskPupUp() {
                   <div className=" pb-5 xl:pb-7">
                     <label className="text-primary font-medium">Category</label>
                     <Field as="select" name="category_id" className="w-full dark:bg-gray-800 border border-primary rounded-md p-2">
-                      <option value="Design">Design</option>
-                      <option value="Development">Development</option>
+                    <option value="">Select Category</option>
+                  {/* {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.title}
+                    </option>
+                  ))} */}
                     </Field>
                   </div>
                   <div className="flex flex-col md:flex-row px-5 pt-5 justify-end items-end md:space-x-4 mt-auto">

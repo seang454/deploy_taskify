@@ -26,6 +26,7 @@ import Kanban from "./pages/Kanban.jsx";
 import MemberPage from "./pages/MemberPage.jsx";
 import MemberCard from "./Components/MemberCard.jsx";
 import { Archive } from   "./pages/Archive.jsx";
+// import  EditTaskPupUp from "./Components/EditTaskPupUp.jsx"
 const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
@@ -56,6 +57,7 @@ ReactDOM.createRoot(root).render(
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
+          {/* <Route path="/editTask" element={< EditTaskPupUp/>}></Route> */}
         </Routes>
       </BrowserRouter>
     </Provider>

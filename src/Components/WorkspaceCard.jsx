@@ -16,7 +16,7 @@ export default function WorkspaceCard({ workspace, userId }) {
       };
 
     return (
-        <section onClick={handleNavigate} className={` border border-gray-300 dark:bg-gray-800 rounded-lg text-white h-full`}>
+        <section onClick={handleNavigate } className={` border border-gray-300 dark:bg-gray-800 rounded-lg text-white h-full`}>
             <div className={`rounded-t-lg flex flex-row items-center justify-center bg-primary`}>
                 <h2 className='font-semibold line-clamp-1 text-center text-white p-7 text-txt20'>{workspace.title}</h2>
             
