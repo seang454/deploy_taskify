@@ -496,7 +496,7 @@ export function AboutUs() {
           initial={{ scale: 1 }}
       animate={{ scale: [1, 1.1, 1] }} // Zoom in and out
       transition={{
-        duration: 1, // Duration of one cycle (1 second)
+        duration: 4, // Duration of one cycle (1 second)
         repeat: Infinity, // Repeat the animation forever
         ease: "easeInOut"
       }}
