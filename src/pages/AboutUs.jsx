@@ -1,6 +1,6 @@
 
 import Cardab from "../Components/Layouts/Cardab";
-
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { motion } from "framer-motion";
 import Cardvs from "../Components/Layouts/Cardvs";
 import groupwork from "../assets/teamwork.jpg";
