@@ -5,7 +5,7 @@ import { IoIosArrowBack } from "react-icons/io";
 export default function  CompletedCardDetail() {
     let email = "Houy@gmail.com";
     return (
-        <div className={"mt-10"}>
+        <div className={"mt-10 bg-white"}>
             <div className={"mx-15 mr-2 px-2  h-auto space-y-4 mb-10 p-3 lg:w-full md:block md:w-96  dark:bg-gray-700"}>
                 <div className={"text-center text-lg font-bold leading-tight flex items-center justify-center"}>
                     <NavLink to="/completed" className={" text-[30px] md:hidden "} >
