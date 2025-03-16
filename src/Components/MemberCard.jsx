@@ -119,7 +119,7 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
       className="
         max-w-[550px] w-full bg-white dark:bg-gray-500 rounded-lg shadow-lg p-[25px] relative 
         md:right-[35px] md:-top-[230px] md:translate-y-0 
-        lg:right-[35px] lg:-top-[10px] lg:-translate-y-1/2
+        lg:right-[35px] lg:-top-[300px] lg:-translate-y-1/2
       "
       onClick={(e) => e.stopPropagation()}
     >

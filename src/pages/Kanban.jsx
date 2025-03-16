@@ -71,6 +71,13 @@ function Kanban() {
 
         {/* Add Member Button */}
         <div className="flex space-x-2 md:space-x-4">
+           <button
+            onClick={openModal}
+            className="flex items-center px-3 py-2 transition-all duration-500 text-white bg-primary rounded-3xl hover:bg-blue-600 "
+          >
+            <span className="mr-2">+</span>
+            Add Task
+          </button>
           <button
             onClick={openModal}
             className="flex items-center px-3 py-2 transition-all duration-500 text-white bg-primary rounded-3xl hover:bg-blue-600 "
