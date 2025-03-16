@@ -33,7 +33,7 @@ const DB = [
     },
 ]
 
-function ProgressCard({ item }) {
+function TodoCard({ item }) {
     const [isHovered, setIsHovered] = useState(false)
 
 
@@ -53,20 +53,20 @@ function ProgressCard({ item }) {
             <div className="flex items-center justify-between text-txt20 font-bold text-gray-600 dark:text-white">
                 <div>{item.title}</div>
                 <div className={"md:hidden"}>
-                <NavLink to="/detail">
-                {isHovered ? (
-                    <ChevronRight strokeWidth={1} className="mr-8" />
-                ) : (
-                    <ChevronLeft strokeWidth={1} className="mr-8" />
-                )}
-                </NavLink>
+                    <NavLink to="/tododetail">
+                        {isHovered ? (
+                            <ChevronRight strokeWidth={1} className="mr-8" />
+                        ) : (
+                            <ChevronLeft strokeWidth={1} className="mr-8" />
+                        )}
+                    </NavLink>
                 </div>
                 <div className={"md:block hidden"}>
-                {isHovered ? (
-                    <ChevronRight strokeWidth={1} className="mr-8" />
-                ) : (
-                    <ChevronLeft strokeWidth={1} className="mr-8" />
-                )}
+                    {isHovered ? (
+                        <ChevronRight strokeWidth={1} className="mr-8" />
+                    ) : (
+                        <ChevronLeft strokeWidth={1} className="mr-8" />
+                    )}
                 </div>
             </div>
             <div className="text-gray-500 dark:text-white line-clamp-2 w-56">{item.description}</div>
@@ -97,11 +97,11 @@ function ProgressCard({ item }) {
     )
 }
 
-export default function ProgressCardList() {
+export default function TodoCardList() {
     return (
-        <section className=" md:my-16 lg:my-0 px-2 py-0 mx-5  lg:mx-0 w-75  space-y-custom-dashed-line h-[500px] overflow-y-scroll overflow-hidden">
+        <section className=" md:my-16 lg:my-0 px-2 py-0 mx-5  lg:mx-0 w-75  space-y-custom-dashed-line h-[500px] 2xl:h-auto xl overflow-y-scroll overflow-hidden">
             {DB.map((item) => (
-                <ProgressCard key={item.id} item={item}/>
+                <TodoCard key={item.id} item={item}/>
             ))}
         </section>
     )

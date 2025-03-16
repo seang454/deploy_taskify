@@ -59,8 +59,8 @@ const DB_member = [
             <div className={"flex space-x-2 align-middle items-center"}>
                 <div className="bg-primary w-10 h-10 rounded-full" />
                 <div>
-                <h1 className={"font-bold text-txt18"}>{item.name}</h1>
-                <p className={"text-txt14"}>{item.email}</p>
+                <h1 className={"font-bold text-txt18 dark:text-white"}>{item.name}</h1>
+                <p className={"text-txt14 dark:text-gray-300"}>{item.email}</p>
                 </div>
             </div>
                 <div className={"flex space-x-2 h-10"}>

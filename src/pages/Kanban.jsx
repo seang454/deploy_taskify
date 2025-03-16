@@ -7,12 +7,23 @@ import { useGetWorkspacesQuery } from "../features/workspaceApi";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
 import { useGetTasksQuery } from "../features/addTaskApi";
+import { IoMdPersonAdd } from "react-icons/io";
+import { MdAssignmentAdd } from "react-icons/md";
+
+
+import { FiPlus } from "react-icons/fi";
+
+import { Link } from "react-router";
 
 function Kanban() {
   const location = useLocation();
   console.log('location', location)
   const [cards, setCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [active, setActive] = useState([]);
+  const [isModalOp, setModalOpen] = useState(false);
+  
   const token = getAceAccessToken()
   console.log("before get data :", token)
   const {data: userData} = useGetMeQuery()
@@ -49,7 +60,7 @@ function Kanban() {
     data: taskdata,
     error,
     isLoading,
-  } = useGetTasksQuery({ limit: 20, offset: 0 });
+  } = useGetTasksQuery({ limit: 30, offset: 0 });
 
   useEffect(() => {
     console.log("API Response:", { taskdata, error, isLoading });
@@ -60,28 +71,38 @@ function Kanban() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+
+
   return (
     <div className="font-roboto p-8 bg-gray-100 dark:bg-[#121321]">
       {/* Header */}
       <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
-        <div className="p-2 font-bold text-center bg-gray-200 rounded-lg text-txt16 md:text-txt20 dark:bg-gray-800 text-primary dark:text-white hover:shadow-sm">
+        <div className="p-2 font-bold text-center transition-all duration-500 bg-white rounded-3xl text-txt16 md:text-txt20 hover:bg-primary hover:text-white dark:bg-primary dark:hover:bg-blue-500 text-primary dark:text-white hover:shadow-sm">
           {workspace?.title || "Loading..."}
         </div>
 
         {/* Add Member Button */}
         <div className="flex space-x-2 md:space-x-4">
+            <button
+        onClick={() => setModalOpen(true)}
+        className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-3xl hover:bg-blue-600 ">
+          <span className="mr-2"><MdAssignmentAdd /> </span>Add Task
+        </button>
           <button
             onClick={openModal}
-            className="flex items-center px-3 py-2 text-gray-700 transition bg-gray-200 rounded-md hover:bg-gray-300"
+            className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-3xl hover:bg-blue-600 "
           >
-            <span className="mr-2">+</span>
+            <span className="mr-2"><IoMdPersonAdd />
+
+</span>
             Add Member
           </button>
         </div>
       </div>
 
       {/* Board Columns */}
-      <div className="flex max-w-full gap-3 overflow-x-auto">
+      <div className="flex justify-between gap-2 overflow-x-auto">
+        <Link to = "/todo" className="w-full">
         <Column
         workspace_id={id}
           title="To Do"
@@ -90,6 +111,8 @@ function Kanban() {
           cards={cards}
           setCards={setCards}
         />
+        </Link >
+        <Link to = "/progress" className="w-full">
         <Column
           title="In Progress"
           column="doing"
@@ -97,6 +120,9 @@ function Kanban() {
           cards={[]}
           setCards={setCards}
         />
+      
+        </Link>
+        <Link to = "/completed" className="w-full"> 
         <Column
           title="Complete"
           column="done"
@@ -104,11 +130,19 @@ function Kanban() {
           cards={[]}
           setCards={setCards}
         />
+        </Link>
+        
+       
       </div>
 
       {/* Add Member Modal */}
       <AddMemberForm isOpen={isModalOpen} closeModal={closeModal} />
       {/* Add task Modal */}
+          <AddNewTaskPopUp 
+            isOp={isModalOp}
+            onCl={() => setModalOpen(false)}
+            
+            />
     </div>
   );
 }

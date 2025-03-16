@@ -81,7 +81,7 @@ const TaskifyBoard = () => {
         <div className="p-8 bg-white min-h-screen">
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
-                <div className="text-lg font-bold text-gray-800">
+                <div className="text-lg font-bold text-gray-800 dark:tex">
                     Final Project of Foundation G3 - Taskify
                 </div>
                 <div className="flex space-x-4">

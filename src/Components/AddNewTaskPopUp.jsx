@@ -12,11 +12,11 @@ import { useParams } from "react-router";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
 
 
-export default function AddNewTaskPopUp({isOpen, onClose}) {
+export default function AddNewTaskPopUp({isOp, onCl}) {
  const {id} = useParams();
  const workspaceId = id;
  console.log('workspaceId', workspaceId)
-  if (!isOpen) return null;
+  if (!isOp) return null;
   
 
   const [createTask] = useCreateTaskMutation();
@@ -91,20 +91,20 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
   return (
     <>
       <div className=" font-roboto inset-0 fixed
-       top-0 bottom-0 z-50 flex items-center justify-center bg-black  bg-opacity-50 ">
+       top-0 bottom-0 z-9 flex items-center justify-center bg-black  bg-opacity-50 ">
         <div className="px-10 bg-white rounded-md dark:bg-gray-700 ">
           <div className="">
             <div className="pb-4 flex justify-between">
               <div className="grid pr-10"> 
-              <h3 className="pt-3 font-bold text-primary text-[24px]">
+              <h3 className="pt-3 font-bold text-primary text-[24px] dark:text-white">
                 Add a new task
               </h3>
-              <p className="text-primary text-txt14 ">
+              <p className="text-primary text-txt14 dark:text-white ">
               Effortlessly manage your to-do list: add a new task
             </p>
               </div>
               <button
-                onClick={onClose}
+                onClick={onCl}
                 className=" text-2xl dark:text-gray-300 text-primary top-0 pl-10 right-3 "
               >
                 <FontAwesomeIcon icon={faXmark} />
@@ -126,7 +126,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="title"
-                  className="font-medium text-primary dark:text-gray-50 text-primarytext-txt16 lg:text-txt18  "
+                  className="font-medium text-primary  dark:text-gray-50 text-primarytext-txt16 lg:text-txt18  "
                 >
                   Task Title
                 </label>
@@ -147,7 +147,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="due_date"
-                  className="font-medium text-primary text-txt16 lg:text-txt18"
+                  className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18"
                 >
                  Due Date
                 </label>
@@ -167,7 +167,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="start_date"
-                  className="font-medium text-primary text-txt16 md:text-txt-18"
+                  className="font-medium text-primary dark:text-white text-txt16 md:text-txt-18"
                 >
                  Start Date
                 </label>
@@ -188,7 +188,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="reminder_date"
-                  className="font-medium text-primary text-txt16 lg:text-txt18"
+                  className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18"
                 >
                  Reminder Date
                 </label>
@@ -196,7 +196,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
                   name="reminder_date"
                   type="date"
                   placeholder="dd/mm/yyyy"
-                  className="w-full p-1.5 border dark:text-gray-300  dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+                  className="w-full p-1.5 border dark:text-gray-300   dark:bg-gray-800 border-primary rounded-md xl:p-2 text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
                 />
                 <ErrorMessage
                   name="reminder_date"
@@ -212,7 +212,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="pb-2 xl:pb-7">
                 <label
                   htmlFor="note"
-                  className="font-medium  text-primary text-txt16 lg:text-txt18 "
+                  className="font-medium  text-primary dark:text-white text-txt16 lg:text-txt18 "
                 >
                   Assign to
                 </label>
@@ -232,7 +232,7 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
 
               {/* Category Dropdown */}
               <div>
-                <label htmlFor="category_id" className="font-medium  text-primary text-txt16 lg:text-txt18 " >
+                <label htmlFor="category_id" className="font-medium  text-primary dark:text-white text-txt16 lg:text-txt18 " >
                 Category
                 </label>
               {loadingCategories ? (
@@ -268,9 +268,9 @@ export default function AddNewTaskPopUp({isOpen, onClose}) {
               <div className="flex justify-end mb-5">
               <button
                   className="m-2 px-6 py-2 dark:text-white text-center text-txtPrimary transition-all rounded-md text-btn-txt  border active:scale-95"
-                  onClick={onClose}
+                  onClick={onCl}
               >
-                  cancle
+                  cancel
                 </button>
                 <button
                   type="submit"

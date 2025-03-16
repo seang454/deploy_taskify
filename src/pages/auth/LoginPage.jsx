@@ -11,19 +11,20 @@ import { useEffect, useState } from "react";
 import { setAccessToken } from "../../lib/secureLocalStorage.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
 import { useGoogleLogin } from "@react-oauth/google";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
-    .required("Username or email is required")
-    .typeError("Invalid email address or Username"),
+    .required("Email is required")
+    .typeError("Invalid Email address"),
   password: Yup.string().required("Password is required"),
 });
 export default function LoginPage() {
   const [postLogin, { data, isLoading, isError, error }] = useLoginMutation();
   const [submit, setSubmit] = useState(false);
   const navigate = useNavigate();
-  console.log("submite :", submit);
+  console.log("submit :", submit);
 
   const LoginWithGoogle = useGoogleLogin({
     onSuccess: async (result) => {
@@ -119,15 +120,21 @@ export default function LoginPage() {
             <Link to="/"  className="relative items-start w-full right-8">
               <ArrowLeft />
             </Link>
+ <motion.img
+      src={TaskifyLogoV2 || "/placeholder.svg"}
+      alt="Taskify Logo"
+      width={150}
+      height={100}
+      initial={{ scale: 1 }}
+      animate={{ scale: [1, 1.1, 1] }} // Zoom in and out
+      transition={{
+        duration: 2, // Duration of one cycle (1 second)
+        repeat: Infinity, // Repeat the animation forever
+        ease: "easeInOut"
+      }}
+    />
 
-            <img
-              src={TaskifyLogoV2  || "/placeholder.svg"}
-              alt="Taskify Logo"
-              width={150}
-              height={100}
-            />
-
-            <p className="font-medium text-txt16 md:text-txt18 lg:text-[24px] text-primary">
+            <p className="font-medium text-txt16 md:text-txt18 lg:text-[24px] text-primary dark:text-white">
             Log in to your account
             </p>
 
@@ -152,7 +159,7 @@ export default function LoginPage() {
                     className={
                       submit
                         ? `cursor-not-allowed opacity-70 w-full h-10 text-white rounded-lg bg-primary hover:bg-subaccent text-txt12 md:text-txt14 lg:text-txt16`
-                        : `w-full h-10 text-white rounded-lg bg-primary hover:bg-subaccent text-txt12 md:text-txt14 lg:text-txt16`
+                        : `w-full h-10 text-white rounded-lg bg-primary hover:bg-subaccent text-txt16 font-semibold md:text-txt14 lg:text-txt16`
                     }
                     // disabled={submit}
                   >
@@ -162,25 +169,25 @@ export default function LoginPage() {
               )}
             </Formik>
 
-            <p className="text-gray-600 text-txt14">Or continue with: </p>
+            <p className="text-gray-600 text-txt14 dark:text-white">Or continue with: </p>
 
             <button
               onClick={LoginWithGoogle}
               type="button"
-              className="flex items-center justify-center w-full h-10 font-bold text-gray-500 border-2 rounded-md border-primary"
+              className="flex items-center justify-center w-full h-10 font-bold text-gray-500 border-2 rounded-md border-primary hover:bg-subaccent hover:text-white dark:text-white"
             >
               <img
                 src="https://www.google.com/favicon.ico"
                 alt="Google"
                 width={20}
                 height={20}
-                className="mr-2"
+                className="mr-2  "
               />
-              Google
+             <h1> Google</h1>
             </button>
 
             <div className="text-sm text-center">
-              <Link href="/" className="text-primary hover:underline">
+              <Link href="/" className="text-primary hover:underline dark:text-white">
                 Cannot Log in? Create an account
               </Link>
             </div>

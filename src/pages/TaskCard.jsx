@@ -43,18 +43,18 @@ const formatDate = (isoString) => {
         onDragStart={(e) => handleDragStart(e, { title, id, column })}
         className="cursor-grab rounded   p-3 active:cursor-grabbing"
       >
-        <div className="font-roboto bg-white dark:bg-gray-400 rounded-lg shadow-md  hover:shadow-xl px-3 py-6">
+        <div className="font-roboto bg-white dark:bg-gray-700 rounded-lg shadow-md  hover:shadow-xl px-3 py-6">
           <p className="font-bold text-gray-700 text-[18px] dark:text-white">{title}</p>
-          <div className="text-sm text-gray-500 mt-2 line-clamp-2">
+          <div className="text-sm text-gray-500 mt-2 line-clamp-2 dark:text-white">
             {note}
           </div>
            {/* Task Created Date */}
-            <div className="text-sm text-gray-600 mt-4"> {/* Added spacing */}
-               Created at : <span className="text-xs text-gray-500">{formatDate(created_at)}</span>
+            <div className="text-sm text-gray-600 mt-4 dark:text-white"> {/* Added spacing */}
+               Created at : <span className="text-[13px] text-gray-500 dark:text-gray-100">{formatDate(created_at)}</span>
             </div>
 
               {checklist && (
-                <div className="flex items-center text-blue-500 text-sm mt-2">
+                <div className="flex items-center text-blue-500 text-sm mt-2 dark:text-white">
                     {/* Positioned immediately below "Created At" */}
                     <CheckSquare className="mr-2" size={16} /> {/* Icon */}
                     Checklist: {checklist}
@@ -81,7 +81,7 @@ const formatDate = (isoString) => {
                 </div>
             )} */}
            {category_id && (
-            <div className="flex items-center text-sm text-gray-600 mt-2">
+            <div className="flex items-center text-sm text-gray-600 mt-2 dark:text-white">
               <span className="pr-2">Category:</span>
               <span className="border-2 py-1 px-2 rounded-lg border-secondary text-secondary">
                 {categoryTitle}
