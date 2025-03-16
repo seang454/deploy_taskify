@@ -57,11 +57,11 @@ export default function Navbar() {
           </button> 
          <Link to='/register'>
          <button className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16">
-            Create Account
+            Register
           </button>
          </Link>
           <Link to= '/login' className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16 ">
-            Login account
+            Login
           </Link>
         </div>
 
