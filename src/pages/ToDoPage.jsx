@@ -9,12 +9,12 @@ export default function ToDoPage() {
     return (
             <div className={"w-auto"}>
                 <NavbarForworkShop title={"To Do List"} link={"/todo"}/>
-                <div className={"flex items-center justify-center mt-20 md:mt-0"}>
+                <div className={"flex"}>
                     <div onClick={() => {setProgress(!progress)}}>
                         <TodoCardList/>
                     </div>
 
-                    <div className={"lg:w-[780px] w-96 lg:mt-0 md:mt-16 overscroll-none hidden md:block md:h-[600px] lg:h-[500px] 2xl:h-auto bg-gray-50 overflow-hidden rounded-2xl overflow-y-scroll scroll-smooth "}>
+                    <div className={"lg:w-[780px] w-96 lg:mt-0 md:mt-16 overscroll-none hidden md:block md:h-[600px] lg:h-[500px] 2xl:h-auto bg-gray-50 dark:bg-gray-700  overflow-hidden rounded-2xl overflow-y-scroll scroll-smooth "}>
                         {progress &&(<TodoCardDetail/>)}
                     </div>
 
