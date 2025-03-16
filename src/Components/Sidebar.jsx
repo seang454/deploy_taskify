@@ -52,14 +52,14 @@ export default function Sidebar() {
             className={
               "flex justify-start space-x-4 pl-4 align-middle py-4 transition-all duration-500 hover:bg-primary hover:text-background"
             }
-            to="/"
+            to="/userpf"
           >
             <IoSettingsOutline
               className={"w-5 h-5"}
               width={"10"}
               height={"10"}
             />
-            <div>Setting</div>
+            <div>User Profile</div>
           </NavLink>
           <NavLink
             className={
