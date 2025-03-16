@@ -25,7 +25,7 @@ export default function Sidebar() {
           " bg-background dark:bg-gray-800 md:flex flex-col h-[100%] text-txt16  place-content-between w-1/5 sticky top-20 bottom-0 gap-y-[330px] py-2 hidden"
         }
       >
-        <div className="flex flex-row mt-6 md:flex-col dark:text-white ">
+        <div className=" flex flex-row mt-6 md:flex-col dark:text-white ">
           <NavLink
           to="/dashboard"
             className={
@@ -99,6 +99,7 @@ export default function Sidebar() {
           </div>
         </NavLink>
       </nav>
+<<<<<<< HEAD
       <div className={"absolute -top-3 z-10"}>
         <button
           className="flex gap-10 p-5 text-2xl rounded-full mt-28 text-primary md:hidden "
@@ -107,52 +108,52 @@ export default function Sidebar() {
           {isOpen ? "" : <TiThMenu />} {/* Changes icon when open/closed */}
         </button>
       </div>
+=======
+      <div className={"absolute top-4 z-10"}>
+      <button
+        className=" flex gap-10 p-5 text-2xl rounded-full text-primary md:hidden mt-20 "
+        onClick={toggleMenu}
+      >
+        {isOpen ? "" : <TiThMenu/> } {/* Changes icon when open/closed */}
+      </button></div>
+>>>>>>> a8d1c8dfd252331f03db52c0e74e4e73b186fb00
       {isOpen && (
         <div className="absolute ">
-          <nav className="fixed bottom-0 z-10 flex flex-col w-1/3 h-full py-2 mt-2 transition-transform bg-background text-txt16 place-content-between top-20 gap-y-10 md:hidden min-w-56">
+          <nav className="fixed bottom-0 flex flex-col w-1/3 h-full py-2 transition-transform bg-background text-txt16 place-content-between top-20 gap-y-10 md:hidden min-w-56 z-10 mt-2">
             {/* Close Button */}
             <button
               className="absolute top-0 right-0 flex gap-10 p-5 text-2xl rounded-full text-primary"
-              onClick={() => {
-                toggleMenu(), console.log(isOpen);
-              }}
+              onClick={() =>{toggleMenu(), console.log(isOpen)}}
             >
-              <AiOutlineClose />
+              <AiOutlineClose/> 
             </button>
             {/* Navigation Links */}
+<<<<<<< HEAD
             <div className="absolute flex flex-col mt-6">
               <NavLink
                 className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background"
                 to="/member"
               >
+=======
+            <div className=" flex flex-col mt-10">
+              <NavLink className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background" to="/">
+>>>>>>> a8d1c8dfd252331f03db52c0e74e4e73b186fb00
                 <MdOutlineLeaderboard className="w-5 h-5" />
                 <div>Workspace</div>
               </NavLink>
-              <NavLink
-                className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background"
-                to="/"
-              >
+              <NavLink className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background" to="/">
                 <IoPersonOutline className="w-5 h-5" />
                 <div>Members</div>
               </NavLink>
-              <NavLink
-                className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background"
-                to="/"
-              >
+              <NavLink className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background" to="/">
                 <IoSettingsOutline className="w-5 h-5" />
                 <div>Settings</div>
               </NavLink>
-              <NavLink
-                className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background"
-                to="/"
-              >
+              <NavLink className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background" to="/">
                 <IoMdNotificationsOutline className="w-5 h-5" />
                 <div>Notifications</div>
               </NavLink>
-              <NavLink
-                className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background"
-                to="/"
-              >
+              <NavLink className="flex justify-start py-4 pl-4 space-x-4 hover:bg-primary hover:text-background" to="/">
                 <IoIosHelpCircleOutline className="w-5 h-5" />
                 <div>About Taskify</div>
               </NavLink>

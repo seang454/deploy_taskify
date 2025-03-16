@@ -7,6 +7,12 @@ import { useGetWorkspacesQuery } from "../features/workspaceApi";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
 import { useGetTasksQuery } from "../features/addTaskApi";
+import { IoMdPersonAdd } from "react-icons/io";
+import { MdAssignmentAdd } from "react-icons/md";
+
+
+import { FiPlus } from "react-icons/fi";
+
 import { Link } from "react-router";
 
 function Kanban() {
@@ -14,6 +20,10 @@ function Kanban() {
   console.log('location', location)
   const [cards, setCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [active, setActive] = useState([]);
+  const [isModalOp, setModalOpen] = useState(false);
+  
   const token = getAceAccessToken()
   console.log("before get data :", token)
   const {data: userData} = useGetMeQuery()
@@ -61,6 +71,8 @@ function Kanban() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+
+
   return (
     <div className="font-roboto p-8 bg-gray-100 dark:bg-[#121321]">
       {/* Header */}
@@ -71,11 +83,18 @@ function Kanban() {
 
         {/* Add Member Button */}
         <div className="flex space-x-2 md:space-x-4">
+            <button
+        onClick={() => setModalOpen(true)}
+        className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-3xl hover:bg-blue-600 ">
+          <span className="mr-2"><MdAssignmentAdd /> </span>Add Task
+        </button>
           <button
             onClick={openModal}
             className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-3xl hover:bg-blue-600 "
           >
-            <span className="mr-2">+</span>
+            <span className="mr-2"><IoMdPersonAdd />
+
+</span>
             Add Member
           </button>
         </div>
@@ -119,6 +138,11 @@ function Kanban() {
       {/* Add Member Modal */}
       <AddMemberForm isOpen={isModalOpen} closeModal={closeModal} />
       {/* Add task Modal */}
+          <AddNewTaskPopUp 
+            isOp={isModalOp}
+            onCl={() => setModalOpen(false)}
+            
+            />
     </div>
   );
 }

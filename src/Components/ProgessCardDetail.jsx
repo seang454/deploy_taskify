@@ -5,14 +5,15 @@ import { IoIosArrowBack } from "react-icons/io";
 export default function  ProgessCardDetail() {
     let email = "Houy@gmail.com";
     return (
-        <div >
-            <NavLink to="/progess" className={"absolute text-[30px] top-28 md:hidden"} >
-                <IoIosArrowBack />
-            </NavLink>
+        <div className={"mt-10"}>
             <div className={"mx-15 mr-2 px-2  h-auto space-y-4 mb-10 p-3 lg:w-full md:block md:w-96  dark:bg-gray-700"}>
-            <div className={" flex bg-gray-300 dark:text-white rounded-full w-[300px] md:w-auto items-center lg:my-2 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
+                <div className={"text-center text-lg font-bold leading-tight flex items-center justify-center"}>
+                    <NavLink to="/progess" className={" text-[30px] md:hidden"} >
+                        <IoIosArrowBack />
+                    </NavLink>
+                    <div className={" flex bg-gray-300 dark:text-white rounded-full w-[300px] md:w-[400px] items-center lg:my-2 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
                 Homepage UX/UI
-            </div>
+            </div></div>
             <div className={"rounded-xl  w-auto border-2 dark:text-white border-gray-100 p-4 space-y-8"}>
                 <div>Description:</div>
                 <p >Create with place holder and responsive with all devices. Use the Flowbite component  and make every components are consistency.</p>
