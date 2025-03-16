@@ -1,9 +1,18 @@
 import CheckBoxinProgess from "./CheckBoxinProgess.jsx";
 import {NavLink} from "react-router";
 import { IoIosArrowBack } from "react-icons/io";
+import { useState } from "react";
+import EditTaskPupUp from "./EditTaskPupUp.jsx";
+import { getAceAccessToken } from "../lib/secureLocalStorage.js";
+import { useGetMeQuery } from "../features/auth/authApiSlice.js";
 
 export default function  ProgessCardDetail() {
+    const token = getAceAccessToken();
     let email = "Houy@gmail.com";
+    const [isEditOpen, setIsEditOpen] = useState(false);
+
+    const {data: userData } = useGetMeQuery()
+    console.log('userData', userData)
     return (
         <div className={"mt-10"}>
             <div className={"mx-15 mr-2 px-2 bg-white h-auto space-y-4 mb-10 p-3 lg:w-full md:block md:w-96  dark:bg-gray-700"}>
@@ -44,11 +53,18 @@ export default function  ProgessCardDetail() {
                     <button className={"px-3 dark:text-white rounded-md border h-[43px] w-[132px] border-gray-400 font-bold text-gray-700"}>
                         Delete Task
                     </button>
-                    <button className={"px-3 rounded-md border h-[43px] w-[132px] bg-primary text-background  font-bold"}>
+                    <button 
+                onClick={() => setIsEditOpen(true)}
+                className={"px-3 rounded-md border h-[43px] w-[132px] bg-primary text-background  font-bold"}>
                         Edit Task
                     </button>
                 </div>
             </div>
+        <EditTaskPupUp
+        token={token}
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+        />
         </div>
     )
 }

@@ -189,7 +189,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaCloudUploadAlt } from "react-icons/fa";
 
+<<<<<<< HEAD
 export default function EditTaskPopup({ isOpen, onClose }) {
+=======
+
+export default function EditTaskPupUp({ isOpen, onClose, token }) {
+  console.log("isopen",isOpen);
+  console.log("token",token)
+>>>>>>> 5f7bc8aa11a08303116bb267a92bf1bbb77683c3
   if (!isOpen) return null;
 
   const initialValues = {
@@ -226,12 +233,18 @@ export default function EditTaskPopup({ isOpen, onClose }) {
 
   return (
     <>
+<<<<<<< HEAD
       {/* Backdrop */}
       <div className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 " onClick={onClose}></div>
 
       {/* Modal Container */}
       <div className="fixed inset-0 flex justify-center items-center z-9">
         <div className="bg-white dark:bg-gray-900 dark:text-gray-200 p-6 rounded-lg shadow-lg w-[95%] max-w-5xl relative">
+=======
+      <div className="font-roboto inset-0 fixed
+       top-0 bottom-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
+        <div className="bg-white dark:bg-gray-900 dark:text-gray-200 p-6 rounded-lg shadow-lg w-[95%] max-w-5xl relative flex flex-col ">
+>>>>>>> 5f7bc8aa11a08303116bb267a92bf1bbb77683c3
           {/* Header */}
           <div className="text-xl font-semibold flex justify-between items-center">
             <h3>
@@ -242,9 +255,14 @@ export default function EditTaskPopup({ isOpen, onClose }) {
               <span className="pr-1">Design User Interface</span>
             </h3>
             <button
+<<<<<<< HEAD
               className="text-xl text-gray-500 hover:text-primary dark:text-gray-400"
               onClick={onClose}
             >
+=======
+            onClick={onClose}
+            className="text-xl text-gray-500 hover:text-primary dark:text-gray-400 ">
+>>>>>>> 5f7bc8aa11a08303116bb267a92bf1bbb77683c3
               <FontAwesomeIcon icon={faXmark} />
             </button>
           </div>
@@ -344,6 +362,7 @@ export default function EditTaskPopup({ isOpen, onClose }) {
                       <option value="Mr. Say Seyha">Mr. Say Seyha</option>
                     </Field>
                   </div>
+<<<<<<< HEAD
 
                   {/* Category */}
                   <div className="pb-5 xl:pb-7">
@@ -351,6 +370,17 @@ export default function EditTaskPopup({ isOpen, onClose }) {
                     <Field as="select" name="category_id" className="w-full border dark:bg-gray-800 border-primary rounded-md p-2">
                       <option value="Design">Design</option>
                       <option value="Development">Development</option>
+=======
+                  <div className=" pb-5 xl:pb-7">
+                    <label className="text-primary font-medium">Category</label>
+                    <Field as="select" name="category_id" className="w-full dark:bg-gray-800 border border-primary rounded-md p-2">
+                    <option value="">Select Category</option>
+                  {/* {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.title}
+                    </option>
+                  ))} */}
+>>>>>>> 5f7bc8aa11a08303116bb267a92bf1bbb77683c3
                     </Field>
                   </div>
                 </div>
