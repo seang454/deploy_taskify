@@ -4,12 +4,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.jpg', '**/*.JPG', '**/lyzhia.JPG'],
+
   build: {
     rollupOptions: {
       external: [/\.JPG$/] // Treat JPG files as external resources
-    }
-  },
-  build: {
+    },
     // Ensure proper bundling
     commonjsOptions: {
       transformMixedEsModules: true,
