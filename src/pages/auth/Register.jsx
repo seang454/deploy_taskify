@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import { HiArrowLongLeft } from "react-icons/hi2";
 import { setAccessToken } from "../../lib/secureLocalStorage";
-import register_image from "../../assets/register_img.png";
+import register_images from "../../assets/register_img.png"
 
 export default function Register() {
   const [postUserRegisters, { data, isLoading, error }] = useRegisterMutation();
@@ -378,7 +378,7 @@ export default function Register() {
           <section className="bg-[#CFEAFD] flex items-center rounded-r-lg">
             <div>
               <img
-                src={register_image}
+                src={register_images}
                 className="hidden w-full md:block"
                 alt="Register Illustration"
               />
