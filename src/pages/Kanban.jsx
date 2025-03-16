@@ -16,10 +16,10 @@ import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router";
 
 function Kanban() {
-  const location = useLocation();
-  console.log("location", location);
+  // const location = useLocation();
+  // console.log("location", location);
   const [cards, setCards] = useState([]);
-  const [userId, setUserId] = useState({});
+  const [userId, setUserId] = useState("");
   const [todoData, setTodoData] = useState();
   const [checkTodoData, setCheckTodoData] = useState({});
   console.log("todoData :", todoData);
@@ -34,9 +34,10 @@ function Kanban() {
   // console.log("my data in kanban : ", data);
   const { data: tododata } = useGetTodoTaskQuery({
     userId,
-    limit: 20,
+    limit: 40,
     offset: 0,
   });
+  console.log('userId', userId)
   // console.log('to do data', tododata);
   useEffect(() => {
     if (userData?.id) {
@@ -52,7 +53,8 @@ function Kanban() {
   // );
   const filterTodoTask = (todoData || []).filter((c) => c.is_completed === false && c.is_archived === false);
   console.log('filterTodaTask', filterTodoTask)
-  // console.log("My user ID:", userId);
+  console.log("My user ID:", userId);
+  console.log('filterTodoTask', filterTodoTask)
 
   const { id } = useParams();
   console.log("on workspace get");
@@ -86,7 +88,7 @@ function Kanban() {
 
   
 
-
+ console.log('hello userId', userId)
   return (
     <div className="font-roboto p-8 bg-background dark:bg-[#121321]">
       {/* Header */}
@@ -116,7 +118,7 @@ function Kanban() {
 
       {/* Board Columns */}
       <div className="flex justify-between gap-2 overflow-x-auto">
-        <Link to="/todo" state={{ filterTodoTask }} className="w-full">
+        <Link to={`/todo/${id}`} state={{ filterTodoTask }} className="w-full">
           <Column
             workspace_id={id}
             title="To Do"

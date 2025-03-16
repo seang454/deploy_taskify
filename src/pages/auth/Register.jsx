@@ -377,7 +377,7 @@ export default function Register() {
           <section className="bg-[#CFEAFD] flex items-center rounded-r-lg">
             <div>
               <img
-                src="./src/assets/register_img.png"
+                src="src/assets/register_img.png"
                 className="hidden w-full md:block"
                 alt="Register Illustration"
               />

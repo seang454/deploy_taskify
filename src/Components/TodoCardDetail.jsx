@@ -1,9 +1,14 @@
 import CheckBoxinProgess from "./CheckBoxinProgess.jsx";
 import {NavLink} from "react-router";
 import { IoIosArrowBack } from "react-icons/io";
+import { useGetMeQuery } from "../features/auth/authApiSlice.js";
+import { getAceAccessToken } from "../lib/secureLocalStorage.js";
 
 export default function  TodoCardDetail() {
     let email = "Houy@gmail.com";
+    const token = getAceAccessToken();
+        const {data: userData } = useGetMeQuery();
+        console.log('userData', userData);
     return (
         <div className={"mt-10"}>
             <div className={"mx-15 mr-2 px-2 bg-white h-auto space-y-4 mb-10 p-3 lg:w-full md:block md:w-96  dark:bg-gray-700"}>

@@ -84,12 +84,14 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
           const response = await createTask(taskValues).unwrap();
           console.log("Task Created Successfully:", response);
           resetForm();
-          onClose();
+          onCl();
           break; // Exit loop if successful
         } catch (err) {
           if (err?.status === 409) {
             console.warn("UUID Conflict Detected. Generating New UUID...");
             taskValues.id = crypto.randomUUID(); // Generate a new UUID
+            resetForm();
+            onCl();
           } else {
             throw err; // Throw error if it's not a conflict
           }
