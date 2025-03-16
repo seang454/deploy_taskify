@@ -109,24 +109,24 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
 
   return (
     <div className="sticky top-0 h-[100vh] bottom-0 inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
-      <div className="bg-white  p-6 rounded-lg shadow-lg w-[90%] lg:w-[75%]  sticky top-0 bottom-0">
+      <div className="bg-white rounded-lg shadow-lg w-[90%] lg:w-[80%] xl:w-[75%]  sticky top-0 bottom-0">
         
         {/* Close Button */}
         <button 
           onClick={onClose} 
-          className="absolute text-xl text-gray-500 top-2 right-2 hover:text-gray-700"
+          className="absolute text-xl text-gray-500 top-1.5 right-1.5 hover:text-gray-700"
         >
           <FontAwesomeIcon icon={faXmark} />
         </button>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="p-6  grid gap-4 md:grid-cols-2">
         
         
           {/* Left: Form */}
           <div>
-          <div className="lg:pb-8 xl:pb-10">
+          <div className="lg:pb-8 ">
           <h2 className="mb-4 text-xl font-bold lg:text-2xl xl:text-3xl text-primary">Let's built a Workspace</h2>
-          <p className="text-txt-16 xl:text-txt18 text-txtPrimary">Boost your productivity by making it easier for everyone to access boards in one location.</p>
+          <p className="text-txt14 py-3 lg:text-txt-16 xl:text-txt18 text-txtPrimary">Boost your productivity by making it easier for everyone to access boards in one location.</p>
           </div>
             <Formik
               initialValues={initialValues}
@@ -139,23 +139,23 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
               {({ handleSubmit }) => (
                 <Form onSubmit={handleSubmit} className="flex flex-col">
                  <div className="pb-5 xl:pb-7">
-                  <label htmlFor="title" className="font-medium text-primary md:text-txt16 lg:text-txt18 xl:text-txt20">Workspace name</label>
+                  <label htmlFor="title" className="font-semibold text-primary text-txt16 lg:text-txt18 xl:text-txt20">Workspace name</label>
                  <Field 
                     name="title" 
                     type="text" 
-                    placeholder="Put your workspace name..." 
-                    className="w-full p-1 border rounded-md xl:p-2 text-txt14 xl:text-txt16"
+                    placeholder="Put your workspace name... " 
+                    className="w-full p-1 border rounded-md xl:p-2 xl:my-3 text-txt14 md:text-txt16 xl:text-txt18"
                   />
                   <ErrorMessage name="name" component="div" className="text-sm text-red-500" />
-                  <p className="text-txt12 md:text-txt14 text-txtPrimary">This is the name of your company, team or organization.</p>
+                  <p className="text-txt14 md:text-txt16 xl:text-txt18 text-txtPrimary">This is the name of your company, team or organization.</p>
                  </div>
                   <div>
-                    <label htmlFor="discription" className="font-medium text-primary md:text-txt16 lg:text-txt18 xl:text-txt20">Workspace description (Optional)</label>
+                    <label htmlFor="discription" className="font-semibold text-primary text-txt16 lg:text-txt18 xl:text-txt20">Workspace description (Optional)</label>
                   <Field 
                     name="description"
                     as="textarea"
                     placeholder="Put your workspace name..."
-                    className="w-full p-1 border rounded-md h-28  xl:p-2 text-txt14 xl:text-txt16 "
+                    className="w-full p-1 border rounded-md h-28 xl:my-3 xl:p-2 text-txt14 md:text-txt16 xl:text-txt18"
                   />
                   </div>
                   <button 
