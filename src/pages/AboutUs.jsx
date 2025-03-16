@@ -1,7 +1,6 @@
 
 import Cardab from "../Components/Layouts/Cardab";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import profilepic from "../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp";
 import { motion } from "framer-motion";
 import Cardvs from "../Components/Layouts/Cardvs";
 import { RiSpaceShipFill } from "react-icons/ri";

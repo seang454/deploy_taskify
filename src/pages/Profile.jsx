@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import Profilepic from "../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp"
+import Profilepic from "../assets/Chaya.webp"
 import * as Yup from "yup"
 export default function Profile() {
    const validationSchema = Yup.object({

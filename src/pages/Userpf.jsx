@@ -1,6 +1,6 @@
 
 import React from "react";
-import Profilepic from "../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp";
+import Profilepic from "../assets/Chaya.webp";
 import { LuUserRoundCog } from "react-icons/lu";
 import { FaRegWindowRestore } from "react-icons/fa";
 import EditProfilePage from "./EditProfilePage";
