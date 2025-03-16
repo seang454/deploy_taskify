@@ -14,9 +14,6 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
     // Make sure Yup is included in the bundle
-    rollupOptions: {
-      external: [] // Don't mark anything as external
-    }
   },
   optimizeDeps: {
     include: ['yup'] // Force Vite to pre-bundle yup

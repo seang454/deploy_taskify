@@ -11,7 +11,7 @@ export default function OnProgessPage() {
 
             <div>
             <NavbarForworkShop title={"On Progress List"}link={"/progress"}/>
-        <div className={"flex"} >
+        <div className={"flex justify-center mt-20"} >
             <div onClick={() => {setProgress(!progress)}}>
             <ProgressCardList/>
             </div>

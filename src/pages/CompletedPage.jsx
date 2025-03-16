@@ -10,7 +10,7 @@ export default function CompletedPage() {
 
             <div>
                 <NavbarForworkShop title={"Completed List"} link={"/completed"} />
-                <div className={"flex"}>
+                <div className={"flex justify-center mt-20"}>
                     <div onClick={() => {setProgress(!progress)}}>
                         <CompletedCardList/>
                     </div>
