@@ -22,7 +22,7 @@ export default function Sidebar() {
     <>
       <nav
         className={
-          " bg-background dark:bg-gray-800 md:flex flex-col h-[100%] text-txt16  place-content-between w-1/5 sticky top-20 bottom-0 gap-y-[330px] py-2 hidden"
+          " bg-white dark:bg-gray-800 md:flex flex-col h-[100%] text-txt16  place-content-between w-1/5 sticky top-20 bottom-0 gap-y-[330px] py-2 hidden"
         }
       >
         <div className="flex flex-row mt-6 md:flex-col dark:text-white">
@@ -122,7 +122,7 @@ export default function Sidebar() {
                 <MdOutlineLeaderboard className="w-5 h-5" />
                 <div>Workspace</div>
               </NavLink>
-              <NavLink className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background" to="/">
+              <NavLink className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background" to="/member">
                 <IoPersonOutline className="w-5 h-5" />
                 <div>Members</div>
               </NavLink>

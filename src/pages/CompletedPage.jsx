@@ -8,7 +8,7 @@ export default function CompletedPage() {
 
     return (
 
-            <div>
+            <div className="bg-background">
                 <NavbarForworkShop title={"Completed List"} link={"/completed"} />
                 <div className={"flex justify-center mt-20"}>
                     <div onClick={() => {setProgress(!progress)}}>

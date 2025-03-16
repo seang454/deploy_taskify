@@ -1,80 +1,4 @@
-// import React from "react";
-// import { Formik, Form, Field, ErrorMessage } from "formik";
-// import { useState } from "react";
-// import Profilepic from "../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp"
-// import * as Yup from "yup";
-// import { LuUserRoundCog } from "react-icons/lu";
-// import { FaRegWindowRestore } from "react-icons/fa";
 
-// export default function Userpf() {
-
-
-
-
-//    const validationSchema = Yup.object({
-//     firstName: Yup.string().required("First Name is required"),
-//     username: Yup.string().required("Username is required"),
-//     email: Yup.string().email("Invalid email format").required("Email is required"),
-//     lastName: Yup.string().required("Last Name is required"),
-//     gender: Yup.string().required("Gender is required"),
-//     password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
-//   });
-//   return (
-// <div className="w-screen h-screen p-5 mx-auto bg-white rounded-lg shadow-md md:p-20 min-w-80 ">
-//   <div className="flex flex-col justify-between gap-5 mb-10 md:grid md:grid-cols-2">
-//     <div className="flex mb-5">
-//       <img className="w-16 h-16 rounded-full" src={Profilepic} alt="" />
-//       <div className="ml-5 font-family">
-//         <h1 className="text-2xl font-semibold">Narak Leng</h1>
-//         <p className="text-sm">narakleng12345@gmail.com</p>
-//       </div>
-//     </div>
-//     <div className="flex flex-col gap-5 md:grid md:grid-cols-2">
-//       <div className="flex items-center">
-//         <FaRegWindowRestore className="text-primary" />
-//         <button className="ml-5 font-semibold text-primary">View Archive</button>
-//       </div>
-//       <div className="flex items-center">
-//         <LuUserRoundCog className="text-primary" />
-//         <button className="ml-5 font-semibold text-primary">Edit Profile</button>
-//       </div>
-//     </div>
-//   </div>
-
-//   <h2 className="mb-4 text-2xl font-semibold">Personal Information</h2>
-//   <div className="space-y-5">
-//     {/* First Name & Last Name */}
-//     <div className="flex flex-col gap-5 md:grid md:grid-cols-2">
-//       <div className="font-medium text-gray-600">First Name</div>
-//       <div className="p-2 font-semibold border rounded-md text-primary">John</div>
-
-//       <div className="font-medium text-gray-600">Last Name</div>
-//       <div className="p-2 font-semibold border rounded-md text-primary">Doe</div>
-//     </div>
-
-//     {/* Username, Email & Password */}
-//     <div className="flex flex-col gap-5 md:grid md:grid-cols-2">
-//       <div className="font-medium text-gray-600">Username</div>
-//       <div className="p-2 font-semibold border rounded-md text-primary">john_doe</div>
-
-//       <div className="font-medium text-gray-600">Email</div>
-//       <div className="p-2 font-semibold border rounded-md text-primary">john@example.com</div>
-
-//       <div className="font-medium text-gray-600">Password</div>
-//       <div className="p-2 font-semibold border rounded-md text-primary">••••••••</div>
-//     </div>
-
-//     {/* Gender */}
-//     <div className="flex flex-col gap-5 md:grid md:grid-cols-2">
-//       <div className="font-medium text-gray-600">Gender</div>
-//       <div className="p-2 font-semibold border rounded-md text-primary">Male</div>
-//     </div>
-//   </div>
-// </div>
-
- 
-//   );
-// }
 import React from "react";
 import Profilepic from "../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp";
 import { LuUserRoundCog } from "react-icons/lu";
@@ -155,6 +79,7 @@ export default function Userpf() {
             <button className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-md bg-primary hover:bg-blue-600 ">
           <span className="mr-2"><FaRegWindowRestore /> </span>View Archive
         </button>
+        <Link to ="/editprofilepage">
           <button className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-md bg-primary hover:bg-blue-600 "
           >
             <span className="mr-2"><LuUserRoundCog/>
@@ -162,6 +87,7 @@ export default function Userpf() {
 </span>
           Edit Profile
           </button>
+          </Link>
         </div>
       </div>
     </div>

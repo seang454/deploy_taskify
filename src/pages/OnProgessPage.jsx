@@ -9,7 +9,7 @@ export default function OnProgessPage() {
     const [isOpen, setIsOpen] = useState(false);
     return (
 
-            <div>
+            <div className="bg-background">
             <NavbarForworkShop title={"On Progress List"}link={"/progress"}/>
         <div className={"flex justify-center mt-20"} >
             <div onClick={() => {setProgress(!progress)}}>
