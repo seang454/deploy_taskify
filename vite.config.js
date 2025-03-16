@@ -1,21 +1,19 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-
-// export default defineConfig({
-//   assetsInclude: ['**/*.JPG'],
-//   plugins: [
-//     react()],
-// })
-
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  assetsInclude: ['**/*.JPG'],
   plugins: [react()],
   build: {
+    // Ensure proper bundling
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+    // Make sure Yup is included in the bundle
     rollupOptions: {
-      external: ['yup']
+      external: [] // Don't mark anything as external
     }
+  },
+  optimizeDeps: {
+    include: ['yup'] // Force Vite to pre-bundle yup
   }
 })
