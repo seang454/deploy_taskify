@@ -153,7 +153,7 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
                 type="email"
                 name="email"
                 placeholder="Enter member's email"
-                className="border rounded-[8px] p-2 w-full h-[40px] dark:bg-gray-400 focus:outline-none dark:text-white focus:ring-2 focus:ring-blue-500"
+                className="border rounded-[8px] p-2 w-full h-[40px] dark:bg-gray-400 focus:outline-none dark:text-white focus:ring-2 focus:ring-blue-500 dark:placeholder:text-white"
               />
               {/* Reserve space for error message */}
               <div className="min-h-[20px]">
