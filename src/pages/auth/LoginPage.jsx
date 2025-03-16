@@ -16,8 +16,8 @@ import { useGoogleLogin } from "@react-oauth/google";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
-    .required("Username or email is required")
-    .typeError("Invalid email address or Username"),
+    .required("Email is required")
+    .typeError("Invalid Email address"),
   password: Yup.string().required("Password is required"),
 });
 export default function LoginPage() {

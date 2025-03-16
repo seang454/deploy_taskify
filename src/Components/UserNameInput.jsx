@@ -11,7 +11,7 @@ export default function UserNameInput() {
                             <input
                                 {...field}
                                 type="text"
-                                placeholder="Username or email"
+                                placeholder="Email"
                                 className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2  focus:ring-primary text-txt12 md:text-txt14 lg:text-txt16 
                                 ${
                                     touched && error ? "border-accent" : "border-gray-300 "
