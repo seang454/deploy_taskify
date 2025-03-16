@@ -108,13 +108,13 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
 
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[75%] lg:w-[65%] sticky top-0 bottom-0">
+    <div className="sticky top-0 h-[100vh] bottom-0 inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
+      <div className="bg-white  p-6 rounded-lg shadow-lg w-[90%] lg:w-[75%]  sticky top-0 bottom-0">
         
         {/* Close Button */}
         <button 
           onClick={onClose} 
-          className="absolute text-xl text-gray-500 top-3 right-3 hover:text-gray-700"
+          className="absolute text-xl text-gray-500 top-2 right-2 hover:text-gray-700"
         >
           <FontAwesomeIcon icon={faXmark} />
         </button>
@@ -126,7 +126,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
           <div>
           <div className="lg:pb-8 xl:pb-10">
           <h2 className="mb-4 text-xl font-bold lg:text-2xl xl:text-3xl text-primary">Let's built a Workspace</h2>
-          <p className="text-txt12 lg:text-txt-14 xl:text-txt16 text-txtPrimary">Boost your productivity by making it easier for everyone to access boards in one location.</p>
+          <p className="text-txt-16 xl:text-txt18 text-txtPrimary">Boost your productivity by making it easier for everyone to access boards in one location.</p>
           </div>
             <Formik
               initialValues={initialValues}
@@ -147,7 +147,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
                     className="w-full p-1 border rounded-md xl:p-2 text-txt14 xl:text-txt16"
                   />
                   <ErrorMessage name="name" component="div" className="text-sm text-red-500" />
-                  <p className="text-txt12 text-txtPrimary">This is the name of your company, team or organization.</p>
+                  <p className="text-txt12 md:text-txt14 text-txtPrimary">This is the name of your company, team or organization.</p>
                  </div>
                   <div>
                     <label htmlFor="discription" className="font-medium text-primary md:text-txt16 lg:text-txt18 xl:text-txt20">Workspace description (Optional)</label>
@@ -155,7 +155,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
                     name="description"
                     as="textarea"
                     placeholder="Put your workspace name..."
-                    className="w-full p-1 border rounded-md h-28 lg:h-32 xl:h-40 xl:p-2 text-txt14 xl:text-txt16 "
+                    className="w-full p-1 border rounded-md h-28  xl:p-2 text-txt14 xl:text-txt16 "
                   />
                   </div>
                   <button 
@@ -171,7 +171,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
 
           {/* Right: Image */}
           <div className="hidden md:block">
-            <img src={modelImage} alt="Workspace" className="w-full h-auto" />
+            <img src={modelImage} alt="Workspace" className="w-full h-full" />
           </div>
         </div>
       </div>

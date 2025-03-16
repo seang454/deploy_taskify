@@ -1,7 +1,7 @@
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";  // ✅ Fix here
 import App from "./App";
 import RootLayout from "./Components/Layouts/RootLayout";
 import HomePage from "./pages/HomePage";
@@ -21,13 +21,13 @@ import ToDoPage from "./pages/ToDoPage.jsx";
 import CompletedPage from "./pages/CompletedPage.jsx";
 import Sidebar from "./Components/Sidebar.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
-import WorkspacePage from "./pages/WorkspacePage.jsx";
+// import WorkspacePage from "./pages/WorkspacePage.jsx";
 import Kanban from "./pages/Kanban.jsx";
 import MemberPage from "./pages/MemberPage.jsx";
 import MemberCard from "./Components/MemberCard.jsx";
+import WorkspacePage from "./pages/WorkspacePage.jsx";
 import { Archive } from   "./pages/Archive.jsx";
 const root = document.getElementById("root");
-
 ReactDOM.createRoot(root).render(
   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
     <Provider store={store}>
@@ -42,7 +42,7 @@ ReactDOM.createRoot(root).render(
             <Route path="/profile" element={<Profile />} />
             <Route path={"/userpf"} element={<Userpf />} />
             <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/progess" element={<OnProgessPage />} />
+            <Route path="/progress" element={<OnProgessPage />} />
             <Route path="/detail" element={<ProgessCardDetail />} />
             <Route path="/todo" element={<ToDoPage />} />
             <Route path="/completed" element={<CompletedPage />} />
@@ -50,7 +50,8 @@ ReactDOM.createRoot(root).render(
             <Route path="/membercard" element={<MemberCard />} />
             <Route path="/workspace" element={<ModalWorkspace />} />
             <Route path="sidebar" element={<Sidebar />} />
-            <Route path="/topage" element={<ToDoPage />} />
+            <Route path="/kanban/:id" element={<Kanban/>} />
+            <Route path="/workspacepage" element={<WorkspacePage/>}/>
             <Route path="/kanban" element={<Kanban/>} />
             <Route path="/workspacepage" element={<Kanban/>}/>
             <Route path="/archive" element={<Archive/>}/>

@@ -3,6 +3,8 @@ import WorkspaceCard from "../Components/WorkspaceCard";
 import ModalWorkspace from "../Components/ModalWorkspace";
 import { useLocation } from "react-router";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
+import { useGetMeQuery } from "../features/auth/authApiSlice";
+import { useGetWorkspacesQuery } from "../features/workspaceApi";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("your-workspace");
@@ -10,10 +12,19 @@ export default function DashboardPage() {
 
   const location = useLocation();
   const token = getAceAccessToken();
-  console.log("Rescure token: " , token);
+  console.log("Rescure token: ", token);
   console.log("location :", location.state);
 
   const [workspaceList, setWorkspaceList] = useState([]);
+  const [userId, setUserId] = useState(null);
+
+  const { data, isSuccess } = useGetMeQuery();
+
+  //const workpace = useGetWorkspacesQuery(data?.id);
+
+  // console.log(workpace)
+
+  
 
   const sharedWorkspaces = [
     {
@@ -43,12 +54,22 @@ export default function DashboardPage() {
   ];
 
   useEffect(() => {
+    if (isSuccess && data?.id) {
+      setUserId(data.id); 
+    }
+  }, [isSuccess, data?.id]);
+
+  useEffect(() => {
     const fetchWorkspaces = async () => {
+      if (!token || !userId) return;
+
       if (token) {
         console.log(token);
         try {
           const respone = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/workspaces?limit=20&offset=0`,
+            `${
+              import.meta.env.VITE_BASE_URL
+            }/workspaces?limit=20&offset=0&user_id=eq.${userId}`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -61,7 +82,30 @@ export default function DashboardPage() {
       }
     };
     fetchWorkspaces();
-  }, [location.state?.token]);
+  }, [userId]);
+
+  // useEffect(() => {
+  //   const fetchWorkspaces = async () => {
+  //     if (token) {
+  //       console.log(token);
+  //       try {
+  //         const respone = await fetch(
+  //           `${
+  //             import.meta.env.VITE_BASE_URL
+  //           }/workspaces?limit=20&offset=0&user_id=eq.${user_id}`,
+  //           {
+  //             headers: { Authorization: `Bearer ${token}` },
+  //           }
+  //         );
+  //         const data = await respone.json();
+  //         setWorkspaceList([...data].reverse());
+  //       } catch (error) {
+  //         console.log("Error feching workspace:", error);
+  //       }
+  //     }
+  //   };
+  //   fetchWorkspaces();
+  // }, [data?.id]);
 
   const handleWorkspaceResponse = (newWorkspace) => {
     if (newWorkspace) {
@@ -71,14 +115,14 @@ export default function DashboardPage() {
 
   return (
     <>
-      <div className="flex bg-gray-100 border">
-        <section className="flex-1 p-6 bg-white ">
+      <div className="flex bg-gray-100  border">
+        <section className="flex-1 p-6 bg-white dark:bg-[#121321] ">
           {/* Tabs */}
-          <div className="flex px-3 py-3 space-x-10 bg-gray-100 border-b-2 md:justify-around rounded-xl ">
+          <div className="flex px-3 py-3 space-x-10 bg-gray-100 dark:bg-gray-500 border-b-2 md:justify-around rounded-xl ">
             <button
-              className={`py-2 bg-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
+              className={`py-2 bg-white dark:bg-primary dark:hover:bg-white dark:hover:text-primary dark:text-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
                 activeTab === "your-workspace"
-                  ? "border-b-2 border-gray-700"
+                  ? "border-b-2 border-gray-700 dark:border-white"
                   : "text-primary"
               }`}
               onClick={() => setActiveTab("your-workspace")}
@@ -87,9 +131,9 @@ export default function DashboardPage() {
             </button>
 
             <button
-              className={`py-2 pb-1 bg-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
+              className={`py-2 pb-1 bg-white hover:bg-primary dark:bg-primary dark:text-white dark:hover:bg-white dark:hover:text-primary hover:text-white w-full rounded-md font-semibold ${
                 activeTab === "shared-workspace"
-                  ? "border-b-2 border-gray-700"
+                  ? "border-b-2 border-gray-700 dark:border-white"
                   : "text-primary"
               }`}
               onClick={() => setActiveTab("shared-workspace")}
@@ -99,18 +143,20 @@ export default function DashboardPage() {
           </div>
 
           {/* Workspace Content */}
-          <div className="grid grid-cols-1 gap-5 mt-5 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+          <div className="grid grid-cols-1 gap-5 mt-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr">
             {/* If "Your Workspace" is active */}
             {activeTab === "your-workspace" && (
               <>
                 <div
-                  className="flex justify-center p-6 text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
+                  className="flex justify-center p-6 dark:bg-gray-800  text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
                   onClick={() => setIsModelOpen(true)}
                 >
-                  <h3 className="flex items-center text-txt20 text-primary">+ Create New Workspace</h3>
+                  <h3 className="flex items-center dark:text-white  text-txt20 text-primary">
+                    + Create New Workspace
+                  </h3>
                 </div>
                 {workspaceList.map((workspace) => (
-                  <WorkspaceCard key={workspace.id} workspace={workspace} />
+                  <WorkspaceCard key={workspace.id} workspace={workspace} userId={userId}  />
                 ))}
               </>
             )}
@@ -122,7 +168,9 @@ export default function DashboardPage() {
                   className="flex justify-center p-6 text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
                   onClick={() => setIsModelOpen(true)}
                 >
-                  <h3 className="flex items-center text-txt20 text-primary">+ Create New Workspace</h3>
+                  <h3 className="flex items-center text-txt20 text-primary">
+                    + Create New Workspace
+                  </h3>
                 </div>
                 {sharedWorkspaces.map((workspace) => (
                   <WorkspaceCard key={workspace.id} workspace={workspace} />

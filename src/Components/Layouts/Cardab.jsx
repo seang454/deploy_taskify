@@ -1,57 +1,144 @@
-import React from "react";
+// import React from "react";
+// import Profilepic from "../../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp";
+// import { FaFacebook, FaTelegram, FaGithub } from "react-icons/fa";
+
+// const ProfileCard = ({ firstName, lastName, job, position, img }) => {
+//   return (
+//     <div className="flex flex-col items-center justify-center mb-20">
+//       <div className="flex flex-col items-center justify-center p-5 -mb-8 rounded-lg shadow-lg w-80 hover:shadow-2xl bg-white/10 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl border-l-10 dark:text-white">
+//        <div className="relative w-[130px] h-[154px] rounded-[50%] border-[5px] shadow-2xl border-primary p-1">
+//   <img
+//     className="absolute -top-10  left-1 w-[150px] h-[190px] "
+//     src={img}
+//     alt={`Profile`}
+//   />
+// </div>
+//         <div className="flex flex-col items-center justify-center gap-[15px] w-full">
+//           <div className="mt-2 text-center">
+//             <h2 className="text-[25px] font-family text-secondary font-bold">{firstName}</h2>
+//             <h2 className="text-[25px] font-family text-secondary font-bold">{lastName}</h2>
+//           </div>
+
+//           <p className="text-[20px] font-family text-black font-medium dark:text-white">{job}</p>
+//           <h2 className="text-[20px] font-family text-white font-medium bg-primary rounded-tl-[30px] rounded-br-[30px] py-[8px] px-[15px]">
+//             {position}
+//           </h2>
+
+//           <div className="mt-6 sm:mt-0">
+//             <ul className="flex items-center space-x-4">
+//               <li className="flex items-center justify-center w-10 h-10 border border-white rounded-full">
+//                 <a href="javascript:void()">
+//                   <FaFacebook className="text-white" />
+//                 </a>
+//               </li>
+
+//               <li className="flex items-center justify-center w-10 h-10 border border-white rounded-full">
+//                 <a href="javascript:void()">
+//                   <FaTelegram className="text-white" />
+//                 </a>
+//               </li>
+
+//               <li className="flex items-center justify-center w-10 h-10 border border-white rounded-full">
+//                 <a href="javascript:void(0)">
+//                   <FaGithub className="text-white" />
+//                 </a>
+//               </li>
+//             </ul>
+//           </div>
+          
+//         </div>
+        
+//       </div>
+//         <div className="w-80 mt-2 h-8 rounded-b-xl border-r-amber-500 border-r-10 border-[10px] border-t-0 border-l-6 border-b-12 border-l-amber-500 border-amber-500 " ></div>
+     
+//     </div>
+//   );
+// };
+
+// export default ProfileCard;
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import the AOS CSS
 import Profilepic from "../../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp";
 import { FaFacebook, FaTelegram, FaGithub } from "react-icons/fa";
 
 const ProfileCard = ({ firstName, lastName, job, position, img }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in ms
+      once: false, // Triggers the animation every time it comes into view
+    });
+  }, []);
+
   return (
-    <div className="flex flex-col items-center justify-center mb-20">
-      <div className="flex flex-col items-center justify-center p-5 -mb-8 rounded-lg shadow-lg w-80 hover:shadow-2xl bg-white/10 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl border-l-10 dark:text-white">
-        <div className="w-[150px] h-[150px] rounded-[50%] border-[5px] border-primary p-1">
-          <img className="h-full w-full rounded-[50%]" src={img} alt={`Profile`} />
+    <div
+      className="flex flex-col items-center justify-center mb-20"
+      data-aos="fade-up" // Add animation here
+      data-aos-duration="1200" // Duration of the animation
+    >
+      <div
+        className="flex flex-col items-center justify-center p-5 -mb-8 rounded-lg shadow-lg w-80 hover:shadow-2xl bg-white/10 backdrop-opacity-5 backdrop-invert backdrop-blur-3xl border-l-10 dark:text-white"
+        data-aos="zoom-in" // Add a zoom-in animation
+        data-aos-duration="1400"
+      >
+        <div className="relative w-[150px] h-[154px] top-8   bg-gradient-to-b from-blue-400 to-blue-800  rounded-xl border-primary p-1">
+          <img
+            className="absolute -top-[66px] left-1 w-[250px] h-[220px]"
+            src={img}
+            alt={`Profile`}
+          />
         </div>
+
         <div className="flex flex-col items-center justify-center gap-[15px] w-full">
-          <div className="mt-2 text-center">
-            <h2 className="text-[25px] font-family text-secondary font-bold">{firstName}</h2>
-            <h2 className="text-[25px] font-family text-secondary font-bold">{lastName}</h2>
+          <div className="mt-10 text-center">
+            <h2 className="text-[25px] font-family text-secondary font-bold">
+              {firstName}
+            </h2>
+            <h2 className="text-[25px] font-family text-secondary font-bold">
+              {lastName}
+            </h2>
           </div>
 
-          <p className="text-[20px] font-family text-black font-medium dark:text-white">{job}</p>
+          <p className="text-[20px] font-family text-black font-medium dark:text-white">
+            {job}
+          </p>
           <h2 className="text-[20px] font-family text-white font-medium bg-primary rounded-tl-[30px] rounded-br-[30px] py-[8px] px-[15px]">
             {position}
           </h2>
 
           <div className="mt-6 sm:mt-0">
-            <ul className="flex items-center space-x-4">
-              <li className="flex items-center justify-center w-10 h-10 border border-white rounded-full">
+            <ul className="flex items-center space-x-4 ">
+              <li className="flex items-center justify-center w-10 h-10 border  border-primary dark:border-white rounded-full">
                 <a href="javascript:void()">
-                  <FaFacebook className="text-white" />
+                  <FaFacebook className="dark:text-white text-primary" />
                 </a>
               </li>
 
-              <li className="flex items-center justify-center w-10 h-10 border border-white rounded-full">
+              <li className="flex items-center justify-center w-10 h-10 border border-primary  dark:border-white rounded-full">
                 <a href="javascript:void()">
-                  <FaTelegram className="text-white" />
+                  <FaTelegram className="dark:text-white text-primary" />
                 </a>
               </li>
 
-              <li className="flex items-center justify-center w-10 h-10 border border-white rounded-full">
+              <li className="flex items-center justify-center w-10 h-10 border border-primary  dark:border-white rounded-full">
                 <a href="javascript:void(0)">
-                  <FaGithub className="text-white" />
+                  <FaGithub className="dark:text-white text-primary" />
                 </a>
               </li>
             </ul>
           </div>
-          
         </div>
-        
       </div>
-        <div className="w-80 mt-2 h-8 rounded-b-xl border-r-amber-500 border-r-10 border-[10px] border-t-0 border-l-6 border-b-12 border-l-amber-500 border-amber-500 " ></div>
-     
+      <div
+        className="w-80 mt-2 h-8 rounded-b-xl border-r-amber-500 border-r-10 border-[10px] border-t-0 border-l-6 border-b-12 border-l-amber-500 border-amber-500"
+ 
+      ></div>
     </div>
   );
 };
 
 export default ProfileCard;
+
 
 // import React from "react";
 // import Profilepic from "../../assets/c910b642-cc3f-43c1-804e-6753b1d7e660.webp"

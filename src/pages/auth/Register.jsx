@@ -333,14 +333,14 @@ export default function Register() {
                 </div>
 
                 {/* Submit Button */}
-                <Link to="/dashboard">
+              
                 <button
                   type="submit"
                   className="w-full px-4 py-3 pb-4 font-bold text-white transition-all rounded-md bg-primary hover:bg-subaccent active:bg-subaccent active:scale-95"
                 >
                   Create Taskify Account
                 </button>
-                </Link>
+               
 
                 {/* Google Sign In */}
                 <p className="mt-4 text-center text-[#ababab]">

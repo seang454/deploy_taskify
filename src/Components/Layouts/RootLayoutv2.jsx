@@ -2,6 +2,7 @@
 import {Outlet} from "react-router";
 import Sidebar from "../Sidebar.jsx";
 import Navbar from "../Navbar.jsx";
+import Footer from "../Footer.jsx";
 
 export default function RootLayoutv2(){
     return (
@@ -14,6 +15,7 @@ export default function RootLayoutv2(){
                </div>
               
            </div>
+           <Footer/>
 
 </div>
     )

@@ -1,3 +1,4 @@
+import { getAceAccessToken } from "../../lib/secureLocalStorage";
 import { apiSlice } from "../api/apiSlice";
 export const authApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -16,7 +17,17 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 body
             })
         }),
+        getMe: builder.query({
+          query: ()=>({
+            url:"/rpc/me",
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${getAceAccessToken()}`,  // Include the correct token
+                "Content-Type": "application/json", // Ensure content type is set
+            }
+          })  
+        })
     })
 })
 
-export const { useRegisterMutation,useLoginMutation } = authApiSlice;
+export const { useRegisterMutation,useLoginMutation,useGetMeQuery } = authApiSlice;
