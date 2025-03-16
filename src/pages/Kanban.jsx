@@ -93,7 +93,7 @@ function Kanban() {
           setCards={setCards}
         />
         </Link >
-        <Link to = "progress">
+        <Link to = "/progress">
         <Column
           title="In Progress"
           column="doing"
