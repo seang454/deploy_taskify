@@ -11,7 +11,7 @@ export default function  CompletedCardDetail() {
                     <NavLink to="/completed" className={" text-[30px] md:hidden "} >
                         <IoIosArrowBack />
                     </NavLink>
-                    <div className={" flex bg-gray-300 dark:text-white rounded-full w-[300px] md:w-auto items-center lg:my-2 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
+                    <div className={" flex bg-gray-300 dark:text-white rounded-full w-[300px] md:w-[400px] items-center lg:my-2 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
                         Homepage UX/UI
                     </div>
                 </div>
@@ -37,7 +37,7 @@ export default function  CompletedCardDetail() {
                     <div>Creating Component</div>
                     <CheckBoxinProgess/>
                 </div>
-                <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 flex items-center justify-between align-middle"}>
+                <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 flex items-center justify-between align-middle  dark:text-white"}>
                     <div>Assigned to: </div>
                     <div>{email}</div>
                 </div>

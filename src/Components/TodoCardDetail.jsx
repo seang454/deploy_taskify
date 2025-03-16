@@ -36,7 +36,7 @@ export default function  TodoCardDetail() {
                     <div>Creating Component</div>
                     <CheckBoxinProgess/>
                 </div>
-                <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 flex items-center justify-between align-middle"}>
+                <div className={"rounded-xl  w-auto border-2 border-gray-100 p-4 flex items-center justify-between align-middle dark:text-white"}>
                     <div>Assigned to: </div>
                     <div>{email}</div>
                 </div>

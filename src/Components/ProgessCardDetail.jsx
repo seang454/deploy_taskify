@@ -11,7 +11,7 @@ export default function  ProgessCardDetail() {
                     <NavLink to="/progess" className={" text-[30px] md:hidden"} >
                         <IoIosArrowBack />
                     </NavLink>
-                    <div className={" flex bg-gray-300 dark:text-white rounded-full w-[300px] md:w-auto items-center lg:my-2 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
+                    <div className={" flex bg-gray-300 dark:text-white rounded-full w-[300px] md:w-[400px] items-center lg:my-2 mx-auto h-14 text-[28px]  align-middle justify-center font-bold"}>
                 Homepage UX/UI
             </div></div>
             <div className={"rounded-xl  w-auto border-2 dark:text-white border-gray-100 p-4 space-y-8"}>
