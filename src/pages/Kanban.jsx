@@ -64,7 +64,7 @@ function Kanban() {
     <div className="font-roboto p-8 bg-gray-100 dark:bg-[#121321]">
       {/* Header */}
       <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
-        <div className="p-2 font-bold text-center bg-gray-200 rounded-lg text-txt16 md:text-txt20 dark:bg-gray-800 text-primary dark:text-white hover:shadow-sm">
+        <div className="p-2 font-bold text-center bg-white rounded-3xl text-txt16 md:text-txt20 hover:bg-primary hover:text-white dark:bg-primary dark:hover:bg-blue-500 text-primary dark:text-white hover:shadow-sm">
           {workspace?.title || "Loading..."}
         </div>
 
@@ -72,7 +72,7 @@ function Kanban() {
         <div className="flex space-x-2 md:space-x-4">
           <button
             onClick={openModal}
-            className="flex items-center px-3 py-2 text-gray-700 transition bg-gray-200 rounded-md hover:bg-gray-300"
+            className="flex items-center px-3 py-2 text-white transition bg-primary rounded-3xl hover:bg-blue-600 "
           >
             <span className="mr-2">+</span>
             Add Member

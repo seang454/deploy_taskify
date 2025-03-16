@@ -45,12 +45,12 @@ function ProgressCard({ item }) {
 
     return (
         <div
-            className="rounded-xl bg-white  p-4 border-2 dark:text-white w-72 space-y-4"
+            className="rounded-xl bg-white dark:bg-gray-400  p-4 border-2 dark:text-white w-72 space-y-4"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
 
         >
-            <div className="flex items-center justify-between text-txt20 font-bold text-gray-600">
+            <div className="flex items-center justify-between text-txt20 font-bold text-gray-600 dark:text-white">
                 <div>{item.title}</div>
                 <div className={"md:hidden"}>
                 <NavLink to="/detail">
@@ -69,13 +69,13 @@ function ProgressCard({ item }) {
                 )}
                 </div>
             </div>
-            <div className="text-gray-500 line-clamp-2 w-56">{item.description}</div>
-            <div className="text-gray-500 my-4">Created at: {formatDate(item.createdDate)}</div>
-            <div className="flex items-center text-gray-500">
+            <div className="text-gray-500 dark:text-white line-clamp-2 w-56">{item.description}</div>
+            <div className="text-gray-500  dark:text-white my-4">Created at: {formatDate(item.createdDate)}</div>
+            <div className="flex items-center text-gray-500  dark:text-white">
                 <ClipboardList strokeWidth={1} className="mr-4" />
                 {item.task} / {item.total}
             </div>
-            <div className="text-gray-500 flex items-center">
+            <div className="text-gray-500  dark:text-white flex items-center">
                 <div className="pr-2">Category: </div>
                 <div
                     className={`border-2 p-1 rounded-lg text-txt12 ${

@@ -22,13 +22,13 @@ export default function Sidebar() {
     <>
       <nav
         className={
-          " bg-background md:flex flex-col h-[100%] text-txt16  place-content-between w-1/5 sticky top-20 bottom-0 gap-y-[330px] py-2 hidden"
+          " bg-background dark:bg-gray-800 md:flex flex-col h-[100%] text-txt16  place-content-between w-1/5 sticky top-20 bottom-0 gap-y-[330px] py-2 hidden"
         }
       >
-        <div className="flex flex-row mt-6 md:flex-col">
+        <div className="flex flex-row mt-6 md:flex-col dark:text-white ">
           <NavLink
             className={
-              "flex justify-start space-x-4 pl-4 align-middle py-4 hover:bg-primary hover:text-background"
+              "flex justify-start space-x-4 pl-4 align-middle py-4 hover:bg-primary hover:text-background "
             }
             to="/"
           >
@@ -91,7 +91,7 @@ export default function Sidebar() {
         <NavLink className={" hover:bg-primary"}>
           <div
             className={
-              "flex justify-start items-center space-x-4 pl-4 align-middle py-4 hover:bg-primary hover:text-background "
+              "flex justify-start items-center space-x-4 pl-4 align-middle py-4 hover:bg-primary hover:text-background dark:text-white "
             }
           >
             <TiArrowLeftOutline />
