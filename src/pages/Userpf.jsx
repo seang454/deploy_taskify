@@ -1,9 +1,9 @@
 
 import React from "react";
-import Profilepic from "../assets/Chaya.webp";
 import { LuUserRoundCog } from "react-icons/lu";
 import { FaRegWindowRestore } from "react-icons/fa";
 import EditProfilePage from "./EditProfilePage";
+import teachers from "../assets/teachers.png"
 import { Link } from "react-router";
 
 export default function Userpf() {
@@ -12,10 +12,10 @@ export default function Userpf() {
       {/* Profile Info */}
       <div className="flex flex-col justify-between gap-5 mb-10 md:flex-row">
         <div className="flex items-center">
-          <img className="w-16 h-16 border-2 rounded-full border-primary" src={Profilepic} alt="Profile" />
+          <img className="w-16 h-16 border-2 rounded-full border-primary" src={teachers} alt="Profile" />
           <div className="ml-5">
-            <h1 className="text-2xl font-semibold dark:text-white">Narak Leng</h1>
-            <p className="text-sm text-gray-500 dark:gray-100">narakleng12345@gmail.com</p>
+            <h1 className="text-2xl font-semibold dark:text-white">Chan Chhaya</h1>
+            <p className="text-sm text-gray-500 dark:gray-100">Chhaya@gmail.com</p>
           
           </div>
         </div>
@@ -31,13 +31,13 @@ export default function Userpf() {
           <div>
             <div className="font-medium text-gray-600 dark:text-gray-100">First Name</div>
             <div className="p-3 font-semibold border rounded-md text-primary bg-gray-50">
-              John
+              Chan
             </div>
           </div>
           <div>
             <div className="font-medium text-gray-600 dark:text-gray-100">Last Name</div>
             <div className="p-3 font-semibold border rounded-md text-primary bg-gray-50">
-              Doe
+              Chhaya
             </div>
           </div>
         </div>
@@ -47,13 +47,13 @@ export default function Userpf() {
           <div>
             <div className="font-medium text-gray-600 dark:text-gray-100">Username</div>
             <div className="p-3 font-semibold border rounded-md text-primary bg-gray-50">
-              john_doe
+              Chan Chhaya
             </div>
           </div>
           <div>
             <div className="font-medium text-gray-600 dark:text-gray-100">Email</div>
             <div className="p-3 font-semibold border rounded-md text-primary bg-gray-50">
-              john@example.com
+              Chhaya@example.com
             </div>
           </div>
          

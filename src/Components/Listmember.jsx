@@ -1,61 +1,63 @@
 import React from "react";
 import teacher from "../assets/Chaya.webp"
+import ly from "../assets/ly.png";
+import huy1 from "../assets/huy1.png";
+import pich1 from "../assets/pich1.png";
+import lyzhia1 from "../assets/lyzhia1.png";
+import pengseang from "../assets/pengseang.png";
+import teachers from "../assets/teachers.png";
+import narak from "../assets/narak.png";
+import roith from "../assets/roith.png"
 
 const DB_member = [
     {
         id:1,
-        img:teacher,
-        name:"Houy",
-        email:"Houy@gmail.com"
+        img:teachers,
+        name:"Chan Chhaya",
+        email:"Chaya@gmail.com"
     },
+
     {
         id:2,
-        img:teacher,
-        name:"Houy",
-        email:"Houy@gmail.com"
-    },
-    {
+        img: lyzhia1,
+        name:"Eung Lyzhia",
+        email:"Lyzhia@gmail.com"
+        },
+        {
         id:3,
-        name:"Houy",
-        img:teacher,
-        email:"Houy@gmail.com"
-    },
-    {
-        id:4,
-        name:"Houy",
-        img:teacher,
-        email:"Houy@gmail.com"
-    },
-    {
-        id:5,
-        name:"Houy",
-        img:teacher,
-        email:"Houy@gmail.com"
-    },
-    {
-        id:6,
-        name:"Houy",
-        img:teacher,
-        email:"Houy@gmail.com"
-    },
-    {
-        id:7,
-        img:teacher,
-        name:"Houy",
-        email:"Houy@gmail.com"
-    },
-    {
-        id:8,
-        name:"Houy",
-        img:teacher,
-        email:"Houy@gmail.com"
-    },
-    {
-        id:9,
-        name:"Houy",
-        img:teacher,
-        email:"Houy@gmail.com"
-    },
+        img: huy1,
+        name:"Tang Meng Huy",
+        email:"MengHuy@gmail.com"
+        },
+        {
+            id:4,
+        img: narak,
+        name:"Leng Narak",
+        email:"Narak@gmail.com"},
+        {
+            id:5,
+        img: pich1,
+        name:"Sam SokunSreyPich",
+        email:"SreyPich@gmail.com"
+        },
+        {
+            id:6,
+        img : roith,
+        name:"Srun OudomSambath",
+        email:"Chaya@gmail.com"
+        },
+         {
+            id:7,
+        img :pengseang,
+        name:"Sim PengSeang",
+        email:"PengSeang@gmail.com"
+        },
+         {
+            id:8,
+        img : ly,
+        name:"Sim Seangly",
+        email:"Seangly@gmail.com"
+        },
    
 ]
 
