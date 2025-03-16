@@ -12,6 +12,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { HiArrowLongLeft } from "react-icons/hi2";
 import { setAccessToken } from "../../lib/secureLocalStorage";
 import register_images from "../../assets/register_img.png"
+import google from "../../assets/google.png"
 
 export default function Register() {
   const [postUserRegisters, { data, isLoading, error }] = useRegisterMutation();
@@ -225,9 +226,9 @@ export default function Register() {
       <section className="bg-[#F9FAFB] dark:bg-gray-900">
         <section className="grid py-8 sm:px-4 md:grid-cols-2 md:px-8 lg:px-16 ">
           {/* Form Section */}
-          <section className="px-4 py-8 bg-white dark:bg-gray-700 rounded-l-lg md:px-12 lg:px-14 xl:px-16 xl:py-10 ">
+          <section className="px-4 py-8 bg-white rounded-l-lg dark:bg-gray-700 md:px-12 lg:px-14 xl:px-16 xl:py-10 ">
             <Link to="/">
-              <HiArrowLongLeft size={30} className="text-primary dark:text-white  " />
+              <HiArrowLongLeft size={30} className="text-primary dark:text-white " />
             </Link>
             <h2 className="px-5 pb-5 font-medium text-[20px] sm:text-[18px] md:text-[22px] text-center text-primary dark:text-white">
               Create an account to continue
@@ -323,7 +324,7 @@ export default function Register() {
                       type="radio"
                       name="is_student"
                       value="no"
-                      className="w-4 h-4  bg-gray-100 text-subaccent border-primary focus:ring-blue-500"
+                      className="w-4 h-4 bg-gray-100 text-subaccent border-primary focus:ring-blue-500"
                     />
                     <span className="ms-2 text-primary dark:text-white">No</span>
                   </label>
@@ -354,7 +355,7 @@ export default function Register() {
                   className="text-primary border-primary py-2.5 px-5 flex items-center justify-center w-full border rounded-md mt-2"
                 >
                   <img
-                    src="./src/assets/google.png"
+                    src={google}
                     className="w-6 h-6 mr-[5px]"
                     alt="Google"
                   />
