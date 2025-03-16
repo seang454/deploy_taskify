@@ -29,10 +29,20 @@ export const NotificationPage = () => {
         name:"Meng Huy",
         description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
         },
+         {
+        profile : teacher,
+        name:"Meng Huy",
+        description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
+        },
+         {
+        profile : teacher,
+        name:"Meng Huy",
+        description: "Hi Everyone, thanks for sharing your thoughts regarding  this message.",
+        },
     ]
   return (
     <>
-     <div className="w-full p-4 sm:p-6 md:p-8 bg-background">
+     <div className="w-full p-4 sm:p-6 md:p-8 bg-background dark:bg-gray-900">
   {/* Notification Header */}
   <section className="bg-primary rounded-[30px] md:rounded-[50px] lg:rounded-[100px] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-4 py-3 md:px-6 md:py-4">
     <h1 className="text-white text-[14px] sm:text-[16px] md:text-[14px] font-roboto">
