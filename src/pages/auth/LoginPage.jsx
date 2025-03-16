@@ -16,15 +16,15 @@ import { useGoogleLogin } from "@react-oauth/google";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
-    .required("Username or email is required")
-    .typeError("Invalid email address or Username"),
+    .required("Email is required")
+    .typeError("Invalid Email address"),
   password: Yup.string().required("Password is required"),
 });
 export default function LoginPage() {
   const [postLogin, { data, isLoading, isError, error }] = useLoginMutation();
   const [submit, setSubmit] = useState(false);
   const navigate = useNavigate();
-  console.log("submite :", submit);
+  console.log("submit :", submit);
 
   const LoginWithGoogle = useGoogleLogin({
     onSuccess: async (result) => {
@@ -181,7 +181,7 @@ export default function LoginPage() {
                 alt="Google"
                 width={20}
                 height={20}
-                className="mr-2  "
+                className="mr-2 "
               />
              <h1> Google</h1>
             </button>

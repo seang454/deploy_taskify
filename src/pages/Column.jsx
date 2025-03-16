@@ -24,7 +24,7 @@ const Column = ({ title, headingColor, cards=[], column, setCards ,workspace_id 
 console.log('card in column', cards);
   // console.log('workspace_id', workspace_id)
   const [active, setActive] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+ 
   
   
   const handleDragStart = (e, card) => {
@@ -142,11 +142,7 @@ console.log('filterCards', filterCards)
             {filterCards.length}
           </span>
         </span>
-        <button
-        onClick={() => setIsModalOpen(true)}
-        className="px-1 py-1 text-white rounded-full hover:text-gray-200 bg-primary">
-          <FiPlus />
-        </button>
+
       </div>
 
       {/* Task List */}
@@ -177,11 +173,7 @@ console.log('filterCards', filterCards)
         <DropIndicator beforeId={null} column={column} />
       </div>
     </div>
-    <AddNewTaskPopUp 
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-            
-            />
+
     </>
   );
 };

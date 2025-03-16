@@ -35,7 +35,7 @@ const Menu =
 ]
 function Name ({ menu }) {
     return (
-        <div className={"flex align-items-center justify-between"}>
+        <div className={"flex align-items-center justify-between dark:text-white"}>
             <div>{menu.description}</div>
             <input type={"checkbox"} className={"w-5 h-5 rounded-md"} />
         </div>

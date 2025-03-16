@@ -6,7 +6,13 @@ import { data, useLocation, useParams } from "react-router";
 import { useGetWorkspacesQuery } from "../features/workspaceApi";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
-import { useGetTasksQuery, useGetTodoTaskQuery } from "../features/addTaskApi";
+import { useGetTasksQuery } from "../features/addTaskApi";
+import { IoMdPersonAdd } from "react-icons/io";
+import { MdAssignmentAdd } from "react-icons/md";
+
+
+import { FiPlus } from "react-icons/fi";
+
 import { Link } from "react-router";
 
 function Kanban() {
@@ -18,10 +24,13 @@ function Kanban() {
   const [checkTodoData, setCheckTodoData] = useState({});
   console.log("todoData :", todoData);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const token = getAceAccessToken();
-  console.log("before get data :", token);
-  const { data: userData } = useGetMeQuery();
-  console.log("userId :", userId);
+
+  const [active, setActive] = useState([]);
+  const [isModalOp, setModalOpen] = useState(false);
+  
+  const token = getAceAccessToken()
+  console.log("before get data :", token)
+  const {data: userData} = useGetMeQuery()
   // console.log("my data in kanban : ", data);
   const { data: tododata } = useGetTodoTaskQuery({
     userId,
@@ -77,8 +86,9 @@ function Kanban() {
 
   
 
+
   return (
-    <div className="font-roboto p-8 bg-gray-100 dark:bg-[#121321]">
+    <div className="font-roboto p-8 bg-background dark:bg-[#121321]">
       {/* Header */}
       <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
         <div className="p-2 font-bold text-center transition-all duration-500 bg-white rounded-3xl text-txt16 md:text-txt20 hover:bg-primary hover:text-white dark:bg-primary dark:hover:bg-blue-500 text-primary dark:text-white hover:shadow-sm">
@@ -87,11 +97,18 @@ function Kanban() {
 
         {/* Add Member Button */}
         <div className="flex space-x-2 md:space-x-4">
+            <button
+        onClick={() => setModalOpen(true)}
+        className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-3xl hover:bg-blue-600 ">
+          <span className="mr-2"><MdAssignmentAdd /> </span>Add Task
+        </button>
           <button
             onClick={openModal}
             className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-3xl hover:bg-blue-600 "
           >
-            <span className="mr-2">+</span>
+            <span className="mr-2"><IoMdPersonAdd />
+
+</span>
             Add Member
           </button>
         </div>
@@ -132,6 +149,11 @@ function Kanban() {
       {/* Add Member Modal */}
       <AddMemberForm isOpen={isModalOpen} closeModal={closeModal} />
       {/* Add task Modal */}
+          <AddNewTaskPopUp 
+            isOp={isModalOp}
+            onCl={() => setModalOpen(false)}
+            
+            />
     </div>
   );
 }
