@@ -22,7 +22,7 @@ const DropIndicator = ({ beforeId, column }) => {
 const Column = ({ title, headingColor, cards=[], column, setCards ,workspace_id }) => {
  
 console.log('card in column', cards);
-  // console.log('workspace_id', workspace_id)
+  console.log('workspace_id', workspace_id)
   const [active, setActive] = useState(false);
  
   
