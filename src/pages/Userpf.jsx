@@ -1,8 +1,8 @@
 import React from "react";
+import Profilepic from "../assets/Chaya.webp";
 import { LuUserRoundCog } from "react-icons/lu";
 import { FaRegWindowRestore } from "react-icons/fa";
 import EditProfilePage from "./EditProfilePage";
-import teachers from "../assets/teachers.png"
 import { Link } from "react-router";
 import { useState, useEffect } from "react";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
@@ -31,7 +31,7 @@ export default function Userpf() {
   console.log("narMe :>> ", narMe);
 
   return (
-    <div className="w-full mx-auto shadow-md p-8 min-h-screen bg-background  dark:bg-[#121321]">
+    <div className="w-full mx-auto shadow-md p-8 min-h-screen bg-gray-100  dark:bg-[#121321]">
       {/* Profile Info */}
       <div className="flex flex-col justify-between gap-5 mb-10 md:flex-row">
         <div className="flex items-center">
@@ -46,11 +46,6 @@ export default function Userpf() {
             <p className="text-sm text-gray-500 dark:gray-100">
               {narMe.email}
             </p>
-          <img className="w-16 h-16 border-2 rounded-full border-primary" src={teachers} alt="Profile" />
-          <div className="ml-5">
-            <h1 className="text-2xl font-semibold dark:text-white">Chan Chhaya</h1>
-            <p className="text-sm text-gray-500 dark:gray-100">Chhaya@gmail.com</p>
-          
           </div>
         </div>
       </div>
@@ -68,7 +63,6 @@ export default function Userpf() {
             </div>
             <div className="p-3 font-semibold border rounded-md text-primary bg-gray-50">
               {narMe.family_name}
-              Chan
             </div>
           </div>
           <div>
@@ -77,7 +71,6 @@ export default function Userpf() {
             </div>
             <div className="p-3 font-semibold border rounded-md text-primary bg-gray-50">
               {narMe.given_name}
-              Chhaya
             </div>
           </div>
         </div>
@@ -90,7 +83,6 @@ export default function Userpf() {
             </div>
             <div className="p-3 font-semibold border rounded-md text-primary bg-gray-50">
               {narMe.username}
-              Chan Chhaya
             </div>
           </div>
           <div>
@@ -117,7 +109,6 @@ export default function Userpf() {
             </div>
             <div className="p-3 font-semibold border rounded-md text-primary bg-gray-50">
               {narMe.role}
-              Chhaya@example.com
             </div>
           </div>
         </div>
@@ -159,7 +150,5 @@ export default function Userpf() {
         </div>
       </div>
     </div>
-    </div>
-    
   );
 }
