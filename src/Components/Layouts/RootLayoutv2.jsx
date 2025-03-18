@@ -6,9 +6,9 @@ import Footer from "../Footer.jsx";
 
 export default function RootLayoutv2(){
     return (
-       <div className="h-[100vh]">
+       <div>
            <Navbar/>
-           <div className="flex-row overflow-y-visible md:flex h-[100vh">
+           <div className="flex-row overflow-y-visible md:flex w-full">
                <Sidebar/>
                <div className="w-full md:w-4/5">
                  <Outlet />

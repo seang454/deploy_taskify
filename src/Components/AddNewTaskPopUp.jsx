@@ -116,104 +116,105 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
   //   setSubmitting(false);
   // };
 
-  return (
-    <div className=" w-full h-[100vh]">
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 font-roboto">
-        <div
-        className="
-          absolute top-[100px] left-1/2 -translate-x-1/2
-          max-w-[550px] w-full bg-white dark:bg-gray-500 
-          rounded-lg shadow-lg p-[25px]
-        ">
-        <div className="max-w-[550px] w-full bg-white dark:bg-gray-500 rounded-lg shadow-lg p-[25px] relative">
-          {/* Header */}
-          <div className="flex justify-between pb-2">
-            <div className="grid pr-10">
-              <h3 className="pt-3 font-bold text-primary text-[24px] dark:text-white">
-                Add a new task
-              </h3>
-              <p className="text-primary text-txt14 dark:text-white">
-                Effortlessly manage your to-do list: add a new task
-              </p>
-            </div>
-            <button
-              onClick={onCl}
-              className="top-0 pl-10 text-2xl dark:text-gray-300 text-primary right-3"
-            >
-              <FontAwesomeIcon icon={faXmark} />
-            </button>
+
+
+return (
+  <>
+    <div className="font-roboto fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-9">
+      <div
+      className="
+        absolute top-[150px] left-1/2 -translate-x-1/2
+        max-w-[550px] w-full bg-white dark:bg-gray-500 
+        rounded-lg shadow-lg p-[25px]
+      ">
+      <div className="max-w-[550px] w-full bg-white dark:bg-gray-500 rounded-lg shadow-lg p-[25px] relative">
+        {/* Header */}
+        <div className="pb-2 flex justify-between">
+          <div className="grid pr-10">
+            <h3 className="pt-3 font-bold text-primary text-[24px] dark:text-white">
+              Add a new task
+            </h3>
+            <p className="text-primary text-txt14 dark:text-white">
+              Effortlessly manage your to-do list: add a new task
+            </p>
           </div>
-  
-          {/* Form */}
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
+          <button
+            onClick={onCl}
+            className="text-2xl dark:text-gray-300 text-primary top-0 pl-10 right-3"
           >
-            <Form>
-              {/* Title */}
-              <div className="pb-2">
-                <label
-                  htmlFor="title"
-                  className="font-medium text-primary dark:text-gray-50 text-txt16 lg:text-txt18"
-                >
-                  Task Title
-                </label>
-                <Field
-                  name="title"
-                  type="text"
-                  placeholder="Put your workspace name..."
-                  className="w-full p-2 border rounded-md dark:text-gray-300 dark:bg-gray-800 border-primary text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
-                />
-                <ErrorMessage
-                  name="title"
-                  component="div"
-                  className="text-sm text-red-500"
-                />
-              </div>
-  
-              {/* Due Date */}
-              <div className="pb-2">
-                <label
-                  htmlFor="due_date"
-                  className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18"
-                >
-                  Due Date
-                </label>
-                <Field
-                  name="due_date"
-                  type="date"
-                  placeholder="dd/mm/yyyy"
-                  className="w-full p-2 border rounded-md dark:text-gray-300 dark:bg-gray-800 border-primary text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
-                />
-                <ErrorMessage
-                  name="due_date"
-                  component="div"
-                  className="text-sm text-red-500"
-                />
-              </div>
-  
-              {/* Start Date */}
-              <div className="pb-2">
-                <label
-                  htmlFor="start_date"
-                  className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18"
-                >
-                  Start Date
-                </label>
-                <Field
-                  name="start_date"
-                  type="date"
-                  placeholder="dd/mm/yyyy"
-                  className="w-full p-2 border rounded-md dark:text-gray-300 dark:bg-gray-800 border-primary text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
-                />
-                <ErrorMessage
-                  name="start_date"
-                  component="div"
-                  className="text-sm text-red-500"
-                />
-              </div>
-              
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
+        </div>
+
+        {/* Form */}
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          <Form>
+            {/* Title */}
+            <div className="pb-2">
+              <label
+                htmlFor="title"
+                className="font-medium text-primary dark:text-gray-50 text-txt16 lg:text-txt18"
+              >
+                Task Title
+              </label>
+              <Field
+                name="title"
+                type="text"
+                placeholder="Put your workspace name..."
+                className="w-full p-2 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+              />
+              <ErrorMessage
+                name="title"
+                component="div"
+                className="text-sm text-red-500"
+              />
+            </div>
+
+            {/* Due Date */}
+            <div className="pb-2">
+              <label
+                htmlFor="due_date"
+                className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18"
+              >
+                Due Date
+              </label>
+              <Field
+                name="due_date"
+                type="date"
+                placeholder="dd/mm/yyyy"
+                className="w-full p-2 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+              />
+              <ErrorMessage
+                name="due_date"
+                component="div"
+                className="text-sm text-red-500"
+              />
+            </div>
+
+            {/* Start Date */}
+            <div className="pb-2">
+              <label
+                htmlFor="start_date"
+                className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18"
+              >
+                Start Date
+              </label>
+              <Field
+                name="start_date"
+                type="date"
+                placeholder="dd/mm/yyyy"
+                className="w-full p-2 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+              />
+              <ErrorMessage
+                name="start_date"
+                component="div"
+                className="text-sm text-red-500"
+              />
+            </div>
 
             {/* Reminder Date */}
             <div className="pb-2">
@@ -227,7 +228,7 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
                 name="reminder_date"
                 type="date"
                 placeholder="dd/mm/yyyy"
-                className="w-full p-2 border rounded-md dark:text-gray-300 dark:bg-gray-800 border-primary text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+                className="w-full p-2 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
               />
               <ErrorMessage
                 name="reminder_date"
@@ -248,7 +249,7 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
                 name="note"
                 type="text"
                 placeholder="Your member"
-                className="w-full p-2 border rounded-md dark:text-gray-300 dark:bg-gray-800 border-primary text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+                className="w-full p-2 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
               />
               <ErrorMessage
                 name="note"
@@ -271,7 +272,7 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
                 <Field
                   as="select"
                   name="category_id"
-                  className="w-full p-2 border rounded-md dark:text-gray-300 dark:bg-gray-800 border-primary text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
+                  className="w-full p-2 border dark:text-gray-300 dark:bg-gray-800 border-primary rounded-md text-txt14 xl:text-txt16 focus:outline-none focus:border-primary focus:ring-1 focus:ring-blue-300"
                 >
                   <option value="">Select Category</option>
                   {categories.map((cat) => (
@@ -293,13 +294,13 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
               <button
                 type="button"
                 onClick={onCl}
-                className="px-6 py-2 m-2 transition-all border rounded-md dark:text-white border-primary text-primary text-btn-txt active:scale-95"
+                className="m-2 px-6 py-2 dark:text-white border border-primary text-primary transition-all rounded-md text-btn-txt active:scale-95"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="py-2 m-2 text-white transition-all rounded-md px-7 bg-primary hover:bg-subaccent hover:shadow-lg active:bg-subaccent text-btn-txt active:scale-95"
+                className="m-2 px-7 py-2 text-white bg-primary hover:bg-subaccent hover:shadow-lg active:bg-subaccent transition-all rounded-md text-btn-txt active:scale-95"
               >
                 Save
               </button>
@@ -309,7 +310,7 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
       </div>
       </div>
     </div>
-  </div>
+  </>
 );
 
   
