@@ -188,13 +188,12 @@ import { faGreaterThan, faXmark, faTrash } from "@fortawesome/free-solid-svg-ico
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { getAceAccessToken } from "../lib/secureLocalStorage";
 
 
-export default function EditTaskPupUp({ isOpen, onClose, token }) {
-  console.log("isopen",isOpen);
-  console.log("token",token)
-  if (!isOpen) return null;
-
+export default function EditTaskPupUp() {
+  console.log("getAceAccessToken()",getAceAccessToken())
+  
   const initialValues = {
     title: "",
     note: "",
@@ -229,7 +228,7 @@ export default function EditTaskPupUp({ isOpen, onClose, token }) {
 
   return (
     <>
-      <div className="fixed inset-0 top-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 font-roboto ">
+      <div className="inset-0 top-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 dark:bg-black dar font-roboto">
         <div className="bg-white dark:bg-gray-900 dark:text-gray-200 p-6 rounded-lg shadow-lg w-[95%] max-w-5xl relative  flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between text-xl font-semibold">
@@ -240,11 +239,6 @@ export default function EditTaskPupUp({ isOpen, onClose, token }) {
               </span>
               <span className="pr-1">Design User Interface</span>
             </h3>
-            <button
-            onClick={onClose}
-            className="text-xl text-gray-500 hover:text-primary dark:text-gray-400 ">
-              <FontAwesomeIcon icon={faXmark} />
-            </button>
           </div>
 
           {/* Divider */}
