@@ -116,14 +116,14 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
   //   }
   //   setSubmitting(false);
   // };
- 
-  
+
 
   return (
     <>
-      <div className="fixed inset-0 top-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 font-roboto z-9">
-        <div className="px-10 bg-white rounded-md dark:bg-gray-700 relative -top-[470px] md:-top-[286px] md:translate-y-0 
- lg:top-[60px] lg:-translate-y-1/2">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 font-roboto">
+        <div className=" max-w-[550px] w-full bg-white dark:bg-gray-500 rounded-lg shadow-lg p-[25px] relative 
+      top-1/2 -translate-y-1/2 md:right-[32px] md:top-0 md:translate-y-0
+      lg:right-[35px]">
           <div className="">
             <div className="flex justify-between pb-2">
               <div className="grid pr-10"> 
@@ -216,6 +216,7 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
                 
               </div>
               {/*reminder_date*/}
+
               <div className="pb-2 xl:pb-2">
                 <label
                   htmlFor="reminder_date"
@@ -305,6 +306,7 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
                 </button>
                 <button
                   type="submit"
+
                   className="py-2 m-2 text-center text-white transition-all rounded-md px-7 text-btn-txt bg-primary hover:bg-subaccent hover:shadow-lg active:bg-subaccent active:scale-95"
                 >
                   save
