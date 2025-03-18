@@ -121,12 +121,11 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
 
   return (
     <>
-      <div className=" font-roboto inset-0 fixed
-       top-0 bottom-0 z-9 flex items-center justify-center bg-black  bg-opacity-50 ">
+      <div className="fixed inset-0 top-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 font-roboto z-9">
         <div className="px-10 bg-white rounded-md dark:bg-gray-700 relative -top-[470px] md:-top-[286px] md:translate-y-0 
- lg:-top-[225px] lg:-translate-y-1/2">
+ lg:top-[60px] lg:-translate-y-1/2">
           <div className="">
-            <div className="pb-2 flex justify-between">
+            <div className="flex justify-between pb-2">
               <div className="grid pr-10"> 
               <h3 className="pt-3 font-bold text-primary text-[24px] dark:text-white">
                 Add a new task
@@ -137,7 +136,7 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
               </div>
               <button
                 onClick={onCl}
-                className=" text-2xl dark:text-gray-300 text-primary top-0 pl-10 right-3 "
+                className="top-0 pl-10 text-2xl dark:text-gray-300 text-primary right-3"
               >
                 <FontAwesomeIcon icon={faXmark} />
               </button>
@@ -158,7 +157,7 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
               <div className="pb-2 xl:pb-2">
                 <label
                   htmlFor="title"
-                  className="font-medium text-primary  dark:text-gray-50 text-primarytext-txt16 lg:text-txt18  "
+                  className="font-medium text-primary dark:text-gray-50 text-primarytext-txt16 lg:text-txt18 "
                 >
                   Task Title
                 </label>
@@ -244,7 +243,7 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
               <div className="pb-2 xl:pb-2">
                 <label
                   htmlFor="note"
-                  className="font-medium  text-primary dark:text-white text-txt16 lg:text-txt18 "
+                  className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18 "
                 >
                   Assign to
                 </label>
@@ -264,7 +263,7 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
 
               {/* Category Dropdown */}
               <div>
-                <label htmlFor="category_id" className="font-medium  text-primary dark:text-white text-txt16 lg:text-txt18 " >
+                <label htmlFor="category_id" className="font-medium text-primary dark:text-white text-txt16 lg:text-txt18 " >
                 Category
                 </label>
               {loadingCategories ? (
@@ -284,12 +283,12 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
               <ErrorMessage name="category_id" component="div" className="text-red-500" />
               </div>
               {/* upload file */}
-              {/* <div className="flex items-center  justify-center w-full">
+              {/* <div className="flex items-center justify-center w-full">
                 <label
                   htmlFor="dropzone-file"
-                  className="flex items-center  dark:bg-gray-800 justify-center w-full h-12 border border-primary rounded-lg cursor-pointer bg-white text-gray-500 hover:bg-gray-100"
+                  className="flex items-center justify-center w-full h-12 text-gray-500 bg-white border rounded-lg cursor-pointer dark:bg-gray-800 border-primary hover:bg-gray-100"
                 >
-                  <FaCloudUploadAlt className="dark:text-gray-300 mr-2" size={20} />
+                  <FaCloudUploadAlt className="mr-2 dark:text-gray-300" size={20} />
                   <span className="text-sm">Click to upload your file</span>
                   <span className="ml-2 text-xs text-gray-400">
                     Max. File Size: 30MB
@@ -299,14 +298,14 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
               </div> */}
               <div className="flex justify-end mb-5">
               <button
-                  className="m-2 px-6 py-2 dark:text-white text-center text-txtPrimary transition-all rounded-md text-btn-txt  border active:scale-95"
+                  className="px-6 py-2 m-2 text-center transition-all border rounded-md dark:text-white text-txtPrimary text-btn-txt active:scale-95"
                   onClick={onCl}
               >
                   cancel
                 </button>
                 <button
                   type="submit"
-                  className="m-2 px-7 py-2 text-center text-white transition-all rounded-md text-btn-txt bg-primary hover:bg-subaccent hover:shadow-lg active:bg-subaccent active:scale-95"
+                  className="py-2 m-2 text-center text-white transition-all rounded-md px-7 text-btn-txt bg-primary hover:bg-subaccent hover:shadow-lg active:bg-subaccent active:scale-95"
                 >
                   save
                 </button>
@@ -315,12 +314,12 @@ export default function AddNewTaskPopUp({isOp, onCl}) {
           </Formik>
         </div>
         {/* upload file */}
-              {/* <div className="flex items-center  justify-center w-full">
+              {/* <div className="flex items-center justify-center w-full">
                 <label
                   htmlFor="dropzone-file"
-                  className="flex items-center  dark:bg-gray-800 justify-center w-full h-12 border border-primary rounded-lg cursor-pointer bg-white text-gray-500 hover:bg-gray-100"
+                  className="flex items-center justify-center w-full h-12 text-gray-500 bg-white border rounded-lg cursor-pointer dark:bg-gray-800 border-primary hover:bg-gray-100"
                 >
-                  <FaCloudUploadAlt className="dark:text-gray-300 mr-2" size={20} />
+                  <FaCloudUploadAlt className="mr-2 dark:text-gray-300" size={20} />
                   <span className="text-sm">Click to upload your file</span>
                   <span className="ml-2 text-xs text-gray-400">
                     Max. File Size: 30MB

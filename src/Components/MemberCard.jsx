@@ -1,5 +1,3 @@
-// import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import * as Yup from 'yup';
 
 // const AddMemberForm = () => {
 //   const handleAddMember = async (values, { resetForm }) => {
@@ -112,14 +110,14 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
 
  return (
   <div
-    className="inset-0 top-0 flex items-center justify-center bg-black bg-opacity-50  md:justify-end z-9"
+    className="inset-0 top-0 flex items-center justify-center bg-black bg-opacity-50 md:justify-end z-9"
     onClick={closeModal}
   >
     <div
       className="
         max-w-[550px] w-full bg-white dark:bg-gray-500 rounded-lg shadow-lg p-[25px] relative 
         md:right-[32px]  md:translate-y-0 
-        lg:right-[35px] lg:-top-[620px] lg:-translate-y-1/2
+        lg:right-[35px] lg:-translate-y-1/2
       "
       onClick={(e) => e.stopPropagation()}
     >

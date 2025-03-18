@@ -1,7 +1,8 @@
 import { ChevronLeft, ChevronRight, ClipboardList, Clock } from "lucide-react"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import {NavLink} from "react-router";
 import { format } from "date-fns";
+import { useGetCategoriesQuery } from "../features/categoriesApi";
 
 // const DB = [
 //     {
@@ -43,14 +44,26 @@ function TodoCard({ item }) {
         return isNaN(date) ? "Invalid Date" : format(date, "MMM do, yyyy");
     };
 
+      const [categoryTitle, setCategoryTitle] = useState("");
+        
+        const { data: categoriesdata, error, isLoading } = useGetCategoriesQuery({ limit: 20, offset: 0 });
+      
+        useEffect(() => {
+          if (categoriesdata) {
+            const foundCategory = categoriesdata.find((cat) => cat.id === item.category_id);
+            setCategoryTitle(foundCategory ? foundCategory.title : "Unknown");
+          }
+        }, [categoriesdata, item.category_id]);
+        
+
     return (
         <div
-            className="rounded-xl bg-white dark:bg-gray-700  p-4 border-2 dark:border-none dark:text-white w-72 space-y-4"
+            className="p-4 space-y-4 bg-white border-2 rounded-xl dark:bg-gray-700 dark:border-none dark:text-white w-72"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
 
         >
-            <div className="flex items-center justify-between text-txt20 font-bold text-gray-600 dark:text-white">
+            <div className="flex items-center justify-between font-bold text-gray-600 text-txt20 dark:text-white">
                 <div>{item.title}</div>
                 <div className={"md:hidden"}>
                     <NavLink to="/tododetail">
@@ -69,27 +82,21 @@ function TodoCard({ item }) {
                     )}
                 </div>
             </div>
-            <div className="text-gray-500 dark:text-white line-clamp-2 w-56">{item.note}</div>
-            <div className="text-gray-500  dark:text-white my-4">Created at: <span>{formatDate(item.created_at)}</span></div>
-            <div className="flex items-center text-gray-500  dark:text-white">
+            <div className="w-56 text-gray-500 dark:text-white line-clamp-2">{item.note}</div>
+            <div className="my-4 text-gray-500 dark:text-white">Created at: <span>{formatDate(item.created_at)}</span></div>
+            <div className="flex items-center text-gray-500 dark:text-white">
                 <ClipboardList strokeWidth={1} className="mr-4" />
                 {item.task} / {item.total}
             </div>
-            <div className="text-gray-500  dark:text-white flex items-center">
-                <div className="pr-2">Category: </div>
-                <div
-                    className={`border-2 p-1 rounded-lg text-txt12 ${
-                        item.category === "Design"
-                            ? "border-amber-300 text-amber-300"
-                            : item.category === "Development"
-                                ? "border-blue-300 text-blue-300"
-                                : "border-green-300 text-green-300"
-                    }`}
-                >
-                    {item.category}
-                </div>
+            {item.category_id && (
+            <div className="flex items-center mt-2 text-sm text-gray-600 dark:text-white">
+              <span className="pr-2">Category:</span>
+              <span className="px-2 py-1 border-2 rounded-lg border-secondary text-secondary">
+                {categoryTitle}
+              </span>
             </div>
-            <div className="flex items-center bg-red-200 rounded-md text-accent justify-center  p-1 text-txt12  py-3 pr-3 ">
+          )}
+            <div className="flex items-center justify-center p-1 bg-red-200 rounded-md text-accent text-txt12 ">
                 <Clock strokeWidth={1} className="mr-1" />
                 {formatDate(item.created_at)}
             </div>

@@ -229,8 +229,8 @@ export default function EditTaskPupUp({ isOpen, onClose, token }) {
 
   return (
     <>
-      <div className="fixed inset-0 top-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-50 font-roboto">
-        <div className="bg-white dark:bg-gray-900 dark:text-gray-200 p-6 rounded-lg shadow-lg w-[95%] max-w-5xl relative flex flex-col ">
+      <div className="fixed inset-0 top-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 font-roboto ">
+        <div className="bg-white dark:bg-gray-900 dark:text-gray-200 p-6 rounded-lg shadow-lg w-[95%] max-w-5xl relative  flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between text-xl font-semibold">
             <h3>

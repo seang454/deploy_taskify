@@ -62,6 +62,7 @@ export default function TodoCardDetail() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); // State for modal visibility
   let email = "Houy@gmail.com";
 
+
   return (
     <div className={"mt-10"}>
       <div className={"mx-15 mr-2 px-2 bg-white h-auto space-y-4 mb-10 p-3 lg:w-full md:block md:w-96 dark:bg-gray-700"}>
