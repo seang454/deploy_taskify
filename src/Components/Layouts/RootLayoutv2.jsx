@@ -15,7 +15,6 @@ export default function RootLayoutv2(){
                </div>
               
            </div>
-           <Footer/>
 
 </div>
     )

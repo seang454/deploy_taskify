@@ -52,7 +52,7 @@
 //                 <ErrorMessage
 //                   name="email"
 //                   component="div"
-//                   className="text-red-500 text-sm mt-1"
+//                   className="mt-1 text-sm text-red-500"
 //                 />
 //               </div>
 //             </div>
@@ -112,13 +112,13 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
 
  return (
   <div
-    className="fixed inset-0  bg-black bg-opacity-50 flex items-center justify-center  md:justify-end z-9"
+    className="inset-0 top-0 flex items-center justify-center bg-black bg-opacity-50  md:justify-end z-9"
     onClick={closeModal}
   >
     <div
       className="
         max-w-[550px] w-full bg-white dark:bg-gray-500 rounded-lg shadow-lg p-[25px] relative 
-        -top-[650px] md:right-[32px] md:-top-[455px] md:translate-y-0 
+        md:right-[32px]  md:translate-y-0 
         lg:right-[35px] lg:-top-[620px] lg:-translate-y-1/2
       "
       onClick={(e) => e.stopPropagation()}
@@ -126,7 +126,7 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
       {/* Close Button */}
       <button
         onClick={closeModal}
-        className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+        className="absolute text-gray-400 top-2 right-2 hover:text-gray-600"
       >
         <X size={20} />
       </button>
@@ -160,7 +160,7 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
                 <ErrorMessage
                   name="email"
                   component="div"
-                  className="text-red-500 text-sm mt-1"
+                  className="mt-1 text-sm text-red-500"
                 />
               </div>
             </div>
