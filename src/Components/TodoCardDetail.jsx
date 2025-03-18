@@ -113,12 +113,12 @@ export default function TodoCardDetail() {
         {/* Buttons Section */}
         <div className={"flex align-items-center justify-end space-x-4 pb-3 mr-8 items-center"}>
           <button
-            className={"px-3 dark:text-white rounded-md border h-[43px] w-[132px] border-gray-400 font-bold text-gray-700"}
+            className={" dark:text-white rounded-md border px-11 py-3 border-gray-400 font-bold text-gray-700"}
           >
             Delete Task
           </button>
           <Link to="/edittask" // Open modal on click
-            className={" rounded-md border bg-primary px-11  text-background font-bold"}
+            className={" rounded-md border px-11 py-3   bg-primary text-background font-bold"}
           >
             Edit Task
           </Link>
