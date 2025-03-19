@@ -51,10 +51,23 @@ function Kanban() {
   //     console.log("setCheckTodoData :",e);
   //   })
   // );
-  const filterTodoTask = (todoData || []).filter((c) => c.is_completed === false && c.is_archived === false);
+  const filterTodoTask = (todoData || []).filter((c) =>  c.is_completed=== false && c.is_archived=== false && c.is_important=== false && c.is_deleted===false);
   console.log('filterTodaTask', filterTodoTask)
   console.log("My user ID:", userId);
   console.log('filterTodoTask', filterTodoTask)
+
+
+  const filterOnProgressTask = (todoData || []).filter((c) =>  c.is_completed=== false && c.is_archived=== false && c.is_important=== true && c.is_deletedd===false);
+  console.log('filterTodaTask', filterOnProgressTask )
+  console.log("My user ID:", userId);
+  console.log('filterTodoTask', filterOnProgressTask )
+
+  const filterCompletedTask = (todoData || []).filter((c) => c.is_completed=== true && c.is_archived=== false && c.is_important=== false && c.is_deleted===false);
+  console.log('filterTodaTask', filterCompletedTask )
+  console.log("My user ID:", userId);
+  console.log('filterTodoTask', filterCompletedTask )
+
+
 
   const { id } = useParams();
   console.log("on workspace get");
@@ -118,7 +131,7 @@ function Kanban() {
 
       {/* Board Columns */}
       <div className="flex justify-between gap-2 overflow-x-auto">
-        <Link to={`/todo/${id}`} state={{ filterTodoTask }} className="w-full">
+        <Link  state={{ filterTodoTask }} className="w-full">
           <Column
             workspace_id={id}
             title="To Do"
@@ -128,28 +141,30 @@ function Kanban() {
             setCards={setCards}
           />
         </Link>
-        <Link to="/progress" className="w-full">
+        <Link  className="w-full" state={{filterOnProgressTask}}>
           <Column
-            title="In Progress"
-            column="doing"
-            headingColor="text-blue-200"
-            cards={[]}
-            setCards={setCards}
+             workspace_id={id}
+             title="On Progress"
+             column="on-progress"
+             headingColor="text-yellow-200"
+             cards={cards}
+             setCards={setCards}
           />
         </Link>
-        <Link to="/completed" className="w-full">
+        <Link  className="w-full" state={{filterCompletedTask}}>
           <Column
-            title="Complete"
-            column="done"
-            headingColor="text-emerald-200"
-            cards={[]}
+            workspace_id={id}
+            title="Completed"
+            column="completed"
+            headingColor="text-yellow-200"
+            cards={cards}
             setCards={setCards}
           />
         </Link>
       </div>
 
       {/* Add Member Modal */}
-      <AddMemberForm isOpen={isModalOpen} closeModal={closeModal} />
+      <AddMemberForm isOpen={isModalOpen} workspace_id={id} closeModal={closeModal} />
       {/* Add task Modal */}
           <AddNewTaskPopUp 
             isOp={isModalOp}

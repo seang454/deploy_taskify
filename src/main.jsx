@@ -12,7 +12,6 @@ import { Provider } from "react-redux";
 import { store } from "./apps/store.js";
 import Profile from "./pages/Profile";
 import Userpf from "./pages/Userpf";
-import OnProgessPage from "./pages/OnProgessPage.jsx";
 import RootLayoutv2 from "./Components/Layouts/RootLayoutv2.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import ModalWorkspace from "./Components/ModalWorkspace.jsx";
@@ -46,7 +45,6 @@ ReactDOM.createRoot(root).render(
             <Route path="/profile" element={<Profile />} />
             <Route path={"/userpf"} element={<Userpf />} />
             <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/progress" element={<OnProgessPage />} />
             <Route path="/detail" element={<ProgessCardDetail />} />
             <Route path="/todo/:id" element={<ToDoPage />} />
             <Route path="/completed" element={<CompletedPage />} />
@@ -62,8 +60,9 @@ ReactDOM.createRoot(root).render(
             <Route path="/editprofilepage" element={<EditProfilePage/>}/>
             <Route path="/tododetail" element={<TodoCardDetail/>}></Route>
             <Route path="/CompleteDetail" element={<CompletedCardDetail/>}></Route>
+            <Route path="/todolistdetail/:id" element ={<TodoCardDetail/>}/>
           </Route>
-          <Route path="/edittask" element={<EditTaskPupUp/>}/>
+          <Route path="/edittask/:id" element={<EditTaskPupUp/>}/>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           {/* <Route path="/editTask" element={< EditTaskPupUp/>}></Route> */}

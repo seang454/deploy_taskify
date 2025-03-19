@@ -6,9 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
-import { useCreateTaskMutation } from "../features/addTaskApi";
+import { useCreateTaskMutation, useGetDetailTaskQuery } from "../features/addTaskApi";
 import { useGetWorkspacesQuery } from "../features/workspaceApi";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
 
 export default function AddNewTaskPopUp({ isOp, onCl }) {
@@ -16,6 +16,9 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
   const workspaceId = id;
   console.log("workspaceId", workspaceId);
   if (!isOp) return null;
+
+  const location = useLocation();
+  console.log('Location in add new Task Pop up :>> ', location);
 
   const [createTask] = useCreateTaskMutation();
 
@@ -56,7 +59,7 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
     due_date: "",
     reminder_date: "",
     created_at: new Date().toISOString(),
-    is_important: true,
+    is_important: false,
     category_id: "", // User selects from dropdown
     user_id: userId,
     workspace_id: workspaceId,

@@ -4,7 +4,7 @@ import { FiPlus } from "react-icons/fi";
 import AddNewTaskPopUp from "../Components/AddNewTaskPopUp";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
 import { useGetTasksQuery } from "../features/addTaskApi";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import Kanban from "./Kanban";
 
 
@@ -130,10 +130,13 @@ console.log('card in column', cards);
   const filterCards = (cards || []).filter((c) => c.workspace_id === workspace_id);
 
 console.log('filterCards', filterCards)
+
+
+console.log("FitterCards id :",filterCards.id);
  
   return (
     <>
-    <div className="flex flex-col w-full p-6 bg-white rounded-md min-w-80 dark:bg-gray-800 hover:shadow-">
+    <Link className="flex flex-col w-full p-6 bg-white rounded-md min-w-80 dark:bg-gray-800 hover:shadow-">
       {/* Header */}
       <div className="flex items-center justify-between text-lg font-bold dark:text-white">
         <span>
@@ -172,7 +175,7 @@ console.log('filterCards', filterCards)
 
         <DropIndicator beforeId={null} column={column} />
       </div>
-    </div>
+    </Link>
 
     </>
   );

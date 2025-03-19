@@ -1,33 +1,79 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { X } from 'lucide-react';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { X } from "lucide-react";
+import { useGetMebyEmailQuery } from "../features/auth/authApiSlice";
+import { useEffect, useState } from "react";
+import { usePostMemboerMutation } from "../features/workspaceApi";
+import { v4 as uuidv4 } from "uuid";
 
-const AddMemberForm = ({ isOpen, closeModal }) => {
+const AddMemberForm = ({ workspace_id, isOpen, closeModal }) => {
   if (!isOpen) return null;
+  const [email, setEmail] = useState("");
+  const [isEmailSubmitted, setIsEmailSubmitted] = useState(false); // Track if the email is submitted
 
-  const handleAddMember = async (values, { resetForm }) => {
-    console.log('Adding member with email:', values.email);
+  console.log("workspace id in Member card:", workspace_id);
 
-    try {
-      const response = await fetch('http://34.101.205.26:3000/add-member', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
+  const {
+    data: meByEmail,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useGetMebyEmailQuery(email, { skip: !email });
 
-      if (!response.ok) {
-        throw new Error('Failed to add member');
-      }
+  const [postMember, { isLoading: isPosting }] = usePostMemboerMutation();
 
-      console.log('Member added successfully');
-      resetForm();
-      closeModal(); // Close the modal after success
-    } catch (error) {
-      console.error('Error adding member:', error.message);
+  useEffect(() => {
+    // Only proceed if email is submitted and user data is available
+    if (meByEmail?.id && isEmailSubmitted) {
+      const postUsertoWorkspace = {
+        id: uuidv4(),
+        user_id: meByEmail.id, // FIXED: Using correct variable
+        workspace_id: workspace_id,
+        is_full_control: true,
+      };
+
+      console.log("postUsertoWorkspace :>> ", postUsertoWorkspace);
+
+      const addMember = async () => {
+        try {
+          const response = await postMember(postUsertoWorkspace).unwrap();
+          console.log("response add member :>> ", response);
+          console.log("User added to workspace successfully");
+          closeModal();
+        } catch (error) {
+          console.error("Error adding user to workspace:", error.message);
+        }
+      };
+
+      addMember();
     }
+  }, [meByEmail, isEmailSubmitted, workspace_id, postMember, closeModal]);
+
+  const handleAddMember = (values) => {
+    console.log("Adding member with email:", values.email);
+    setEmail(values.email); // Trigger API call and set email state
+    setIsEmailSubmitted(true); // Mark email as submitted
   };
+
+  if (isError) {
+    return (
+      <p className="text-red-500">
+        Error fetching user data. Please try again.
+      </p>
+    );
+  }
+
+  if (isLoading || isPosting) {
+    return <p className="text-blue-500">Loading user data...</p>;
+  }
+
+  if (isSuccess && meByEmail) {
+    return (
+      <p className="text-green-500">
+        Found user: <strong>{meByEmail.name}</strong>
+      </p>
+    );
+  }
 
   return (
     <div
@@ -35,11 +81,7 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
       onClick={closeModal}
     >
       <div
-        className="
-          absolute top-[200px] left-1/2 -translate-x-1/2
-          max-w-[550px] w-full bg-white dark:bg-gray-500 
-          rounded-lg shadow-lg p-[25px]
-        "
+        className="absolute top-[200px] left-1/2 -translate-x-1/2 max-w-[550px] w-full bg-white dark:bg-gray-500 rounded-lg shadow-lg p-[25px]"
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
       >
         {/* Close Button */}
@@ -49,18 +91,18 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
         >
           <X size={20} />
         </button>
-  
+
         <h2 className="text-[20px] font-bold text-primary mb-4 dark:text-white">
           Add Member by Email
         </h2>
-  
+
         {/* Form */}
         <Formik
-          initialValues={{ email: '' }}
+          initialValues={{ email: "" }}
           validationSchema={Yup.object({
             email: Yup.string()
-              .email('Invalid email address')
-              .required('Email is required'),
+              .email("Invalid email address")
+              .required("Email is required"),
           })}
           onSubmit={handleAddMember}
         >
@@ -82,7 +124,7 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
                   />
                 </div>
               </div>
-  
+
               {/* Submit Button */}
               <div className="flex justify-end">
                 <button
@@ -90,11 +132,11 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
                   disabled={isSubmitting}
                   className={`w-[130px] h-[40px] rounded-[8px] text-white ${
                     isSubmitting
-                      ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-primary hover:bg-blue-600'
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-primary hover:bg-blue-600"
                   }`}
                 >
-                  {isSubmitting ? 'Adding...' : 'Add Member'}
+                  {isSubmitting ? "Adding..." : "Add Member"}
                 </button>
               </div>
             </Form>
@@ -103,7 +145,6 @@ const AddMemberForm = ({ isOpen, closeModal }) => {
       </div>
     </div>
   );
-  
 };
 
 export default AddMemberForm;
