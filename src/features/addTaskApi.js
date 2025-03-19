@@ -44,8 +44,8 @@ export const addTaskApi = apiSlice.injectEndpoints({
       },
     }),
     getTodoTask: builder.query({
-      query: ({ userId, limit, offset }) => ({
-        url: `/tasks?user_id=eq.${userId}&limit=${limit}&offset=${offset}`,
+      query: ({ userId, limit, offset,workspace_id }) => ({
+        url: `/tasks?user_id=eq.${userId}&card_type=eq.1&limit=${limit}&offset=${offset}&workspace_id=eq.${workspace_id}`,
         method: "GET",
         headers: {
           Authorization: `Bearer ${getAceAccessToken()}`,

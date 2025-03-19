@@ -18,6 +18,9 @@ import { Link } from "react-router";
 function Kanban() {
   // const location = useLocation();
   // console.log("location", location);
+  const {id}=useParams()
+  console.log()
+  
   const [cards, setCards] = useState([]);
   const [userId, setUserId] = useState("");
   const [todoData, setTodoData] = useState();
@@ -36,6 +39,7 @@ function Kanban() {
     userId,
     limit: 40,
     offset: 0,
+    workspace_id:id
   });
   console.log('userId', userId)
   // console.log('to do data', tododata);
@@ -57,19 +61,16 @@ function Kanban() {
   console.log('filterTodoTask', filterTodoTask)
 
 
-  const filterOnProgressTask = (todoData || []).filter((c) =>  c.is_completed=== false && c.is_archived=== false && c.is_important=== true && c.is_deletedd===false);
+  const filterOnProgressTask = (todoData || []).filter((c) =>  c.is_completed=== false && c.is_archived=== false && c.is_important===true && c.is_deletedd===false);
   console.log('filterTodaTask', filterOnProgressTask )
   console.log("My user ID:", userId);
-  console.log('filterTodoTask', filterOnProgressTask )
+  console.log('filterOnProgressTask ', filterOnProgressTask )
 
   const filterCompletedTask = (todoData || []).filter((c) => c.is_completed=== true && c.is_archived=== false && c.is_important=== false && c.is_deleted===false);
   console.log('filterTodaTask', filterCompletedTask )
   console.log("My user ID:", userId);
-  console.log('filterTodoTask', filterCompletedTask )
+  console.log('filterCompletedTask :', filterCompletedTask )
 
-
-
-  const { id } = useParams();
   console.log("on workspace get");
   const { data: workspaceList } = useGetWorkspacesQuery(location?.state);
 
@@ -137,7 +138,7 @@ function Kanban() {
             title="To Do"
             column="todo"
             headingColor="text-yellow-200"
-            cards={cards}
+            cards={filterTodoTask}
             setCards={setCards}
           />
         </Link>
@@ -147,7 +148,7 @@ function Kanban() {
              title="On Progress"
              column="on-progress"
              headingColor="text-yellow-200"
-             cards={cards}
+             cards={filterOnProgressTask}
              setCards={setCards}
           />
         </Link>
@@ -157,7 +158,7 @@ function Kanban() {
             title="Completed"
             column="completed"
             headingColor="text-yellow-200"
-            cards={cards}
+            cards={filterCompletedTask}
             setCards={setCards}
           />
         </Link>

@@ -20,12 +20,18 @@ const DropIndicator = ({ beforeId, column }) => {
 };
 
 const Column = ({ title, headingColor, cards=[], column, setCards ,workspace_id }) => {
+  const {id}=useParams();
  
-console.log('card in column', cards);
+  console.log('card in column on culumpage : ', cards);
   console.log('workspace_id', workspace_id)
   const [active, setActive] = useState(false);
- 
+
+  const specifcTaskCard = cards?.filter((e)=> e.workspace_id===workspace_id)
+  console.log("workspace_id", workspace_id)
+  console.log('specificTaskCard :>> ', specifcTaskCard);
+  const taskFilter = cards.filter((e)=>e.workspace_id===workspace_id);
   
+  console.log('taskfilter :>> ', taskFilter); 
   
   const handleDragStart = (e, card) => {
     
@@ -142,7 +148,7 @@ console.log("FitterCards id :",filterCards.id);
         <span>
           {title}{" "}
           <span className="px-2 py-1 text-sm font-medium bg-gray-200 text-primary rounded-2xl">
-            {filterCards.length}
+            {cards[0]?.length}
           </span>
         </span>
 
@@ -161,8 +167,8 @@ console.log("FitterCards id :",filterCards.id);
           flexGrow: 1, // Allow the task list to grow based on available space
         }}
       >
-        {filterCards.length > 0 ? (
-          filterCards.map((card) => (
+        {cards.length > 0 ? (
+          cards?.reverse().map((card) => (
             <div key={card.id}>
               <TaskCard {...card} handleDragStart={handleDragStart} />
             </div>

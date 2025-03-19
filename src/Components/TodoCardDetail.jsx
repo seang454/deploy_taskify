@@ -9,9 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router";
 
 export default function TodoCardDetail() {
+  const navigate = useNavigate();  // Use the navigate hook to navigate to other pages
   const { id } = useParams(); // Get task ID from URL
   const { data: task1, error, isLoading } = useGetDetailTaskQuery(id);
   const { data: carteg } = useGetCategoriesQuery({ limit: 20, offset: 0 });
+
+  console.log('task1 :>> ', task1);
 
   const [Delete]=useDeleteTaskMutation();
  
@@ -22,6 +25,7 @@ export default function TodoCardDetail() {
       console.log("Task deleted");
       
       // Navigate to the specific task page after deletion
+      console.log(`/kanban/${task1[0].workspace_id}`);
       navigate(`/kanban/${task1[0].workspace_id}`);  // Navigate to a general todo page or a specific route
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -44,7 +48,7 @@ export default function TodoCardDetail() {
   const task = task1[0];
 
   const getCategoryIndex = carteg?.findIndex(
-    (item) => item.id === task.category_id
+    (item) => item.id === task?.category_id
   );
   const categoryTitle = carteg?.[getCategoryIndex]?.title || "Unknown";
 
@@ -60,17 +64,17 @@ export default function TodoCardDetail() {
           </NavLink>
           <div
             className={`flex rounded-full w-[300px] md:w-[400px] items-center lg:my-2 mx-auto h-14 text-[28px] align-middle justify-center font-bold ${
-              task.is_important ? "bg-yellow-300" : "bg-gray-300"
+              task?.is_important ? "bg-yellow-300" : "bg-gray-300"
             } dark:text-white`}
           >
-            {task.title || "Untitled Task"}
+            {task?.title || "Untitled Task"}
           </div>
         </div>
 
         {/* Description Section */}
         <div className="w-auto p-4 space-y-8 border-2 border-gray-100 rounded-xl dark:text-white">
           <div>Description:</div>
-          <p>{task.note || "No description available."}</p>
+          <p>{task?.note || "No description available."}</p>
         </div>
 
         {/* Date and Category Section */}
@@ -78,23 +82,23 @@ export default function TodoCardDetail() {
           <div className="flex justify-between">
             <div>Created Date: </div>
             <div>
-              {task.created_at
-                ? format(new Date(task.created_at), "do MMMM, yyyy")
+              {task?.created_at
+                ? format(new Date(task?.created_at), "do MMMM, yyyy")
                 : "N/A"}
             </div>
           </div>
           <div className="flex justify-between">
             <div>Start Date: </div>
             <div>
-              {task.start_date
-                ? format(new Date(task.start_date), "do MMMM, yyyy")
+              {task?.start_date
+                ? format(new Date(task?.start_date), "do MMMM, yyyy")
                 : "N/A"}
             </div>
           </div>
           <div className="flex justify-between">
             <div>Deadline: </div>
             <div className="text-accent">
-              {task.due_date
+              {task?.due_date
                 ? format(new Date(task.due_date), "do MMMM, yyyy")
                 : "N/A"}
             </div>
@@ -102,7 +106,7 @@ export default function TodoCardDetail() {
           <div className="flex justify-between">
             <div>Reminder: </div>
             <div>
-              {task.reminder_date
+              {task?.reminder_date
                 ? format(new Date(task.reminder_date), "do MMMM, yyyy")
                 : "N/A"}
             </div>
@@ -119,17 +123,17 @@ export default function TodoCardDetail() {
           <div className="flex space-x-4">
             <span
               className={`px-3 py-1 rounded ${
-                task.is_completed ? "bg-green-500" : "bg-red-500"
+                task?.is_completed ? "bg-green-500" : "bg-red-500"
               } text-white`}
             >
-              {task.is_completed ? "Completed" : "In Progress"}
+              {task?.is_completed ? "Completed" : "In Progress"}
             </span>
-            {task.is_archived && (
+            {task?.is_archived && (
               <span className="px-3 py-1 text-white bg-gray-500 rounded">
                 Archived
               </span>
             )}
-            {task.is_deleted && (
+            {task?.is_deleted && (
               <span className="px-3 py-1 text-white bg-black rounded">
                 Deleted
               </span>
@@ -140,7 +144,7 @@ export default function TodoCardDetail() {
         {/* Assigned to Section */}
         <div className="flex items-center justify-between w-auto p-4 border-2 border-gray-100 rounded-xl dark:text-white">
           <div>Assigned to: </div>
-          <div>{task.user_id || "Unknown"}</div>
+          <div>{task?.user_id || "Unknown"}</div>
         </div>
 
         {/* Buttons Section */}
@@ -150,7 +154,7 @@ export default function TodoCardDetail() {
           </button>
           <Link
           state={{task}}
-            to={`/edittask/${task.id}`}
+            to={`/edittask/${task?.id}`}
             className="px-6 py-3 font-bold text-white border rounded-md bg-primary"
           >
             Edit Task
