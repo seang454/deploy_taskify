@@ -1,42 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGreaterThan } from "@fortawesome/free-solid-svg-icons";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useParams, Link } from "react-router-dom";
-import { useGetPatchMutation } from "../features/addTaskApi";
-import { useGetDetailTaskQuery } from "../features/addTaskApi";
+import { useGetPatchMutation, useGetDetailTaskQuery } from "../features/addTaskApi";
 
 export default function EditTaskPopup() {
-
   const { id } = useParams(); // Get task ID from URL
-    const { data: task1, error, isLoading } = useGetDetailTaskQuery(id);
+  const { data: taskData, error, isLoading } = useGetDetailTaskQuery(id);
   const [patchData] = useGetPatchMutation();
   const [selectedStatus, setSelectedStatus] = useState("");
 
+  // Loading & Error Handling
   if (isLoading) return <p className="text-center">Loading task details...</p>;
-  if (error)
-    return (
-      <p className="text-center text-red-500">
-        Error loading task: {error.message}
-      </p>
-    );
-  if (!task1) return <p className="text-center">Task not found.</p>;
-  const task = task1[0];
-  console.log(task)
+  if (error) return <p className="text-center text-red-500">Error: {error.message}</p>;
+  if (!taskData || taskData.length === 0) return <p className="text-center">Task not found.</p>;
 
+  const task = taskData[0];
+
+  // Populate initial values dynamically
   const initialValues = {
-    title: "",
-    note: "",
-    start_date: "2025-03-01",
-    due_date: "2025-03-10",
-    reminder_date: "2025-03-08",
-    is_completed: "false",
-    is_important: "false",
-    is_archived: "false",
-    is_deleted: "false",
-    category_id: "22c9d05d-402a-44aa-b811-041bf4632ae4",
-    position: 1,
+    title: task.title || "",
+    note: task.note || "",
+    start_date: task.start_date || "",
+    due_date: task.due_date || "",
+    reminder_date: task.reminder_date || "",
+    is_completed: task.is_completed ? "true" : "false",
+    is_important: task.is_important ? "true" : "false",
+    is_archived: task.is_archived ? "true" : "false",
+    is_deleted: task.is_deleted ? "true" : "false",
+    category_id: task.category_id || "",
+    position: task.position || 1,
   };
 
   const validationSchema = Yup.object().shape({
@@ -47,23 +42,24 @@ export default function EditTaskPopup() {
     category_id: Yup.string().required("Category is required"),
   });
 
+  // Handle updating task
   const handlePatch = async (values) => {
     try {
-      await patchData({ body: values, taskId: id }).unwrap();
+      await patchData({ taskId: id, body: values }).unwrap();
       console.log("Task updated successfully:", values);
+      alert("Task updated successfully!");
     } catch (error) {
       console.error("Error updating task:", error);
     }
   };
 
+  // Handle task status change
   const handleStatusChange = (field, setFieldValue) => {
     setSelectedStatus(field);
     ["is_completed", "is_important", "is_archived", "is_deleted"].forEach((status) => {
       setFieldValue(status, status === field ? "true" : "false");
     });
   };
-  
-  
 
   return (
     <div className="flex items-center justify-center w-full h-screen font-roboto">
@@ -75,7 +71,7 @@ export default function EditTaskPopup() {
             <span className="px-1">
               <FontAwesomeIcon icon={faGreaterThan} />
             </span>
-            <span className="pr-1">Design User Interface</span>
+            <span className="pr-1">{task.title}</span>
           </h3>
         </div>
 
@@ -91,7 +87,7 @@ export default function EditTaskPopup() {
                 <div>
                   <div className="pb-5">
                     <label className="font-medium text-primary">Task Title</label>
-                    <Field type="text" value={task.title} name="title" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary" plac/>
+                    <Field type="text" name="title" className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary" />
                     <ErrorMessage name="title" component="div" className="text-sm text-red-500" />
                   </div>
                   <div className="pb-5">

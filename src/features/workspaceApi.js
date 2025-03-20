@@ -21,6 +21,16 @@ export const workspaceApi = apiSlice.injectEndpoints({
         },
       }),
     }),
+    deleteWorkspace: builder.mutation({
+      query:({id})=>({
+        url: `workspaces?id=eq.${id}`,
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${getAceAccessToken()}`,
+          "Content-Type": "application/json",
+        },
+      })
+    }),
     postMemboer: builder.mutation({
       query: (body) => ({
         url: "/workspaces_members",
@@ -50,4 +60,5 @@ export const {
   useGetWorkspacesQuery,
   usePostMemboerMutation,
   useGetMemberQuery,
+  useDeleteWorkspaceMutation,
 } = workspaceApi;

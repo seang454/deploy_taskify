@@ -14,13 +14,14 @@ import { useGetTodoTaskQuery } from "../features/addTaskApi";
 import { FiPlus } from "react-icons/fi";
 
 import { Link } from "react-router";
+import DeleteWorkspaceButton from "./deleteWorkspace";
 
 function Kanban() {
   // const location = useLocation();
   // console.log("location", location);
-  const {id}=useParams()
-  console.log()
-  
+  const { id } = useParams();
+  console.log("workspace id in params", id);
+
   const [cards, setCards] = useState([]);
   const [userId, setUserId] = useState("");
   const [todoData, setTodoData] = useState();
@@ -30,18 +31,18 @@ function Kanban() {
 
   const [active, setActive] = useState([]);
   const [isModalOp, setModalOpen] = useState(false);
-  
-  const token = getAceAccessToken()
-  console.log("before get data :", token)
-  const {data: userData} = useGetMeQuery()
+
+  const token = getAceAccessToken();
+  console.log("before get data :", token);
+  const { data: userData } = useGetMeQuery();
   // console.log("my data in kanban : ", data);
   const { data: tododata } = useGetTodoTaskQuery({
     userId,
     limit: 40,
     offset: 0,
-    workspace_id:id
+    workspace_id: id,
   });
-  console.log('userId', userId)
+  console.log("userId", userId);
   // console.log('to do data', tododata);
   useEffect(() => {
     if (userData?.id) {
@@ -55,21 +56,34 @@ function Kanban() {
   //     console.log("setCheckTodoData :",e);
   //   })
   // );
-  const filterTodoTask = (todoData || []).filter((c) =>  c.is_completed=== false && c.is_archived=== false && c.is_important=== false && c.is_deleted===false);
-  console.log('filterTodaTask', filterTodoTask)
+  const filterTodoTask = (todoData || []).filter(
+    (c) =>
+      c.is_completed === false &&
+      c.is_archived === false &&
+      c.is_important === false &&
+      c.is_deleted === false
+  );
+  console.log("filterTodaTask", filterTodoTask);
   console.log("My user ID:", userId);
-  console.log('filterTodoTask', filterTodoTask)
+  console.log("filterTodoTask", filterTodoTask);
 
-
-  const filterOnProgressTask = (todoData || []).filter((c) =>  c.is_completed=== false && c.is_archived=== false && c.is_important===true && c.is_deletedd===false);
-  console.log('filterTodaTask', filterOnProgressTask )
+  const filterOnProgressTask = (todoData || []).filter(
+    (c) => c.is_important === true
+  );
+  console.log("filterTodaTask", filterOnProgressTask);
   console.log("My user ID:", userId);
-  console.log('filterOnProgressTask ', filterOnProgressTask )
+  console.log("filterOnProgressTask ", filterOnProgressTask);
 
-  const filterCompletedTask = (todoData || []).filter((c) => c.is_completed=== true && c.is_archived=== false && c.is_important=== false && c.is_deleted===false);
-  console.log('filterTodaTask', filterCompletedTask )
+  const filterCompletedTask = (todoData || []).filter(
+    (c) =>
+      c.is_completed === true &&
+      c.is_archived === false &&
+      c.is_important === false &&
+      c.is_deleted === false
+  );
+  console.log("filterTodaTask", filterCompletedTask);
   console.log("My user ID:", userId);
-  console.log('filterCompletedTask :', filterCompletedTask )
+  console.log("filterCompletedTask :", filterCompletedTask);
 
   console.log("on workspace get");
   const { data: workspaceList } = useGetWorkspacesQuery(location?.state);
@@ -100,9 +114,7 @@ function Kanban() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  
-
- console.log('hello userId', userId)
+  console.log("hello userId", userId);
   return (
     <div className="font-roboto p-8  dark:bg-[#121321] h-[100vh]">
       {/* Header */}
@@ -113,26 +125,31 @@ function Kanban() {
 
         {/* Add Member Button */}
         <div className="flex space-x-2 md:space-x-4">
-            <button
-        onClick={() => setModalOpen(true)}
-        className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-3xl hover:bg-blue-600 ">
-          <span className="mr-2"><MdAssignmentAdd /> </span>Add Task
-        </button>
+          <button
+            onClick={() => setModalOpen(true)}
+            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+          >
+            <span className="mr-2">
+              <MdAssignmentAdd />{" "}
+            </span>
+            Add Task
+          </button>
           <button
             onClick={openModal}
-            className="flex items-center px-3 py-2 text-white transition-all duration-500 bg-primary rounded-3xl hover:bg-blue-600 "
+            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
           >
-            <span className="mr-2"><IoMdPersonAdd />
-
-</span>
+            <span className="mr-2">
+              <IoMdPersonAdd />
+            </span>
             Add Member
           </button>
+          <DeleteWorkspaceButton  workspace_id={id}/>
         </div>
       </div>
 
       {/* Board Columns */}
       <div className="flex justify-between gap-2 overflow-x-auto">
-        <Link  state={{ filterTodoTask }} className="w-full">
+        <Link state={{ filterTodoTask }} className="w-full">
           <Column
             workspace_id={id}
             title="To Do"
@@ -142,17 +159,17 @@ function Kanban() {
             setCards={setCards}
           />
         </Link>
-        <Link  className="w-full" state={{filterOnProgressTask}}>
+        <Link className="w-full" state={{ filterOnProgressTask }}>
           <Column
-             workspace_id={id}
-             title="On Progress"
-             column="on-progress"
-             headingColor="text-yellow-200"
-             cards={filterOnProgressTask}
-             setCards={setCards}
+            workspace_id={id}
+            title="On Progress"
+            column="on-progress"
+            headingColor="text-yellow-200"
+            cards={filterOnProgressTask}
+            setCards={setCards}
           />
         </Link>
-        <Link  className="w-full" state={{filterCompletedTask}}>
+        <Link className="w-full" state={{ filterCompletedTask }}>
           <Column
             workspace_id={id}
             title="Completed"
@@ -165,13 +182,13 @@ function Kanban() {
       </div>
 
       {/* Add Member Modal */}
-      <AddMemberForm isOpen={isModalOpen} workspace_id={id} closeModal={closeModal} />
+      <AddMemberForm
+        isOpen={isModalOpen}
+        workspace_id={id}
+        closeModal={closeModal}
+      />
       {/* Add task Modal */}
-          <AddNewTaskPopUp 
-            isOp={isModalOp}
-            onCl={() => setModalOpen(false)}
-            
-            />
+      <AddNewTaskPopUp isOp={isModalOp} onCl={() => setModalOpen(false)} />
     </div>
   );
 }

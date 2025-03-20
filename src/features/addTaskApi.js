@@ -83,7 +83,51 @@ export const addTaskApi = apiSlice.injectEndpoints({
           "Content-Type": "application/json",
         },
       }),
+    }),
+
+    postCheckList: builder.mutation({
+      query: (body) => ({
+        url: `/checklist_items`,
+        method: "POST",
+        body,
+        headers: {
+          Authorization: `Bearer ${getAceAccessToken()}`,
+          "Content-Type": "application/json",
+        },
+      }),
+    }),
+    getCheckList:builder.query({
+      query: () => ({
+        url: `/checklist_items`,
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${getAceAccessToken()}`,
+          "Content-Type": "application/json",
+        },
+      }),
+    }),
+    patchCheckList: builder.mutation({
+      query: ({body,id}) => ({
+        url: `/checklist_items?id=eq.${id}`,
+        method: "PATCH",
+        body,
+        headers: {
+          Authorization: `Bearer ${getAceAccessToken()}`,
+          "Content-Type": "application/json",
+        },
+      }),
+    }),
+    deleteCheckList: builder.mutation({
+      query: ({id}) => ({
+        url: `/checklist_items?id=eq.${id}`,
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${getAceAccessToken()}`,
+          "Content-Type": "application/json",
+        },
+      }),
     })
+
   }),
 });
 
@@ -94,4 +138,9 @@ export const {
   useGetPatchMutation,
   useGetDetailTaskQuery,
   useDeleteTaskMutation,
+  usePostCheckListMutation,
+  useGetCheckListQuery,
+  usePatchCheckListMutation,
+  useDeleteCheckListMutation
+
 } = addTaskApi;

@@ -147,10 +147,8 @@ console.log("FitterCards id :",filterCards.id);
       <div className="flex items-center justify-between text-lg font-bold dark:text-white">
         <span>
           {title}{" "}
-          <span className="px-2 py-1 text-sm font-medium bg-gray-200 text-primary rounded-2xl">
-            {cards[0]?.length}
-          </span>
         </span>
+        
 
       </div>
 
@@ -168,7 +166,7 @@ console.log("FitterCards id :",filterCards.id);
         }}
       >
         {cards.length > 0 ? (
-          cards?.reverse().map((card) => (
+          cards?.map((card) => (
             <div key={card.id}>
               <TaskCard {...card} handleDragStart={handleDragStart} />
             </div>
