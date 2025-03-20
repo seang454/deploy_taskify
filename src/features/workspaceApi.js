@@ -12,8 +12,8 @@ export const workspaceApi = apiSlice.injectEndpoints({
       }),
     }),
     getWorkspaces: builder.query({
-      query: (user_id) => ({
-        url: `/workspaces?limit=20&offset=0&user_id=eq.${user_id}`, // Correct URL format
+      query: ({id,limit,offset}) => ({
+        url: `/workspaces?limit=${limit}&offset=${offset}&user_id=eq.${id}`, // Correct URL format
         method: "GET",
         headers: {
           Authorization: `Bearer ${getAceAccessToken()}`,

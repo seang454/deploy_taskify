@@ -1,7 +1,7 @@
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";  // ✅ Fix here
+import { BrowserRouter, Routes, Route } from "react-router-dom"; // ✅ Fix here
 import App from "./App";
 import RootLayout from "./Components/Layouts/RootLayout";
 import HomePage from "./pages/HomePage";
@@ -24,7 +24,7 @@ import AboutUs from "./pages/AboutUs.jsx";
 import Kanban from "./pages/Kanban.jsx";
 import MemberPage from "./pages/MemberPage.jsx";
 import MemberCard from "./Components/MemberCard.jsx";
-import { Archive } from   "./pages/Archive.jsx";
+import { Archive } from "./pages/Archive.jsx";
 import EditProfilePage from "./pages/EditProfilePage.jsx";
 import TodoCardDetail from "./Components/TodoCardDetail.jsx";
 import CompletedCardDetail from "./Components/CompletedCardDetail.jsx";
@@ -49,24 +49,27 @@ ReactDOM.createRoot(root).render(
             <Route path="/detail" element={<ProgessCardDetail />} />
             <Route path="/todo/:id" element={<ToDoPage />} />
             <Route path="/completed" element={<CompletedPage />} />
-            <Route path="/member" element={<MemberPage/>} />
+            <Route path="/member" element={<MemberPage />} />
             <Route path="/membercard" element={<MemberCard />} />
             <Route path="/workspace" element={<ModalWorkspace />} />
             <Route path="sidebar" element={<Sidebar />} />
-            <Route path="/kanban/:id" element={<Kanban/>} />
-            <Route path="/kanban" element={<Kanban/>} />
-            <Route path="/workspacepage" element={<Kanban/>}/>
-            <Route path="/notification" element={<NotificationPage/>}/>
-            <Route path="/archive" element={<Archive/>}/>
-            <Route path="/editprofilepage" element={<EditProfilePage/>}/>
-            <Route path="/tododetail" element={<TodoCardDetail/>}></Route>
-            <Route path="/CompleteDetail" element={<CompletedCardDetail/>}></Route>
-            <Route path="/todolistdetail/:id" element ={<TodoCardDetail/>}/>
+            <Route path="/kanban/:id" element={<Kanban />} />
+            <Route path="/kanban" element={<Kanban />} />
+            <Route path="/workspacepage" element={<Kanban />} />
+            <Route path="/notification" element={<NotificationPage />} />
+            <Route path="/archive" element={<Archive />} />
+            <Route path="/editprofilepage" element={<EditProfilePage />} />
+            <Route path="/tododetail" element={<TodoCardDetail />}></Route>
+            <Route
+              path="/CompleteDetail"
+              element={<CompletedCardDetail />}
+            ></Route>
+            <Route path="/todolistdetail/:id" element={<TodoCardDetail />} />
           </Route>
-          <Route path="/edittask/:id" element={<EditTaskPupUp/>}/>
+          <Route path="/edittask/:id" element={<EditTaskPupUp />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/checklist" element={<CheckList/>}/>
+          <Route path="/checklist" element={<CheckList />} />
           {/* <Route path="/editTask" element={< EditTaskPupUp/>}></Route> */}
         </Routes>
       </BrowserRouter>
