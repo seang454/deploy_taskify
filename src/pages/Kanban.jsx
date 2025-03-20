@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Column from "./Column";
 import AddMemberForm from "../Components/MemberCard";
 import AddNewTaskPopUp from "../Components/AddNewTaskPopUp";
-import { data, useLocation, useParams } from "react-router";
+import { data, useLocation, useNavigate, useParams } from "react-router";
 import { useGetWorkspacesQuery } from "../features/workspaceApi";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
@@ -10,13 +10,13 @@ import { useGetTasksQuery } from "../features/addTaskApi";
 import { IoMdPersonAdd } from "react-icons/io";
 import { MdAssignmentAdd } from "react-icons/md";
 import { useGetTodoTaskQuery } from "../features/addTaskApi";
-
 import { FiPlus } from "react-icons/fi";
 
 import { Link } from "react-router";
 import DeleteWorkspaceButton from "./deleteWorkspace";
 
 function Kanban() {
+  const navigate = useNavigate();
   // const location = useLocation();
   // console.log("location", location);
   const { id } = useParams();
@@ -56,6 +56,9 @@ function Kanban() {
   //     console.log("setCheckTodoData :",e);
   //   })
   // );
+  const handleArchive = () => {
+    navigate("/archive", { state: { tasks: tododata, workspaceId: id } });
+  };
   const filterTodoTask = (todoData || []).filter(
     (c) =>
       c.is_completed === false &&
@@ -116,72 +119,83 @@ function Kanban() {
 
   console.log("hello userId", userId);
   return (
-    <div className="font-roboto p-8  dark:bg-[#121321] h-[100vh]">
-      {/* Header */}
-      <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
-        <div className="p-2 font-bold text-center transition-all duration-500 bg-white rounded-3xl text-txt16 md:text-txt20 hover:bg-primary hover:text-white dark:bg-primary dark:hover:bg-blue-500 text-primary dark:text-white hover:shadow-sm">
-          {workspace?.title || "Loading..."}
+    <>
+      <div className="w-full mx-auto shadow-md p-8 min-h-screen font-roboto bg-background dark:bg-[#121321]">
+        {/* Header */}
+        <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
+          <div className="p-2 font-bold text-center transition-all duration-500 bg-white rounded-3xl text-txt16 md:text-txt20 hover:bg-primary hover:text-white dark:bg-primary dark:hover:bg-blue-500 text-primary dark:text-white hover:shadow-sm">
+            {workspace?.title || "Loading..."}
+          </div>
+
+          {/* Add Member Button */}
+          <div className="flex space-x-2 md:space-x-4">
+            <button
+              onClick={handleArchive} // ✅ Correct function execution
+              className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+            >
+              <span className="mr-2">
+                <MdAssignmentAdd />
+              </span>
+              Archive
+            </button>
+            <button
+              onClick={() => setModalOpen(true)}
+              className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+            >
+              <span className="mr-2">
+                <MdAssignmentAdd />{" "}
+              </span>
+              Add Task
+            </button>
+            <button
+              onClick={openModal}
+              className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+            >
+              <span className="mr-2">
+                <IoMdPersonAdd />
+              </span>
+              Add Member
+            </button>
+            <DeleteWorkspaceButton workspace_id={id} />
+          </div>
         </div>
 
-        {/* Add Member Button */}
-        <div className="flex space-x-2 md:space-x-4">
-          <button
-            onClick={() => setModalOpen(true)}
-            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
-          >
-            <span className="mr-2">
-              <MdAssignmentAdd />{" "}
-            </span>
-            Add Task
-          </button>
-          <button
-            onClick={openModal}
-            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
-          >
-            <span className="mr-2">
-              <IoMdPersonAdd />
-            </span>
-            Add Member
-          </button>
-          <DeleteWorkspaceButton  workspace_id={id}/>
+        {/* Board Columns */}
+        <div className="flex justify-between gap-2 overflow-x-auto">
+          <Link state={{ filterTodoTask }} className="w-full">
+            <Column
+              workspace_id={id}
+              title="To Do"
+              column="todo"
+              headingColor="text-yellow-200"
+              cards={filterTodoTask}
+              setCards={setCards}
+            />
+          </Link>
+          <Link className="w-full" state={{ filterOnProgressTask }}>
+            <Column
+              workspace_id={id}
+              title="On Progress"
+              column="on-progress"
+              headingColor="text-yellow-200"
+              cards={filterOnProgressTask}
+              setCards={setCards}
+            />
+          </Link>
+          <Link className="w-full" state={{ filterCompletedTask }}>
+            <Column
+              workspace_id={id}
+              title="Completed"
+              column="completed"
+              headingColor="text-yellow-200"
+              cards={filterCompletedTask}
+              setCards={setCards}
+            />
+          </Link>
         </div>
-      </div>
 
-      {/* Board Columns */}
-      <div className="flex justify-between gap-2 overflow-x-auto">
-        <Link state={{ filterTodoTask }} className="w-full">
-          <Column
-            workspace_id={id}
-            title="To Do"
-            column="todo"
-            headingColor="text-yellow-200"
-            cards={filterTodoTask}
-            setCards={setCards}
-          />
-        </Link>
-        <Link className="w-full" state={{ filterOnProgressTask }}>
-          <Column
-            workspace_id={id}
-            title="On Progress"
-            column="on-progress"
-            headingColor="text-yellow-200"
-            cards={filterOnProgressTask}
-            setCards={setCards}
-          />
-        </Link>
-        <Link className="w-full" state={{ filterCompletedTask }}>
-          <Column
-            workspace_id={id}
-            title="Completed"
-            column="completed"
-            headingColor="text-yellow-200"
-            cards={filterCompletedTask}
-            setCards={setCards}
-          />
-        </Link>
+        {/* Add Member Modal */}
       </div>
-
-      {/* Add Member Modal */}
       <AddMemberForm
         isOpen={isModalOpen}
         workspace_id={id}
@@ -189,7 +203,7 @@ function Kanban() {
       />
       {/* Add task Modal */}
       <AddNewTaskPopUp isOp={isModalOp} onCl={() => setModalOpen(false)} />
-    </div>
+    </>
   );
 }
 

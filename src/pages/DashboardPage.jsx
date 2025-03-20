@@ -8,7 +8,6 @@ import { useGetWorkspacesQuery } from "../features/workspaceApi";
 import { WorkspaceCardSkeleton } from "../Components/skeleton/WorkspaceCardSkeleton";
 
 export default function DashboardPage() {
-
   const [activeTab, setActiveTab] = useState("your-workspace");
   const [isModelOpen, setIsModelOpen] = useState(false);
 
@@ -16,7 +15,7 @@ export default function DashboardPage() {
   const token = getAceAccessToken();
   console.log("Rescure token: ", token);
   console.log("location :", location.state);
-console.log('status', status)
+  console.log("status", status);
   const [workspaceList, setWorkspaceList] = useState([]);
   const [userId, setUserId] = useState("");
 
@@ -48,12 +47,9 @@ console.log('status', status)
     },
   ];
 
- 
- 
-
   useEffect(() => {
     if (isSuccess && data?.id) {
-      setUserId(data.id); 
+      setUserId(data.id);
     }
   }, [isSuccess, data?.id]);
 
@@ -82,22 +78,20 @@ console.log('status', status)
     fetchWorkspaces();
   }, [userId]);
 
- 
-  
   const handleWorkspaceResponse = (newWorkspace) => {
     if (newWorkspace) {
       setWorkspaceList((prevWorkspace) => [...prevWorkspace, newWorkspace]);
     }
   };
   const { data: workspaces, isLoading, error } = useGetWorkspacesQuery();
-  console.log('workspaces',workspaceList)
-  console.log('userId in ', userId)
+  console.log("workspaces", workspaceList);
+  console.log("userId in ", userId);
   return (
     <>
-      <div className="flex bg-gray-100  border">
+      <div className="w-full mx-auto shadow-md p-8 min-h-screen font-roboto bg-background dark:bg-[#121321]">
         <section className="flex-1 p-6 bg-white dark:bg-[#121321] ">
           {/* Tabs */}
-          <div className="flex px-3 py-3 space-x-10 bg-gray-100 dark:bg-gray-500 border-b-2 md:justify-around rounded-xl ">
+          <div className="flex px-3 py-3 space-x-10 bg-gray-100 border-b-2 dark:bg-gray-500 md:justify-around rounded-xl ">
             <button
               className={`py-2 bg-white dark:bg-primary dark:hover:bg-white dark:hover:text-primary dark:text-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
                 activeTab === "your-workspace"
@@ -134,18 +128,22 @@ console.log('status', status)
             ) : (
               <>
                 {/* If "Your Workspace" is active */}
-               {activeTab === "your-workspace" && (
+                {activeTab === "your-workspace" && (
                   <>
                     <div
-                      className="flex justify-center items-center p-6 dark:bg-gray-800 text-gray-500 border border-gray-300 rounded-lg cursor-pointer"
+                      className="flex items-center justify-center p-6 text-gray-500 border border-gray-300 rounded-lg cursor-pointer dark:bg-gray-800"
                       onClick={() => setIsModelOpen(true)}
-                     >
+                    >
                       <h3 className="flex items-center justify-center dark:text-white text-txt20 text-primary">
                         + Create New Workspace
                       </h3>
                     </div>
                     {workspaceList?.map((workspace) => (
-                      <WorkspaceCard key={workspace.id} workspace={workspace} userId={userId} />
+                      <WorkspaceCard
+                        key={workspace.id}
+                        workspace={workspace}
+                        userId={userId}
+                      />
                     ))}
                   </>
                 )}

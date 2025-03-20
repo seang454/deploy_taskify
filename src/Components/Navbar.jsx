@@ -9,6 +9,7 @@ import TaskifyLogo from "../assets/TaskifyLogo1.png";
 import pengseang from "../assets/pengseang.png";
 import { useGetMeQuery } from "../features/auth/authApiSlice";
 import { getAceAccessToken } from "../lib/secureLocalStorage";
+import { TiArrowLeftOutline } from "react-icons/ti";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -86,21 +87,23 @@ export default function Navbar() {
           </button>
           <div className="flex items-center justify-center">
             {getAceAccessToken() && name && (
-              <div className="flex gap-2"> 
-              <Link to="/dashboard">
+              <div className="flex gap-2">
+                <Link to="/dashboard">
                   <button className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16">
                     Go to dashboard
                   </button>
                 </Link>
-              <div className="flex items-center bg-white rounded-full w-[43.6px] h-[41.6px] justify-center">
-                <Link to="/userpf" className="flex items-center justify-center">
-                  <h1 className="flex font-bold align-middle text-primary text-txt20">
-                    {name}
-                  </h1>
-                </Link>
+                <div className="flex items-center bg-white rounded-full w-[43.6px] h-[41.6px] justify-center">
+                  <Link
+                    to="/userpf"
+                    className="flex items-center justify-center"
+                  >
+                    <h1 className="flex font-bold align-middle text-primary text-txt20">
+                      {name}
+                    </h1>
+                  </Link>
+                </div>
               </div>
-              </div>
-             
             )}
             {!getAceAccessToken() && !name && (
               <div className="flex gap-2">
@@ -172,6 +175,36 @@ export default function Navbar() {
             >
               Login your account
             </Link>
+          )}
+          {getAceAccessToken() && name && (
+            <div className="flex gap-2">
+              {/* Log Out Button */}
+              <button
+                className="w-2 px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16"
+                onClick={() => {
+                  removeAccessToken(); // Call your log out logic here
+                }}
+              >
+                <TiArrowLeftOutline className="text-primary" />
+                <div className="text-primary">Log Out</div>
+              </button>
+
+              {/* Go to dashboard Link */}
+              <Link to="/dashboard">
+                <button className="px-4 py-2 font-medium transition-all duration-500 bg-white border rounded-full text-primary hover:bg-secondary text-txt16">
+                  Go to dashboard
+                </button>
+              </Link>
+
+              {/* User profile section */}
+              <div className="flex items-center bg-white rounded-full w-[43.6px] h-[41.6px] justify-center">
+                <Link to="/userpf" className="flex items-center justify-center">
+                  <h1 className="flex font-bold align-middle text-primary text-txt20">
+                    {name}
+                  </h1>
+                </Link>
+              </div>
+            </div>
           )}
         </div>
       )}

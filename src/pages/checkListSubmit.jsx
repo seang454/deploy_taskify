@@ -95,10 +95,6 @@ const CheckListSubmit = ({ taskPosition }) => {
     }
   };
 
-
-
-  
-
   return (
     <Formik
       enableReinitialize
@@ -107,16 +103,16 @@ const CheckListSubmit = ({ taskPosition }) => {
       }}
     >
       {({ values, setFieldValue }) => (
-        <Form className="space-y-4">
-          <section className="mt-1 bg-white shadow-lg dark:bg-gray-800 rounded-xl">
-            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100">
+        <Form >
+          <section className="mt-4 bg-white shadow-lg dark:bg-gray-800 rounded-xl">
+            <h2 className="m-6 mt-0 mb-0 text-xl font-bold text-primary dark:text-gray-100 ">
               Checklist
             </h2>
-            <ul>
+            <ul className="m-6 space-y-4">
               {items.map((item, index) => (
                 <li
                   key={index}
-                  className="flex items-center justify-between p-2 border-b border-gray-300 dark:border-gray-600 last:border-none"
+                  className="flex items-center justify-between p-2 mb-2 border-b border-gray-300 dark:border-gray-600 last:border-none"
                 >
                   <div className="flex items-center">
                     <Field

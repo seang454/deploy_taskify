@@ -76,33 +76,35 @@ const AddMemberForm = ({ workspace_id, isOpen, closeModal }) => {
   }
 
   return (
+         
+  
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      className="sticky h-[100vh] top-0 bottom-0 inset-0 z-9 flex items-center justify-center bg-black bg-opacity-50 font-roboto"
       onClick={closeModal}
     >
       <div
-        className="absolute top-[200px] left-1/2 -translate-x-1/2 max-w-[550px] w-full bg-white dark:bg-gray-500 rounded-lg shadow-lg p-[25px]"
+        className="sticky max-w-[550px] w-full bg-white dark:bg-[#292A2B] rounded-lg shadow-lg p-[25px]"
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
       >
         {/* Close Button */}
-        <button
+       <button
           onClick={closeModal}
           className="absolute text-gray-400 top-2 right-2 hover:text-gray-600"
         >
           <X size={20} />
         </button>
-
+  
         <h2 className="text-[20px] font-bold text-primary mb-4 dark:text-white">
           Add Member by Email
         </h2>
-
+  
         {/* Form */}
         <Formik
-          initialValues={{ email: "" }}
+          initialValues={{ email: '' }}
           validationSchema={Yup.object({
             email: Yup.string()
-              .email("Invalid email address")
-              .required("Email is required"),
+              .email('Invalid email address')
+              .required('Email is required'),
           })}
           onSubmit={handleAddMember}
         >
@@ -114,7 +116,7 @@ const AddMemberForm = ({ workspace_id, isOpen, closeModal }) => {
                   type="email"
                   name="email"
                   placeholder="Enter member's email"
-                  className="border rounded-[8px] p-2 w-full h-[40px] dark:bg-gray-400 focus:outline-none dark:text-white focus:ring-2 focus:ring-blue-500 dark:placeholder:text-white"
+                  className="border rounded-[8px] p-2 focus:border-primary border-primary focus:ring-1 focus:ring-blue-300 w-full h-[40px] dark:bg-[#242424] focus:outline-none dark:text-white dark:placeholder:text-gray-300"
                 />
                 <div className="min-h-[20px]">
                   <ErrorMessage
@@ -124,7 +126,7 @@ const AddMemberForm = ({ workspace_id, isOpen, closeModal }) => {
                   />
                 </div>
               </div>
-
+  
               {/* Submit Button */}
               <div className="flex justify-end">
                 <button
@@ -132,11 +134,11 @@ const AddMemberForm = ({ workspace_id, isOpen, closeModal }) => {
                   disabled={isSubmitting}
                   className={`w-[130px] h-[40px] rounded-[8px] text-white ${
                     isSubmitting
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-primary hover:bg-blue-600"
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-primary hover:bg-blue-600'
                   }`}
                 >
-                  {isSubmitting ? "Adding..." : "Add Member"}
+                  {isSubmitting ? 'Adding...' : 'Add Member'}
                 </button>
               </div>
             </Form>
@@ -145,6 +147,7 @@ const AddMemberForm = ({ workspace_id, isOpen, closeModal }) => {
       </div>
     </div>
   );
+
 };
 
 export default AddMemberForm;

@@ -115,7 +115,7 @@ export default function EditTaskPopup() {
 
               {/* Task Status Fields */}
               <div className="grid grid-cols-1 gap-6 pb-5 md:grid-cols-2">
-                {["is_completed", "is_important", "is_archived", "is_deleted"].map((field) => (
+                {["Completed Task", "On Progress", "is_archived", "is_deleted"].map((field) => (
                   <div key={field}>
                     <label className="font-medium capitalize text-primary">{field.replace("_", " ")}</label>
                     <Field

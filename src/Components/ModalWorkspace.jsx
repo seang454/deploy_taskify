@@ -108,7 +108,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
 
 
   return (
-    <div className="sticky top-0 h-[100vh] bottom-0 inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
+    <div className="sticky top-0 h-[100vh] w-full bottom-0 inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
       <div className="bg-white rounded-lg shadow-lg w-[90%] lg:w-[80%] xl:w-[75%]  sticky top-0 bottom-0">
         
         {/* Close Button */}
@@ -119,14 +119,14 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
           <FontAwesomeIcon icon={faXmark} />
         </button>
 
-        <div className="p-6  grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 p-6 md:grid-cols-2">
         
         
           {/* Left: Form */}
           <div>
           <div className="lg:pb-8 ">
           <h2 className="mb-4 text-xl font-bold lg:text-2xl xl:text-3xl text-primary">Let's built a Workspace</h2>
-          <p className="text-txt14 py-3 lg:text-txt-16 xl:text-txt18 text-txtPrimary">Boost your productivity by making it easier for everyone to access boards in one location.</p>
+          <p className="py-3 text-txt14 lg:text-txt-16 xl:text-txt18 text-txtPrimary">Boost your productivity by making it easier for everyone to access boards in one location.</p>
           </div>
             <Formik
               initialValues={initialValues}

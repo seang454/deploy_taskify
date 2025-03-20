@@ -22,13 +22,14 @@ export const workspaceApi = apiSlice.injectEndpoints({
       }),
     }),
     deleteWorkspace: builder.mutation({
-      query:({id})=>({
-        url: `workspaces?id=eq.${id}`,
+      query:(workspace_id)=>({
+        url: `/workspaces?id=eq.${workspace_id}`, // Correct URL format
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${getAceAccessToken()}`,
           "Content-Type": "application/json",
         },
+        
       })
     }),
     postMemboer: builder.mutation({
