@@ -124,6 +124,14 @@ export default function DashboardPage() {
                 <WorkspaceCardSkeleton />
                 <WorkspaceCardSkeleton />
                 <WorkspaceCardSkeleton />
+                <WorkspaceCardSkeleton />
+                <WorkspaceCardSkeleton />
+                <WorkspaceCardSkeleton />
+                <WorkspaceCardSkeleton />
+                <WorkspaceCardSkeleton />
+                <WorkspaceCardSkeleton />
+                <WorkspaceCardSkeleton />
+                <WorkspaceCardSkeleton />
               </>
             ) : (
               <>
@@ -138,7 +146,7 @@ export default function DashboardPage() {
                         + Create New Workspace
                       </h3>
                     </div>
-                    {workspaceList?.map((workspace) => (
+                    {workspaceList?.reverse().map((workspace) => (
                       <WorkspaceCard
                         key={workspace.id}
                         workspace={workspace}

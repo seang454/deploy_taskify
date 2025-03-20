@@ -318,7 +318,7 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
   // );
 
   return (
-    <div className="sticky h-[100vh] top-0 bottom-0 inset-0 z-9 flex items-center justify-center bg-black bg-opacity-50 font-roboto">
+    <div className="sticky h-[100vh] z-20 top-0 bottom-0 inset-0 z-9 flex items-center justify-center bg-black bg-opacity-50 font-roboto">
       <div className="max-w-[550px] w-full sticky bg-white dark:bg-[#292A2B] rounded-lg shadow-lg p-[25px]">
         {/* Header */}
         <div className="flex justify-between pb-2">

@@ -11,6 +11,7 @@ import { IoMdPersonAdd } from "react-icons/io";
 import { MdAssignmentAdd } from "react-icons/md";
 import { useGetTodoTaskQuery } from "../features/addTaskApi";
 import { FiPlus } from "react-icons/fi";
+import { FaArrowLeft } from "react-icons/fa";
 
 import { Link } from "react-router";
 import DeleteWorkspaceButton from "./deleteWorkspace";
@@ -120,45 +121,49 @@ function Kanban() {
   console.log("hello userId", userId);
   return (
     <>
-      <div className="w-full mx-auto shadow-md p-8 min-h-screen font-roboto bg-background dark:bg-[#121321]">
-        {/* Header */}
-        <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
-          <div className="p-2 font-bold text-center transition-all duration-500 bg-white rounded-3xl text-txt16 md:text-txt20 hover:bg-primary hover:text-white dark:bg-primary dark:hover:bg-blue-500 text-primary dark:text-white hover:shadow-sm">
-            {workspace?.title || "Loading..."}
-          </div>
-
-          {/* Add Member Button */}
-          <div className="flex space-x-2 md:space-x-4">
-            <button
-              onClick={handleArchive} // ✅ Correct function execution
-              className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
-            >
-              <span className="mr-2">
-                <MdAssignmentAdd />
-              </span>
-              Archive
-            </button>
-            <button
-              onClick={() => setModalOpen(true)}
-              className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
-            >
-              <span className="mr-2">
-                <MdAssignmentAdd />{" "}
-              </span>
-              Add Task
-            </button>
-            <button
-              onClick={openModal}
-              className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
-            >
-              <span className="mr-2">
-                <IoMdPersonAdd />
-              </span>
-              Add Member
-            </button>
-            <DeleteWorkspaceButton workspace_id={id} />
-          </div>
+      <div className="sticky z-10 flex flex-col justify-between gap-4 mb-6 bg-white top-[86px] md:flex-row dark:bg-gray-800">
+        <Link to="/dashboard"
+          className="flex items-center gap-2 px-3 py-2 m-5 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+          // to={`/kanban/${location?.state.workspaceId}`}
+        >
+          <FaArrowLeft />
+          <span>Back</span>
+        </Link>
+        {/* Add Member Button */}
+        <div className="grid p-5 space-x-2 grid-col-2 md:space-x-4 sm:grid-cols-4">
+          <button
+            onClick={handleArchive} // ✅ Correct function execution
+            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+          >
+            <span className="mr-2">
+              <MdAssignmentAdd />
+            </span>
+            Archive
+          </button>
+          <button
+            onClick={() => setModalOpen(true)}
+            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+          >
+            <span className="mr-2">
+              <MdAssignmentAdd />{" "}
+            </span>
+            Add Task
+          </button>
+          <button
+            onClick={openModal}
+            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+          >
+            <span className="mr-2">
+              <IoMdPersonAdd />
+            </span>
+            Add Member
+          </button>
+          <DeleteWorkspaceButton workspace_id={id} />
         </div>
+      </div>
+
+      <div className="w-full sticky top-0 mx-auto shadow-md p-8 min-h-screen font-roboto bg-background dark:bg-[#121321]">
+        {/* Header */}
 
         {/* Board Columns */}
         <div className="flex justify-between gap-2 overflow-x-auto">

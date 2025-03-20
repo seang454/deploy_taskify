@@ -8,7 +8,7 @@ export default function RootLayoutv2(){
     return (
        <div className="h-auto">
            <Navbar/>
-           <div className="flex-row overflow-y-visible md:flex h-[100vh">
+           <div className="flex-row overflow-y-visible md:flex">
                <Sidebar/>
                <div className="w-full md:w-4/5">
                  <Outlet />

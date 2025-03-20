@@ -22,7 +22,7 @@ export default function Sidebar() {
     <>
       <nav
         className={
-          " bg-white h-auto dark:bg-gray-800 md:flex flex-col  text-txt16  place-content-between w-1/5 sticky top-20 bottom-0 gap-y-[330px] py-2 hidden"
+          " bg-white h-auto  dark:bg-gray-800 md:flex flex-col  text-txt16  place-content-between w-1/5  bottom-0 gap-y-[330px] py-2 hidden"
         }
       >
         <div className="flex flex-row mt-6 md:flex-col dark:text-white">

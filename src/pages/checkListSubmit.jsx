@@ -96,6 +96,7 @@ const CheckListSubmit = ({ taskPosition }) => {
   };
 
   return (
+    
     <Formik
       enableReinitialize
       initialValues={{
@@ -103,8 +104,8 @@ const CheckListSubmit = ({ taskPosition }) => {
       }}
     >
       {({ values, setFieldValue }) => (
-        <Form >
-          <section className="mt-4 bg-white shadow-lg dark:bg-gray-800 rounded-xl">
+        <Form>
+          <section className="p-3 pl-3 bg-white shadow-lg dark:bg-gray-800">
             <h2 className="m-6 mt-0 mb-0 text-xl font-bold text-primary dark:text-gray-100 ">
               Checklist
             </h2>
