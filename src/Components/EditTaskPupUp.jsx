@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGreaterThan } from "@fortawesome/free-solid-svg-icons";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -10,7 +10,6 @@ export default function EditTaskPopup() {
   const { id } = useParams(); // Get task ID from URL
   const { data: taskData, error, isLoading } = useGetDetailTaskQuery(id);
   const [patchData] = useGetPatchMutation();
-  const [selectedStatus, setSelectedStatus] = useState("");
 
   // Loading & Error Handling
   if (isLoading) return <p className="text-center">Loading task details...</p>;
@@ -54,10 +53,17 @@ export default function EditTaskPopup() {
   };
 
   // Handle task status change
-  const handleStatusChange = (field, setFieldValue) => {
-    setSelectedStatus(field);
-    ["is_completed", "is_important", "is_archived", "is_deleted"].forEach((status) => {
-      setFieldValue(status, status === field ? "true" : "false");
+  const handleStatusChange = (field, setFieldValue, values) => {
+    const updatedValues = {
+      ...values,
+      is_completed: "false",
+      is_important: "false",
+      is_archived: "false",
+      is_deleted: "false",
+      [field]: "true", // Set only the selected field to true
+    };
+    Object.entries(updatedValues).forEach(([key, value]) => {
+      setFieldValue(key, value);
     });
   };
 
@@ -80,7 +86,7 @@ export default function EditTaskPopup() {
 
         {/* Form Section */}
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handlePatch}>
-          {({ setFieldValue }) => (
+          {({ setFieldValue, values }) => (
             <Form className="p-6 space-y-4">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {/* Left Section */}
@@ -115,14 +121,14 @@ export default function EditTaskPopup() {
 
               {/* Task Status Fields */}
               <div className="grid grid-cols-1 gap-6 pb-5 md:grid-cols-2">
-                {["Completed Task", "On Progress", "is_archived", "is_deleted"].map((field) => (
+                {["is_completed", "is_important", "is_archived", "is_deleted"].map((field) => (
                   <div key={field}>
                     <label className="font-medium capitalize text-primary">{field.replace("_", " ")}</label>
                     <Field
                       as="select"
                       name={field}
-                      value={selectedStatus === field ? "true" : "false"}
-                      onChange={() => handleStatusChange(field, setFieldValue)}
+                      value={values[field]} // Ensure correct value from Formik state
+                      onChange={() => handleStatusChange(field, setFieldValue, values)}
                       className="w-full p-2 border rounded-md dark:bg-gray-800 border-primary"
                     >
                       <option value="false">False</option>
