@@ -140,40 +140,41 @@ export default function DashboardPage() {
       <div className="bg-background p-8 shadow-md w-full dark:bg-[#121321] font-roboto min-h-screen mx-auto">
         <section className="flex-1 bg-white p-6 dark:bg-[#121321]">
           {/* Tabs */}
-          <div className="flex flex-col px-3 py-3 space-x-10 bg-gray-100 border-b-2 md:flex-row rounded-xl dark:bg-gray-500 md:justify-around">
-            <button
-              className={`py-2 bg-white dark:bg-primary dark:hover:bg-white dark:hover:text-primary dark:text-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
-                activeTab === "your-workspace"
-                  ? "border-b-2 border-gray-700 dark:border-white"
-                  : "text-primary"
-              }`}
-              onClick={() => setActiveTab("your-workspace")}
-            >
-              Your Workspace
-            </button>
-            
-            <button
-              className={`py-2 bg-white dark:bg-primary dark:hover:bg-white dark:hover:text-primary dark:text-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
-                activeTab === "Go by Pagination"
-                  ? "border-b-2 border-gray-700 dark:border-white"
-                  : "text-primary"
-              }`}
-              onClick={() => setActiveTab("Searching workspaces")}
-            >
-              Searching workspaces
-            </button>
+          <div className="flex flex-col px-3 py-3 space-y-2 bg-gray-100 border-b-2 md:flex-row rounded-xl dark:bg-gray-500 md:justify-around md:space-x-10 md:space-y-0">
+  <button
+    className={`py-2 bg-white dark:bg-primary dark:hover:bg-white dark:hover:text-primary dark:text-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
+      activeTab === "your-workspace"
+        ? "border-b-2 border-gray-700 dark:border-white"
+        : "text-primary"
+    }`}
+    onClick={() => setActiveTab("your-workspace")}
+  >
+    Your Workspace
+  </button>
 
-            <button
-              className={`py-2 pb-1 bg-white hover:bg-primary dark:bg-primary dark:text-white dark:hover:bg-white dark:hover:text-primary hover:text-white w-full rounded-md font-semibold ${
-                activeTab === "shared-workspace"
-                  ? "border-b-2 border-gray-700 dark:border-white"
-                  : "text-primary"
-              }`}
-              onClick={() => setActiveTab("shared-workspace")}
-            >
-              Shared Workspace
-            </button>
-          </div>
+  <button
+    className={`py-2 bg-white dark:bg-primary dark:hover:bg-white dark:hover:text-primary dark:text-white hover:bg-primary hover:text-white w-full rounded-md font-semibold ${
+      activeTab === "Searching workspaces"
+        ? "border-b-2 border-gray-700 dark:border-white"
+        : "text-primary"
+    }`}
+    onClick={() => setActiveTab("Searching workspaces")}
+  >
+    Searching Workspaces
+  </button>
+
+  <button
+    className={`py-2 pb-1 bg-white hover:bg-primary dark:bg-primary dark:text-white dark:hover:bg-white dark:hover:text-primary hover:text-white w-full rounded-md font-semibold ${
+      activeTab === "shared-workspace"
+        ? "border-b-2 border-gray-700 dark:border-white"
+        : "text-primary"
+    }`}
+    onClick={() => setActiveTab("shared-workspace")}
+  >
+    Shared Workspace
+  </button>
+</div>
+
 
           {/* Workspace Content */}
           <div className="grid grid-cols-1 gap-5 mt-5 auto-rows-fr lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4">

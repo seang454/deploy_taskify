@@ -121,43 +121,47 @@ function Kanban() {
   console.log("hello userId", userId);
   return (
     <>
-      <div className="sticky z-10 flex flex-col justify-between gap-4 mb-6 bg-white top-[86px] md:flex-row dark:bg-gray-800">
-        <Link to="/dashboard"
-          className="flex items-center gap-2 px-3 py-2 m-5 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
-          // to={`/kanban/${location?.state.workspaceId}`}
+      <div className="sticky z-10 flex flex-col md:flex-row justify-between gap-4 mb-6 bg-white top-[86px] dark:bg-gray-800 p-4">
+        <Link
+          to="/dashboard"
+          className="flex items-center gap-2 px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600"
         >
           <FaArrowLeft />
           <span>Back</span>
         </Link>
-        {/* Add Member Button */}
-        <div className="grid p-5 space-x-2 grid-col-2 md:space-x-4 sm:grid-cols-4">
+
+        {/* Action Buttons */}
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 md:flex md:flex-wrap md:justify-end md:gap-4">
           <button
-            onClick={handleArchive} // ✅ Correct function execution
-            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+            onClick={handleArchive}
+            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600"
           >
             <span className="mr-2">
               <MdAssignmentAdd />
             </span>
             Archive
           </button>
+
           <button
             onClick={() => setModalOpen(true)}
-            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600"
           >
             <span className="mr-2">
-              <MdAssignmentAdd />{" "}
+              <MdAssignmentAdd />
             </span>
             Add Task
           </button>
+
           <button
             onClick={openModal}
-            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600 "
+            className="flex items-center px-3 py-2 text-white transition-all duration-500 rounded-lg bg-primary hover:bg-blue-600"
           >
             <span className="mr-2">
               <IoMdPersonAdd />
             </span>
             Add Member
           </button>
+
           <DeleteWorkspaceButton workspace_id={id} />
         </div>
       </div>

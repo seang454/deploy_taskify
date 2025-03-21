@@ -31,6 +31,7 @@ import CompletedCardDetail from "./Components/CompletedCardDetail.jsx";
 import { NotificationPage } from "./pages/NotificationPage.jsx";
 import EditTaskPupUp from "./Components/EditTaskPupUp.jsx";
 import CheckList from "./pages/CheckoutList.jsx";
+import Applyingai from "./AI/Applyingai.jsx";
 const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
@@ -70,6 +71,7 @@ ReactDOM.createRoot(root).render(
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/checklist" element={<CheckList />} />
+          <Route path="/ai" element={<Applyingai/>}/>
           {/* <Route path="/editTask" element={< EditTaskPupUp/>}></Route> */}
         </Routes>
       </BrowserRouter>
