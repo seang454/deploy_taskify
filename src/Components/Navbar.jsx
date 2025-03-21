@@ -109,128 +109,119 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         {/* Mobile Menu Button */}
-<button
-  aria-label="Toggle mobile menu"
-  className="fixed z-20 text-2xl sm:hidden top-4 right-4" // fixed positioning
-  onClick={toggleMenu}
->
-  {isOpen ? "✖" : "☰"} {/* Toggle button text based on the state */}
-</button>
-
-{/* Mobile Menu (Dropdown) */}
-<div
-  className={`fixed top-0 left-0 w-full h-screen bg-primary flex flex-col items-center pt-24 transition-transform duration-300 ease-in-out ${
-    isOpen ? "translate-x-0" : "-translate-x-full"
-  } sm:hidden`}
->
-  {/* Dark Mode Toggle */}
-  <button
-    onClick={() => setDarkMode(!darkMode)}
-    className="p-2 bg-white border border-white rounded-full"
-    aria-label="Toggle dark mode"
-  >
-    {darkMode ? (
-      <BsMoonStarsFill size={26} color="gray" />
-    ) : (
-      <IoIosSunny size={26} color="gold" />
-    )}
-  </button>
-
-  {/* Links and Buttons */}
-  <div className="flex flex-col items-center gap-4 mt-6">
-    {!getAceAccessToken() ? (
-      <>
-        <Link to="/register">
-          <button className="px-4 py-2 font-medium transition bg-white rounded text-primary hover:bg-secondary">
-            Sign Up
-          </button>
-        </Link>
-        <Link to="/login">
-          <button className="px-4 py-2 font-medium transition bg-white rounded text-primary hover:bg-secondary">
-            Login
-          </button>
-        </Link>
-      </>
-    ) : (
-      <>
-        <Link to="/dashboard">
-          <button className="px-4 py-2 font-medium transition bg-white rounded text-primary hover:bg-secondary">
-            Dashboard
-          </button>
-        </Link>
-        <Link to="/userpf">
-          <div className="w-[43px] h-[41px] bg-white text-primary font-bold flex items-center justify-center rounded-full">
-            {name}
-          </div>
-        </Link>
         <button
-          className="flex items-center gap-2 px-4 py-2 font-medium transition bg-white rounded text-primary hover:bg-secondary"
-          onClick={() => {
-            removeAccessToken();
-            window.location.reload();
-          }}
+          aria-label="Toggle mobile menu"
+          className="fixed z-20 text-2xl sm:hidden top-4 right-4" // fixed positioning
+          onClick={toggleMenu}
         >
-          <TiArrowLeftOutline />
-          Log Out
+          {isOpen ? "✖" : "☰"} {/* Toggle button text based on the state */}
         </button>
-        <div className="flex flex-col mt-10">
-              <Link
-                to="/"
-                className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
-              >
-                <MdOutlineLeaderboard className="w-5 h-5" />
-                <div>Home Page</div>
-              </Link>
-              <Link
-                to="/dashboard"
-                className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
-              >
-                <MdOutlineLeaderboard className="w-5 h-5" />
-                <div>Workspace</div>
-              </Link>
-              <Link
-                className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
-                to="/member"
-              >
-                <IoPersonOutline className="w-5 h-5" />
-                <div>Members</div>
-              </Link>
-              <Link
-                className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
-                to="/userpf"
-              >
-                <IoSettingsOutline className="w-5 h-5" />
-                <div>User Profile</div>
-              </Link>
-              <Link
-                className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
-                to="/notification"
-              >
-                <IoMdNotificationsOutline className="w-5 h-5" />
-                <div>Notifications</div>
-              </Link>
-              <Link
-                className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
-                to="/aboutus"
-              >
-                <IoIosHelpCircleOutline className="w-5 h-5" />
-                <div>About Taskify</div>
-              </Link>
-              {getAceAccessToken() && (
+
+        {/* Mobile Menu (Dropdown) */}
+        <div
+          className={`fixed top-0 left-0 w-full h-screen bg-primary flex flex-col items-center pt-24 transition-transform duration-300 ease-in-out ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          } sm:hidden`}
+        >
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 bg-white border border-white rounded-full"
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? (
+              <BsMoonStarsFill size={26} color="gray" />
+            ) : (
+              <IoIosSunny size={26} color="gold" />
+            )}
+          </button>
+
+          {/* Links and Buttons */}
+          <div className="flex flex-col items-center gap-4 mt-6">
+            {!getAceAccessToken() ? (
+              <>
+                <Link to="/register">
+                  <button className="px-4 py-2 font-medium transition bg-white rounded text-primary hover:bg-secondary">
+                    Sign Up
+                  </button>
+                </Link>
+                <Link to="/login">
+                  <button className="px-4 py-2 font-medium transition bg-white rounded text-primary hover:bg-secondary">
+                    Login
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/dashboard">
+                  <button className="px-4 py-2 font-medium transition bg-white rounded text-primary hover:bg-secondary">
+                    Dashboard
+                  </button>
+                </Link>
+                <Link to="/userpf">
+                  <div className="w-[43px] h-[41px] bg-white text-primary font-bold flex items-center justify-center rounded-full">
+                    {name}
+                  </div>
+                </Link>
                 <button
-                  className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
-                  onClick={handleLogout}
+                  className="flex items-center gap-2 px-4 py-2 font-medium transition bg-white rounded text-primary hover:bg-secondary"
+                  onClick={() => {
+                    removeAccessToken();
+                    window.location.reload();
+                  }}
                 >
-                  <TiArrowLeftOutline className="w-5 h-5" />
-                  <div>Log Out</div>
+                  <TiArrowLeftOutline />
+                  Log Out
                 </button>
-              )}
-            </div>
-      </>
-    )}
-  </div>
-</div>
-</div>
+                <div className="flex flex-col mt-10">
+                  <Link
+                    to="/"
+                    className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
+                  >
+                    <MdOutlineLeaderboard className="w-5 h-5" />
+                    <div>Home Page</div>
+                  </Link>
+                  <Link
+                    to="/dashboard"
+                    className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
+                  >
+                    <MdOutlineLeaderboard className="w-5 h-5" />
+                    <div>Workspace</div>
+                  </Link>
+                  <Link
+                    className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
+                    to="/member"
+                  >
+                    <IoPersonOutline className="w-5 h-5" />
+                    <div>Members</div>
+                  </Link>
+                  <Link
+                    className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
+                    to="/userpf"
+                  >
+                    <IoSettingsOutline className="w-5 h-5" />
+                    <div>User Profile</div>
+                  </Link>
+                  <Link
+                    className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
+                    to="/notification"
+                  >
+                    <IoMdNotificationsOutline className="w-5 h-5" />
+                    <div>Notifications</div>
+                  </Link>
+                  <Link
+                    className="flex justify-start py-4 pl-4 space-x-4 transition-all duration-500 hover:bg-primary hover:text-background"
+                    to="/aboutus"
+                  >
+                    <IoIosHelpCircleOutline className="w-5 h-5" />
+                    <div>About Taskify</div>
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }
