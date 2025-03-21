@@ -48,13 +48,13 @@ export default function Sidebar() {
             <MdOutlineLeaderboard className="w-5 h-5" />
             <div>Workspace</div>
           </Link>
-          <Link
+          {/* <Link
             className="flex justify-start py-4 pl-4 space-x-4 align-middle transition-all duration-500 hover:bg-primary hover:text-background"
             to="/member"
           >
             <IoPersonOutline className="w-5 h-5" />
             <div>Members</div>
-          </Link>
+          </Link> */}
           <Link
             className="flex justify-start py-4 pl-4 space-x-4 align-middle transition-all duration-500 hover:bg-primary hover:text-background"
             to="/userpf"
