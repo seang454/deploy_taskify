@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGreaterThan } from "@fortawesome/free-solid-svg-icons";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useGetPatchMutation, useGetDetailTaskQuery } from "../features/addTaskApi";
+import { toast } from "react-toastify";
 
 export default function EditTaskPopup() {
   const { id } = useParams(); // Get task ID from URL
   const { data: taskData, error, isLoading } = useGetDetailTaskQuery(id);
   const [patchData] = useGetPatchMutation();
+  const navigate=useNavigate();
 
   // Loading & Error Handling
   if (isLoading) return <p className="text-center">Loading task details...</p>;
@@ -46,9 +48,12 @@ export default function EditTaskPopup() {
     try {
       await patchData({ taskId: id, body: values }).unwrap();
       console.log("Task updated successfully:", values);
-      alert("Task updated successfully!");
+      toast.success("Task updated successfully")
+      navigate(`/todolistdetail/${id}`);
+      window.location.reload();
     } catch (error) {
       console.error("Error updating task:", error);
+      toast.error("Error updating task")
     }
   };
 

@@ -28,6 +28,7 @@ export default function CheckList({taskId , taskPosition}) {
   const handleSubmit = async (values, { setSubmitting }) => {
     console.log('values :>> ', values);
     const response = await postchecklist(values).unwrap();
+    window.location.reload();
     console.log('response add check List :>> ', response);
   };
 

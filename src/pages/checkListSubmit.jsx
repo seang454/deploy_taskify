@@ -5,6 +5,7 @@ import {
   useGetCheckListQuery,
   usePatchCheckListMutation,
 } from "../features/addTaskApi";
+import { toast } from "react-toastify";
 
 const CheckListSubmit = ({ taskPosition }) => {
   const { data: filter } = useGetCheckListQuery();
@@ -59,9 +60,12 @@ const CheckListSubmit = ({ taskPosition }) => {
       }).unwrap();
 
       console.log("Updated Response:", response);
-      alert(`Checklist item "${item.title}" summited successfully!`);
+      window.location.reload();
+      toast.success(`Checklist item "${item.title}" summited successfully!`);
+      
     } catch (e) {
       console.error("Error updating checklist item:", e);
+      toast.error("Failed to update checklist item");
     }
   };
 
@@ -87,10 +91,11 @@ const CheckListSubmit = ({ taskPosition }) => {
         id: item.id,
         body: updatedItem,
       }).unwrap();
-
       console.log("Updated Response:", response);
-      alert(`Checklist item "${item.title}" deleted successfully!`);
+      toast.success(`Checklist item "${item.title}" deleted successfully!`);
+      window.location.reload();
     } catch (e) {
+      toast.error("Error deleting item")
       console.error("Error updating checklist item:", e);
     }
   };

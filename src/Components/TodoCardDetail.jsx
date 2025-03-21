@@ -13,6 +13,7 @@ import { Link } from "react-router";
 import CheckList from "../pages/CheckoutList";
 import CheckListSumit from "../pages/checkListSubmit";
 import { FaArrowLeft } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function TodoCardDetail() {
   const navigate = useNavigate(); // Use the navigate hook to navigate to other pages
@@ -32,8 +33,11 @@ export default function TodoCardDetail() {
 
       // Navigate to the specific task page after deletion
       console.log(`/kanban/${task1[0].workspace_id}`);
-      navigate(`/kanban/${task1[0].workspace_id}`); // Navigate to a general todo page or a specific route
+      toast.success("Task deleted successfully");
+      navigate(`/kanban/${task1[0].workspace_id}`);
+      window.location.reload(); // Navigate to a general todo page or a specific route
     } catch (error) {
+      toast.success("Task failed to delete...!");
       console.error("Error deleting task:", error);
     }
   };
@@ -71,7 +75,8 @@ export default function TodoCardDetail() {
   return (
     <>
       {" "}
-      <Link to={`/kanban/${task.workspace_id}`}
+      <Link
+        to={`/kanban/${task.workspace_id}`}
         className="flex items-center w-24 gap-2 px-3 py-2 m-5 text-white transition-all duration-500 rounded-lg gap bg-primary hover:bg-blue-600 "
         // to={`/kanban/${location?.state.workspaceId}`}
       >

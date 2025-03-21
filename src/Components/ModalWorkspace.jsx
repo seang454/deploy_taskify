@@ -75,6 +75,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
         if (!response.ok) {
             const text = await response.text(); 
             console.error("Failed Response:", text);
+            window.location.reload();
             throw new Error(`Failed to create workspace: ${text || response.statusText}`);
         }
 

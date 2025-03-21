@@ -12,6 +12,7 @@ export default function DeleteWorkspaceButtn({ workspace_id }) {
   const onDelete = async () => {
     await deleteWorkspace(workspace_id);
     navigate("/dashboard");
+    window.location.reload();
     setOpen(false);
   };
 
@@ -44,6 +45,7 @@ export default function DeleteWorkspaceButtn({ workspace_id }) {
               <button
                 onClick={() => {
                   onDelete();
+                  
                 }}
                 className="px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700"
               >

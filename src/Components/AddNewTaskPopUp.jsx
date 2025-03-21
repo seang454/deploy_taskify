@@ -90,6 +90,7 @@ export default function AddNewTaskPopUp({ isOp, onCl }) {
           console.log("Task Created Successfully:", response);
           resetForm();
           onCl();
+          window.location.reload();
           break; // Exit loop if successful
         } catch (err) {
           if (err?.status === 409) {
