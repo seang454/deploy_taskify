@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
 import { useState,useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
   console.log("isopen",isOpen);
@@ -75,11 +77,12 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
         if (!response.ok) {
             const text = await response.text(); 
             console.error("Failed Response:", text);
-            window.location.reload();
             throw new Error(`Failed to create workspace: ${text || response.statusText}`);
         }
 
         console.log("Workspace Created Successfully");
+        toast.success("Workspace Created Successfully");
+        window.location.reload();
 
         onResponse(workspaceData);
         onClose();
@@ -110,6 +113,7 @@ export default function ModalWorkspace({ isOpen, onClose,token, onResponse }) {
 
   return (
     <div className="sticky top-0 h-[100vh] w-full bottom-0 inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-50">
+      <ToastContainer/>
       <div className="bg-white rounded-lg shadow-lg dark:bg-gray-900  w-[90%] lg:w-[80%] xl:w-[75%]  sticky top-0 bottom-0">
         
         {/* Close Button */}
