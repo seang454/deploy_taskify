@@ -188,7 +188,7 @@ export default function HomePage() {
                   transition={{ duration: 0.8 }}
                   viewport={{ once: false }}
                 >
-                  Let's sign up!
+                  <Link to="/register">Let's sign up!</Link>
                 </motion.button>
               </div>
             </div>
