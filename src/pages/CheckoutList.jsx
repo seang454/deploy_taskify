@@ -34,12 +34,12 @@ export default function CheckList({taskId , taskPosition}) {
 
   return (
     <div className="w-full h-auto p-6 mx-auto bg-white rounded-t-lg shadow-md dark:bg-gray-800 dark:text-white">
-      <h2 className="mb-6 font-bold text-center text-[28px]">Add checkList</h2>
+      <h2 className="mb-6 font-bold text-center text-[28px] text-primary">Add checkList</h2>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
         {({ isSubmitting }) => (
           <Form className="space-y-4">
             <div>
-              <label className="block font-semibold text-txt20">Title</label>
+              <label className="block font-semibold text-txt20 text-primary">Title</label>
               <Field type="text" name="title" className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
               <ErrorMessage name="title" component="div" className="text-sm text-red-500" />
             </div>

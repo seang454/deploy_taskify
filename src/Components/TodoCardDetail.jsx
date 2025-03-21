@@ -92,7 +92,7 @@ export default function TodoCardDetail() {
                 <IoIosArrowBack />
               </NavLink>
               <div
-                className={`flex rounded-full w-[300px] md:w-[400px] items-center lg:my-2 mx-auto h-14 text-[28px] align-middle justify-center font-bold ${
+                className={`flex rounded-full w-[300px] text-primary md:w-[400px] items-center lg:my-2 mx-auto h-14 text-[28px] align-middle justify-center font-bold ${
                   task?.is_important ? "bg-yellow-300" : "bg-gray-300"
                 } dark:text-white`}
               >
@@ -173,16 +173,16 @@ export default function TodoCardDetail() {
             </div>
 
             {/* Assigned to Section */}
-            <div className="flex items-center justify-between w-auto p-4 border-2 border-gray-100 rounded-xl dark:text-white">
+            {/* <div className="flex items-center justify-between w-auto p-4 border-2 border-gray-100 rounded-xl dark:text-white">
               <div>Assigned to: </div>
               <div>{task?.user_id || "Unknown"}</div>
-            </div>
+            </div> */}
 
             {/* Buttons Section */}
             <div className="flex justify-end pb-3 mr-8 space-x-4">
               <button
                 onClick={handleOnDelete}
-                className="px-6 py-3 font-bold text-gray-700 border border-gray-400 rounded-md dark:text-white"
+                className="px-6 py-3 font-bold border border-gray-400 rounded-md text-primary dark:text-white"
               >
                 Delete Task
               </button>
